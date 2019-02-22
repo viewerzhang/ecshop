@@ -49,7 +49,7 @@ Purchase: http://wrapbootstrap.com
                 <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
                         <small>
-                            <img src="/static/admin/assets/img/logo.png" alt="" />
+                            <img src="{{ asset('/static/admin/assets/img/logo.png') }}" alt="" />
                         </small>
                     </a>
                 </div>
@@ -82,7 +82,7 @@ Purchase: http://wrapbootstrap.com
                                     <!--Avatar Area-->
                                     <li>
                                         <div class="avatar-area">
-                                            <img src="/static/admin/assets/img/avatars/adam-jansen.jpg" class="avatar">
+                                            <img src="{{ asset('/static/admin/assets/img/avatars/adam-jansen.jpg') }}" class="avatar">
                                             <span class="caption">Change Photo</span>
                                         </div>
                                     </li>
@@ -94,18 +94,18 @@ Purchase: http://wrapbootstrap.com
                                     <!--Theme Selector Area-->
                                     <li class="theme-area">
                                         <ul class="colorpicker" id="skin-changer">
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#5DB2FF;" rel="/static/admin/assets/css/skins/blue.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#2dc3e8;" rel="/static/admin/assets/css/skins/azure.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#03B3B2;" rel="/static/admin/assets/css/skins/teal.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#53a93f;" rel="/static/admin/assets/css/skins/green.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#FF8F32;" rel="/static/admin/assets/css/skins/orange.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#cc324b;" rel="/static/admin/assets/css/skins/pink.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#AC193D;" rel="/static/admin/assets/css/skins/darkred.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#8C0095;" rel="/static/admin/assets/css/skins/purple.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#0072C6;" rel="/static/admin/assets/css/skins/darkblue.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#585858;" rel="/static/admin/assets/css/skins/gray.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#474544;" rel="/static/admin/assets/css/skins/black.min.css"></a></li>
-                                            <li><a class="colorpick-btn" href="#" style="background-color:#001940;" rel="/static/admin/assets/css/skins/deepblue.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#5DB2FF;" rel="{{ asset('/static/admin/assets/css/skins/blue.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#2dc3e8;" rel="{{ asset('/static/admin/assets/css/skins/azure.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#03B3B2;" rel="{{ asset('/static/admin/assets/css/skins/teal.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#53a93f;" rel="{{ asset('/static/admin/assets/css/skins/green.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#FF8F32;" rel="{{ asset('/static/admin/assets/css/skins/orange.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#cc324b;" rel="{{ asset('/static/admin/assets/css/skins/pink.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#AC193D;" rel="{{ asset('/static/admin/assets/css/skins/darkred.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#8C0095;" rel="{{ asset('/static/admin/assets/css/skins/purple.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#0072C6;" rel="{{ asset('/static/admin/assets/css/skins/darkblue.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#585858;" rel="{{ asset('/static/admin/assets/css/skins/gray.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#474544;" rel="{{ asset('/static/admin/assets/css/skins/black.min.css') }}"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#001940;" rel="{{ asset('/static/admin/assets/css/skins/deepblue.min.css') }}"></a></li>
                                         </ul>
                                     </li>
                                     <!--/Theme Selector Area-->
