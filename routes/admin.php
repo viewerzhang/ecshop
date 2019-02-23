@@ -6,7 +6,8 @@
  * 浏览器地址 输入 localhost/admin/1访问以下路由
  * 
  */
-Route::get('/1',function (){
+Route::get('/',function (){
+
     return 'hello!';
 });
 
@@ -27,6 +28,80 @@ Route::get('/index', function () {
 Route::get('/links/add','LinksController@create');
 Route::get('/links/index','LinksController@index');
 
+
 // 商品品牌管理路由
 Route::post('/goodsbrand/files','GoodsBrandController@files');
 Route::resource('/goodsbrand','GoodsBrandController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::resource('lunbo','LunboController');
+
+

@@ -438,7 +438,7 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/lunbo/create">
                                     <span class="menu-text">添加轮播图</span>
                                 </a>
                             </li>

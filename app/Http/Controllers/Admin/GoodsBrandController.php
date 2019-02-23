@@ -46,7 +46,7 @@ class GoodsBrandController extends Controller
             'brand_desc.required' => '品牌关键字为必填项',
             'brand_logo.required' => '品牌图标为必填项'
         ]);
-        if($request->)
+        
         $data = $request->except(['_token']);
         dd($data);
         if($data['brand_status']){
