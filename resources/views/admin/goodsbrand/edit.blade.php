@@ -1,7 +1,8 @@
-@extends('layout.admin')
+@extends('admin.goodsbrand.create')
 @section('title', '商品品牌管理')
-@section('title2', '添加品牌')
+@section('title2', '修改品牌')
 @section('content')
+
 <div class="col-lg-6 col-sm-6 col-xs-12" width="700px">
     @if (count($errors) > 0)
     <div class="alert alert-warning alert-dismissible" role="alert">
@@ -23,7 +24,7 @@
     @endif
                                     <div class="widget">
                                         <div class="widget-header bordered-bottom bordered-blue">
-                                            <span class="widget-caption">添加品牌</span>
+                                            <span class="widget-caption">修改品牌</span>
                                         </div>
                                         <div class="widget-body">
                                             <div>
@@ -31,35 +32,36 @@
                                                     {{ csrf_field() }}
                                                     <div class="form-group">
                                                         <label for="logo_upload">品牌Logo
-                                                        <input  accept="image/gif,image.jpg,image/jpeg,jpeg.jpg" style="display: none;" name="pic" type="file" id="logo_upload" class="form-control">
+                                                        <input accept="image/gif,image.jpg,image/jpeg,jpeg.jpg" style="display: none;" name="pic" type="file" id="logo_upload" class="form-control">
                                                         @if( old('brand_logo') )
                                                             <img width="60" id="pic" title="建议图片尺寸为：358*204" src="{{ asset(old('brand_logo')) }}">
                                                         @else
-                                                            <img width="60" id="pic" title="建议图片尺寸为：358*204" src="{{ asset('static/admin/images/onclick.jpg') }}">
+                                                            <img width="60" id="pic" title="建议图片尺寸为：358*204" src="{{ asset("$data->brand_logo") }}">
                                                         @endif
                                                         </label>
                                                     </div>
                                                 </form>
-                                                <form role="form" action="/admin/goodsbrand" method="post">
+                                                <form role="form" action="{{ '/admin/goodsbrand/'.$data->id }}" method="post">
                                                         {{ csrf_field() }}
+                                                        {{ method_field('put') }}
                                                         <!-- logo路径隐藏域 -->
-                                                    <input type="hidden" id="hdlogo" value="{{ old('brand_logo') }}" name="brand_logo"> 
+                                                    <input type="hidden" id="hdlogo" value="{{ $data->brand_logo }}" name="brand_logo"> 
                                                     <div class="form-group">
                                                         <label for="brand_name">品牌名称</label>
-                                                        <input type="text" id="brand_name" max="12" name="brand_name" value="{{ old('brand_name') }}" class="form-control" placeholder="请输入品牌名称">
+                                                        <input type="text" id="brand_name" max="12" name="brand_name" value="{{ $data->brand_name }}" class="form-control" placeholder="请输入品牌名称">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="brand_url">品牌链接</label>
-                                                        <input type="url" name="brand_url" class="form-control" id="brand_url" value="{{ old('brand_url') }}" placeholder="请输入品牌的链接地址">
+                                                        <input type="url" name="brand_url" class="form-control" id="brand_url" value="{{ $data->brand_url }}" placeholder="请输入品牌的链接地址">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="exampleInputPassword1">品牌关键字</label>
-                                                        <input type="text" value="{{ old('brand_desc') }}" name="brand_desc" class="form-control" placeholder="请输入品牌的关键字">
+                                                        <input type="text" value="{{ $data->brand_desc }}" name="brand_desc" class="form-control" placeholder="请输入品牌的关键字">
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                @if(old('brand_status'))
+                                                                @if( $data->brand_status == '1' )
                                                                 <input name="brand_status" checked type="checkbox">
                                                                 @else
                                                                 <input name="brand_status" type="checkbox">

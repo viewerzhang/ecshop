@@ -385,12 +385,12 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="{{ asset('/admin/goodsbrand/create') }}">
                                     <span class="menu-text">添加品牌</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">
+                                <a href="{{ asset('/admin/goodsbrand') }}">
                                     <span class="menu-text">品牌列表</span>
                                 </a>
                             </li>

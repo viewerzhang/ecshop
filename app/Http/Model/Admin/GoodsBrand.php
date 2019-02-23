@@ -8,4 +8,5 @@ class GoodsBrand extends Model
 {
     protected $table = 'goods_brand';
     protected $primaryKey = 'id';
+    public $timestamps = false;
 }
