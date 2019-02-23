@@ -26,3 +26,7 @@ Route::get('/index', function () {
 //友情链接
 Route::get('/links/add','LinksController@create');
 Route::get('/links/index','LinksController@index');
+
+// 商品品牌管理路由
+Route::post('/goodsbrand/files','GoodsBrandController@files');
+Route::resource('/goodsbrand','GoodsBrandController');

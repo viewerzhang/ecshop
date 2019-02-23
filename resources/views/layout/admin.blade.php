@@ -9,10 +9,12 @@ Purchase: http://wrapbootstrap.com
 <head>
     <meta charset="utf-8" />
     <title>@yield('title')</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Dashboard" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="{{ asset('/static/admin/assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('/static/admin/assets/js/skins.min.js') }}"></script>
     <link rel="shortcut icon" href="{{ asset('/static/admin/assets/img/favicon.png') }}" type="image/x-icon">
 
 
@@ -35,7 +37,6 @@ Purchase: http://wrapbootstrap.com
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
 
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
-    <script src="{{ asset('/static/admin/assets/js/skins.min.js') }}"></script>
 </head>
 <!-- /Head -->
 <!-- Body -->
