@@ -464,12 +464,12 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/ad/create">
                                     <span class="menu-text">添加广告</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/ad">
                                     <span class="menu-text">广告列表</span>
                                 </a>
                             </li>
@@ -491,12 +491,12 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/nav/create">
                                     <span class="menu-text">添加导航</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/nav">
                                     <span class="menu-text">导航列表</span>
                                 </a>
                             </li>
