@@ -9,7 +9,7 @@ Purchase: http://wrapbootstrap.com
 <head>
     <meta charset="utf-8" />
     <title>@yield('title')</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Dashboard" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,11 +17,15 @@ Purchase: http://wrapbootstrap.com
 
 
     <!--Basic Styles-->
+
+    <script type="text/javascript" src="{{ asset('/static/admin/assets/layui/layui.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/static/admin/assets/js/jquery.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/static/admin/assets/layui/css/layui.css') }}">
     <link href="{{ asset('/static/admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
     <link href="{{ asset('/static/admin/assets/css/font-awesome.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/static/admin/assets/css/weather-icons.min.css') }}" rel="stylesheet" />
+
 
     <!--Fonts-->
 <!--     <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css"> -->
@@ -82,7 +86,9 @@ Purchase: http://wrapbootstrap.com
                                     <!--Avatar Area-->
                                     <li>
                                         <div class="avatar-area">
-                                            <img src="{{ asset('/static/admin/assets/img/avatars/adam-jansen.jpg') }}" class="avatar">
+                                            <a href="/admin/admin">
+                                                <img src="{{ asset('/static/admin/assets/img/avatars/adam-jansen.jpg') }}" class="avatar">
+                                            </a>
                                             <span class="caption">Change Photo</span>
                                         </div>
                                     </li>

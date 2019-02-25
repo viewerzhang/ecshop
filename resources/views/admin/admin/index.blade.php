@@ -7,7 +7,7 @@
         <div class="widget-header bordered-bottom bordered-blue">
             <span class="widget-caption">我的个人信息</span>
             <span>
-                <a href="javascript:;" class="btn btn-definde" style="margin-right: -4px;">修改资料</a>
+                <a href="javascript:;" id="editpwd" class="btn btn-definde" style="margin-right: -4px;">修改密码</a>
                 <a href="javascript:;" class="btn btn-definde">更新资料</a>
             </span>
         </div>
@@ -16,39 +16,39 @@
                 <div style="position: relative;top: 10px;left: 15px;">
                     <div class="form-group">
                         <label for="exampleInputEmail1">头像：</label>
-                        <img src="" width="100" height="100">
+                        <img style="cursor: pointer;" class="img-rounded" id="upica" width="100" src='{{ asset("$data->upic") }}' height="100">
                     </div>
                     <div class="form-group">
                          <span> 管理员名称： </span> 
-                        123123 
+                        {{ $data->uname }}
                     </div>
                     <div class="form-group">
                          <span> 用户组： </span> 
-                        123123
+                        {{ $data->group }}
                     </div>
                     <div class="form-group">
                          <span> 手机号： </span> 
-                        123123　<a href="" class="btn btn-primary btn-xs">修改</a>
+                        {{ $data->admin_phone }}　<a href="javascript:;" class="btn btn-primary btn-xs" onclick="editphone({{ $data->id }})">修改</a>
                     </div>
                     <div class="form-group">
                          <span> 邮  箱： </span> 
-                        123123　<a href="" class="btn btn-primary btn-xs">修改</a>
+                        {{ $data->admin_email }}　<a href="" class="btn btn-primary btn-xs">修改</a>
                     </div>
                     <div class="form-group">
                          <span> 当前状态： </span> 
-                        123123
+                        {{ $data->status }}
                     </div>
                     <div class="form-group">
                          <span> 注册时间： </span> 
-                        123123
+                        {{ $data->admin_created_time }}
                     </div>
                     <div class="form-group">
                          <span> 上次登录时间： </span> 
-                        123123
+                        {{ $data->last_time }}
                     </div>
                     <div class="form-group">
                          <span> 上次登录地点： </span> 
-                        123123
+                        {{ $data->historyip }}
                     </div>
                 </div>
                     <!-- <div class="form-group">
@@ -92,4 +92,82 @@
         color: #666;
     }
 </style>
+<script type="text/javascript">
+   var data;
+   var phone = {{ $data->admin_phone }};
+   var upic = "{{ asset("$data->upic") }}";
+   var id = {{ $data->id }};
+   var csrf = "{{ csrf_token() }}";
+   function editphone(id)
+   {
+    layui.use(['layer', 'form'], function(){
+          var layer = layui.layer
+          ,form = layui.form;
+          $.ajax({
+              type:'get',
+              url:'/admin/admin/'+id+'/edit',
+              async:false,
+              success:function(dataa)
+              {
+                  data = dataa;
+              }
+  
+          });
+           layer.open({
+              type: 1,
+              title:'修改手机号',
+              skin: 'layui-layer-rim', //加上边框
+              area: ['420px', '340px'], //宽高
+              content: data,
+            });
+        });    
+   }
+    $('#upica').click(function(){
+        layui.use(['layer', 'form'], function(){
+          var layer = layui.layer
+          ,form = layui.form;
+          $.ajax({
+              type:'get',
+              url:'/admin/admin/'+id,
+              async:false,
+              success:function(dataa)
+              {
+                  data = dataa;
+              }
+  
+          });
+           layer.open({
+              type: 1,
+              title:'我的头像',
+              skin: 'layui-layer-rim', //加上边框
+              area: ['320px', '340px'], //宽高
+              content: data,
+            });
+        });    
+    });
+    // 打开修改密码页面
+    $('#editpwd').click(function() {
+
+        layui.use(['layer', 'form'], function(){
+          var layer = layui.layer
+          ,form = layui.form;
+          $.ajax({
+              type:'get',
+              url:'/admin/admin/create',
+              async:false,
+              success:function(dataa)
+              {
+                  data = dataa;
+              }
+          });
+          layer.open({
+              type: 1,
+              title:'修改密码',
+              skin: 'layui-layer-rim', //加上边框
+              area: ['420px', '340px'], //宽高
+              content: data,
+            });
+        });
+    });
+</script>
 @endsection

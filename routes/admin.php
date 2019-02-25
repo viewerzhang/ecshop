@@ -39,6 +39,12 @@ Route::get('/goodsbrand/editstatus/{id}','GoodsBrandController@editstatus');
 Route::resource('/goodsbrand','GoodsBrandController');
 
 // 管理员个人中心路由
+// 执行发送修改手机号短信
+Route::post('/admin/revise/{id}','AdminController@revise');
+// 执行发送修改密码短信
+Route::post('/admin/editpwd/{id}','AdminController@editpwd');
+// 执行更换头像
+Route::post('/admin/pic/{id}','AdminController@pic');
 Route::resource('/admin','AdminController');
 
 
