@@ -1,5 +1,6 @@
 @extends('layout.admin')
 @section('title', '导航管理')
+@section('url','/admin/nav')
 @section('title2', '添加导航')
 @section('content')
 	<div class="col-lg-6 col-sm-6 col-xs-12" width="700px">
@@ -13,17 +14,17 @@
                         <div class="form-group">
                             {{ csrf_field() }}
                             <label>导航标题</label>
-                            <input type="text" class="form-control"placeholder="navigation desc" name="nav_title">
+                            <input type="text" class="form-control"placeholder="请输入导航标题" name="nav_title">
                         </div>
                         <div class="form-group">
                             <label>导航链接地址</label>
-                            <input type="url" class="form-control"placeholder="nav link" name="nav_link">
+                            <input type="url" class="form-control"placeholder="请输入导航地址" name="nav_link">
                         </div>
                         <div class="form-group">
                             <label>导航排序号</label>
-                            <input type="number" class="form-control"placeholder="navigation sort" name="nav_sort">
+                            <input type="number" class="form-control"placeholder="用于导航排序" name="nav_sort">
                         </div>
-                        <button type="submit" class="btn btn-blue">Submit</button>
+                        <button type="submit" class="btn btn-blue">提交</button>
                     </form>
                 </div>
             </div>

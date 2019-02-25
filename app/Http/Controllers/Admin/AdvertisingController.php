@@ -13,12 +13,16 @@ class AdvertisingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // 获取搜索关键字
+        $search = $request->input('search','');
         // 获取广告所有数据
-        $data = Advertising::get();
+        $data = Advertising::where('ad_desc','like','%'.$search.'%')
+                ->orderBy('id','desc')
+                ->paginate(5);
         // 将数据分配到模板
-        return view('admin/advertising/index',['data'=>$data]);
+        return view('admin/advertising/index',['data'=>$data,'request'=>$request->all()]);
     }
 
     /**

@@ -13,12 +13,16 @@ class NavigationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // 获取搜索关键字
+        $search = $request->input('search','');
         // 获取导航所有数据
-        $data = Navigation::get();
+        $data = Navigation::where('nav_title','like','%'.$search.'%')
+                ->orderBy('nav_sort','desc')
+                ->paginate(5);
         // 将数据分配到模板
-        return view('admin/navigation/index',['data'=>$data]);
+        return view('admin/navigation/index',['data'=>$data,'request'=>$request->all()]);
     }
 
     /**
@@ -56,6 +60,8 @@ class NavigationController extends Controller
             }else{
                 echo '<script>alert("添加失败");location.href="/admin/nav/create"</script>';
             }
+        }else{
+            echo '<script>alert("添加失败,请填写所有信息");location.href="/admin/nav/create"</script>';
         }
     }
 

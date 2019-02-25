@@ -1,5 +1,6 @@
 @extends('layout.admin')
 @section('title', '广告管理')
+@section('url','/admin/ad')
 @section('title2', '修改广告')
 @section('content')
     <div class="col-lg-6 col-sm-6 col-xs-12" width="700px">
@@ -22,13 +23,12 @@
                             <label for="exampleInputFile">广告图片</label>
                             <input type="file" id="exampleInputFile" name="ad_img">
                             <img src="/static/{{ $data->ad_img }}" width="80" height="80">
-                            <p class="help-block">Example block-level help text here.</p>
                           </div>
                         <div class="form-group">
                             <label>广告链接地址</label>
                             <input type="url" class="form-control"placeholder="ad link" name="ad_link" value="{{ $data->ad_link }}">
                         </div>
-                        <button type="submit" class="btn btn-blue">Submit</button>
+                        <button type="submit" class="btn btn-blue">修改</button>
                     </form>
                 </div>
             </div>

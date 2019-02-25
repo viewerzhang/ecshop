@@ -1,5 +1,6 @@
 @extends('layout.admin')
 @section('title', '导航管理')
+@section('url','/admin/nav')
 @section('title2', '导航列表')
 @section('content')
 <div class="widget-body">
@@ -8,11 +9,11 @@
             <a id="editabledatatable_new" href="/admin/nav/create" class="btn btn-blue">
                <span class="glyphicon glyphicon-plus"></span>Add
             </a>
-        	<form action="/admin/links" style="float: right;" method="get">
+        	<form action="/admin/nav" style="float: right;" method="get">
             	<span class="input-icon inverted">
-	                <input type="text" class="form-control input-sm" placeholder="导航标题" name="title" value="">
+	                <input type="text" class="form-control input-sm" placeholder="导航标题" name="search" value="{{ $request['search'] or '' }}">
 	                <i class="glyphicon glyphicon-search bg-blue"></i>
-	                <button href="#" class="btn btn-default blue">搜索</button>
+	                <button class="btn btn-default blue">搜索</button>
 	            </span>
 			</form>
         </div>
@@ -53,14 +54,14 @@
             		<td>{{ $v->nav_sort }}</td>
             		<td class="">
                             <form action="/admin/nav/{{ $v->id }}" method="post">
-                            	<a href="/admin/nav/{{ $v->id }}/edit" class="btn btn-info btn-xs edit">
+                            	<a href="/admin/nav/{{ $v->id }}/edit" class="btn btn-info btn-sm edit">
 		                            <i class="fa fa-edit">
 		                            </i>
 		                            修改
 		                        </a>
 								{{ csrf_field() }}
 								{{ method_field('DELETE') }}
-                        		<button  class="btn btn-danger btn-xs delete">
+                        		<button  class="btn btn-danger btn-sm delete">
                         			<i class="fa fa-trash-o">
                             		</i>
                         			删除
@@ -80,7 +81,9 @@
         	}
         </style>
         <div class="row DTTTFooter">
-            
+            <ul class="pagination">
+                <li>{{ $data->appends($request)->links() }}</li>
+            </ul>
         </div>
     </div>
 </div>
