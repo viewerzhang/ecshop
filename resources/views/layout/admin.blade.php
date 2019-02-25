@@ -38,8 +38,8 @@ Purchase: http://wrapbootstrap.com
 
 
     <!-- 引用adminidnex下的css文件 -->
-    <link href="{{ asset('/static/admin/assets/css/adminindex/css/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/static/admin/assets/css/adminindex/css/zidingyi.css') }}" rel="stylesheet" />
+    <!-- <link href="{{ asset('/static/admin/assets/css/adminindex/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/static/admin/assets/css/adminindex/css/zidingyi.css') }}" rel="stylesheet" /> -->
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="{{ asset('/static/admin/assets/js/skins.min.js') }}"></script>
 </head>
