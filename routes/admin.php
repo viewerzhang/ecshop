@@ -6,8 +6,10 @@
  * 浏览器地址 输入 localhost/admin/1访问以下路由
  * 
  */
-Route::get('/',function (){
 
+
+
+Route::get('/1',function (){
     return 'hello!';
 });
 
@@ -46,6 +48,7 @@ Route::post('/admin/editpwd/{id}','AdminController@editpwd');
 // 执行更换头像
 Route::post('/admin/pic/{id}','AdminController@pic');
 Route::resource('/admin','AdminController');
+
 
 
 
@@ -171,3 +174,51 @@ Route::resource('ad','AdvertisingController');
 
 // 导航路由
 Route::resource('nav','NavigationController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Route::view('/index', 'index.index');

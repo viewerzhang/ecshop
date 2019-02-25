@@ -504,3 +504,4 @@ class Encrypt
         return $finalPwd;
     }
 }
+

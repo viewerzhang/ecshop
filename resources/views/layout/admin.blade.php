@@ -25,8 +25,6 @@ Purchase: http://wrapbootstrap.com
     <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
     <link href="{{ asset('/static/admin/assets/css/font-awesome.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/static/admin/assets/css/weather-icons.min.css') }}" rel="stylesheet" />
-
-
     <!--Fonts-->
 <!--     <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css"> -->
 
@@ -38,6 +36,10 @@ Purchase: http://wrapbootstrap.com
     <link href="{{ asset('/static/admin/assets/css/animate.min.css') }}" rel="stylesheet" />
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
 
+
+    <!-- 引用adminidnex下的css文件 -->
+    <link href="{{ asset('/static/admin/assets/css/adminindex/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/static/admin/assets/css/adminindex/css/zidingyi.css') }}" rel="stylesheet" />
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="{{ asset('/static/admin/assets/js/skins.min.js') }}"></script>
 </head>
@@ -334,7 +336,8 @@ Purchase: http://wrapbootstrap.com
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon glyphicon glyphicon-list"></i>
                             <span class="menu-text"> 类型管理 </span>
-                            <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>  
+                            <i class="menu-expand"></i>	
                         </a>
 
                         <ul class="submenu">
@@ -360,7 +363,8 @@ Purchase: http://wrapbootstrap.com
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon  glyphicon glyphicon-briefcase"></i>
                             <span class="menu-text">属性管理 </span>
-                            <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>                  
+                            <i class="menu-expand"></i>			
                         </a>
 
                         <ul class="submenu">
@@ -381,12 +385,14 @@ Purchase: http://wrapbootstrap.com
 
                         </ul>
                      <!--   品牌管理 -->
+                     <!--	品牌管理 -->
 
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon  glyphicon glyphicon-hdd "></i>
                             <span class="menu-text">品牌管理 </span>
-                            <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>     
+                            <i class="menu-expand"></i>		
                         </a>
 
                         <ul class="submenu">
@@ -407,12 +413,13 @@ Purchase: http://wrapbootstrap.com
 
                         </ul>
                         <!--    订单管理 -->
-
+                        <!--	订单管理 -->
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon glyphicon glyphicon-th"></i>
                             <span class="menu-text">订单管理 </span>
-                            <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>                  
+                            <i class="menu-expand"></i>				
                         </a>
 
                         <ul class="submenu">
@@ -433,12 +440,13 @@ Purchase: http://wrapbootstrap.com
 
                         </ul>
                       <!--  轮播图管理 -->
-
+                      <!--	轮播图管理 -->
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon glyphicon glyphicon-picture"></i>
                             <span class="menu-text">轮播图管理 </span>
-                            <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>                
+                            <i class="menu-expand"></i>					
                         </a>
 
                         <ul class="submenu">
@@ -458,14 +466,14 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
-
                          <!--   广告管理 -->
-
+                         <!--	广告管理 -->
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon fa fa-desktop"></i>
                             <span class="menu-text">广告管理 </span>
-                            <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>             
+                            <i class="menu-expand"></i>				
                         </a>
 
                         <ul class="submenu">
@@ -487,12 +495,13 @@ Purchase: http://wrapbootstrap.com
                         </ul>
 
                          <!--   导航管理 -->
-
+                         <!--	导航管理 -->
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon glyphicon glyphicon-road"></i>
                             <span class="menu-text">导航管理 </span>
-                            <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>              
+                            <i class="menu-expand"></i>				
                         </a>
 
                         <ul class="submenu">
@@ -513,14 +522,14 @@ Purchase: http://wrapbootstrap.com
 
                         </ul>
 
-
                          <!--   文章管理 -->
-
+                         <!--	文章管理 -->
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon glyphicon glyphicon-file"></i>
                             <span class="menu-text">文章管理 </span>
-                            <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>             
+                            <i class="menu-expand"></i>			
                         </a>
 
                         <ul class="submenu">
@@ -540,14 +549,16 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
-
                          <!--   友情链接管理 -->
+                         <!--	友情链接管理 -->
 
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon  glyphicon glyphicon-paperclip "></i>
                             <span class="menu-text">友情链接管理 </span>
+
                             <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>										
                         </a>
 
                         <ul class="submenu">
@@ -567,14 +578,15 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
-
                          <!--   栏目管理 -->
+                         <!--	栏目管理 -->
 
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon glyphicon glyphicon-phone"></i>
                             <span class="menu-text">栏目管理 </span>
                             <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>										
                         </a>
 
                         <ul class="submenu">
@@ -596,12 +608,14 @@ Purchase: http://wrapbootstrap.com
                         </ul>
 
                          <!--   系统设置 -->
+                         <!--	系统设置 -->
 
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon  glyphicon glyphicon-cog"></i>
                             <span class="menu-text">系统设置 </span>
                             <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>										
                         </a>
 
                         <ul class="submenu">
