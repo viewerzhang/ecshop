@@ -118,8 +118,11 @@ Route::resource('/admin','AdminController');
 
 
 
-
+//轮播图管理
 Route::resource('lunbo','LunboController');
+//文章管理
+Route::resource('articles','ArticlesController');
+
 
 
 

@@ -442,7 +442,7 @@ Purchase: http://wrapbootstrap.com
                       <!--  轮播图管理 -->
                       <!--	轮播图管理 -->
                       <li>
-                        <a href="#" class="menu-dropdown">
+                        <a href="http://www.ecshop.com/admin/lunbo/index" class="menu-dropdown">
                             <i class="menu-icon glyphicon glyphicon-picture"></i>
                             <span class="menu-text">轮播图管理 </span>
                             <i class="menu-expand"></i>                
@@ -451,12 +451,12 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/lunbo/create">
                                     <span class="menu-text">添加轮播图</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/lunbo/index">
                                     <span class="menu-text">轮播图列表</span>
                                 </a>
                             </li>
@@ -534,12 +534,12 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/articles/create">
                                     <span class="menu-text">添加文章</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/articles">
                                     <span class="menu-text">文章列表</span>
                                 </a>
                             </li>
