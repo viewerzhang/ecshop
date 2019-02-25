@@ -115,6 +115,59 @@ Route::resource('/admin','AdminController');
 
 
 
+
 Route::resource('lunbo','LunboController');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 广告路由
+Route::resource('ad','AdvertisingController');
+
+// 导航路由
+Route::resource('nav','NavigationController');
