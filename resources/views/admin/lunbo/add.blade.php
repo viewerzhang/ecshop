@@ -15,32 +15,32 @@
                         
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">轮播图名称</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right" >轮播图名称</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="lunbo_name" required="" type="text">
+                                <input class="form-control" placeholder="" name="lunbo_name" required="" type="text" value="{{old('lunbo_name')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">轮播图描述</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right" >轮播图描述</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="lunbo_desc" type="text" required="">
+                                <input class="form-control" placeholder="" name="lunbo_desc" type="text" required="" value="{{old('lunbo_desc')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">链接网址</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right" >链接网址</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="lunbo_link" type="text" required="">
+                                <input class="form-control" placeholder="" name="lunbo_link" type="text" required="" value="{{old('lunbo_link')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">轮播图</label>
                             <div class="col-sm-6">
-                                <input placeholder="" name="lunbo_img" type="file" required="">
+                                <input placeholder="" name="lunbo_img" type="file" required="" value="{{old('lunbo_img')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>

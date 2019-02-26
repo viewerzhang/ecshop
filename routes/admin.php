@@ -110,6 +110,13 @@ Route::resource('/goodscategory','GoodsCategoryController');
 Route::resource('lunbo','LunboController');
 //文章管理
 Route::resource('articles','ArticlesController');
+//属性管理
+Route::resource('goodsattr','GoodsAttrController');
+//商品管理
+Route::resource('goods','GoodsController');
+//商品类型
+Route::resource('goodstype','GoodsTypeController');
+
 
 
 

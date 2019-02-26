@@ -287,7 +287,7 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/goods/create">
                                     <span class="menu-text">添加商品</span>
                                 </a>
                             </li>
@@ -342,7 +342,7 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/goodstype/create">
                                     <span class="menu-text">添加类型</span>
                                 </a>
                             </li>
@@ -369,12 +369,12 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/goodsattr/create">
                                     <span class="menu-text">添加属性</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/goodsattr">
                                     <span class="menu-text">属性列表</span>
                                 </a>
                             </li>
