@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\Advertising;
-
+use DB;
 class AdvertisingController extends Controller
 {
     /**
@@ -72,6 +72,15 @@ class AdvertisingController extends Controller
             }else{
                 echo '<script>alert("添加失败,请填写所有信息");location.href="/admin/ad/create"</script>';
             }
+
+            // 验证数据
+            // $this->validate($request,[
+            //     'ad_desc' => 'required',
+            //     'ad_link' => 'required',
+            // ],[
+            //     'ad_desc.required' => '请填写广告描述',
+            //     'ad_link.required' => '请填写广告链接',
+            // ]);
 
         }else{
             echo '<script>alert("添加失败,请上传图片");location.href="/admin/ad/create"</script>';

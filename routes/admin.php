@@ -178,7 +178,8 @@ Route::resource('ad','AdvertisingController');
 // 导航路由
 Route::resource('nav','NavigationController');
 
-
+// 栏目路由
+Route::resource('column','ColumnController');
 
 
 

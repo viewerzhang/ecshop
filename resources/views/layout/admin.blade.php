@@ -591,12 +591,12 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/column/create">
                                     <span class="menu-text">添加栏目</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/column">
                                     <span class="menu-text">栏目列表</span>
                                 </a>
                             </li>
