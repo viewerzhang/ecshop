@@ -1,6 +1,5 @@
 <?php 
 namespace App\common;
-use Hash;
 // require('../config/function.php'); // 引入自定义函数
 include('../config/const.php'); // 引入常量文件
 

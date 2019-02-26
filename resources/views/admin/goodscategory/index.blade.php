@@ -8,9 +8,9 @@
             <a id="editabledatatable_new" href="/admin/links/create" class="btn btn-blue">
                <span class="glyphicon glyphicon-plus"></span>Add
             </a>
-            <form action="/admin/links" style="float: right;" method="get">
+            <form action="/admin/goodscategory" style="float: right;" method="get">
                 <span class="input-icon inverted">
-                    <input type="text" class="form-control input-sm" placeholder="链接标题" name="title" value="">
+                    <input type="text" class="form-control input-sm" name="key" placeholder="关键字" name="title" value="">
                     <i class="glyphicon glyphicon-search bg-blue"></i>
                     <button href="#" class="btn btn-default blue">搜索</button>
                 </span>
@@ -54,18 +54,15 @@
                     </td>
 
                     <td class="">
-                        <a href="/admin/goodscategory/{{ $v->id }}" class="btn btn-success">@if($v->cate_status == '1')隐藏@elseif($v->cate_status)显示@endif</a>
-                        <button class="btn btn-info" id="edit" onclick="xg({{ $v->id }})">修改</button> 
-                        <form style="display: inline;" onsubmit="sc({{ $v->id }})" action="/admin/goodscategory/{{ $v->id }}" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('delete') }}
-                            <input type="submit" class="btn btn-danger" value="删除" name="">
-                        </form>
+                        <a href="javascript:;" onclick="show({{ $v->id }},this)" class="btn btn-success">@if($v->cate_status == '1')隐藏@elseif($v->cate_status)显示@endif</a>
+                        <button class="btn btn-info" id="edit" onclick="xg({{ $v->id }},this)">修改</button>
+                            <button onclick="del({{ $v->id }},this)" class="btn btn-danger" name="">删除</button>
                     </td>
                 </tr>
                 @endforeach
                             </tbody>
         </table>
+        {{ $data->appends(['key'=>$key])->links() }}
         <style>
             .pagination{
                 float: right;
@@ -82,9 +79,10 @@
 
 
 <script type="text/javascript">
-    function xg(id)
+    csrf = "{{ csrf_token() }}";
+    function xg(id,ud)
     {
-        layui.use(['layer', 'form'], function(){
+        xgk = layui.use(['layer', 'form'], function(){
           var layer = layui.layer
           ,form = layui.form;
           $.ajax({
@@ -94,6 +92,7 @@
               success:function(dataa)
               {
                   data = dataa;
+                  edittitle = $(ud).parent().prev().prev();
               }
           });
           layer.open({
@@ -104,6 +103,60 @@
               content: data,
             });
         });
+    }
+    function show(id,ud)
+    {
+
+        $.ajax({
+              type:'get',
+              url:'/admin/goodscategory/'+id,
+              dataType:'json',
+              success:function(data)
+              {
+                  console.log(data.title);
+                  if(data.code == '1'){
+                    $(ud).html(data.btn);
+                    $(ud).parent().prev().html(data.title);
+                  }
+              }
+
+          });
+    }
+    function del(id,ud)
+    {
+        layui.use(['layer', 'form'], function(){
+        var layer = layui.layer
+        ,form = layui.form;
+            a = layer.confirm('你确定要删除吗?', {icon: 3, title:'提示'}, function(index){
+                $.post('/admin/goodscategory/'+id, {    
+                   "_token": "{{ csrf_token() }}",
+                   "_method": "delete"
+                   // 'newpwd':newpwd,
+                   // 'code':code
+                }, function(data) {
+                    if(data.code == '1'){
+                        layui.use(['layer', 'form'], function(){
+                        var layer = layui.layer
+                            layer.msg('删除成功');
+                        });
+                        $(ud).parent().parent().remove();
+                    }else if(data.code == '2'){
+                        layui.use(['layer', 'form'], function(){
+                        var layer = layui.layer
+                            layer.msg(data.msg);
+                        });
+                    }else{
+                        layui.use(['layer', 'form'], function(){
+                        var layer = layui.layer
+                            layer.msg('删除失败');
+                        });
+                    }
+                   
+                },'json');
+            });
+        });    
+
+        
     }
 </script>
 @endsection

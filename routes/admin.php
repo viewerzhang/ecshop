@@ -37,6 +37,9 @@ Route::resource('/admin','AdminController');
 /*** 分类操作 ***/
 Route::resource('/goodscategory','GoodsCategoryController');
 
+/*** 订单主表路由 ***/
+Route::resource('/goodsorder','GoodsOrderController');
+
 
 
 

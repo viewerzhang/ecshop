@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\GoodsCategory;
+use App\Http\Requests\GoodsCategoryRequest;
 
 class GoodsCategoryController extends Controller
 {
@@ -15,8 +16,9 @@ class GoodsCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $data = GoodsCategory::orderByRaw(\DB::raw("concat(cate_path,id,',')"))->get();
-        return view('admin.goodscategory.index',['data'=>$data]);
+        $key = $request->input('key','');
+        $data = GoodsCategory::where('cate_name','like','%'.$key.'%')->orderByRaw(\DB::raw("concat(cate_path,id,',')"))->paginate(8);
+        return view('admin.goodscategory.index',['key'=>$key,'data'=>$data]);
     }
 
     /**
@@ -36,9 +38,11 @@ class GoodsCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GoodsCategoryRequest $request)
     {
+
         $data = $request->except(['_token']);
+        dd($data);
         if($data['cate_pid'] == '0'){
             $data['cate_path'] = '0,';
         }else{
@@ -63,15 +67,28 @@ class GoodsCategoryController extends Controller
         $data = GoodsCategory::find($id);
         if($data->cate_status == '1'){
             $data->cate_status = '2';
+            $arr = [
+                'code' => '1',
+                'title' => '隐藏',
+                'btn' => '显示'
+            ];
         }else{
             $data->cate_status = '1';
+            $arr = [
+                'code' => '1',
+                'title' => '显示',
+                'btn' => '隐藏'
+            ];
         }
         try{
             $data->save();
         }catch(\Exception $err){
-            return "<script>location.href='/admin/goodscategory'</script>";
+            $arr = [
+                'code' => '0',
+            ];
+            return json_encode($arr);
         }
-        return "<script>location.href='/admin/goodscategory'</script>";
+        return json_encode($arr);
     }
 
     /**
@@ -97,12 +114,22 @@ class GoodsCategoryController extends Controller
     {
         $data = GoodsCategory::find($id);
         $data->cate_name = $request->input('cate_name');
+        $name = $data->cate_name;
         try{
             $data->save();
         }catch(\Exception $err){
-            return "<script>alert('修改失败');location.href='/admin/goodscategory'</script>";
+            $arr = [
+                'code'=>'0',
+            ];
+            return json_encode($arr);
         }
-        return "<script>alert('修改成功');location.href='/admin/goodscategory'</script></script>";
+        $cateOne = GoodsCategory::find($id);
+        $cateName = $cateOne->catenamea;
+        $arr = [
+            'code'=>'1',
+            'name' => $cateName,
+        ];
+        return json_encode($arr);
     }
 
     /**
@@ -113,11 +140,25 @@ class GoodsCategoryController extends Controller
      */
     public function destroy($id)
     {
+        $cates = GoodsCategory::where('cate_pid',$id)->first();
+        if($cates){
+            $arr = [
+                'code' => '2',
+                'msg' => '对不起，您的分类下还有子分类不能删除'
+            ];
+            return json_encode($arr);
+        }
         try{
             GoodsCategory::destroy($id);
         }catch(\Exception $err){
-            return "<script>alert('删除失败');location.href='/admin/goodscategory'</script>";
+            $arr = [
+                'code'=>'0',
+            ];
+            return json_encode($arr);
         }
-        return "<script>alert('删除成功');location.href='/admin/goodscategory'</script>";
+        $arr = [
+            'code'=>'1',
+        ];
+        return json_encode($arr);
     }
 }

@@ -549,6 +549,33 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
+                         <!-- 地址管理 status -->
+                         <!-- 地址管理 status -->
+                        <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon  glyphicon glyphicon-th-list"></i>
+                            <span class="menu-text"> 地址管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="elements.html">
+                                    <span class="menu-text">查看地址</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="elements.html">
+                                    <span class="menu-text">搜索地址</span>
+                                </a>
+                            </li>
+
+                                <ul class="submenu">
+                                </ul>
+                            </li>
+
+                        </ul>
+                        <!-- 地址管理结束 -->
                          <!--   友情链接管理 -->
                          <!--	友情链接管理 -->
 
