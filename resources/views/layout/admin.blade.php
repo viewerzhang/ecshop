@@ -38,8 +38,8 @@ Purchase: http://wrapbootstrap.com
 
 
     <!-- 引用adminidnex下的css文件 -->
-    <link href="{{ asset('/static/admin/assets/css/adminindex/css/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/static/admin/assets/css/adminindex/css/zidingyi.css') }}" rel="stylesheet" />
+   <!--  <link href="{{ asset('/static/admin/assets/css/adminindex/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/static/admin/assets/css/adminindex/css/zidingyi.css') }}" rel="stylesheet" /> -->
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="{{ asset('/static/admin/assets/js/skins.min.js') }}"></script>
 </head>
@@ -342,12 +342,12 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="/admin/goodstype/create">
+                                <a href="/admin/goodscategory/create">
                                     <span class="menu-text">添加类型</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/goodscategory">
                                     <span class="menu-text">类型列表</span>
                                 </a>
                             </li>
