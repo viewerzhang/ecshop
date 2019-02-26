@@ -77,8 +77,10 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        $res = Articles::find($id);
-        dump($res);
+
+        $data = Articles::where('id',$id)->first();
+        //dd($data);
+        return view('admin/articles/show',['data'=>$data]);
     }
 
     /**

@@ -17,14 +17,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">文章标题</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写标题" name="art_title" required="" type="text">
+                                <input class="form-control" placeholder="请填写标题" name="art_title" required="" type="text" value="{{old('art_title')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">文章描述</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写概述" name="art_desc" type="text" required="">
+                                <input class="form-control" placeholder="请填写概述" name="art_desc" type="text" required="" value="{{old('art_desc')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -32,14 +32,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">作者</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写作者" name="art_author" type="text" required="">
+                                <input class="form-control" placeholder="请填写作者" name="art_author" type="text" required="" value="{{old('art_author')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">外链网址</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写外链url地址" name="art_url" type="text" required="">
+                                <input class="form-control" placeholder="请填写外链url地址" name="art_url" type="text" required="" value="{{old('art_url')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
                             <div class="col-sm-6">
-                                <input placeholder="" name="art_img" type="file" required="">
+                                <input placeholder="" name="art_img" type="file" required="" value="{{old('art_img')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -78,11 +78,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">文章内容</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right" name="art_content">文章内容</label>
                             <div class="col-sm-6">
                                 <!-- 加载编辑器的容器 -->
-                            <script id="container" name="art_content" type="text/plain" style="width: 800px;height: 500px">
-                            这里写你的初始化内容
+                            <script id="container" name="art_content" type="text/plain" style="width: 800px;height: 500px"><p value="{{old('art_content')}}">这里写你的初始化内容</p>
                             </script>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
@@ -107,6 +106,6 @@
     <script type="text/javascript" src="/static/admin/udit/ueditor.all.js"></script>
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
-        var ue = UE.getEditor('container');
+        var ue = UE.getEditor('container',{ initialFrameWidth: null , autoHeightEnabled: false});
     </script>
 @endsection

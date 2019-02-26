@@ -103,7 +103,7 @@
 <script type="text/javascript">
 
   
-  function show($id){
+  function show(id){
   	layui.use(['layer', 'form'], function(){
   var layer = layui.layer
   ,form = layui.form;
@@ -112,13 +112,29 @@
 			title: '文章内容',
 			shadeClose: true,
 			shade: 0.8,
-			area: ['380px', '90%'],
-			content: '/articles/'+id
+			area: ['700px', '90%'],
+			content: '/admin/articles/'+id
+			//content: $data;
 			}); 
+		});
+  }
+			//页面层
+/*layer.open({
+  type: 1,
+  skin: 'layui-layer-rim', //加上边框
+  area: ['420px', '240px'], //宽高
+  content: '{{url('admin/articles')}}'
+});
 			});
 	}
-
-	
+*/
+/*//页面层
+layer.open({
+  type: 1,
+  skin: 'layui-layer-rim', //加上边框
+  area: ['420px', '240px'], //宽高
+  content: '{{}}'
+});*/
 	//iframe层
 
 </script>
