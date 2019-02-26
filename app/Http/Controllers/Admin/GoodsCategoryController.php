@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\GoodsCategory;
-use App\common\Encrypt;
 
 class GoodsCategoryController extends Controller
 {
@@ -16,7 +15,6 @@ class GoodsCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        echo Encrypt::super('123');
         $data = GoodsCategory::orderByRaw(\DB::raw("concat(cate_path,id,',')"))->get();
         return view('admin.goodscategory.index',['data'=>$data]);
     }
