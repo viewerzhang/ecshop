@@ -15,6 +15,9 @@ Route::get('/', function () {
  * 浏览器地址 输入 localhost/goods访问以下路由
  * 
  */
-Route::resource('/goods','GoodsController');
+Route::get('/', function () {
+    
+    return view('layout/home');
+});
 
  ?>
