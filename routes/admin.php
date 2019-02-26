@@ -6,23 +6,10 @@
  * 浏览器地址 输入 localhost/admin/1访问以下路由
  * 
  */
-
-
-
-Route::get('/1',function (){
-    return 'hello!';
-});
-
-/**
- * 路由使用范例
- * 浏览器地址 输入 localhost/admin/user访问以下路由
- * 
- */
 Route::resource('user','UserController');
 
 //后台框架
 Route::get('/index', function () {
-    
     return view('layout/admin');
 });
 
@@ -40,7 +27,7 @@ Route::get('/goodsbrand/editstatus/{id}','GoodsBrandController@editstatus');
 // 商品品牌管理路由
 Route::resource('/goodsbrand','GoodsBrandController');
 
-// 管理员个人中心路由
+/*** 管理员个人中心路由 ***/
 // 执行发送修改手机号短信
 Route::post('/admin/revise/{id}','AdminController@revise');
 // 执行发送修改密码短信
@@ -49,7 +36,8 @@ Route::post('/admin/editpwd/{id}','AdminController@editpwd');
 Route::post('/admin/pic/{id}','AdminController@pic');
 Route::resource('/admin','AdminController');
 
-
+/*** 分类操作 ***/
+Route::resource('/goodscategory','GoodsCategoryController');
 
 
 

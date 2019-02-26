@@ -1,5 +1,6 @@
 <?php 
 namespace App\common;
+use Hash;
 // require('../config/function.php'); // 引入自定义函数
 include('../config/const.php'); // 引入常量文件
 
@@ -488,20 +489,3 @@ class Sms
             }
     }
 }
-    /**
-     * 密码加密类
-     */
-class Encrypt
-{
-    static public function super(string $str)
-    {
-        $one = md5($str);
-        $qianstr = substr($one, 12,6);
-        $houstr = substr($one, -8,4);
-        $pwd = $qianstr.$houstr;
-        $newpwd = md5($pwd);
-        $finalPwd = substr($newpwd, 12,10);
-        return $finalPwd;
-    }
-}
-
