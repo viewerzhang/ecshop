@@ -13,9 +13,7 @@ Route::get('/index', function () {
     return view('layout/admin');
 });
 
-//友情链接
-Route::get('/links/add','LinksController@create');
-Route::get('/links/index','LinksController@index');
+
 
 
 // 商品品牌图标上传路由
@@ -220,4 +218,32 @@ Route::resource('column','ColumnController');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // 引入后台首页模板
  Route::view('/index', 'index.index');
+ //友情链接部分
+ Route::resource('links','LinksController');
