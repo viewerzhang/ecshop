@@ -13,6 +13,20 @@
                     <form class="form-horizontal" role="form" action="/admin/goodsattr/{{$data->id}}"  method="post" enctype="multipart/form-data">
                        {{ csrf_field() }}
                        {{ method_field('PUT') }}
+
+                      <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">所属商品类型</label>
+                            <div class="col-sm-6">
+                                <select name="type_id"  class="form-control" >
+                                    @foreach($res as $k=>$v)
+                                        @if($v->id == $data->type_id)
+                                            <option selected value="{{$v->id}}"> {{$v->type_name}} </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必选</p>
+                        </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">属性标题</label>
                             <div class="col-sm-6">

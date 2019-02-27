@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\GoodsAttr;
+use App\Http\Model\Admin\GoodsType;
 
 class GoodsAttrController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +17,12 @@ class GoodsAttrController extends Controller
      */
     public function index(Request $request)
     {
+
         $search = $request->input('search','');
+        
         $data = GoodsAttr::where('attr_name','like','%'.$search.'%')->orderBy('id','desc')->paginate(7);
+        //dd($data);
+        
        return view('admin/goodsattr/index',['data'=>$data,'request'=>$request->all()]);
     }
 
@@ -27,7 +33,9 @@ class GoodsAttrController extends Controller
      */
     public function create()
     {
-       return view('admin/goodsattr/add');
+        $res = GoodsType::orderBy('id','asc')->get();
+        //dd($res);
+       return view('admin/goodsattr/add',['res'=>$res]);
     }
 
     /**
@@ -38,11 +46,16 @@ class GoodsAttrController extends Controller
      */
     public function store(Request $request)
     {
+        /* $res = $request->all();
+        dd($res);*/
+        /*$res = $request->input('type_id');
+        dd($res);*/
        $data = $request->except(['_token']);
 
        //dd($data);
        GoodsAttr::insert($data);
-
+       
+       
        return redirect('/admin/goodsattr');
 
     }
@@ -67,9 +80,10 @@ class GoodsAttrController extends Controller
      */
     public function edit(Request $request,$id)
     {
-       $data = GoodsAttr::find($id);
+        $res = GoodsType::orderBy('id','asc')->get();
+        $data = GoodsAttr::find($id);
        //dd($data);
-       return view('admin/goodsattr/edit',['data'=>$data,'request'=>$request->all()]);
+       return view('admin/goodsattr/edit',['res'=>$res,'data'=>$data,'request'=>$request->all()]);
     }
 
     /**

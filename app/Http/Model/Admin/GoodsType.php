@@ -10,4 +10,10 @@ class GoodsType extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $dateFormat = 'U';
+
+    //属性关联类型
+    public function goodsattr()
+    {
+    	return $this->hasmany('App\Http\Model\Admin\GoodsAttr','type_id','id');
+    }
 }

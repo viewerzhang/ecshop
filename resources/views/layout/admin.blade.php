@@ -276,7 +276,59 @@ Purchase: http://wrapbootstrap.com
                             </li>
                         </ul>
                     </li>
+                    <!--    品牌管理 -->
 
+                      <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon  glyphicon glyphicon-hdd "></i>
+                            <span class="menu-text">品牌管理 </span>
+                            <i class="menu-expand"></i>     
+                            <i class="menu-expand"></i>     
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="{{ asset('/admin/goodsbrand/create') }}">
+                                    <span class="menu-text">添加品牌</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="{{ asset('/admin/goodsbrand') }}">
+                                    <span class="menu-text">品牌列表</span>
+                                </a>
+                            </li>
+
+                                <ul class="submenu">
+                                </ul>
+                            </li>
+
+                        </ul>
+                    <!-- 分类管理 -->
+                      <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon glyphicon glyphicon-list"></i>
+                            <span class="menu-text"> 分类管理 </span>
+                            <i class="menu-expand"></i>  
+                            <i class="menu-expand"></i> 
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="/admin/goodscategory/create">
+                                    <span class="menu-text">添加分类</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="/admin/goodscategory">
+                                    <span class="menu-text">分类列表</span>
+                                </a>
+                            </li>
+
+                                <ul class="submenu">
+                                </ul>
+                            </li>
+
+                        </ul>
                     <!--商品管理-->
                     <li>
                         <a href="#" class="menu-dropdown">
@@ -305,49 +357,22 @@ Purchase: http://wrapbootstrap.com
 
                         </ul>
 
-                      <!-- 类别管理 -->
+                      <!-- 类型管理 -->
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon  glyphicon glyphicon-th-list"></i>
-                            <span class="menu-text"> 类别管理 </span>
+                            <span class="menu-text"> 类型管理 </span>
                             <i class="menu-expand"></i>
                         </a>
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
-                                    <span class="menu-text">添加类别</span>
-                                </a>
-                            </li>
-                             <li>
-                                <a href="elements.html">
-                                    <span class="menu-text">类别列表</span>
-                                </a>
-                            </li>
-
-                                <ul class="submenu">
-                                </ul>
-                            </li>
-
-                        </ul>
-                
-                    <!-- 类型管理 -->
-                      <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon glyphicon glyphicon-list"></i>
-                            <span class="menu-text"> 类型管理 </span>
-                            <i class="menu-expand"></i>  
-                            <i class="menu-expand"></i>	
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="/admin/goodscategory/create">
+                                <a href="/admin/goodstype/create">
                                     <span class="menu-text">添加类型</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="/admin/goodscategory">
+                                <a href="/admin/goodstype">
                                     <span class="menu-text">类型列表</span>
                                 </a>
                             </li>
@@ -357,6 +382,8 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
+                
+                    
                         <!--属性管理 -->
 
                       <li>
@@ -384,36 +411,8 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
-                     <!--   品牌管理 -->
-                     <!--	品牌管理 -->
-
-                      <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon  glyphicon glyphicon-hdd "></i>
-                            <span class="menu-text">品牌管理 </span>
-                            <i class="menu-expand"></i>     
-                            <i class="menu-expand"></i>		
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="{{ asset('/admin/goodsbrand/create') }}">
-                                    <span class="menu-text">添加品牌</span>
-                                </a>
-                            </li>
-                             <li>
-                                <a href="{{ asset('/admin/goodsbrand') }}">
-                                    <span class="menu-text">品牌列表</span>
-                                </a>
-                            </li>
-
-                                <ul class="submenu">
-                                </ul>
-                            </li>
-
-                        </ul>
-                        <!--    订单管理 -->
-                        <!--	订单管理 -->
+                    
+                       <!--	订单管理 -->
                       <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon glyphicon glyphicon-th"></i>

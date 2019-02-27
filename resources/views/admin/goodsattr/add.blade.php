@@ -18,10 +18,12 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">所属商品分类</label>
                             <div class="col-sm-6">
-                                <select name=" "  class="form-control">
+                                <select name="type_id"  class="form-control">
                                     <option value=""> -- 请选择 -- </option>
-                                     
-                             	</select>
+                                        @foreach($res as $k =>$v)
+                                            <option value="{{$v->id}}"> -- {{$v->type_name}}</option>
+                                        @endforeach
+                                </select>
                             </div>
                             <p class="help-block col-sm-4 red">* 必选</p>
                         </div>
