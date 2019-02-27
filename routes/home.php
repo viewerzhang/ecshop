@@ -6,18 +6,149 @@
  * 浏览器地址 输入 localhost 访问以下路由
  * 
  */
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 /**
  * 路由使用范例
- * 浏览器地址 输入 localhost/goods访问以下路由
+ * 浏览器地址 输入 网址访问网站首页
  * 
  */
 Route::get('/', function () {
     
     return view('layout/home');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 前台注册页
+Route::get('/register','UserController@create');
 
  ?>
