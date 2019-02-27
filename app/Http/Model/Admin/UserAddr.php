@@ -8,4 +8,5 @@ class UserAddr extends Model
 {
     protected $table = 'user_addr';
     protected $primaryKey = 'id';
+    public $timestamps = false;
 }

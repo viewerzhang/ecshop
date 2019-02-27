@@ -40,6 +40,9 @@ Route::resource('/goodscategory','GoodsCategoryController');
 /*** 订单主表路由 ***/
 Route::resource('/goodsorder','GoodsOrderController');
 
+/*** 地址管理 ***/
+Route::resource('/useraddr','UserAddrController');
+
 
 
 

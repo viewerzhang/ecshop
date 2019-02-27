@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title', '地址管理')
-@section('title2', '查看地址')
+@section('title2', '搜索地址')
 @section('content')
 <div class="widget-body">
     <div role="grid" id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
@@ -8,14 +8,28 @@
             <a id="editabledatatable_new" href="/admin/useraddr/create" class="btn btn-blue">
                <span class="glyphicon glyphicon-plus"></span>Search
             </a>
-            <form action="/admin/useraddr" style="float: right;" method="get">
-                <span class="input-icon inverted">
-                    <input type="text" class="form-control input-sm" placeholder="请输入要搜索的用户名" name="key" value="">
-                    <i class="glyphicon glyphicon-search bg-blue"></i>
-                    <button href="#" class="btn btn-default blue">搜索</button>
-                </span>
-            </form>
+            
         </div>
+        <form class="form-inline" action="/admin/useraddr/create" method="get">
+          <div class="form-group">
+            <label class="sr-only">精准搜索</label>
+            <select class="form-control" name="type">
+              <option value="0">综合搜索</option>
+              <option value="1">按用户名</option>
+              <option value="2">按收货地址</option>
+              <option value="3">按手机号</option>
+              <option value="4">按邮编</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword2" class="sr-only">关键字</label>
+            <input name="key" class="form-control" id="inputPassword2" placeholder="请输入关键字">
+          </div>
+          <button type="submit" class="btn btn-info">精准搜索</button>
+        </form>
+
+
+
         <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" aria-describedby="editabledatatable_info">
             <thead>
                 <tr role="row">

@@ -13,10 +13,11 @@ class GoodsOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = GoodsOrder::get();
-        return view('admin.goodsorder.index',['data'=>$data]);
+        $key = $request->input('key');
+        $data = GoodsOrder::where('rand_id','like',"%{$key}%")->paginate(8);
+        return view('admin.goodsorder.index',['key'=>$key,'data'=>$data]);
     }
 
     /**
@@ -48,7 +49,9 @@ class GoodsOrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $back = $_SERVER['HTTP_REFERER'];
+        $data = GoodsOrder::find($id);
+        return view('admin.goodsorder.show',['back'=>$back,'data'=>$data]);
     }
 
     /**
@@ -71,7 +74,27 @@ class GoodsOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = GoodsOrder::find($id);
+        if( $data->order_status == '0' ){
+            $data->order_status = '1';
+            $judge = $data->save();
+            if($judge){
+                $arr = [
+                    'code'=>'1'
+                ];
+                return json_encode($arr);
+            }else{
+                $arr = [
+                    'code'=>'2'
+                ];
+                return json_encode($arr);
+            }
+        }else{
+            $arr = [
+                'code'=>'2'
+            ];
+            return json_encode($arr);
+        }
     }
 
     /**
@@ -82,6 +105,26 @@ class GoodsOrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = GoodsOrder::find($id);
+        if($data->order_status != '3' && $data->order_status != '2' ){
+            $data->order_status = '3';
+            $judge = $data->save();
+            if($judge){
+                $arr = [
+                    'code'=>'1'
+                ];
+                return json_encode($arr);
+            }else{
+                $arr = [
+                    'code'=>'2'
+                ];
+                return json_encode($arr);
+            }
+        }else{
+            $arr = [
+                'code'=>'2'
+            ];
+            return json_encode($arr);
+        }
     }
 }

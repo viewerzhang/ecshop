@@ -4,8 +4,9 @@ namespace App\Http\Model\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TestUser extends Model
+class ShopDetail extends Model
 {
-    protected $table = 'users';
+    protected $table = 'shop_detail';
     protected $primaryKey = 'id';
+    public $timestamps = false;
 }

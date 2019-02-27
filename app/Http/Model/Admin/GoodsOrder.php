@@ -12,4 +12,9 @@ class GoodsOrder extends Model
     {
         return $this->belongsTo('App\Http\Model\Admin\Users','user_id');
     }
+
+    public function shopdetail()
+    {
+        return $this->hasMany('App\Http\Model\Admin\ShopDetail','order_id');
+    }
 }
