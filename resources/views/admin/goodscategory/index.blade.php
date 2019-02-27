@@ -5,12 +5,16 @@
 <div class="widget-body">
     <div role="grid" id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
         <div class="dataTables_length" id="editabledatatable_length" style="margin: 0px;padding: 5px">
-            <a id="editabledatatable_new" href="/admin/links/create" class="btn btn-blue">
+            <a id="editabledatatable_new" href="/admin/goodscategory/create" class="btn btn-blue">
                <span class="glyphicon glyphicon-plus"></span>Add
             </a>
             <form action="/admin/goodscategory" style="float: right;" method="get">
                 <span class="input-icon inverted">
+<<<<<<< HEAD
                     <input type="text" class="form-control input-sm" name="key" placeholder="关键字" name="title" value="">
+=======
+                    <input type="text" class="form-control input-sm" placeholder="分类名称" name="title" value="">
+>>>>>>> origin/fxj1114
                     <i class="glyphicon glyphicon-search bg-blue"></i>
                     <button href="#" class="btn btn-default blue">搜索</button>
                 </span>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\GoodsType;
+use App\Http\Model\Admin\GoodsAttr;
 
 class GoodsTypeController extends Controller
 {
@@ -15,8 +16,9 @@ class GoodsTypeController extends Controller
      */
     public function index(Request $request)
     {
+        //dd(GoodsType::all());
         $search = $request->input('search','');
-      $data = GoodsType::where('type_name','like','%'.$search.'%')->orderBy('id','desc')->paginate(7);
+        $data = GoodsType::where('type_name','like','%'.$search.'%')->orderBy('id','desc')->paginate(7);
       return view('admin/goodstype/index',['data'=>$data,'request'=>$request->all()]);
       dump($data);
     }
@@ -53,10 +55,13 @@ class GoodsTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-
+        $data = GoodsAttr::where('type_id',$id)->orderBy('id','desc')->paginate(7);
+        
+        //dd($data);
        
+        return view('admin/goodstype/showattr',['data'=>$data,'request'=>$request->all()]);
     }
 
     /**
@@ -67,7 +72,9 @@ class GoodsTypeController extends Controller
      */
     public function edit(Request $request,$id)
     {
-      
+      $data = GoodsType::find($id);
+      //dd($data);   
+      return view('admin/goodstype/edit',['data'=>$data]);
     }
 
     /**
@@ -79,7 +86,10 @@ class GoodsTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+       $data = $request->except(['_token','_method']);
+       GoodsType::where('id',$id)->update($data);
+       return redirect('/admin/goodstype');
+       //dd($data);
     }
 
     /**
@@ -90,7 +100,13 @@ class GoodsTypeController extends Controller
      */
     public function destroy($id)
     {
-       
+       $res = GoodsType::destroy($id);
+       //dd($res);
+       if($res){
+           echo '<script>alert("删除成功");location.href="/admin/goodstype"</script>';
+       }else{
+           echo '<script>alert("删除失败");location.href="/admin/goodstype"</script>';
+       }
     }
 }
     

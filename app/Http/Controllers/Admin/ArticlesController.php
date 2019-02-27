@@ -147,6 +147,8 @@ class ArticlesController extends Controller
         $res = Articles::destroy([$id]);
         if($res){
             echo '<script>alert("删除成功");location.href="/admin/articles"</script>';
+        }else{
+            echo '<script>alert("删除失败");location.href="/admin/articles"</script>';
         }
     }
 }

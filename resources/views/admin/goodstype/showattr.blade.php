@@ -1,21 +1,10 @@
 @extends('layout.admin')
-@section('title', '属性管理')
-@section('url', 'http://www.ecshop.com/admin/goodsattr')
-@section('title2', '属性列表')
+@section('title', '类型管理')
+@section('url', 'http://www.ecshop.com/admin/goodstype')
+@section('title2', '浏览属性')
 @section('content')
 
 <div class="page-body">
-	<form action="/admin/goodsattr" method="get" style="padding: 0px;margin: 0px">         
-		<button type="button" tooltip="管理" class="btn btn-azure btn-addon" onclick="javascript:window.location.href = 'http://www.ecshop.com/admin/goodsattr/create';return false"> <i class="fa fa-plus"></i> Add
-		</button>
-		<div class="input-group" style="width: 250px;float: right;">
-	        <input type="text" class="form-control" name="search" value="{{$request['search'] or ''}}" placeholder="属性名称">
-	        <span class="input-group-btn">
-	            <button class="btn btn-azure btn-addon" type="submit">搜索</button>
-	        </span>
-	    </div>
-	</form>
-
 	<div class="row">
 	    <div class="col-lg-12 col-sm-12 col-xs-12">
 	        <div class="widget">
