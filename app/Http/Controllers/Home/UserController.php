@@ -125,11 +125,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function yzm(Request $requset)
+    public function yzm(Request $request)
     {
 
         // 接收手机号
-        $phone = $requset->user_phone;
+        $phone = $request->user_phone;
         // 生成验证码
         $yzm = rand(1000,9999);
         // 存到redis中
