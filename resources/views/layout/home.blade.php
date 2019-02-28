@@ -77,6 +77,9 @@
                                         <a class="account" href="/register">注册</a>
                                     </li>
                                     <li>
+                                        <a class="account" href="/login">登录</a>
+                                    </li>
+                                    <li>
                                         <a class="wishlist" href="#">我的收藏</a>
                                     </li>
                                     <li>

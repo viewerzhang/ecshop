@@ -151,4 +151,9 @@ Route::get('/', function () {
 // 前台注册页
 Route::get('/register','UserController@create');
 
+// 手机号短信验证
+Route::post('/store','UserController@store');
+
+// 验证码
+Route::get('/yzm','UserController@yzm');
  ?>

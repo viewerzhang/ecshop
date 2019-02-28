@@ -104,7 +104,7 @@
                             <div class="header_right_area">
                                 <ul>
                                     <li>
-                                        <a class="account" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的帐户</font></font></a>
+                                        <a class="account" href="/login"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录</font></font></a>
                                     </li>
                                     <li>
                                         <a class="wishlist" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">愿望清单</font></font></a>
@@ -120,328 +120,10 @@
             </div>
             <!--header top area end-->
             <!--header middle area start-->
-            <div class="header_middle">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="logo_area">
-                                <a href="index.html"><img src="/static/home/index/img/logo-pic/logo.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="header_all search_box_area">
-                                <form class="new_search" role="search" method="get" action="#">
-                                    <input id="mix_search" class="search-field" placeholder="Search Products…" value="" name="s" title="搜索：" type="search">
-                                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input value="搜索" type="submit"></font></font>
-                                    <input name="post_type" value="product" type="hidden">
-                                </form>
-                            </div>
-                            <div class="header_all shopping_cart_area">
-                                <div class="widget_shopping_cart_content">
-                                    <div class="topcart">
-                                        <a class="cart-toggler" href="">
-                                        <i class="icon"></i>
-                                        <span class="my-cart"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购物车</font></font></span>
-                                        <span class="qty"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2件</font></font></span>
-                                        <span class="fa fa-angle-down"></span>
-                                        </a>
-                                        <div class="new_cart_section">
-                                            <ol class="new-list">
-                                                <!-- single item -->
-                                                <li class="wimix_area">
-                                                    <a class="pix_product" href="">
-                                                    <img alt="" src="/static/home/index/img/product-pic/7-150x98.jpg">
-                                                    </a>
-                                                    <div class="product-details">
-                                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adipiscing cursus eu </font></font></a>
-                                                        <span class="sig-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1×$ 300.00</font></font></span>
-                                                    </div>
-                                                    <div class="cart-remove">
-                                                        <a class="action" href="#">
-                                                        <i class="fa fa-close"></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <!-- single item -->
-                                                <!-- single item -->
-                                                <li class="wimix_area">
-                                                    <a class="pix_product" href="#">
-                                                    <img alt="" src="/static/home/index/img/product-pic/1-150x98.jpg">
-                                                    </a>
-                                                    <div class="product-details">
-                                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Duis convallis </font></font></a>
-                                                        <span class="sig-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1×$ 100.00</font></font></span>
-                                                    </div>
-                                                    <div class="cart-remove">
-                                                        <a class="action" href="#">
-                                                        <i class="fa fa-close"></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <!-- single item -->
-                                            </ol>
-                                            <div class="top-subtotal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                小计：</font></font><span class="sig-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">400.00美元</font></font></span>
-                                            </div>
-                                            <div class="cart-button">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                        查看我的购物车
-                                                        </font></font><i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                        查看
-                                                        </font></font><i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <!--header bottom area start-->
             <div class="all_menu_area">
-                <div class="menu_inner">
-                    <div class="container">
-                        <div class="full_menu clearfix">
-                            <div class="new_menu">
-                                <div class="drp-menu">
-                                    <div class="col-md-3 pr pl">
-                                        <div class="all_catagories">
-                                            <div class="enable_catagories">
-                                                <i class="fa fa-bars"></i>
-                                                <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有类别</font></font></span>
-                                                <i class="fa fa-angle-down"></i>
-                                            </div>
-                                        </div>
-                                        <div class="catagory_menu_area">
-                                            <div class="catagory_mega_menu">
-                                                <div class="cat_mega_start">
-                                                    <ul class="list">
-                                                        <li class="next_area">
-                                                            <a class="item_link" href="#">
-                                                            <i class="fa fa-television"></i>
-                                                            <span class="link_content">
-                                                            <span class="link_text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                            电子
-                                                             </font></font><span class="link_descr"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Praesent accumsan elementum maximus</font></font></span>
-                                                            </span>
-                                                            </span>
-                                                            </a>
-                                                            <ul class="electronics_drpdown">
-                                                                <li class="parent">
-                                                                    <a href="#"></a>
-                                                                    <div class="mega_menu">
-                                                                        <div class="mega_menu_coloumn">
-                                                                            <ul>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">男装</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帽子</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mirriors</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">单打</font></font></a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="mega_menu_coloumn">
-                                                                            <ul>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运动和户外活动</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">智能手机</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">女士的</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">健康与美容</font></font></a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="mega_menu_coloumn">
-                                                                            <ul>
-                                                                                <li class="mega_content">
-                                                                                    <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">饰品</font></font></a>
-                                                                                </li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">嗜好</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联网</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">饰品</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子产品</font></font></a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="mega_menu_coloumn">
-                                                                            <ul>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">笔记本电脑及配件</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帽衫</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手表</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手电筒</font></font></a></li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mirriors</font></font></a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="differ_sec_area">
-                                                            <a class="item_link" href="#">
-                                                            <i class="fa fa-mobile"></i>
-                                                            <span class="link_content">
-                                                            <span class="link_text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                            智能手机和平板电脑
-                                                             </font></font><span class="link_descr"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Praesent accumsan elementum maximus</font></font></span>
-                                                            </span>
-                                                            </span>
-                                                            </a>
-                                                            <ul class="another_drop_menu">
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 with_icon" href="#" tabindex="1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">海报</font></font></a>
-                                                                    <ul class="new_miup_menu">
-                                                                        <li>
-                                                                            <ul class="new_mixup_tm">
-                                                                                <li class="exact">
-                                                                                    <a class="new_link_8 with_icon" href="#" tabindex="1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">鸡尾酒</font></font></a>
-                                                                                    <ul class="decent_mean_menu">
-                                                                                        <li>
-                                                                                            <ul class="new_mixup_tm">
-                                                                                                <li>
-                                                                                                    <a href="#"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">成本和夹克
-                                                                                                </font></font></li>
-                                                                                            </ul>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </li>
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">家具</font></font></a></li>
-                                                                            </ul>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li class="risk">
-                                                                    <a class="new_link_2 new_link_3 with_icon" href="#" tabindex="1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手表
-                                                                    </font></font></a>
-                                                                    <ul class="new_miup_menu">
-                                                                        <li>
-                                                                            <ul class="new_mixup_tm">
-                                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">女士的</font></font></a></li>
-                                                                            </ul>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">吊坠</font></font></a></li>
-                                                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chocklates</font></font></a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="differ_sec_area">
-                                                            <a class="item_link " href="#">
-                                                            <i class="fa fa-gift"></i>
-                                                            <span class="link_content">
-                                                            <span class="link_text">
-                                                            Health &amp; Beauty
-                                                            <span class="link_descr">Praesent accumsan elementum maximus</span>
-                                                            </span>
-                                                            </span>
-                                                            </a>
-                                                            <ul class="another_drop_menu">
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
-                                                                    <i class="fa fa-futbol-o"></i>
-                                                                    Sports &amp; Outdoors
-                                                                    </a>
-                                                                </li>
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
-                                                                    <i class="fa fa-bullseye"></i>
-                                                                    Bags, Shoes &amp; Accessories
-                                                                    </a>
-                                                                </li>
-                                                                <li class="discrip"><a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1"><i class="fa fa-file-image-o"></i>
-                                                                    Toys &amp; Hobbies</a>
-                                                                </li>
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1"><i class="fa fa-television"></i>
-                                                                    Computer &amp; Networking</a>
-                                                                </li>
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
-                                                                    <i class="fa fa-laptop"></i>
-                                                                    Laptops &amp; Accessories
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="item_link item_link_2" href="#">
-                                                            <i class="fa fa-heart"></i>
-                                                            <span class="link_content">
-                                                            <span class="link_text">
-                                                            Jewelry &amp; Watches
-                                                            <span class="link_descr">Praesent accumsan elementum maximus</span>
-                                                            </span>
-                                                            </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="item_link item_link_2" href="#">
-                                                            <i class="fa fa-star"></i>
-                                                            <span class="link_content">
-                                                            <span class="link_text">
-                                                            Flashlights &amp; Lamps
-                                                            <span class="link_descr">Praesent accumsan elementum maximus</span>
-                                                            </span>
-                                                            </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="item_link item_link_2" href="#">
-                                                            <i class="fa fa-lightbulb-o"></i>
-                                                            <span class="link_content">
-                                                            <span class="link_text">
-                                                            Headlight
-                                                            <span class="link_descr">Praesent accumsan elementum maximus</span>
-                                                            </span>
-                                                            </span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="cost-menu">
-                                                            <a class="item_link item_link_2" href="#">
-                                                            <i class="fa fa-pie-chart"></i>
-                                                            <span class="link_content">
-                                                            <span class="link_text">
-                                                            Cost &amp; jackets
-                                                            <span class="link_descr">Praesent accumsan elementum maximus </span>
-                                                            </span>
-                                                            </span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="showmore-items shwitm">
-                                                            <i class="fa fa-plus-square-o"></i>
-                                                            <span>More Categories</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--menu area start-->
-                                    <div class="col-md-9 pl">
-                                        <div class="menu_area">
-                                            <div class="menu">
-                                                <nav>
-                                                    <ul>
-                                                        <li><a href="index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">家</font></font></a></li>
-                                                        <li><a href="about-us.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于</font></font></a></li>
-                                                        <li><a href="cart.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">大车</font></font></a></li>
-                                                        <li><a href="list-view.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名单</font></font></a></li>
-                                                        <li><a href="my.account.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帐户</font></font></a></li>
-                                                        <li><a href="simple-product.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产品</font></font></a></li>
-                                                        <li><a href="contact-us.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></a></li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
         <!--header area end-->
@@ -535,8 +217,8 @@
                     <div class="col-md-12">
                         <div class="shop_menu shop_menu_tk ">
                             <ul class="cramb_area cramb_area_2 cramb_area_ktp">
-                                <li><a href="index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主页/</font></font></a></li>
-                                <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的帐户</font></font></a></li>
+                                <li><a href="/login"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主页/</font></font></a></li>
+                                <li><a href="/login"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录</font></font></a></li>
                             </ul>
                             <hr class="hrtop">
                         </div>
@@ -549,64 +231,34 @@
         <div class="login-area" style="margin-top: -50px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="login-content">
-                            <h2 class="login-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录</font></font></h2>
-                            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您好，欢迎来到您的帐户</font></font></p>
-                            <div class="social-sign">
-                                <a href="#"><i class="fa fa-facebook"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 用facebook登录</font></font></a>
-                                <a class="twitter" href="#"><i class="fa fa-twitter"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 用twitter登录</font></font></a>
-                            </div>
-                            <form action="#">
-                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子邮件地址</font></font></label>
-                                <input type="text">
-                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码</font></font></label>
-                                <input type="password">
-                                <div class="login-lost">
-                                    <span class="log-rem">
-                                        <input type="checkbox">
-                                        <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记住账号！</font></font></label>
-                                    </span>
-                                    <font style="vertical-align: inherit;"><span class="forgot-login"><a href="#"><font style="vertical-align: inherit;">忘记密码了吗？</font></a></span></font><span class="forgot-login">
-                                        <a href="#"><font style="vertical-align: inherit;"></font></a>
-                                    </span>
-                                </div>
-                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input class="login-sub" type="submit" value="登录"></font></font>
-                            </form>
-                        </div>
-                    </div>
+                    <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <div class="login-content login-margin">
                             <h2 class="login-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个新账户</font></font></h2>
                             <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建您自己的Unicase帐户。</font></font></p>
-                            <form action="#">
-                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子邮件地址</font></font></label>
-                                <input type="text">
+                            <form action="/store" method="post">
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                            <div class="form-group">
+                                {{ csrf_field() }}
+                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></label>
+                                <input type="text" name="user_name" value="{{ old('user_name') }}">
+                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码</font></font></label>
+                                <input type="password" name="password">
+                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手机号</font></font></label>
+                                <input type="number" name="user_phone" id="phone" value="{{ old('user_phone') }}">
+                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证码</font></font></label><br/>
+                                <input type="number" style="width:320px;" name="yzm"><input class="login-sub" type="button" id="sendBtn" onclick="sendPhone(this)" value="获取验证码">
                                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input class="login-sub" type="submit" value="注册"></font></font>
-                            </form>
-                            <div class="sign-up-today">
-                                <h2 class="login-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">立即注册，您将能够：</font></font></h2>
-                                <ul>
-                                    <li>
-                                        <span>
-                                            <i class="fa fa-check-square-o"></i>
-                                            <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过结账加快速度</font></font></span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            <i class="fa fa-check-square-o"></i>
-                                            <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">轻松跟踪您的订单</font></font></span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            <i class="fa fa-check-square-o"></i>
-                                            <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录您的所有购买记录</font></font></span>
-                                        </span>
-                                    </li>
-                                </ul>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -772,4 +424,64 @@
 
 
 
-<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div>
+<script type="text/javascript">
+    function sendPhone(obj)
+        {
+            // 接收手机号码
+            var user_phone = $('#phone').val();
+            // 定义正则检查手机号是否格式正确
+            var phone_grep = /^1{1}[3456789]{1}[0-9]{9}$/;
+            // 使用正则检查手机号
+            if(!phone_grep.test(user_phone)){
+                alert('请输入正确手机号');
+                return false;
+            }
+
+
+            // 将js对象转化成jquery对象
+            var object = $(obj);
+            // 设置button状态
+            object.attr('disabled',true);
+            // 获取当前的按钮上的文字
+            var text = object.val();
+            // alert(obj);[object HTMLInputElement]  js对象
+            // alert($(obj));[object Object]  jquery对象
+            if(text == '获取验证码'){
+                // 发送ajax 请求后台 
+                $.get('/yzm',{'user_phone':user_phone},function(data){
+                    if(data.code == 0){
+                       
+                        editCon();
+                    }
+                },'json');  
+            }else{
+                return false;
+            }
+            
+        }
+
+    function editCon()
+    {
+        var t = 120;                                                        ;
+        var time = null;
+        if(time == null){
+            time = setInterval(function(){
+                t--;
+                // 修改当前button 和 内容
+                $('#sendBtn').val('重新发送('+t+'s)');
+                if(t < 1){
+                    // 清除定时器
+                    clearInterval(time);
+                    time = null;
+                    $('#sendBtn').val('获取验证码');
+                    // 设置button状态
+                    $('#sendBtn').attr('disabled',false);
+                }
+            },1000);
+        }
+            
+    }
+</script>
+</body>
+</html>
