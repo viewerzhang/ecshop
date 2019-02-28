@@ -74,14 +74,57 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-
-                    <!-- 可以放一个网站的logo -->
-
+                    <div class="header_heaft_area">
+                        <div class="header_left_all">
+                            <div class="mean_al_dv">
+                                <div class="littele_menu"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">英语语言 </font></font><i class="fa fa-caret-down"></i></a> </div>
+                                <ul class="option">
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">法国</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">德国</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日本</font></font></a></li>
+                                </ul>
+                            </div>
+                            <div class="usd_area">
+                                <div class="littele_menu"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                    货币：美元
+                                    </font></font><i class="fa fa-caret-down"></i>
+                                    </a>
+                                </div>
+                                <ul class="option">
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">欧元 - 欧元</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">英镑 - 英镑</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">INR  - 印度卢比</font></font></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                    <div class="header_right_area">
+                        <ul>
+                            <li>
+                                <a class="account" href="/register"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注册</font></font></a>
+                            </li>
+                            <li>
+                                <a class="wishlist" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">愿望清单</font></font></a>
+                            </li>
+                            <li>
+                                <a class="Shopping cart" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购物车</font></font></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!--header top area end-->
+    <!--header middle area start-->
+    
+    <!--header bottom area start-->
+    <div class="all_menu_area">
+        
+    </div>
 </div>
 <!--header area end-->
 <!--我的帐户开始-->
