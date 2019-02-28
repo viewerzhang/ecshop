@@ -151,4 +151,64 @@ Route::get('/', function () {
 // 前台注册页
 Route::get('/register','UserController@create');
 
- ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 前台登录
+// 跳转到登录页面
+Route::get('/login','LoginController@login');
+// 登录
+Route::post('/dologin','LoginController@dologin');
+// 退出
+Route::get('/logout','LoginController@logout');
+// 手机号登录页面
+Route::get('/yzmlogin', 'LoginController@tellogin');
+// 手机号登录
+Route::get('/teldologin', 'LoginController@teldologin');
+Route::get('/yzm', 'LoginController@yzm');
+
+?>

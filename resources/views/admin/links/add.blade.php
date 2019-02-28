@@ -41,22 +41,22 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">链接类型</label>
                         <label>
-                            <input name="link_type" type="radio" class="colored-success" checked> 
+                            <input name="link_type" type="radio" class="colored-success" checked value="1"> 
                             <span class="text" style="padding-top: 0px;"> 文字</span>
                         </label>
                         <label>
-                            <input name="link_type" type="radio" class="colored-danger">
+                            <input name="link_type" type="radio" class="colored-danger" value="2">
                             <span class="text" style="padding-top: 0px;"> 图片</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">链接状态</label>
                         <label>
-                            <input name="link_status" type="radio" class="colored-success" checked>
+                            <input name="link_status" type="radio" class="colored-success" checked value="1">
                             <span class="text" style="padding-top: 0px;"> 显示</span>
                         </label>
                         <label>
-                            <input name="link_status" type="radio" class="colored-danger">
+                            <input name="link_status" type="radio" class="colored-danger" value="2">
                             <span class="text" style="padding-top: 0px;"> 隐藏</span>
                         </label>
                     </div>

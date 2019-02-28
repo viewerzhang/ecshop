@@ -12,4 +12,5 @@ class Users extends Model
     {
         return $this->hasMany('App\Http\Model\Admin\UserAddr','uid');
     }
+    public $timestamps = false;
 }

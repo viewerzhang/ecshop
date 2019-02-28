@@ -10,7 +10,7 @@
             </a>
         	<form action="/admin/links" style="float: right;" method="get">
             	<span class="input-icon inverted">
-	                <input type="text" class="form-control input-sm" placeholder="链接标题" name="title" value="">
+	                <input type="text" class="form-control input-sm" placeholder="链接标题" name="title" value="{{ $request['title'] or '' }}">
 	                <i class="glyphicon glyphicon-search bg-blue"></i>
 	                <button href="#" class="btn btn-default blue">搜索</button>
 	            </span>
@@ -68,16 +68,16 @@
                     </td>
                     <td class="">{{ $v->link_desc }}</td>
                     <td class="">
-                        @if( isset($v->link_type) == 'on' )
+                        @if( $v->link_type == '1' )
                             文字
-                        @elseif(isset($v->link_type) == 'off')
+                        @elseif($v->link_type == '2')
                             图片
                         @endif
                     </td>
                     <td class="">
-                        @if(isset($v->link_status) == 'on')
+                        @if($v->link_status == '1')
                             显示
-                        @elseif(isset($v->link_status) == 'off')
+                        @elseif($v->link_status == '2')
                             隐藏
                         @endif
                     </td>
@@ -105,7 +105,9 @@
         	}
         </style>
         <div class="row DTTTFooter">
-            
+            <ul class="pagination">
+                <li>{{ $data->appends($request)->links() }}</li>
+            </ul>
         </div>
     </div>
 </div>
