@@ -96,6 +96,63 @@ Route::get('/','HomeController@index');
 
 
 
+//商品列表页
+
+Route::resource('goodlist','GoodlistController');
+
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
