@@ -72,13 +72,14 @@
                         @if (session('homeFlag'))
                         <ul>
                             <li>
-                                欢迎您 {{session('homeUser.user_name')}}
+                                <a class="account" href="/grzx">欢迎您{{session('homeUser.user_name')}}</a>
+                                 
                             </li>
                             <li>
                                 <a class="account" href="/logout">退出</a>
                             </li>
                             <li>
-                                <a class="account" href="#">我的账户</a>
+                                <a class="account" href="/grzx">我的账户</a>
                             </li>
                             <li>
                                 <a class="wishlist" href="#">我的收藏</a>
@@ -278,7 +279,7 @@
             </div>
         </div>
     </div>
-</div>
+
 <!-- mobile-menu-area-start -->
 <div class="mobile-menu-area hidden-md hidden-lg">
     <div class="container">
@@ -303,7 +304,7 @@
 </div>
 <!-- mobile-menu-area-end -->
 <!--slider area start-->
-    @section('content')
+@section('content')
  
 <section class="slider-area">
     <div class="container">

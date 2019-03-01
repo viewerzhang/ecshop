@@ -265,9 +265,11 @@ Route::get('/yzmlogin', 'LoginController@tellogin');
 // 手机号登录
 Route::get('/teldologin', 'LoginController@teldologin');
 Route::get('/yzm', 'LoginController@yzm');
-
 // 手机号短信验证
 Route::post('/store','UserController@store');
-
 // 验证码
 Route::get('/yzm','UserController@yzm');
+// 个人中心
+Route::get('/grzx', 'GrzxController@index');
+
+
