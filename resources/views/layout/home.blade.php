@@ -201,78 +201,125 @@
         </div>
     </div>
     <!--header footer area start-->
-    <div class="all_menu_area">
-        <div class="menu_inner">
-            <div class="container">
-                <div class="full_menu clearfix">
-                    <div class="new_menu">
-                        <div class="drp-menu">
-                            <div class="col-md-3 pr pl">
-                                <div class="all_catagories">
-                                    <div class="enable_catagories">
-                                        <i class="fa fa-bars"></i>
-                                        <span>EC优购</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
+<div class="all_menu_area">
+    <div class="menu_inner">
+        <div class="container">
+            <div class="full_menu clearfix">
+                <div class="new_menu">
+                    <div class="drp-menu">
+                        <div class="col-md-3 pr pl">
+                            <div class="all_catagories">
+                                <div class="enable_catagories">
+                                    <i class="fa fa-bars">
+                                    </i>
+                                    <span>
+                                        全部商品分类
+                                    </span>
+                                    <i class="fa fa-angle-down">
+                                    </i>
                                 </div>
-                                <div class="catagory_menu_area">
-                                    <div class="catagory_mega_menu">
-                                        <div class="cat_mega_start">
-                                            <ul class="list">
-                                                <!-- 导航开始 -->
-                                                @foreach($common_cate as $k=>$v )
-                                                <li class="next_area">
-                                                    <a class="item_link" href="#">
-                                                        <i class="fa fa-television"></i>
-                                                        <span class="link_content">
-                                                            <span class="link_text">
-                                                                {{ $v->cate_name }}
-                                                                <span class="link_descr">{{ $v->cate_desc }}</span>
+                            </div>
+                            <div class="catagory_menu_area">
+                                <div class="catagory_mega_menu">
+                                    <div class="cat_mega_start">
+                                        <ul class="list">
+                                            <!-- 导航开始 -->
+                                            @foreach($common_cate as $k=>$v )
+                                            <li class="next_area">
+                                                <a class="item_link" href="{{'/goodslist?id='.$v->id}}" target="_blank" id="{{$v->id}}">
+                                                    <i class="fa fa-television">
+                                                    </i>
+                                                    <span class="link_content">
+                                                        <span class="link_text">
+
+                                                            {{ $v->cate_name }}
+                                                            <span class="link_descr">
+                                                                {{ $v->cate_desc }}
                                                             </span>
                                                         </span>
-                                                    </a>
-                                                    <ul class="electronics_drpdown">
-                                                        <li class="parent">
-                                                            <a href="#"></a>
-                                                            <div class="mega_menu">
-                                                                    @foreach($v->sum as $kk => $vv)
-                                                                <div class="mega_menu_coloumn">
-                                                                    <ul>
-                                                                        <li><a href="#">{{ $vv->cate_name }}</a></li>
-                                                                        @foreach($vv->sum as $kkk=>$vvv)
-                                                                            <li><a href="#">{{ $vvv->cate_name }}</a></li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                </div>
+                                                    </span>
+                                                </a>
+                                                <ul class="electronics_drpdown">
+                                                    <li class="parent">
+                                                        <a href="{{'/goodslist?cate_id='.$v->id}}" target="_blank">
+                                                        </a>
+                                                        <div class="mega_menu">
+
+                                                            @foreach($v->sum as $kk => $vv)
+                                                            <div class="mega_menu_coloumn">
+                                                                <ul>
+
+                                                                    <li>
+                                                                        <a href="{{'/goodslist?cate_id='.$vv->id}}" target="_blank">
+
+                                                                            {{ $vv->cate_name }}
+                                                                           
+                                                                        </a>
+                                                                    </li>
+                                                                    @foreach($vv->sum as $kkk=>$vvv)
+                                                                    <li>
+                                                                        <a href="{{'/goodslist?id='.$vvv->id}}#" target="_blank">
+                                                                            {{ $vvv->cate_name }}
+                                                                        </a>
+                                                                    </li>
                                                                     @endforeach
+                                                                </ul>
                                                             </div>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                @endforeach
-                                                <!-- 导航结束 -->
-                                            
-                                            </ul>
-                                        </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            @endforeach
+                                            <!-- 导航结束 -->
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                            <!--menu area start-->
-                            <div class="col-md-9 pl">
-                                <div class="menu_area">
-                                    <div class="menu">
-                                        <nav>
-                                            <ul>
-                                                <li><a href="index.html">Home</a></li>
-												<li><a href="about-us.html">About</a></li>
-												<li><a href="cart.html">Cart</a></li>
-												<li><a href="list-view.html">List</a></li>
-												<li><a href="my.account.html">Account</a></li>
-												<li><a href="simple-product.html">Product</a></li>
-												<li><a href="contact-us.html">Contact us</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
+                        </div>
+                        <!--menu area start-->
+                        <div class="col-md-9 pl">
+                            <div class="menu_area">
+                                <div class="menu">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="index.html">
+                                                    Home
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="about-us.html">
+                                                    About
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="cart.html">
+                                                    Cart
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="list-view.html">
+                                                    List
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="my.account.html">
+                                                    Account
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="simple-product.html">
+                                                    Product
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="contact-us.html">
+                                                    Contact us
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
@@ -281,6 +328,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- mobile-menu-area-start -->
 <div class="mobile-menu-area hidden-md hidden-lg">

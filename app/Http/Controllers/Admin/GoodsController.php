@@ -253,10 +253,10 @@ class GoodsController extends Controller
         try{
           Goods::where('id',$id)->update($data);
         }catch(\Exception $err){
-          echo '修改失败';
+          echo '<script>alert("修改失败");location.href="/admin/goods"</script>';
         }
-        return '修改成功';
-       
+        
+       echo '<script>alert("修改成功");location.href="/admin/goods"</script>';
        
     }
 
