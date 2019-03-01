@@ -12,6 +12,20 @@
 
 </script>
 <div class="page-body">
+<!-- 显示错误消息 开始 -->
+    @if (session('success'))
+        <div class="class='alert alert-success" role="lert">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
+    @if (session('error'))
+        <div class="class='alert alert-danger" role="lert">
+            {{ session('error') }}
+        </div>
+    @endif
+<!-- 显示错误消息 结束 -->
 	<form action="/admin/column" method="get" style="padding: 0px;margin: 0px">         
 		<button type="button" tooltip="管理" class="btn btn-azure btn-addon" onclick="javascript:window.location.href = '/admin/column/create';return false"> <i class="fa fa-plus"></i> Add
 		</button>
@@ -48,8 +62,7 @@
 	                           		<td>{{$v->column_desc}}</td>
 	                           		<td>{{$v->column_url}}</td>
 	                       			<td>
-	                           			<img src="/static/{{$v->column_img}}" width="50px" height="30px">
-	                           			
+	                           			<img src="/static/{{ $v->column_img }}" width="30px">
 	                           		</td>
 	                           		<td>
 	                          			{{$v->column_sort}}

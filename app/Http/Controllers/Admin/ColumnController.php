@@ -52,7 +52,7 @@ class ColumnController extends Controller
             $files = $request->file('column_img');
 
             // 调用保存图片方法
-            $fileName = $files->store('images/column');
+            $fileName = $files->store('images/column/temp');
 
             // 将名字存入数组
             $data['column_img'] = $fileName;
@@ -61,13 +61,13 @@ class ColumnController extends Controller
 
             // 判断是否保存成功
             if($res){
-                echo '<script>alert("添加成功");location.href="/admin/column"</script>';
+                return redirect('/admin/column')->with('success','添加成功');
             }else{
-                echo '<script>alert("添加失败");location.href="/admin/column/create"</script>';
+                return back()->with('error','添加失败');
             }
 
         }else{
-            echo '<script>alert("添加失败,请上传图片");location.href="/admin/column/create"</script>';
+            return back()->with('error','添加失败,请上传图片');
         }
     }
 
@@ -123,13 +123,13 @@ class ColumnController extends Controller
 
             // 判断是否保存成功
             if($res){
-                echo '<script>alert("修改成功");location.href="/admin/column"</script>';
+                return redirect('/admin/column')->with('success','修改成功');
             }else{
-                echo '<script>alert("修改失败");location.href="/admin/column/'.$id.'/edit"</script>';
+                return back()->with('error','修改失败,请修改信息或返回上一级');
             }
 
         }else{
-            echo '<script>alert("修改失败,请上传图片");location.href="/admin/column/'.$id.'/edit"</script>';
+            return back()->with('error','修改失败,请上传图片');
         }
     }
 
@@ -145,9 +145,11 @@ class ColumnController extends Controller
         $res = Column::destroy($id);
         // 判断是否成功
         if($res){
-            echo '<script>alert("删除成功");location.href="/admin/column"</script>';
+            return redirect('/admin/column')->with('success','删除成功');
         }else{
-            echo '<script>alert("删除失败");location.href="/admin/column"</script>';
+            return back()->with('error','删除失败');
         }
     }
+
+    
 }

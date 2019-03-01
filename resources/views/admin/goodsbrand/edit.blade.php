@@ -22,60 +22,60 @@
         </ul>
     </div>
     @endif
-                                    <div class="widget">
-                                        <div class="widget-header bordered-bottom bordered-blue">
-                                            <span class="widget-caption">修改品牌</span>
-                                        </div>
-                                        <div class="widget-body">
-                                            <div>
-                                                <form id="files" role="form" method="post" enctype="multipart/form-data">
-                                                    {{ csrf_field() }}
-                                                    <div class="form-group">
-                                                        <label for="logo_upload">品牌Logo
-                                                        <input accept="image/gif,image.jpg,image/jpeg,jpeg.jpg" style="display: none;" name="pic" type="file" id="logo_upload" class="form-control">
-                                                        @if( old('brand_logo') )
-                                                            <img width="60" id="pic" title="建议图片尺寸为：358*204" src="{{ asset(old('brand_logo')) }}">
-                                                        @else
-                                                            <img width="60" id="pic" title="建议图片尺寸为：358*204" src="{{ asset("$data->brand_logo") }}">
-                                                        @endif
-                                                        </label>
-                                                    </div>
-                                                </form>
-                                                <form role="form" action="{{ '/admin/goodsbrand/'.$data->id }}" method="post">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('put') }}
-                                                        <!-- logo路径隐藏域 -->
-                                                    <input type="hidden" id="hdlogo" value="{{ $data->brand_logo }}" name="brand_logo"> 
-                                                    <div class="form-group">
-                                                        <label for="brand_name">品牌名称</label>
-                                                        <input type="text" id="brand_name" max="12" name="brand_name" value="{{ $data->brand_name }}" class="form-control" placeholder="请输入品牌名称">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="brand_url">品牌链接</label>
-                                                        <input type="url" name="brand_url" class="form-control" id="brand_url" value="{{ $data->brand_url }}" placeholder="请输入品牌的链接地址">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1">品牌关键字</label>
-                                                        <input type="text" value="{{ $data->brand_desc }}" name="brand_desc" class="form-control" placeholder="请输入品牌的关键字">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                @if( $data->brand_status == '1' )
-                                                                <input name="brand_status" checked type="checkbox">
-                                                                @else
-                                                                <input name="brand_status" type="checkbox">
-                                                                @endif
-                                                                <span class="text">是否直接在前台显示？</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <input type="submit" class="btn btn-blue">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="widget">
+        <div class="widget-header bordered-bottom bordered-blue">
+            <span class="widget-caption">修改品牌</span>
+        </div>
+        <div class="widget-body">
+            <div>
+                <form id="files" role="form" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="logo_upload">品牌Logo
+                        <input accept="image/gif,image.jpg,image/jpeg,jpeg.jpg" style="display: none;" name="pic" type="file" id="logo_upload" class="form-control">
+                        @if( old('brand_logo') )
+                            <img width="60" id="pic" title="建议图片尺寸为：358*204" src="{{ asset(old('brand_logo')) }}">
+                        @else
+                            <img width="60" id="pic" title="建议图片尺寸为：358*204" src="{{ asset("$data->brand_logo") }}">
+                        @endif
+                        </label>
+                    </div>
+                </form>
+                <form role="form" action="{{ '/admin/goodsbrand/'.$data->id }}" method="post">
+                        {{ csrf_field() }}
+                        {{ method_field('put') }}
+                        <!-- logo路径隐藏域 -->
+                    <input type="hidden" id="hdlogo" value="{{ $data->brand_logo }}" name="brand_logo"> 
+                    <div class="form-group">
+                        <label for="brand_name">品牌名称</label>
+                        <input type="text" id="brand_name" max="12" name="brand_name" value="{{ $data->brand_name }}" class="form-control" placeholder="请输入品牌名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="brand_url">品牌链接</label>
+                        <input type="url" name="brand_url" class="form-control" id="brand_url" value="{{ $data->brand_url }}" placeholder="请输入品牌的链接地址">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">品牌关键字</label>
+                        <input type="text" value="{{ $data->brand_desc }}" name="brand_desc" class="form-control" placeholder="请输入品牌的关键字">
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                @if( $data->brand_status == '1' )
+                                <input name="brand_status" checked type="checkbox">
+                                @else
+                                <input name="brand_status" type="checkbox">
+                                @endif
+                                <span class="text">是否直接在前台显示？</span>
+                            </label>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-blue">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     $('#logo_upload').change(function(){
         if(this.value == ''){

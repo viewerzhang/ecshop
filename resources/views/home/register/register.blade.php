@@ -118,38 +118,9 @@
                     </div>
                 </div>
             </div>
-            <!--header top area end-->
-            <!--header middle area start-->
-            
-            <!--header bottom area start-->
-            <div class="all_menu_area">
-                
-            </div>
+            <!--header top area end--> 
         </div>
         <!--header area end-->
-        <!-- mobile-menu-area-start -->
-        <div class="mobile-menu-area hidden-md hidden-lg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mobile-menu">
-                            <nav id="mobile-menu-active" style="display: block;">
-                                <ul id="nav">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about-us.html">About</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="list-view.html">List</a></li>
-                                    <li><a href="my.account.html">Account</a></li>
-                                    <li><a href="simple-product.html">Product</a></li>
-                                    <li><a href="contact-us.html">Contact us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- mobile-menu-area-end -->
         <!--social design arae start-->
         <div class="link_area">
             <div class="container">
@@ -216,11 +187,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="shop_menu shop_menu_tk ">
-                            <ul class="cramb_area cramb_area_2 cramb_area_ktp">
-                                <li><a href="/login"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主页/</font></font></a></li>
-                                <li><a href="/login"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录</font></font></a></li>
-                            </ul>
-                            <hr class="hrtop">
                         </div>
                     </div>
                 </div>
@@ -228,7 +194,7 @@
         </div>
         <!-- shop area end-->
         <!--我的帐户开始-->
-        <div class="login-area" style="margin-top: -50px;">
+        <div class="login-area" style="margin-top: -80px;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3"></div>
@@ -265,11 +231,8 @@
             </div>
         </div>
         <!--我的帐户开始结束-->
-        <!--newsletter area start-->
-
-        <!--newsletter area end-->
         <!--footer top area start-->
-        <div class="footer_area" style="margin-top: 60px;">
+        <div class="footer_area">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">

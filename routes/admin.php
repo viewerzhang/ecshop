@@ -169,7 +169,8 @@ Route::resource('goods','GoodsController');
 
 
 
-
+// 广告图片上传
+Route::post('/ad/files','AdvertisingController@files');
 
 // 广告路由
 Route::resource('ad','AdvertisingController');
@@ -177,8 +178,12 @@ Route::resource('ad','AdvertisingController');
 // 导航路由
 Route::resource('nav','NavigationController');
 
+// 栏目图片上传
+Route::post('/column/files','ColumnController@files');
+
 // 栏目路由
 Route::resource('column','ColumnController');
+
 
 
 
