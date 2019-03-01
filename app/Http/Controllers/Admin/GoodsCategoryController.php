@@ -127,6 +127,7 @@ class GoodsCategoryController extends Controller
     {
         $data = GoodsCategory::find($id);
         $data->cate_name = $request->input('cate_name');
+        $data->cate_desc = $request->input('cate_desc');
         $name = $data->cate_name;
         try{
             $data->save();

@@ -103,7 +103,7 @@
               type: 1,
               title:'修改分类',
               skin: 'layui-layer-rim', //加上边框
-              area: ['420px', '190px'], //宽高
+              area: ['420px', '250px'], //宽高
               content: data,
             });
         });

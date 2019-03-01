@@ -22,7 +22,7 @@
                         <div class="form-group">
                             {{ csrf_field() }}
                             上级分类：
-                            <select name="cate_pid">
+                            <select name="cate_pid" id="xl">
                                 <option value="0">顶级分类</option>
                                 @foreach($data as $k => $v)
                                     <option @if($key == $v->id) selected @endif value="{{ $v->id }}" @if($v->id == old('cate_pid')) selected @endif>{{ $v->catenamea }}</option>
@@ -37,9 +37,13 @@
                             <label for="exampleInputPassword1">分类名称：</label>
                             <input type="text" name="cate_name" class="form-control" id="exampleInputPassword1" {{ old('cate_name') }} placeholder="请输入分类名称">
                         </div>
+                        <div id="tb" @if($key)style="display:none"@endif class="form-group">
+                            <label for="exampleInputPassword4">分类图标：</label>
+                            <input type="text" name="cate_ico" class="form-control" id="exampleInputPassword4" {{ old('cate_ico') }} placeholder="请输入分类图标">
+                        </div>
                         <div class="form-group">
                             <label for="cate_desc">分类描述：</label>
-                            <input type="text" name="cate_desc" value="{{ old('cate_desc') }}" class="form-control" id="cate_desc" placeholder="请输入分类名称">
+                            <input type="text" name="cate_desc" value="{{ old('cate_desc') }}" class="form-control" id="cate_desc" placeholder="请输入分类描述">
                         </div>
                         <input type="submit" value="提交" class="btn btn-blue">
                     </form>
@@ -47,4 +51,13 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $('#xl').change(function(){
+            if($(this).val() == '0'){
+                $('#tb').css('display','block');
+            }else{
+                $('#tb').css('display','none');
+            }
+        });
+    </script>
 @endsection
