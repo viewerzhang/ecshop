@@ -11,7 +11,7 @@
 
 
 </script>
-<div class="page-body">
+<div class="page-body"> 
 	<form action="/admin/articles" method="get" style="padding: 0px;margin: 0px">         
 		<button type="button" tooltip="管理" class="btn btn-azure btn-addon" onclick="javascript:window.location.href = 'http://www.ecshop.com/admin/articles/create';return false"> <i class="fa fa-plus"></i> Add
 		</button>

@@ -11,9 +11,15 @@ class GoodsType extends Model
     public $timestamps = false;
     protected $dateFormat = 'U';
 
-    //属性关联类型
+    //一个类型多个属性 一对多 
     public function goodsattr()
     {
     	return $this->hasmany('App\Http\Model\Admin\GoodsAttr','type_id','id');
+    }
+
+    //一个商品属于一个类型 一对一属于关系
+    public function goods()
+    {
+        return $this->belongsTo('App\Http\Model\Admin\Goods','type_id','id');
     }
 }

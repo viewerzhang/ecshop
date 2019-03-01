@@ -67,14 +67,13 @@ class LunboController extends Controller
 
                 //文件上传
                 $file = $request->file('lunbo_img');//创建文件上传对象
-                $file->store('root');//上传到指定的文件夹
-
+               
                 // 获取文件后缀
-                $ext = $file->extension();
+                $ext = $file->extension(); 
                 // 拼接名称
                 $file_name = time()+rand(1000,9999).'.'.$ext;
 
-                $res1 = $file->storeAs('/admin/images/lunbo',$file_name);
+                $file->storeAs('/admin/images/lunbo',$file_name);
 
                 $data['lunbo_img']=$file_name;
                 
@@ -134,14 +133,13 @@ class LunboController extends Controller
 
                 //文件上传
                 $file = $request->file('lunbo_img');//创建文件上传对象
-                $file->store('root');//上传到指定的文件夹
-
+                
                 // 获取文件后缀
                 $ext = $file->extension();
                 // 拼接名称
                 $file_name = time()+rand(1000,9999).'.'.$ext;
 
-                $res1 = $file->storeAs('/admin/images/lunbo',$file_name);
+                $file->storeAs('/admin/images/lunbo',$file_name);
 
                 $data['lunbo_img']=$file_name;
                 

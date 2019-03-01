@@ -344,11 +344,11 @@ Purchase: http://wrapbootstrap.com
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">商品列表</span>
+                                <a href="/admin/goods">商品列表</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="elements.html">商品回收站</span>
+                                <a href="/admin/goods/hs">商品回收站</span>
                                 </a>
                             </li>
                                 <ul class="submenu">

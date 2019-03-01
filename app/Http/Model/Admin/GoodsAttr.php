@@ -11,11 +11,7 @@ class GoodsAttr extends Model
     public $timestamps = false;
     protected $dateFormat = 'U';
     
-    public function getData() 
-    {
-    	return $this->orderBy('id', $this->order)->paginate($this->page);
-    }
-
+    
     public function goodstype(){
         return $this->belongsTo('App\Http\Model\Admin\GoodsType','type_id','id');
     }
