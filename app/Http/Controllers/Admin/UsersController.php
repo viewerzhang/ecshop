@@ -1,20 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Model\Admin\Users;
+use App\common\getIp;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return '用户资源路由';
+        $key = $request->input('key','');
+        $data = Users::where('user_name','like',"%{$key}%")->paginate(8);
+        return view('admin.users.index',['key'=>$key,'data'=>$data]);
     }
 
     /**
@@ -35,7 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return '123';
+        //
     }
 
     /**
@@ -46,7 +50,40 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return '123123';
+        $data = Users::find($id);
+        if($data->user_status == '1'){
+            $data->user_status = '2';
+            try{
+                $data->save();
+            }catch(\Exception $err){
+                $arr = [
+                    'code' => '0'
+                ];
+                return json_encode($arr);
+            }
+            $arr = [
+                'code' => '1',
+                'title' => '禁止',
+                'btn' => '<i class="fa fa-edit"></i> 激活 '
+            ];
+            return json_encode($arr);
+        }else{
+            $data->user_status = '1';
+            try{
+                $data->save();
+            }catch(\Exception $err){
+                $arr = [
+                    'code' => '0'
+                ];
+                return json_encode($arr);
+            }
+            $arr = [
+                'code' => '1',
+                'title' => '激活',
+                'btn' => '<i class="fa fa-edit"></i> 禁止 '
+            ];
+            return json_encode($arr);
+        }
     }
 
     /**

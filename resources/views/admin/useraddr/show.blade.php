@@ -37,9 +37,9 @@
                     layui.use(['layer', 'form'], function(){
                           var layer = layui.layer
                           ,form = layui.form;
-                          layer.msg('修改成功');
                           $(uda).html(data.title);
                           layer.closeAll();
+                          layer.msg('修改成功');
                     });
                 }else{
                     layui.use(['layer', 'form'], function(){
@@ -61,9 +61,9 @@
                     layui.use(['layer', 'form'], function(){
                           var layer = layui.layer
                           ,form = layui.form;
-                          layer.msg('删除成功');
                           $(uda).remove();
                           layer.closeAll();
+                          layer.msg('删除成功');
                     });
                 }else{
                     layui.use(['layer', 'form'], function(){

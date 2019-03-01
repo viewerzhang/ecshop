@@ -1,20 +1,11 @@
 <?php 
-/**
- * 路由使用范例
- * 所有控制器 访问 均在 app/http/controller/admin 下
- *
- * 浏览器地址 输入 localhost/admin/1访问以下路由
- * 
- */
-Route::resource('user','UserController');
+// 前台用户控制器
+Route::resource('user','UsersController');
 
 //后台框架
 Route::get('/index', function () {
     return view('layout/admin');
 });
-
-
-
 
 // 商品品牌图标上传路由
 Route::post('/goodsbrand/files','GoodsBrandController@files');
@@ -35,6 +26,10 @@ Route::post('/admin/pic/{id}','AdminController@pic');
 Route::resource('/admin','AdminController');
 
 /*** 分类操作 ***/
+// 操作分类上衣
+Route::get('/goodscategory/prev/{id}','GoodsCategoryController@prev');
+// 操作分类下移
+Route::get('/goodscategory/next/{id}','GoodsCategoryController@next');
 Route::resource('/goodscategory','GoodsCategoryController');
 
 /*** 订单主表路由 ***/
@@ -42,6 +37,16 @@ Route::resource('/goodsorder','GoodsOrderController');
 
 /*** 地址管理 ***/
 Route::resource('/useraddr','UserAddrController');
+
+/*** 管理员管理模块 ***/
+/*** 管理员Ajax上传头像路由 ***/
+Route::post('/admins/files','AdminsController@files');
+
+Route::resource('/admins','AdminsController');
+
+/*** 系统设置 ***/
+Route::post('/conf/files','ConfController@files');
+Route::resource('/conf','ConfController');
 
 
 

@@ -488,3 +488,31 @@ class Sms
             }
     }
 }
+
+
+class getIp
+{
+    static public function getIp($ip)
+    {
+        //初始化  
+        $curl = curl_init();  
+        //设置抓取的url  
+        curl_setopt($curl, CURLOPT_URL, 'http://www.ip38.com/ip.php?ip='.$ip);  
+        //设置头文件的信息作为数据流输出  
+        curl_setopt($curl, CURLOPT_HEADER, 1);  
+        //设置获取的信息以文件流的形式返回，而不是直接输出。  
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);  
+        //执行命令  
+        $data = curl_exec($curl);  
+        // echo curl_getinfo($curl,CURLINFO_HTTP_CODE); //输出请求状态码  
+        //关闭URL请求  
+        curl_close($curl);  
+        //显示获得的数据  
+        // var_dump($data);
+        $ptn = '%&nbsp;IP详细地址：<font color=#FF0000>(.*?)</font></font><br/></div></div><div class="ad">%';
+        $arr = array();
+        preg_match_all($ptn, $data, $arr);
+        return $arr[1][0];
+        // return $str;
+    }
+}

@@ -25,13 +25,13 @@
                             <select name="cate_pid">
                                 <option value="0">顶级分类</option>
                                 @foreach($data as $k => $v)
-                                    <option value="{{ $v->id }}" @if($v->id == old('cate_pid')) selected @endif>{{ $v->catenamea }}</option>
+                                    <option @if($key == $v->id) selected @endif value="{{ $v->id }}" @if($v->id == old('cate_pid')) selected @endif>{{ $v->catenamea }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="cate_sort">分类排序：</label>
-                            <input style="width: 100px;display: inline;" type="number" name="cate_sort" class="form-control" id="cate_sort" value="{{ old('cate_sort') }}" placeholder="序号">
+                            <input style="width: 100px;display: inline;" type="number" name="cate_sort" class="form-control" id="cate_sort" value="100" placeholder="序号">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">分类名称：</label>

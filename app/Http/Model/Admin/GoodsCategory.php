@@ -15,6 +15,6 @@ class GoodsCategory extends Model
         $comma = $this->cate_path;
         $count = substr_count($comma,',')-1;
         $str = str_repeat('&nbsp;',$count*8);
-        return $str.'|'.$this->cate_name;
+        return $str.'|-'.$this->cate_name;
     }
 }

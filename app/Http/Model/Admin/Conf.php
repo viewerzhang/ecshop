@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Model\Home;
+namespace App\Http\Model\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Conf extends Model
 {
-    protected $table = 'users';
+    protected $table = 'conf';
     protected $primaryKey = 'id';
     public $timestamps = false;
 }

@@ -41,7 +41,7 @@ class UserAddrController extends Controller
         // $key = $request->input('key','');
         // $type = $request->input('type','');
          // $data = Users::where('user_name','like',"%{$key}%")->paginate(8);
-        return view('admin.useraddr.search',['key'=>$key,'data'=>$data]);
+        return view('admin.useraddr.search'/*,['key'=>$key,'data'=>$data]*/);
     }
 
     /**

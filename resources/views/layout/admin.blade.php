@@ -147,10 +147,10 @@ Purchase: http://wrapbootstrap.com
                                 <input type="checkbox" id="checkbox_fixedbreadcrumbs">
                                 <span class="text">Fixed BreadCrumbs</span>
                             </label>
-                            <label>
+<!--                             <label>
                                 <input type="checkbox" id="checkbox_fixedheader">
                                 <span class="text">Fixed Header</span>
-                            </label>
+                            </label> -->
                         </div>
                         <!-- Settings -->
                     </div>
@@ -184,7 +184,7 @@ Purchase: http://wrapbootstrap.com
                     <!-- 用户管理 -->
 
                     <li>
-                        <a href="databoxes.html">
+                        <a href="/admin/user">
                             <i class="menu-icon fa fa-user-md"></i>
                             <span class="menu-text"> 用户管理 </span>
                         </a>
@@ -200,12 +200,12 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/admins/create">
                                     <span class="menu-text">添加管理员</span>
                                 </a>
                             </li>
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/admins">
                                     <span class="menu-text">管理员列表</span>
                                 </a>
                             </li>
@@ -423,13 +423,8 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
-                                    <span class="menu-text">添加订单</span>
-                                </a>
-                            </li>
-                             <li>
-                                <a href="elements.html">
-                                    <span class="menu-text">订单列表</span>
+                                <a href="/admin/goodsorder">
+                                    <span class="menu-text">查看订单</span>
                                 </a>
                             </li>
 
@@ -559,15 +554,15 @@ Purchase: http://wrapbootstrap.com
 
                         <ul class="submenu">
                             <li>
-                                <a href="elements.html">
+                                <a href="/admin/useraddr">
                                     <span class="menu-text">查看地址</span>
                                 </a>
-                            </li>
+                            </li><!-- 
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/useraddr/create">
                                     <span class="menu-text">搜索地址</span>
                                 </a>
-                            </li>
+                            </li> -->
 
                                 <ul class="submenu">
                                 </ul>
@@ -645,13 +640,13 @@ Purchase: http://wrapbootstrap.com
                         </a>
 
                         <ul class="submenu">
-                            <li>
+                        <!--     <li>
                                 <a href="elements.html">
                                     <span class="menu-text">店铺设置</span>
                                 </a>
-                            </li>
+                            </li> -->
                              <li>
-                                <a href="elements.html">
+                                <a href="/admin/conf">
                                     <span class="menu-text">配置列表</span>
                                 </a>
                             </li>

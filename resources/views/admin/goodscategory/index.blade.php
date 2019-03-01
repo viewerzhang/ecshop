@@ -10,11 +10,7 @@
             </a>
             <form action="/admin/goodscategory" style="float: right;" method="get">
                 <span class="input-icon inverted">
-<<<<<<< HEAD
                     <input type="text" class="form-control input-sm" name="key" placeholder="关键字" name="title" value="">
-=======
-                    <input type="text" class="form-control input-sm" placeholder="分类名称" name="title" value="">
->>>>>>> origin/fxj1114
                     <i class="glyphicon glyphicon-search bg-blue"></i>
                     <button href="#" class="btn btn-default blue">搜索</button>
                 </span>
@@ -23,9 +19,9 @@
         <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" aria-describedby="editabledatatable_info">
             <thead>
                 <tr role="row">
-                    <th class="sorting_asc text-center" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                    <th class="sorting_asc text-center" tabindex="0" aria-controls="editabledatatable" rowspan="1" aria-sort="ascending" aria-label="
                     Username
-                    : activate to sort column ascending" style="width: 161px;">
+                    : activate to sort column ascending" style="width: 80px;" colspan="3">
                         ID
                     </th>
                     <th class="sorting text-center" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
@@ -47,11 +43,25 @@
             <tbody>
                 @foreach($data as $k => $v)
                 <tr class="odd text-center">
-                    <td class="sorting_1">
+                    <td class="sorting_1" width="40">
+                      
                         {{ $v->id }}
+  
                     </td>
+
+                      
+                    <td width="30">
+                      
+                      <a href="/admin/goodscategory/prev/{{$v->id}}" @if(!$v->prevId) disabled @endif class="btn btn-info btn-xs" name="">上移</a>
+                      
+                    </td>
+                    <td width="30">
+                      <a @if(!$v->nextId) disabled @endif class="btn btn-info btn-xs" name="">下移</a>
+                     
+                    </td>
+                   
                     <td class="" style="text-align: left;">
-                         {{ $v->catenamea }}
+                         {{ $v->cate_name }}
                     </td>
                     <td class=" ">
                         @if($v->cate_status == '1')显示@elseif($v->cate_status)隐藏@endif
@@ -59,6 +69,7 @@
 
                     <td class="">
                         <a href="javascript:;" onclick="show({{ $v->id }},this)" class="btn btn-success">@if($v->cate_status == '1')隐藏@elseif($v->cate_status)显示@endif</a>
+                        <a href="/admin/goodscategory/create?key={{ $v->id }}" class="btn btn-warning">添加子分类</a>
                         <button class="btn btn-info" id="edit" onclick="xg({{ $v->id }},this)">修改</button>
                             <button onclick="del({{ $v->id }},this)" class="btn btn-danger" name="">删除</button>
                     </td>
@@ -66,7 +77,8 @@
                 @endforeach
                             </tbody>
         </table>
-        {{ $data->appends(['key'=>$key])->links() }}
+{{ $data->appends(['key'=>$key])->links() }}
+        
         <style>
             .pagination{
                 float: right;
@@ -80,7 +92,6 @@
         </div>
     </div>
 </div>
-
 
 <script type="text/javascript">
     csrf = "{{ csrf_token() }}";
