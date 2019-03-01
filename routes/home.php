@@ -15,10 +15,7 @@
  * 浏览器地址 输入 网址访问网站首页
  * 
  */
-Route::get('/', function () {
-    
-    return view('layout/home');
-});
+Route::get('/','HomeController@index');
 
 
 

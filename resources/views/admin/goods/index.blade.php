@@ -39,8 +39,7 @@
 	                            <tr>
 	                                <th class="text-center" width="4px">ID</th>
 	                                <th class="text-center" width="1%">商品编号</th>
-	                                <th class="text-center" width="8%">商品名称</th>
-	                                <th class="text-center" width="8%">商品标题</th>
+	                                <th class="text-center" style=" width: 20px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;">商品名称</th>
 	                                <th class="text-center" width="8%">商品图片</th>
 	                                <th class="text-center" width="5%">上架</th>
 	                              	<th class="text-center" width="8%">所属分类</th>
@@ -59,8 +58,7 @@
 	                           	<tr align="center">
 	                           		<td>{{$v->id}}</td>
 	                           		<td>{{$v->goods_bianhao}}</td>
-	                           		<td style=" overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{$v->goods_name}}</td>
-	                           		<td>{{$v->goods_title}}</td>
+	                           		<td style="width: 20px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;">{{$v->goods_name}}</td>
 	                           		<td>
 	                           			<img src="/static/admin/images/goods_img/{{$v->goods_img}}" width="45px" height="30">
 									</td>

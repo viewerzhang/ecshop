@@ -23,4 +23,24 @@ class GoodsCategory extends Model
     {
         return $this->belongsTo('App\Http\Model\Admin\Goods','cate_id','id');
     }
+
+    // 判断是第三级,返回表单禁止
+    public function getCatejzAttribute()
+    {
+        $comma = $this->cate_path; 
+        $count = substr_count($comma,',');
+        if($count == 3){
+            return 'disabled';
+        }
+    }
+
+    // 判断不是第三级,返回表单禁止
+    public function getCatejzNoAttribute()
+    {
+        $comma = $this->cate_path; 
+        $count = substr_count($comma,',');
+        if($count != 3){
+            return 'disabled';
+        }
+    }
 }

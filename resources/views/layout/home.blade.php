@@ -223,9 +223,9 @@
                                                 @foreach($common_cate as $k=>$v )
                                                 <li class="next_area">
                                                     <a class="item_link" href="#">
-                                                        <i class="fa fa-television"></i>
                                                         <span class="link_content">
                                                             <span class="link_text">
+                                                                <!-- <i class="fa fa-television"></i> -->
                                                                 {{ $v->cate_name }}
                                                                 <span class="link_descr">{{ $v->cate_desc }}</span>
                                                             </span>
@@ -263,13 +263,10 @@
                                     <div class="menu">
                                         <nav>
                                             <ul>
-                                                <li><a href="index.html">Home</a></li>
-												<li><a href="about-us.html">About</a></li>
-												<li><a href="cart.html">Cart</a></li>
-												<li><a href="list-view.html">List</a></li>
-												<li><a href="my.account.html">Account</a></li>
-												<li><a href="simple-product.html">Product</a></li>
-												<li><a href="contact-us.html">Contact us</a></li>
+                                                @foreach($data_dh as $k =>$v)
+                                                    <li><a href="{{ $v->nav_link }}">{{$v->nav_title}}</a></li>
+                                                @endforeach
+												
                                             </ul>
                                         </nav>
                                     </div>
@@ -314,20 +311,31 @@
             <div class="col-md-12">
                 <div class="bend niceties preview-2">
                     <div id="ensign-nivoslider" class="slides">
-                        <img src="/static/home/index/img/slider/slider1_1-1.jpg" alt="" title="#slider-caption-1" />
-                        <img src="/static/home/index/img/slider/slider1_2.jpg" alt="" title="#slider-caption-2" />
+
+
+                        @foreach($data_lunbo as $k=>$v)
+                        <img src="/static/admin/images/lunbo/{{ $v->lunbo_img }}" alt="" title="#slider-caption-2" />
+                        @endforeach
+
+
+
+                        <!-- <img src="/static/home/index/img/slider/slider1_2.jpg" alt="" title="#slider-caption-2" /> -->
                     </div>
                     <!-- direction 1 -->
+
+
+
+                    @foreach($data_lunbo as $k=>$v)
                     <div id="slider-caption-1" class="t-cn slider-direction slider-one">
                         <div class="slider-progress"></div>
                         <div class="tld-f1">
                             <div class="layer-1-1 animated fadeInDown">
-                                <h1> $320.00</h1>
+                                <h1>{{ $v->lunbo_name }}</h1>
                             </div>
                             <div class="layer-1-2 animated flipInX">
-                                <h2>$245.00</h2>
+                                <h2>{{ $v->lunbo_desc }}</h2>
                             </div>
-                            <div class="layer-1-3 animated rotateInUpLeft">
+                            <!-- <div class="layer-1-3 animated rotateInUpLeft">
                                 <h1>NOKIA E600</h1>
                             </div>
                             <div class="layer-1-4  animated rotateInUpLeft">
@@ -335,16 +343,26 @@
                             </div>
                             <div class="layer-1-5 animated rotateInUpLeft">
                                 <a href="#">Shopping Now</a>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="tld-f2">
                             <div class="layer-1-6 animated zoomIn">
-                                <img src="/static/home/index/img/slider/slider_8.png" alt="">
+                                <!-- <img src="/static/home/index/img/slider/slider_8.png" alt=""> -->
                             </div>
                         </div>
                     </div>
+                    @endforeach
+
+
+
+
+
+
+
+
+
                     <!-- direction 2 -->
-                    <div id="slider-caption-2" class="slider-direction slider-two">
+                    <!-- <div id="slider-caption-2" class="slider-direction slider-two">
                         <div class="slider-progress"></div>
                         <div class="sld-fl">
                             <div class="layer-2-1 animated fadeInLeftBig">
@@ -368,7 +386,7 @@
                                 <img src="/static/home/index/img/slider/slider-9.png" alt="">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -969,32 +987,35 @@
     </div>
 </section>
 <!--product area end-->
-<!--plus area start-->
+<!--广告 start-->
 <div class="plus_area">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <div class="plus_pic">
-                    <div class="pix_new">
-                        <a href="#">
-                        <img src="/static/home/index/img/differ-pic/differ_pic_4.jpg" alt="">
-                        </a>
+
+            
+            <?php $sum = 0; ?>
+            @foreach($data_ad as $k => $v)
+            @if($sum <= 2)
+                    <?php $sum++; ?>
+                    <div class="col-md-6">
+                        <div class="plus_pic">
+                            <div class="pix_new">
+                                <a href="{{ $v->ad_link }}">
+                                <img style="width: 553px;height: 174px;" src="/static/{{ $v->ad_img }}" alt="{{ $v->ad_desc }}" title="{{ $v->ad_desc }}">
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="plus_pic">
-                    <div class="pix_new">
-                        <a class="#" href="#">
-                        <img src="/static/home/index/img/differ-pic/differ_pic_5.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endif
+            @endforeach
+
+
+
+
         </div>
     </div>
 </div>
-<!--plus area end-->
+<!--广告 end-->
 <!--product catagory area start-->
 <div class="catagory_area">
     <div class="container">
@@ -2157,41 +2178,31 @@
     </div>
 </div>
 <!--catagory area end-->
-<!--differ pic area start-->
+<!--品牌开始-->
 <div class="differ_pic">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="plus_pic">
-                    <div class="pix_new">
-                        <a href="#">
-                        <img src="/static/home/index/img/differ-pic/differ_pic_1.jpg" alt="">
-                        </a>
+            <?php $sum = 0; ?>
+            @foreach($data_brand as $k => $v)
+            @if($sum <= 2)
+                @if($v->brand_status == '1')
+                    <?php $sum++; ?>
+                    <div class="col-md-4">
+                        <div class="plus_pic">
+                            <div class="pix_new">
+                                <a href="{{ $v->brand_url }}">
+                                <img style="width:358px;height: 204px;" src="/{{ $v->brand_logo }}" alt="{{ $v->brand_desc }}" title="{{ $v->brand_desc }}">
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="plus_pic">
-                    <div class="pix_new">
-                        <a href="#">
-                        <img src="/static/home/index/img/differ-pic/differ_pic_2.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="plus_pic">
-                    <div class="pix_new">
-                        <a href="#">
-                        <img src="/static/home/index/img/differ-pic/differ_pic_3.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
+                @endif
+            @endif
+            @endforeach
         </div>
     </div>
 </div>
-<!--differ pic area end-->
+<!--品牌结束-->
 <!--product catagory area start-->
 <div class="catagory_area">
     <div class="container">
@@ -4094,48 +4105,24 @@
                 <div class="new_product new_product_nx new_product_nx_et ">
                     <div class="product_heading product_heading_tf">
                         <i class="fa fa-coffee"></i>
-                        <span>Brand Logo</span>
+                        <span>合作伙伴</span>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="main_brand main_brand_tf main_brand_sw">
                     <div class="all_brand indicator-brand indicator-brand-7">
+
+                        @foreach($data_links as $k => $v)
                         <div class="col-md-12">
                             <div class="brand_pix">
-                                <img src="/static/home/index/img/brand-logo/logo_1.jpg" alt="" />
+                                <a href="{{ $v->link_url }}">
+                                <img style="width: 142px;height: 98px;" src="/static/{{ $v->link_logo }}" alt="{{ $v->link_desc }}" title="{{ $v->link_desc }}" />
+                                </a>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="brand_pix">
-                                <img src="/static/home/index/img/brand-logo/logo_2.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="brand_pix">
-                                <img src="/static/home/index/img/brand-logo/logo_3.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="brand_pix">
-                                <img src="/static/home/index/img/brand-logo/logo_4.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="brand_pix">
-                                <img src="/static/home/index/img/brand-logo/logo_5.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="brand_pix">
-                                <img src="/static/home/index/img/brand-logo/logo_6.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="brand_pix">
-                                <img src="/static/home/index/img/brand-logo/logo_3.jpg" alt="" />
-                            </div>
-                        </div>
+                        @endforeach
+
                     </div>
                 </div>
             </div>
