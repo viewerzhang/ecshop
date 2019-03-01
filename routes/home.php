@@ -198,6 +198,7 @@ Route::get('/register','UserController@create');
 
 
 
+
 // 前台登录
 // 跳转到登录页面
 Route::get('/login','LoginController@login');
@@ -211,4 +212,8 @@ Route::get('/yzmlogin', 'LoginController@tellogin');
 Route::get('/teldologin', 'LoginController@teldologin');
 Route::get('/yzm', 'LoginController@yzm');
 
-?>
+// 手机号短信验证
+Route::post('/store','UserController@store');
+
+// 验证码
+Route::get('/yzm','UserController@yzm');

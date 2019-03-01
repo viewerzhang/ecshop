@@ -82,7 +82,7 @@
                             <div class="header_right_area">
                                 <ul>
                                     <li>
-                                        <a class="account" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的帐户</font></font></a>
+                                        <a class="account" href="/login"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录</font></font></a>
                                     </li>
                                     <li>
                                         <a class="wishlist" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">愿望清单</font></font></a>
@@ -97,6 +97,12 @@
                 </div>
             </div>
             <!--header top area end-->
+            <!--header middle area start-->
+            
+            <!--header bottom area start-->
+            <div class="all_menu_area">
+                
+            </div>
         </div>
         <!--header area end-->
         <!-- mobile-menu-area-start -->
@@ -182,6 +188,7 @@
             </div>
         </div>
         <!--social design arae end-->
+
         <!--我的帐户开始-->
         <div class="login-area" style="margin-top: -50px;">
             <div class="container">
@@ -210,6 +217,31 @@
                                     </span>
                                 </div>
                                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input class="login-sub" type="submit" value="登录"></font></font>
+                        <div class="login-content login-margin">
+                            <h2 class="login-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个新账户</font></font></h2>
+                            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建您自己的Unicase帐户。</font></font></p>
+                            <form action="/store" method="post">
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                            <div class="form-group">
+                                {{ csrf_field() }}
+                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></label>
+                                <input type="text" name="user_name" value="{{ old('user_name') }}">
+                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码</font></font></label>
+                                <input type="password" name="password">
+                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手机号</font></font></label>
+                                <input type="number" name="user_phone" id="phone" value="{{ old('user_phone') }}">
+                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证码</font></font></label><br/>
+                                <input type="number" style="width:320px;" name="yzm"><input class="login-sub" type="button" id="sendBtn" onclick="sendPhone(this)" value="获取验证码">
+                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input class="login-sub" type="submit" value="注册"></font></font>
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -376,4 +408,64 @@
 
 
 
-<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div>
+<script type="text/javascript">
+    function sendPhone(obj)
+        {
+            // 接收手机号码
+            var user_phone = $('#phone').val();
+            // 定义正则检查手机号是否格式正确
+            var phone_grep = /^1{1}[3456789]{1}[0-9]{9}$/;
+            // 使用正则检查手机号
+            if(!phone_grep.test(user_phone)){
+                alert('请输入正确手机号');
+                return false;
+            }
+
+
+            // 将js对象转化成jquery对象
+            var object = $(obj);
+            // 设置button状态
+            object.attr('disabled',true);
+            // 获取当前的按钮上的文字
+            var text = object.val();
+            // alert(obj);[object HTMLInputElement]  js对象
+            // alert($(obj));[object Object]  jquery对象
+            if(text == '获取验证码'){
+                // 发送ajax 请求后台 
+                $.get('/yzm',{'user_phone':user_phone},function(data){
+                    if(data.code == 0){
+                       
+                        editCon();
+                    }
+                },'json');  
+            }else{
+                return false;
+            }
+            
+        }
+
+    function editCon()
+    {
+        var t = 120;                                                        ;
+        var time = null;
+        if(time == null){
+            time = setInterval(function(){
+                t--;
+                // 修改当前button 和 内容
+                $('#sendBtn').val('重新发送('+t+'s)');
+                if(t < 1){
+                    // 清除定时器
+                    clearInterval(time);
+                    time = null;
+                    $('#sendBtn').val('获取验证码');
+                    // 设置button状态
+                    $('#sendBtn').attr('disabled',false);
+                }
+            },1000);
+        }
+            
+    }
+</script>
+</body>
+</html>
