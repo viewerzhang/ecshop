@@ -21,7 +21,7 @@
                 <tr role="row">
                     <th class="sorting_asc text-center" tabindex="0" aria-controls="editabledatatable" rowspan="1" aria-sort="ascending" aria-label="
                     Username
-                    : activate to sort column ascending" style="width: 80px;" colspan="3">
+                    : activate to sort column ascending" style="width: 80px;" >
                         ID
                     </th>
                     <th class="sorting text-center" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
@@ -48,20 +48,9 @@
                         {{ $v->id }}
   
                     </td>
-
-                      
-                    <td width="30">
-                      
-                      <a href="/admin/goodscategory/prev/{{$v->id}}" @if(!$v->prevId) disabled @endif class="btn btn-info btn-xs" name="">上移</a>
-                      
-                    </td>
-                    <td width="30">
-                      <a @if(!$v->nextId) disabled @endif class="btn btn-info btn-xs" name="">下移</a>
-                     
-                    </td>
                    
                     <td class="" style="text-align: left;">
-                         {{ $v->cate_name }}
+                         {{ $v->catenamea }}
                     </td>
                     <td class=" ">
                         @if($v->cate_status == '1')显示@elseif($v->cate_status)隐藏@endif

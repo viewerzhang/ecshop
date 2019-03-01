@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\GoodsCategory;
 use App\Http\Requests\GoodsCategoryRequest;
-use App\Http\Model\Admin\GoodsCatepx;
 
 class GoodsCategoryController extends Controller
 {
@@ -18,18 +17,18 @@ class GoodsCategoryController extends Controller
     public function index(Request $request)
     {
         $key = $request->input('key','');
-        // $data = GoodsCategory::where('cate_name','like','%'.$key.'%')->orderByRaw(\DB::raw("concat(cate_path,id,',')"))->paginate(8);
+        $data = GoodsCategory::where('cate_name','like','%'.$key.'%')->orderByRaw(\DB::raw("concat(cate_path,id,',')"))->paginate(8);
 
-        $catedata = self::paixu();
-        self::houtaixianshi($catedata);
-        // 删除全部数据
-        \DB::table('goods_catepx')->where('cid','<>','-1')->delete();
-        // 更新数据
-        foreach(self::$arr as $k => $v){
-            GoodsCatepx::insert(['prevId'=>$v->prevId,'nextId'=>$v->nextId,'id'=>$v->id,'cate_status'=>$v->cate_status,'cate_name'=>$v->catenamea]);
-        }
-        // 匹配查询条件列出数据
-        $data = GoodsCatepx::where('cate_name','like','%'.$key.'%')->paginate(8);
+        // $catedata = self::paixu();
+        // self::houtaixianshi($catedata);
+        // // 删除全部数据
+        // \DB::table('goods_catepx')->where('cid','<>','-1')->delete();
+        // // 更新数据
+        // foreach(self::$arr as $k => $v){
+        //     GoodsCatepx::insert(['prevId'=>$v->prevId,'nextId'=>$v->nextId,'id'=>$v->id,'cate_status'=>$v->cate_status,'cate_name'=>$v->catenamea]);
+        // }
+        // // 匹配查询条件列出数据
+        // $data = GoodsCatepx::where('cate_name','like','%'.$key.'%')->paginate(8);
 
         // 返回视图模板
         return view('admin.goodscategory.index',['key'=>$key,'data'=>$data]);
@@ -205,47 +204,5 @@ class GoodsCategoryController extends Controller
         }
         // 返回数据
         return $data;
-    }
-
-    // 定义静态变量
-    static $arr;
-    public static function houtaixianshi($data)
-    {
-        // 循环整理数据
-        foreach($data as $k => $v){
-                // 判断是不是第一个值
-                if(isset($data[$k-1])){
-                    $data[$k]->prevId = $data[$k-1]->cate_sort;
-                }
-                // 判断是不是最后一个值
-                if(isset($data[$k+1])){
-                    $data[$k]->nextId = $data[$k+1]->cate_sort;
-                }
-                // 将数据保存
-                self::$arr[] = $v;
-                // 判断出口在哪
-                if(!isset($v['sum'])){
-                    // 跳出去
-                    continue;
-                }
-                // 调用自己
-                self::houtaixianshi($v['sum']);
-        }
-        
-    }
-
-    public function prev($id)
-    {
-        $url = $_SERVER['HTTP_REFERER'];
-        $dataTemp = GoodsCatepx::where('id',$id)->first()['prevId'];
-        $data = GoodsCategory::find($id);
-        $data->cate_sort = $dataTemp- mt_rand(1,3);
-        try{
-            $data->save();
-        }catch(\Exception $err){
-
-        }
-
-        return "<script>location.href='{$url}'</script>";
     }
 }

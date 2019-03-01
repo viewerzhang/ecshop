@@ -219,12 +219,14 @@
                                     <div class="catagory_mega_menu">
                                         <div class="cat_mega_start">
                                             <ul class="list">
+                                                <!-- 导航开始 -->
+                                                @foreach($common_cate as $k=>$v )
                                                 <li class="next_area">
                                                     <a class="item_link" href="#">
                                                         <i class="fa fa-television"></i>
                                                         <span class="link_content">
                                                             <span class="link_text">
-                                                                Electronics
+                                                                {{ $v->cate_name }}
                                                                 <span class="link_descr">Praesent accumsan elementum maximus </span>
                                                             </span>
                                                         </span>
@@ -235,18 +237,24 @@
                                                             <div class="mega_menu">
                                                                 <div class="mega_menu_coloumn">
                                                                     <ul>
-                                                                        <li><a href="#">Men's</a></li>
-                                                                        <li><a href="#">Hats</a></li>
-                                                                        <li><a href="#">Mirriors</a></li>
-                                                                        <li><a href="#">Singles</a></li>
+                                                                        <li><a href="#">111111</a></li>
                                                                     </ul>
                                                                 </div>
                                                                 <div class="mega_menu_coloumn">
                                                                     <ul>
-                                                                        <li><a href="#">Sports& Outdoors</a></li>
-                                                                        <li><a href="#">Smartphones</a></li>
-                                                                        <li><a href="#">Womens</a></li>
-                                                                        <li><a href="#">Health & Beauty</a></li>
+                                                                        <li><a href="#">111111</a></li>
+                                                                    </ul>
+                                                                </div><div class="mega_menu_coloumn">
+                                                                    <ul>
+                                                                        <li><a href="#">111111</a></li>
+                                                                    </ul>
+                                                                </div><div class="mega_menu_coloumn">
+                                                                    <ul>
+                                                                        <li><a href="#">111111</a></li>
+                                                                    </ul>
+                                                                </div><div class="mega_menu_coloumn">
+                                                                    <ul>
+                                                                        <li><a href="#">111111</a></li>
                                                                     </ul>
                                                                 </div>
                                                                 <div class="mega_menu_coloumn">
@@ -271,12 +279,14 @@
                                                         </li>
                                                     </ul>
                                                 </li>
+                                                @endforeach
+                                                <!-- 导航结束 -->
                                                 <li class="differ_sec_area">
                                                     <a class="item_link" href="#">
                                                         <i class="fa fa-mobile"></i>
                                                         <span class="link_content">
                                                             <span class="link_text">
-                                                                Smartphone & Tablets
+                                                                Smartphone & dd Tablets
                                                                 <span class="link_descr">Praesent accumsan elementum maximus </span>
                                                             </span>
                                                         </span>
