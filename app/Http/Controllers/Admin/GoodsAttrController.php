@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\GoodsAttr;
-use App\Http\Model\Admin\GoodsType;
+use App\Http\Model\Admin\GoodsType; 
 
 class GoodsAttrController extends Controller
 {

@@ -13,7 +13,7 @@
                     <form class="form-horizontal" role="form" action="/admin/goodsattr/{{$data->id}}"  method="post" enctype="multipart/form-data">
                        {{ csrf_field() }}
                        {{ method_field('PUT') }}
-
+ 
                       <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">所属商品类型</label>
                             <div class="col-sm-6">

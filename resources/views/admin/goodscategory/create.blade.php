@@ -9,7 +9,7 @@
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
-    </div>
+    </div> 
 @endif
 <div class="col-lg-6 col-sm-6 col-xs-12" width="700px">
         <div class="widget">

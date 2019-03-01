@@ -113,7 +113,7 @@ Route::resource('/conf','ConfController');
 
 
 
-
+//冯雪娇负责模块
 
 //轮播图管理
 Route::resource('lunbo','LunboController');
@@ -123,9 +123,14 @@ Route::resource('articles','ArticlesController');
 Route::resource('goodsattr','GoodsAttrController');
 //商品类型
 Route::resource('goodstype','GoodsTypeController');
+//回收站
+Route::get('goods/hs','GoodsController@hs');
+//回收站恢复
+Route::get('goods/huifu/{id}','GoodsController@huifu');
+//回收站彻底删除
+Route::get('goods/shanchu/{id}','GoodsController@shanchu');
 //商品管理
 Route::resource('goods','GoodsController');
-
 
 
 

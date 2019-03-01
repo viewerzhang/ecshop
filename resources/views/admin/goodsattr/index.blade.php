@@ -29,7 +29,7 @@
 	                                <th class="text-center" width="10%">属性值</th>
 	                                <th class="text-center" width="10%">所属类型</th>
 	                            	<th class="text-center" width="19%">操作</th>
-	                            </tr>
+	                            </tr> 
 	                        </thead>
 	                        <tbody>
 	                           	@foreach($data as $k=>$v)

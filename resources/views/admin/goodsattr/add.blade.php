@@ -8,7 +8,7 @@
             <div class="widget-header bordered-bottom bordered-blue">
                 <span class="widget-caption">添加属性</span>
             </div>
-            <div class="widget-body">
+            <div class="widget-body"> 
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" action="/admin/goodsattr"  method="post" enctype="multipart/form-data">
                         
@@ -21,7 +21,7 @@
                                 <select name="type_id"  class="form-control">
                                     <option value=""> -- 请选择 -- </option>
                                         @foreach($res as $k =>$v)
-                                            <option value="{{$v->id}}"> -- {{$v->type_name}}</option>
+                                            <option value="{{$v->id}}"> |-- {{$v->type_name}}</option>
                                         @endforeach
                                 </select>
                             </div>

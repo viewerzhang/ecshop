@@ -9,7 +9,7 @@ use App\Http\Model\Admin\Articles;
 class ArticlesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource. 
      *
      * @return \Illuminate\Http\Response
      */
@@ -49,14 +49,13 @@ class ArticlesController extends Controller
 
                 //文件上传
                 $file = $request->file('art_img');//创建文件上传对象
-                $file->store('root');//上传到指定的文件夹
-
+              
                 // 获取文件后缀
                 $ext = $file->extension();
                 // 拼接名称
                 $file_name = time()+rand(1000,9999).'.'.$ext;
 
-                $res1 = $file->storeAs('/admin/images/articles',$file_name);
+                 $file->storeAs('/admin/images/articles',$file_name);
 
                 $data['art_img']=$file_name;
                 
@@ -115,14 +114,13 @@ class ArticlesController extends Controller
 
                 //文件上传
                 $file = $request->file('art_img');//创建文件上传对象
-                $file->store('root');//上传到指定的文件夹
-
+               
                 // 获取文件后缀
                 $ext = $file->extension();
                 // 拼接名称
                 $file_name = time()+rand(1000,9999).'.'.$ext;
 
-                $res1 = $file->storeAs('/admin/images/articles',$file_name);
+                $file->storeAs('/admin/images/articles',$file_name);
 
                 $data['art_img']=$file_name;
                 
