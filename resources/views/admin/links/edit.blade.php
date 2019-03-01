@@ -42,22 +42,22 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">链接类型</label>
                         <label>
-                            <input name="link_type" type="radio" class="colored-success" @if($links['link_type'] == 'on') checked @endif> 
+                            <input name="link_type" type="radio" class="colored-success" @if($links['link_type'] == '1') checked @endif value="1"> 
                             <span class="text" style="padding-top: 0px;"> 文字</span>
                         </label>
                         <label>
-                            <input name="link_type" type="radio" class="colored-danger" @if($links['link_type'] == 'off') checked @endif>
+                            <input name="link_type" type="radio" class="colored-danger" @if($links['link_type'] == '2') checked @endif value="2">
                             <span class="text" style="padding-top: 0px;"> 图片</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">链接状态</label>
                         <label>
-                            <input name="link_status" type="radio" class="colored-success" @if($links['link_status'] == 'on') checked @endif>
+                            <input name="link_status" type="radio" class="colored-success" @if($links['link_status'] == '1') checked @endif value="1">
                             <span class="text" style="padding-top: 0px;"> 显示</span>
                         </label>
                         <label>
-                            <input name="link_status" type="radio" class="colored-danger" @if($links['link_status'] == 'off') checked @endif>
+                            <input name="link_status" type="radio" class="colored-danger" @if($links['link_status'] == '2') checked @endif value="2">
                             <span class="text" style="padding-top: 0px;"> 隐藏</span>
                         </label>
                     </div>

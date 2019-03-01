@@ -35,372 +35,396 @@
 
 
 
-        <!--header top area start-->
-        <div class="header_area">
-            <div class="header_border">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                            <div class="header_heaft_area">
-                                <div class="header_left_all">
-                                    <div class="mean_al_dv">
-                                        <div class="littele_menu"><a href="#">语言: 英语 <i class="fa fa-caret-down"></i></a> </div>
-                                        <ul class="option">
-                                            <li><a href="#">法语</a></li>
-                                            <li><a href="#">德语</a></li>
-                                            <li><a href="#">日语</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="usd_area">
-                                        <div class="littele_menu"><a href="#">
-                                            Currency: USD
-                                            <i class="fa fa-caret-down"></i>
+<!--header top area start-->
+<div class="header_area">
+    <div class="header_border">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                    <div class="header_heaft_area">
+                        <div class="header_left_all">
+                            <div class="mean_al_dv">
+                                <div class="littele_menu"><a href="#">语言: 英语 <i class="fa fa-caret-down"></i></a> </div>
+                                <ul class="option">
+                                    <li><a href="#">法语</a></li>
+                                    <li><a href="#">德语</a></li>
+                                    <li><a href="#">日语</a></li>
+                                </ul>
+                            </div>
+                            <div class="usd_area">
+                                <div class="littele_menu"><a href="#">
+                                    Currency: USD
+                                    <i class="fa fa-caret-down"></i>
+                                    </a>
+                                </div>
+                                <ul class="option">
+                                    <li><a href="#">EUR - Euro</a></li>
+                                    <li><a href="#">GBP - British Pound</a></li>
+                                    <li><a href="#">INR - Indian Rupee</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                    <div class="header_right_area">
+                        @if (session('homeFlag'))
+                        <ul>
+                            <li>
+                                欢迎您 {{session('homeUser.user_name')}}
+                            </li>
+                            <li>
+                                <a class="account" href="/logout">退出</a>
+                            </li>
+                            <li>
+                                <a class="account" href="#">我的账户</a>
+                            </li>
+                            <li>
+                                <a class="wishlist" href="#">我的收藏</a>
+                            </li>
+                            <li>
+                                <a class="Shopping cart" href="#">购物车</a>
+                            </li>
+                            <li>
+                                <a class="Checkout" href="#">查看</a>
+                            </li>
+                        </ul>
+                        @else
+                        <ul>
+                            <li>
+                                <a class="account" href="/login">登录</a>
+                            </li>
+                            <li>
+                                <a class="account" href="/register">注册</a>
+                            </li>
+                            <li>
+                                <a class="account" href="/login">我的账户</a>
+                            </li>
+                            <li>
+                                <a class="wishlist" href="/login">我的收藏</a>
+                            </li>
+                            <li>
+                                <a class="Shopping cart" href="/login">购物车</a>
+                            </li>
+                            <li>
+                                <a class="Checkout" href="/login">查看</a>
+                            </li>
+                        </ul>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--header top area end-->
+    <!--header middle area start-->
+    <div class="header_middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="logo_area">
+                        <a href="index.html"><img src="/static/home/index/img/logo-pic/logo.png" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="header_all search_box_area">
+                        <form class="new_search" role="search" method="get" action="#">
+                            <input id="mix_search" class="search-field" placeholder="Search Products…" value="" name="s" title="Search for:" type="search">
+                            <input value="Search" type="submit">
+                            <input name="post_type" value="product" type="hidden">
+                        </form>
+                    </div>
+                    <div class="header_all shopping_cart_area">
+                        <div class="widget_shopping_cart_content">
+                            <div class="topcart">
+                                <a class="cart-toggler" href="">
+                                    <i class="icon"></i>
+                                    <span class="my-cart">Shopping cart</span>
+                                    <span class="qty">2 Items</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </a>
+                                <div class="new_cart_section">
+                                    <ol class="new-list">
+                                        <!-- single item -->
+                                        <li class="wimix_area">
+                                            <a class="pix_product" href="">
+                                                <img alt="" src="/static/home/index/img/product-pic/7-150x98.jpg">
                                             </a>
-                                        </div>
-                                        <ul class="option">
-                                            <li><a href="#">EUR - Euro</a></li>
-                                            <li><a href="#">GBP - British Pound</a></li>
-                                            <li><a href="#">INR - Indian Rupee</a>
+                                            <div class="product-details">
+                                                <a href="#">Adipiscing cursus eu</a>
+                                                <span class="sig-price">1×$300.00</span>
+                                            </div>
+                                            <div class="cart-remove">
+                                                <a class="action" href="#">
+                                                    <i class="fa fa-close"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <!-- single item -->
+                                        <!-- single item -->
+                                        <li class="wimix_area">
+                                            <a class="pix_product" href="#">
+                                            <img alt="" src="/static/home/index/img/product-pic/1-150x98.jpg">
+                                            </a>
+                                            <div class="product-details">
+                                                <a href="#">Duis convallis</a>
+                                                <span class="sig-price">1×$100.00</span>
+                                            </div>
+                                            <div class="cart-remove">
+                                                <a class="action" href="#">
+                                                    <i class="fa fa-close"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <!-- single item -->
+                                    </ol>
+                                    <div class="top-subtotal">
+                                        Subtotal: <span class="sig-price">$400.00</span>
+                                    </div>
+                                    <div class="cart-button">
+                                        <ul>
+                                            <li>
+                                                <a href="#">View my cart <i class="fa fa-angle-right"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Checkout <i class="fa fa-angle-right"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                            <div class="header_right_area">
-                                <ul>
-                                    <li>
-                                        <a class="account" href="#">我的账户</a>
-                                    </li>
-                                    <li>
-                                        <a class="account" href="/register">注册</a>
-                                    </li>
-                                    <li>
-                                        <a class="wishlist" href="#">我的收藏</a>
-                                    </li>
-                                    <li>
-                                        <a class="Shopping cart" href="#">购物车</a>
-                                    </li>
-                                    <li>
-                                        <a class="Checkout" href="#">查看</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <!--header top area end-->
-            <!--header middle area start-->
-            <div class="header_middle">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="logo_area">
-                                <a href="index.html"><img src="/static/home/index/img/logo-pic/logo.png" alt="" /></a>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="header_all search_box_area">
-                                <form class="new_search" role="search" method="get" action="#">
-                                    <input id="mix_search" class="search-field" placeholder="Search Products…" value="" name="s" title="Search for:" type="search">
-                                    <input value="Search" type="submit">
-                                    <input name="post_type" value="product" type="hidden">
-                                </form>
-                            </div>
-                            <div class="header_all shopping_cart_area">
-                                <div class="widget_shopping_cart_content">
-                                    <div class="topcart">
-                                        <a class="cart-toggler" href="">
-                                            <i class="icon"></i>
-                                            <span class="my-cart">Shopping cart</span>
-                                            <span class="qty">2 Items</span>
-                                            <span class="fa fa-angle-down"></span>
-                                        </a>
-                                        <div class="new_cart_section">
-                                            <ol class="new-list">
-                                                <!-- single item -->
-                                                <li class="wimix_area">
-                                                    <a class="pix_product" href="">
-                                                        <img alt="" src="/static/home/index/img/product-pic/7-150x98.jpg">
-                                                    </a>
-                                                    <div class="product-details">
-                                                        <a href="#">Adipiscing cursus eu</a>
-                                                        <span class="sig-price">1×$300.00</span>
-                                                    </div>
-                                                    <div class="cart-remove">
-                                                        <a class="action" href="#">
-                                                            <i class="fa fa-close"></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <!-- single item -->
-                                                <!-- single item -->
-                                                <li class="wimix_area">
-                                                    <a class="pix_product" href="#">
-                                                    <img alt="" src="/static/home/index/img/product-pic/1-150x98.jpg">
-                                                    </a>
-                                                    <div class="product-details">
-                                                        <a href="#">Duis convallis</a>
-                                                        <span class="sig-price">1×$100.00</span>
-                                                    </div>
-                                                    <div class="cart-remove">
-                                                        <a class="action" href="#">
-                                                            <i class="fa fa-close"></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <!-- single item -->
-                                            </ol>
-                                            <div class="top-subtotal">
-                                                Subtotal: <span class="sig-price">$400.00</span>
-                                            </div>
-                                            <div class="cart-button">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">View my cart <i class="fa fa-angle-right"></i></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">Checkout <i class="fa fa-angle-right"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+        </div>
+    </div>
+    <!--header footer area start-->
+    <div class="all_menu_area">
+        <div class="menu_inner">
+            <div class="container">
+                <div class="full_menu clearfix">
+                    <div class="new_menu">
+                        <div class="drp-menu">
+                            <div class="col-md-3 pr pl">
+                                <div class="all_catagories">
+                                    <div class="enable_catagories">
+                                        <i class="fa fa-bars"></i>
+                                        <span>All Categories</span>
+                                        <i class="fa fa-angle-down"></i>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--header footer area start-->
-            <div class="all_menu_area">
-                <div class="menu_inner">
-                    <div class="container">
-                        <div class="full_menu clearfix">
-                            <div class="new_menu">
-                                <div class="drp-menu">
-                                    <div class="col-md-3 pr pl">
-                                        <div class="all_catagories">
-                                            <div class="enable_catagories">
-                                                <i class="fa fa-bars"></i>
-                                                <span>All Categories</span>
-                                                <i class="fa fa-angle-down"></i>
-                                            </div>
-                                        </div>
-                                        <div class="catagory_menu_area">
-                                            <div class="catagory_mega_menu">
-                                                <div class="cat_mega_start">
-                                                    <ul class="list">
-                                                        <li class="next_area">
-                                                            <a class="item_link" href="#">
-                                                                <i class="fa fa-television"></i>
-                                                                <span class="link_content">
-                                                                    <span class="link_text">
-                                                                        Electronics
-                                                                        <span class="link_descr">Praesent accumsan elementum maximus </span>
-                                                                    </span>
-                                                                </span>
-                                                            </a>
-                                                            <ul class="electronics_drpdown">
-                                                                <li class="parent">
-                                                                    <a href="#"></a>
-                                                                    <div class="mega_menu">
-                                                                        <div class="mega_menu_coloumn">
-                                                                            <ul>
-                                                                                <li><a href="#">Men's</a></li>
-                                                                                <li><a href="#">Hats</a></li>
-                                                                                <li><a href="#">Mirriors</a></li>
-                                                                                <li><a href="#">Singles</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="mega_menu_coloumn">
-                                                                            <ul>
-                                                                                <li><a href="#">Sports& Outdoors</a></li>
-                                                                                <li><a href="#">Smartphones</a></li>
-                                                                                <li><a href="#">Womens</a></li>
-                                                                                <li><a href="#">Health & Beauty</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="mega_menu_coloumn">
-                                                                            <ul>
-                                                                                <li class="mega_content"><a href="#">Accessories</a></li>
-                                                                                <li><a href="#">Hobbies</a></li>
-                                                                                <li><a href="#">networking</a></li>
-                                                                                <li><a href="#">accessories</a></li>
-                                                                                <li><a href="#">electronics</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="mega_menu_coloumn">
-                                                                            <ul>
-                                                                                <li><a href="#">Laptops & Accessories</a></li>
-                                                                                <li><a href="#">hoodies</a></li>
-                                                                                <li><a href="#">watches</a></li>
-                                                                                <li><a href="#">flashlights</a></li>
-                                                                                <li><a href="#">mirriors</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
+                                <div class="catagory_menu_area">
+                                    <div class="catagory_mega_menu">
+                                        <div class="cat_mega_start">
+                                            <ul class="list">
+                                                <li class="next_area">
+                                                    <a class="item_link" href="#">
+                                                        <i class="fa fa-television"></i>
+                                                        <span class="link_content">
+                                                            <span class="link_text">
+                                                                Electronics
+                                                                <span class="link_descr">Praesent accumsan elementum maximus </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                    <ul class="electronics_drpdown">
+                                                        <li class="parent">
+                                                            <a href="#"></a>
+                                                            <div class="mega_menu">
+                                                                <div class="mega_menu_coloumn">
+                                                                    <ul>
+                                                                        <li><a href="#">Men's</a></li>
+                                                                        <li><a href="#">Hats</a></li>
+                                                                        <li><a href="#">Mirriors</a></li>
+                                                                        <li><a href="#">Singles</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="mega_menu_coloumn">
+                                                                    <ul>
+                                                                        <li><a href="#">Sports& Outdoors</a></li>
+                                                                        <li><a href="#">Smartphones</a></li>
+                                                                        <li><a href="#">Womens</a></li>
+                                                                        <li><a href="#">Health & Beauty</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="mega_menu_coloumn">
+                                                                    <ul>
+                                                                        <li class="mega_content"><a href="#">Accessories</a></li>
+                                                                        <li><a href="#">Hobbies</a></li>
+                                                                        <li><a href="#">networking</a></li>
+                                                                        <li><a href="#">accessories</a></li>
+                                                                        <li><a href="#">electronics</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="mega_menu_coloumn">
+                                                                    <ul>
+                                                                        <li><a href="#">Laptops & Accessories</a></li>
+                                                                        <li><a href="#">hoodies</a></li>
+                                                                        <li><a href="#">watches</a></li>
+                                                                        <li><a href="#">flashlights</a></li>
+                                                                        <li><a href="#">mirriors</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
                                                         </li>
-                                                        <li class="differ_sec_area">
-                                                            <a class="item_link" href="#">
-                                                                <i class="fa fa-mobile"></i>
-                                                                <span class="link_content">
-                                                                    <span class="link_text">
-                                                                        Smartphone & Tablets
-                                                                        <span class="link_descr">Praesent accumsan elementum maximus </span>
-                                                                    </span>
-                                                                </span>
-                                                            </a>
-                                                            <ul class="another_drop_menu">
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 with_icon" href="#" tabindex="1">Posters</a>
-                                                                    <ul class="new_miup_menu">
-                                                                        <li>
-                                                                            <ul class="new_mixup_tm">
-                                                                                <li class="exact">
-                                                                                    <a class="new_link_8 with_icon" href="#" tabindex="1">Cocktail</a>
-                                                                                    <ul class="decent_mean_menu">
+                                                    </ul>
+                                                </li>
+                                                <li class="differ_sec_area">
+                                                    <a class="item_link" href="#">
+                                                        <i class="fa fa-mobile"></i>
+                                                        <span class="link_content">
+                                                            <span class="link_text">
+                                                                Smartphone & Tablets
+                                                                <span class="link_descr">Praesent accumsan elementum maximus </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                    <ul class="another_drop_menu">
+                                                        <li class="discrip">
+                                                            <a class="new_link_2 with_icon" href="#" tabindex="1">Posters</a>
+                                                            <ul class="new_miup_menu">
+                                                                <li>
+                                                                    <ul class="new_mixup_tm">
+                                                                        <li class="exact">
+                                                                            <a class="new_link_8 with_icon" href="#" tabindex="1">Cocktail</a>
+                                                                            <ul class="decent_mean_menu">
+                                                                                <li>
+                                                                                    <ul class="new_mixup_tm">
                                                                                         <li>
-                                                                                            <ul class="new_mixup_tm">
-                                                                                                <li>
-                                                                                                    <a href="#"></a>Cost & Jackets
-                                                                                                </li>
-                                                                                            </ul>
+                                                                                            <a href="#"></a>Cost & Jackets
                                                                                         </li>
                                                                                     </ul>
                                                                                 </li>
-                                                                                <li><a href="#">Furniture</a></li>
                                                                             </ul>
                                                                         </li>
+                                                                        <li><a href="#">Furniture</a></li>
                                                                     </ul>
-                                                                </li>
-                                                                <li class="risk">
-                                                                    <a class="new_link_2 new_link_3 with_icon" href="#" tabindex="1">Watches
-                                                                    </a>
-                                                                    <ul class="new_miup_menu">
-                                                                        <li>
-                                                                            <ul class="new_mixup_tm">
-                                                                                <li><a href="#">Women's</a></li>
-                                                                            </ul>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li><a href="#">Pendants</a></li>
-                                                                <li><a href="#">Chocklates</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="differ_sec_area">
-                                                            <a class="item_link " href="#">
-                                                                <i class="fa fa-gift"></i>
-                                                                <span class="link_content">
-                                                                    <span class="link_text">
-                                                                        Health & Beauty
-                                                                        <span class="link_descr">Praesent accumsan elementum maximus</span>
-                                                                    </span>
-                                                                </span>
-                                                            </a>
-                                                            <ul class="another_drop_menu">
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
-                                                                        <i class="fa fa-futbol-o"></i>
-                                                                        Sports & Outdoors
-                                                                    </a>
-                                                                </li>
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
-                                                                        <i class="fa fa-bullseye"></i>
-                                                                        Bags, Shoes & Accessories
-                                                                    </a>
-                                                                </li>
-                                                                <li class="discrip"><a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1"><i class="fa fa-file-image-o"></i>
-                                                                    Toys & Hobbies</a>
-                                                                </li>
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1"><i class="fa fa-television"></i>
-                                                                    Computer & Networking</a>
-                                                                </li>
-                                                                <li class="discrip">
-                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
-                                                                        <i class="fa fa-laptop"></i>
-                                                                        Laptops & Accessories
-                                                                    </a>
                                                                 </li>
                                                             </ul>
                                                         </li>
-                                                        <li>
-                                                            <a class="item_link item_link_2" href="#">
-                                                                <i class="fa fa-heart"></i>
-                                                                <span class="link_content">
-                                                                    <span class="link_text">
-                                                                        Jewelry & Watches
-                                                                        <span class="link_descr">Praesent accumsan elementum maximus</span>
-                                                                    </span>
-                                                                </span>
+                                                        <li class="risk">
+                                                            <a class="new_link_2 new_link_3 with_icon" href="#" tabindex="1">Watches
+                                                            </a>
+                                                            <ul class="new_miup_menu">
+                                                                <li>
+                                                                    <ul class="new_mixup_tm">
+                                                                        <li><a href="#">Women's</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href="#">Pendants</a></li>
+                                                        <li><a href="#">Chocklates</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="differ_sec_area">
+                                                    <a class="item_link " href="#">
+                                                        <i class="fa fa-gift"></i>
+                                                        <span class="link_content">
+                                                            <span class="link_text">
+                                                                Health & Beauty
+                                                                <span class="link_descr">Praesent accumsan elementum maximus</span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                    <ul class="another_drop_menu">
+                                                        <li class="discrip">
+                                                            <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
+                                                                <i class="fa fa-futbol-o"></i>
+                                                                Sports & Outdoors
                                                             </a>
                                                         </li>
-                                                        <li>
-                                                            <a class="item_link item_link_2" href="#">
-                                                                <i class="fa fa-star"></i>
-                                                                <span class="link_content">
-                                                                    <span class="link_text">
-                                                                        Flashlights & Lamps
-                                                                        <span class="link_descr">Praesent accumsan elementum maximus</span>
-                                                                    </span>
-                                                                </span>
+                                                        <li class="discrip">
+                                                            <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
+                                                                <i class="fa fa-bullseye"></i>
+                                                                Bags, Shoes & Accessories
                                                             </a>
                                                         </li>
-                                                        <li>
-                                                            <a class="item_link item_link_2" href="#">
-                                                                <i class="fa fa-lightbulb-o"></i>
-                                                                <span class="link_content">
-                                                                    <span class="link_text">
-                                                                        Headlight
-                                                                        <span class="link_descr">Praesent accumsan elementum maximus</span>
-                                                                    </span>
-                                                                </span>
-                                                            </a>
+                                                        <li class="discrip"><a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1"><i class="fa fa-file-image-o"></i>
+                                                            Toys & Hobbies</a>
                                                         </li>
-                                                        <li class="cost-menu">
-                                                            <a class="item_link item_link_2" href="#">
-                                                                <i class="fa fa-pie-chart"></i>
-                                                                <span class="link_content">
-                                                                    <span class="link_text">
-                                                                        Cost & jackets
-                                                                        <span class="link_descr">Praesent accumsan elementum maximus </span>
-                                                                    </span>
-                                                                </span>
-                                                            </a>
+                                                        <li class="discrip">
+                                                            <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1"><i class="fa fa-television"></i>
+                                                            Computer & Networking</a>
                                                         </li>
-                                                        <li class="showmore-items shwitm">
-                                                            <i class="fa fa-plus-square-o"></i>
-                                                            <span>More Categories</span>
+                                                        <li class="discrip">
+                                                            <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
+                                                                <i class="fa fa-laptop"></i>
+                                                                Laptops & Accessories
+                                                            </a>
                                                         </li>
                                                     </ul>
-                                                </div>
-                                            </div>
+                                                </li>
+                                                <li>
+                                                    <a class="item_link item_link_2" href="#">
+                                                        <i class="fa fa-heart"></i>
+                                                        <span class="link_content">
+                                                            <span class="link_text">
+                                                                Jewelry & Watches
+                                                                <span class="link_descr">Praesent accumsan elementum maximus</span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="item_link item_link_2" href="#">
+                                                        <i class="fa fa-star"></i>
+                                                        <span class="link_content">
+                                                            <span class="link_text">
+                                                                Flashlights & Lamps
+                                                                <span class="link_descr">Praesent accumsan elementum maximus</span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="item_link item_link_2" href="#">
+                                                        <i class="fa fa-lightbulb-o"></i>
+                                                        <span class="link_content">
+                                                            <span class="link_text">
+                                                                Headlight
+                                                                <span class="link_descr">Praesent accumsan elementum maximus</span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="cost-menu">
+                                                    <a class="item_link item_link_2" href="#">
+                                                        <i class="fa fa-pie-chart"></i>
+                                                        <span class="link_content">
+                                                            <span class="link_text">
+                                                                Cost & jackets
+                                                                <span class="link_descr">Praesent accumsan elementum maximus </span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="showmore-items shwitm">
+                                                    <i class="fa fa-plus-square-o"></i>
+                                                    <span>More Categories</span>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <!--menu area start-->
-                                    <div class="col-md-9 pl">
-                                        <div class="menu_area">
-                                            <div class="menu">
-                                                <nav>
-                                                    <ul>
-                                                        <li><a href="index.html">Home</a></li>
-														<li><a href="about-us.html">About</a></li>
-														<li><a href="cart.html">Cart</a></li>
-														<li><a href="list-view.html">List</a></li>
-														<li><a href="my.account.html">Account</a></li>
-														<li><a href="simple-product.html">Product</a></li>
-														<li><a href="contact-us.html">Contact us</a></li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                            <!--menu area start-->
+                            <div class="col-md-9 pl">
+                                <div class="menu_area">
+                                    <div class="menu">
+                                        <nav>
+                                            <ul>
+                                                <li><a href="index.html">Home</a></li>
+												<li><a href="about-us.html">About</a></li>
+												<li><a href="cart.html">Cart</a></li>
+												<li><a href="list-view.html">List</a></li>
+												<li><a href="my.account.html">Account</a></li>
+												<li><a href="simple-product.html">Product</a></li>
+												<li><a href="contact-us.html">Contact us</a></li>
+                                            </ul>
+                                        </nav>
                                     </div>
                                 </div>
                             </div>
@@ -409,31 +433,33 @@
                 </div>
             </div>
         </div>
-        <!-- mobile-menu-area-start -->
-        <div class="mobile-menu-area hidden-md hidden-lg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mobile-menu">
-                            <nav id="mobile-menu-active">
-                                <ul id="nav">
-                                    <li><a href="index.html">Home</a></li>
-									<li><a href="about-us.html">About</a></li>
-									<li><a href="cart.html">Cart</a></li>
-									<li><a href="list-view.html">List</a></li>
-									<li><a href="my.account.html">Account</a></li>
-									<li><a href="simple-product.html">Product</a></li>
-									<li><a href="contact-us.html">Contact us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+    </div>
+</div>
+<!-- mobile-menu-area-start -->
+<div class="mobile-menu-area hidden-md hidden-lg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mobile-menu">
+                    <nav id="mobile-menu-active">
+                        <ul id="nav">
+                            <li><a href="index.html">Home</a></li>
+							<li><a href="about-us.html">About</a></li>
+							<li><a href="cart.html">Cart</a></li>
+							<li><a href="list-view.html">List</a></li>
+							<li><a href="my.account.html">Account</a></li>
+							<li><a href="simple-product.html">Product</a></li>
+							<li><a href="contact-us.html">Contact us</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
-        <!-- mobile-menu-area-end -->
-        <!--slider area start-->
-            @section('content')
+    </div>
+</div>
+<!-- mobile-menu-area-end -->
+<!--slider area start-->
+    @section('content')
  
 <section class="slider-area">
     <div class="container">
