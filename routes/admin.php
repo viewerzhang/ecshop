@@ -184,6 +184,9 @@ Route::post('/column/files','ColumnController@files');
 // 栏目路由
 Route::resource('column','ColumnController');
 
+// 活动路由
+Route::resource('activity','GoodsActivityController');
+
 
 
 
