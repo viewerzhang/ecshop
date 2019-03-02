@@ -39,7 +39,7 @@
 	                            <tr>
 	                                <th class="text-center" width="4px">ID</th>
 	                                <th class="text-center" width="1%">商品编号</th>
-	                                <th class="text-center" style=" width: 20px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;">商品名称</th>
+	                                <th class="text-center" >商品名称</th>
 	                                <th class="text-center" width="8%">商品图片</th>
 	                                <th class="text-center" width="5%">上架</th>
 	                              	<th class="text-center" width="8%">所属分类</th>

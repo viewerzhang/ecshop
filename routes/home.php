@@ -16,8 +16,10 @@
  * 
  */
 Route::get('/','HomeController@index');
-
-
+// 添加到购物车路由
+Route::post('/shoppingcar/caradd','ShoppingCarController@caradd');
+// 购物车资源路由
+Route::resource('/shoppingcar','ShoppingCarController');
 
 
 

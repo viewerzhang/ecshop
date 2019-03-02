@@ -128,16 +128,8 @@
 </div>
 <!--header area end-->
 <!--我的帐户开始-->
-    @if (count($errors) > 0)
-    <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+
+
 <div class="login-area">
     <div class="container">
         <div class="row">
@@ -156,6 +148,21 @@
                             <font style="vertical-align: inherit; padding-left: 33%;">
                                 您好，欢迎来到您的帐户
                             </font>
+                                @if (session('error'))
+                                    <div class="alert alert-warning">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+                                    @if (count($errors) > 0)
+                                <div class="alert alert-warning alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
                         </font>
                     </p>
                     <div class="social-sign"  style="padding-left: 24%;">
@@ -176,6 +183,7 @@
                             </font>
                         </a>
                     </div>
+
                     <form action="/dologin" method="post">
                         {{ csrf_field() }}
                         <label>

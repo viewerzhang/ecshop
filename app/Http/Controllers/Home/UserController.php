@@ -63,7 +63,7 @@ class UserController extends Controller
             $res = Users::insert($data);
             // 判断数据是否插入成功
             if($res){
-                return "<script>alert('注册成功');location.href='/login'</script>";
+                return "<script>alert('注册成功');location.href='/'</script>";
             }else{
                 return "<script>alert('注册失败');location.href='/register'</script>";
             }

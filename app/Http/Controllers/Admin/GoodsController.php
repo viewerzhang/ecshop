@@ -94,7 +94,7 @@ class GoodsController extends Controller
 
       //接受表单的值
         $data = $request->except(['_token','goods_img','goods_imgs']);
-        //dd($data);
+        // dd($data);
         $data['goods_bianhao']=date('His',time()).rand(100,999);
          //检查添加商品时候是否有主图上传
         if ($request->hasFile('goods_img')) {
@@ -144,6 +144,12 @@ class GoodsController extends Controller
                 ];
 
                 GoodsImgs::insert($goodsimgs);
+
+                $goodstype = [
+                    'goods_id' => $rs
+                ];
+
+                GoodsType::where('id',$data['type_id'])->update($goodstype);
            
         }
 
@@ -200,10 +206,14 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
-       /* $data=$request->all();
-        dd($data);*/
+      $data = $request->except(['_token','_method','goods_img','goods_imgs']);
+       /* $data=$request->all();*/
+        // dd($data);
        //接受表单的值
-        $data = $request->except(['_token','_method','goods_img','goods_imgs']);
+        
+        $type_id = $data['type_id'];
+
+        unset($data['type_id']);
         if($request->hasFile('goods_img')){
 
                 $file = $request->file('goods_img');//创建文件上传对象
@@ -251,8 +261,12 @@ class GoodsController extends Controller
 
         }
         try{
+        
           Goods::where('id',$id)->update($data);
-        }catch(\Exception $err){
+          $goodstype = [
+                    'goods_id' => $id
+                ];
+          GoodsType::where('id',$type_id)->update($goodstype);}catch(\Exception $err){
           echo '<script>alert("修改失败");location.href="/admin/goods"</script>';
         }
         
@@ -332,4 +346,12 @@ class GoodsController extends Controller
         }
 
     }
+
+    public static function shouye($cate_id)
+    {
+        $data = Goods::where('cate_id',$cate_id)->get();
+        return $data;
+    }
+
+
 }

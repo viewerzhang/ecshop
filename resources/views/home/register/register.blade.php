@@ -1,4 +1,5 @@
-<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths translated-ltr" lang="zh-CN" style=""><head>
+<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths translated-ltr" lang="zh-CN" style="">
+<head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>我的帐户</title>
@@ -68,155 +69,73 @@
 
 
 
-        <!--header top area start-->
-        <div class="header_area">
-            <div class="header_border">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-
-                            <!-- 可以放一个网站的logo -->
-
-                        </div>
-                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                            <div class="header_right_area">
-                                <ul>
-                                    <li>
-                                        <a class="account" href="/login"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a class="wishlist" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">愿望清单</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a class="Shopping cart" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购物车</font></font></a>
+<!--header top area start-->
+<div class="header_area">
+    <div class="header_border">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                    <div class="header_heaft_area">
+                        <div class="header_left_all">
+                            <div class="mean_al_dv">
+                                <div class="littele_menu"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">英语语言 </font></font><i class="fa fa-caret-down"></i></a> </div>
+                                <ul class="option">
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">法国</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">德国</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日本</font></font></a></li>
+                                </ul>
+                            </div>
+                            <div class="usd_area">
+                                <div class="littele_menu"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                    货币：美元
+                                    </font></font><i class="fa fa-caret-down"></i>
+                                    </a>
+                                </div>
+                                <ul class="option">
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">欧元 - 欧元</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">英镑 - 英镑</font></font></a></li>
+                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">INR  - 印度卢比</font></font></a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--header top area end-->
-            <!--header middle area start-->
-            
-            <!--header bottom area start-->
-            <div class="all_menu_area">
-                
-            </div>
-        </div>
-        <!--header area end-->
-        <!-- mobile-menu-area-start -->
-        <div class="mobile-menu-area hidden-md hidden-lg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="mobile-menu">
-                            <nav id="mobile-menu-active" style="display: block;">
-                                <ul id="nav">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about-us.html">About</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="list-view.html">List</a></li>
-                                    <li><a href="my.account.html">Account</a></li>
-                                    <li><a href="simple-product.html">Product</a></li>
-                                    <li><a href="contact-us.html">Contact us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- mobile-menu-area-end -->
-        <!--social design arae start-->
-        <div class="link_area">
-            <div class="container">
-                <div class="row">
-                    <div class="social_design on_right">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                    <div class="header_right_area">
                         <ul>
                             <li>
-                                <a class="facebook" target="_blank" href="#facebook">
-                                <span>
-                                <i class="fa fa-facebook"></i>
-                                <span class="social-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过Facebook关注</font></font></span>
-                                </span>
-                                </a>
+                                <a class="account" href="/login"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录</font></font></a>
                             </li>
                             <li>
-                                <a class="twitter" target="_blank" href="#twitter.com">
-                                <span>
-                                <i class="fa fa-twitter"></i>
-                                <span class="social-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过Twitter关注</font></font></span>
-                                </span>
-                                </a>
+                                <a class="wishlist" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">愿望清单</font></font></a>
                             </li>
                             <li>
-                                <a class="google-plus" target="_blank" href="#google-plus">
-                                <span>
-                                <i class="fa fa-google-plus"></i>
-                                <span class="social-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过Google +关注</font></font></span>
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="youtube" target="_blank" href="#youtube">
-                                <span>
-                                <i class="fa fa-youtube"></i>
-                                <span class="social-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关注Youtube</font></font></span>
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="pinterest" target="_blank" href="#pinterest">
-                                <span>
-                                <i class="fa fa-pinterest"></i>
-                                <span class="social-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关注Pinterest</font></font></span>
-                                </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="mail-to" target="_blank" href="mailto:lionthemes88@gmail.com">
-                                <span>
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="social-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮寄给我们</font></font></span>
-                                </span>
-                                </a>
+                                <a class="Shopping cart" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购物车</font></font></a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!--header top area end-->
+    <!--header middle area start-->
+    
+    <!--header bottom area start-->
+    <div class="all_menu_area">
+        
+    </div>
+</div>
         <!--social design arae end-->
 
         <!--我的帐户开始-->
-        <div class="login-area" style="margin-top: -50px;">
+        <div class="login-area" >
             <div class="container">
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-                        <div class="login-content">
-                            <h2 class="login-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录</font></font></h2>
-                            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您好，欢迎来到您的帐户</font></font></p>
-                            <div class="social-sign">
-                                <a href="#"><i class="fa fa-facebook"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 用facebook登录</font></font></a>
-                                <a class="twitter" href="#"><i class="fa fa-twitter"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 用twitter登录</font></font></a>
-                            </div>
-                            <form action="#">
-                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子邮件地址</font></font></label>
-                                <input type="text">
-                                <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码</font></font></label>
-                                <input type="password">
-                                <div class="login-lost">
-                                    <span class="log-rem">
-                                        <input type="checkbox">
-                                        <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记住账号！</font></font></label>
-                                    </span>
-                                    <font style="vertical-align: inherit;"><span class="forgot-login"><a href="#"><font style="vertical-align: inherit;">忘记密码了吗？</font></a></span></font><span class="forgot-login">
-                                        <a href="#"><font style="vertical-align: inherit;"></font></a>
-                                    </span>
-                                </div>
-                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input class="login-sub" type="submit" value="登录"></font></font>
+  
                         <div class="login-content login-margin">
                             <h2 class="login-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个新账户</font></font></h2>
                             <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建您自己的Unicase帐户。</font></font></p>
@@ -239,7 +158,7 @@
                                 <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手机号</font></font></label>
                                 <input type="number" name="user_phone" id="phone" value="{{ old('user_phone') }}">
                                 <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证码</font></font></label><br/>
-                                <input type="number" style="width:320px;" name="yzm"><input class="login-sub" type="button" id="sendBtn" onclick="sendPhone(this)" value="获取验证码">
+                                <input type="number" style="width:300px;" name="yzm"><input class="login-sub" type="button" id="sendBtn" onclick="sendPhone(this)" value="获取验证码">
                                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input class="login-sub" type="submit" value="注册"></font></font>
                             </div>
                             </form>
@@ -253,122 +172,9 @@
 
         <!--newsletter area end-->
         <!--footer top area start-->
-        <div class="footer_area" style="margin-top: 60px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="footer_menu">
-                            <div class="news_heading_2">
-                                <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">信息 </font></font></h3>
-                            </div>
-                            <div class="footer_menu">
-                                <ul>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们的博客</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于我们的商店</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安全购物</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实践政策</font></font></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="footer_menu">
-                            <div class="news_heading_2">
-                                <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的帐户 </font></font></h3>
-                            </div>
-                            <div class="footer_menu">
-                                <ul>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的帐户</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">收藏</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购物车</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看</font></font></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="footer_menu">
-                            <div class="news_heading_2">
-                                <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 我们的服务 </font></font></h3>
-                            </div>
-                            <div class="footer_menu">
-                                <ul>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">送货和退货</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安全购物</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">国际航运</font></font></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关联公司</font></font></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="footer_menu footer_menu_2">
-                            <div class="news_heading_2">
-                                <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 储存信息 </font></font></h3>
-                            </div>
-                            <ul>
-                                <li>
-                                    <i class="fa fa-home"></i>
-                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的公司：42 avenue desChampsElysées75000France</font></font></p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-phone"></i>
-                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电话：（0123）456789</font></font></p>
-                                </li>
-                                <li>
-                                    <i class="fa fa-envelope"></i>
-                                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子邮件：admin@hastech.company</font></font></p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--footer top area end-->
-            <!--footer middle area start-->
-            <div class="footer_middle">
-                <div class="container">
-                    <div class="fotter_inner">
-                        <div class="middele_pic">
-                            <img src="/static/home/index/img/icon/payment-300x30.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!--footer middle area end-->
         <!--footer bottom area start-->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="widget-copyright text-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                    版权所有©2017。公司名称保留所有权利。</font></font><a target="_blank" href="http://sc.chinaz.com/moban/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网页模板</font></font></a>
-                </div>
-            </div>
-        </div>
+     
         <!--footer bottom area end-->
         
         

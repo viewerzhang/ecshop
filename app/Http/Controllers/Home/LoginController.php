@@ -9,6 +9,7 @@ use App\Http\Requests\LoginDologinRequest;
 use App\Http\Requests\TelLoginRequest;
 use App\common\Sms;
 use Illuminate\Support\Facades\Redis;
+use Hash;
 
 class LoginController extends Controller
 {
@@ -35,18 +36,20 @@ class LoginController extends Controller
         // }
         $user = $request -> post('user_name');
         $pass = $request -> post('password');
-        $data = Users::where('user_name', $user)->where('password', $pass)->first();
-        // dump($data);
-        if($data){
-            session(['homeUser'=>$data]);
-            session(['homeFlag'=>true]);
-            $uip=[];
-            $uip['user_ip'] = $request->getClientIp();
-            Users::where('user_name', $user)->where('password', $pass)->update($uip);
-            return "<script>alert('登录成功');location.href='/'</script>";
-        }else{
-            return "<script>alert('登录失败');location.href='/login'</script>";
+        $data = Users::where('user_name', $user)->first();
+
+        if(!$data){
+            return redirect('/login')->with('error','您的用户名或密码不正确');
         }
+        if (Hash::check($pass, $data->password)) {
+            session(['user'=>$data]);
+            session(['userlogin'=>true]);
+            $uip=[];
+            $uip = [ 'user_ip' => $request->getClientIp() ];
+            Users::where('user_name', $user)->update($uip);
+            return "<script>location.href='/'</script>";
+        }
+            return redirect('/login')->with('error','您的用户名或密码不正确');
     }
 
     /**
@@ -58,7 +61,8 @@ class LoginController extends Controller
     public function logout()
     {
         //退出登录
-        session(['homeFlag'=>false]);
+        session(['user'=>null]);
+        session(['userlogin'=>null]);
         return redirect('/');
     }
 
@@ -84,8 +88,8 @@ class LoginController extends Controller
             $phone = $request -> get('user_phone');
             $row = Users::where('user_phone',$phone)->first();
             if($row){
-                session(['homeUser'=>$row]);
-                session(['homeFlag'=>true]);
+                session(['user'=>$row]);
+                session(['userlogin'=>true]);
                 $uip=[];
                 $uip['user_ip'] = $request->getClientIp();
                 Users::where('user_phone', $phone)->update($uip);
