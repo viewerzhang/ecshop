@@ -21,8 +21,8 @@ Route::post('/shoppingcar/caradd','ShoppingCarController@caradd');
 // 购物车资源路由
 Route::resource('/shoppingcar','ShoppingCarController');
 
-
-
+// 订单路由
+Route::resource('/goodsorder','GoodsOrderController');
 
 
 

@@ -149,7 +149,7 @@ class GoodsController extends Controller
                     'goods_id' => $rs
                 ];
 
-                GoodsType::where('id',$data['type_id'])->update($goodstype);
+                // GoodsType::where('id',$data['type_id'])->update($goodstype);
            
         }
 
@@ -211,9 +211,9 @@ class GoodsController extends Controller
         // dd($data);
        //接受表单的值
         
-        $type_id = $data['type_id'];
+        // $type_id = $data['type_id'];
 
-        unset($data['type_id']);
+        // unset($data['type_id']);
         if($request->hasFile('goods_img')){
 
                 $file = $request->file('goods_img');//创建文件上传对象
@@ -263,10 +263,11 @@ class GoodsController extends Controller
         try{
         
           Goods::where('id',$id)->update($data);
-          $goodstype = [
-                    'goods_id' => $id
-                ];
-          GoodsType::where('id',$type_id)->update($goodstype);}catch(\Exception $err){
+          // $goodstype = [
+          //           'goods_id' => $id
+          //       ];
+          // GoodsType::where('id',$type_id)->update($goodstype);
+        }catch(\Exception $err){
           echo '<script>alert("修改失败");location.href="/admin/goods"</script>';
         }
         

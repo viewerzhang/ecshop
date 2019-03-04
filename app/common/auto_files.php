@@ -494,6 +494,9 @@ class getIp
 {
     static public function getIp($ip)
     {
+        if($ip == ''){
+            return '';
+        }
         //初始化  
         $curl = curl_init();  
         //设置抓取的url  
@@ -512,7 +515,9 @@ class getIp
         $ptn = '%&nbsp;IP详细地址：<font color=#FF0000>(.*?)</font></font><br/></div></div><div class="ad">%';
         $arr = array();
         preg_match_all($ptn, $data, $arr);
-        return $arr[1][0];
+        if(array_key_exists(1, $arr)){
+            return $arr[1][0];
+        }
         // return $str;
     }
 }

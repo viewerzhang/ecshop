@@ -20,10 +20,10 @@ class Goods extends Model
     }
 
     //一个商品对应一个类型  一对一关系
-    public function goodstype()
-    {
-        return $this->hasOne('App\Http\Model\Admin\GoodsType','goods_id');
-    }
+    // public function goodstype()
+    // {
+    //     return $this->hasOne('App\Http\Model\Admin\GoodsType','goods_id');
+    // }
 
     //一个商品对应一个品牌  一对一关系
     public function goodsbrand()
@@ -36,6 +36,11 @@ class Goods extends Model
     public function goodsimgs()
     {
         return $this->hasMany('App\Http\Model\Admin\GoodsImgs','goods_id');
+    }
+
+    public function goodstype()
+    {
+        return $this->belongsTo('App\Http\Model\Admin\GoodsType','type_id');
     }
     
 }

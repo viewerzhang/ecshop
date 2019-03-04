@@ -1345,11 +1345,73 @@
     </div>
 </div>
 <!--brand area end-->
-
+@foreach($common_cate[0]['sum'][1]['sum'] as $k => $v)
+        @foreach(App\Http\Controllers\Admin\GoodsController::shouye($v->id) as $kk => $vv)
+        <div class="modal fade" id="{{ $vv->goods_bianhao }}" role="dialog">
+            <div class="modal-dialog modal-dialog-2">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-product">
+                            <div class="row">
+                                <div class="new_port new_port_2">
+                                    <div class="port_pix">
+                                        <img class="img-rounded" style="width: 300px;height: 206px;" src="/static/admin/images/goods_img/{{ $vv->goods_img }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="elav_titel elav_titel_2">
+                                    <div class="elv_heading elv_heading_therteen">
+                                        <h3>{{ $vv->goods_name }}</h3>
+                                    </div>
+                                    <div class="elav_info">
+                                        <div class="price_box price_box_pb">
+                                            <span class="spical-price spical-price-nk">￥{{ $vv->goods_price }}</span>
+                                        </div>
+                                        <form class="cart-btn-area cart-btn-area-dec" action="#">
+                                            <a class="see-all" href="#">查看商品详细</a><br>
+                                            <?php $ty = mt_rand(1000,9999) ?>
+                                            @foreach($vv->goodstype->goodsattr as $tv => $ta)
+                                            <p style="float: left;margin-top: 3px;">{{ $ta->attr_name }}：</p>
+                                            <?php $attr = explode(',', $ta->attr_value) ?>
+                                            <?php $goodsid = mt_rand(1000,9999)  ?>
+                                                @foreach($attr as $attr => $va)
+                                                <div id="attr" class="{{ $goodsid }} {{ $ty }}" onclick="xz({{ $ty }},{{ $goodsid }},this)" style="margin-left: 3px;float: left;cursor: pointer;width: 60px;height: 30px;border: 1px solid #aaa;display:table-cell;font-size:12px;vertical-align:middle;text-align:center">
+                                                    <p style="margin-top: 3px;text-align: center;">{{ $va }}</p>
+                                                </div>
+                                                @endforeach
+                                                <div style="clear: left;"></div>
+                                             @endforeach
+                                            <input type="number" class="bh{{$vv->goods_bianhao}}" id="carsum" max="{{ $vv->goods_num }}" value="1">
+                                            <a href="javascript:;" onclick="jr({{$vv->goods_bianhao}},{{$vv->id}})" class="btn btn-info btn-lg">加入购物车</a>
+                                        </form>
+                                    </div>
+                                    <div class="evavet_description evavet_description_dec">
+                                        <p>{{ $vv->goods_title }}</p>
+                                    </div>
+                                    <div class="elavetor_social">
+                                        <h3 class="widget-title">分享给朋友</h3>
+                                        <br>
+                                        <ul class="social-link social-link-bbt">
+                                            <li><a class="fb" data-original-title="facebook" href="#" title="" data-toggle="tooltip"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a class="twit" data-original-title="twitter" href="#" title="" data-toggle="tooltip"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a class="pinter" data-original-title="pinterest" href="#" title="" data-toggle="tooltip"><i class="fa fa-pinterest"></i></a></li>
+                                            <li><a class="google+" href="#" title="Google+" data-target="#productModal" data-toggle="tooltip"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a class="lindin" href="#" title="LinkedIn" data-target="#productModal" data-toggle="tooltip"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+@endforeach
         <!-- Modal -->
-
-
-
 @foreach($common_cate[0]['sum'][0]['sum'] as $k => $v)
         @foreach(App\Http\Controllers\Admin\GoodsController::shouye($v->id) as $kk => $vv)
         <div class="modal fade" id="{{ $vv->goods_bianhao }}" role="dialog">
@@ -1375,33 +1437,23 @@
                                         <div class="price_box price_box_pb">
                                             <span class="spical-price spical-price-nk">￥{{ $vv->goods_price }}</span>
                                         </div>
-
-
-
                                         <form class="cart-btn-area cart-btn-area-dec" action="#">
                                             <a class="see-all" href="#">查看商品详细</a><br>
-                                            
-                                            <p style="float: left;margin-top: 3px;">{{ $vv->goodstype->goodsattr[0]->attr_name }}：</p>
-                                            <?php $attr = explode(',', $vv->goodstype->goodsattr[0]->attr_value) ?>
-
+                                            <?php $ty = mt_rand(1000,9999) ?>
+                                            @foreach($vv->goodstype->goodsattr as $tv => $ta)
+                                            <p style="float: left;margin-top: 3px;">{{ $ta->attr_name }}：</p>
+                                            <?php $attr = explode(',', $ta->attr_value) ?>
                                             <?php $goodsid = mt_rand(1000,9999)  ?>
-                                            @foreach($attr as $attr => $va)
-                                            <div id="attr" class="{{ $goodsid }}" onclick="xz({{ $goodsid }},this)" style="margin-left: 3px;float: left;cursor: pointer;width: 60px;height: 30px;border: 1px solid #aaa;display:table-cell;font-size:12px;vertical-align:middle;text-align:center">
-                                                <p style="margin-top: 3px;text-align: center;">{{ $va }}</p>
-                                            </div>
-                                            @endforeach
-                                            
-
-                                            <div style="clear: left;"></div>
-
-
-
+                                                @foreach($attr as $attr => $va)
+                                                <div id="attr" class="{{ $goodsid }} {{ $ty }}" onclick="xz({{ $ty }},{{ $goodsid }},this)" style="margin-left: 3px;float: left;cursor: pointer;width: 60px;height: 30px;border: 1px solid #aaa;display:table-cell;font-size:12px;vertical-align:middle;text-align:center">
+                                                    <p style="margin-top: 3px;text-align: center;">{{ $va }}</p>
+                                                </div>
+                                                @endforeach
+                                                <div style="clear: left;"></div>
+                                             @endforeach
                                             <input type="number" class="bh{{$vv->goods_bianhao}}" id="carsum" max="{{ $vv->goods_num }}" value="1">
-                                            <a href="javascript:;" onclick="jr({{$vv->goods_bianhao}},{{$vv->id}})" class="btn btn-info">加入购物车</a>
+                                            <a href="javascript:;" onclick="jr({{$vv->goods_bianhao}},{{$vv->id}})" class="btn btn-info btn-lg">加入购物车</a>
                                         </form>
-
-
-
                                     </div>
                                     <div class="evavet_description evavet_description_dec">
                                         <p>{{ $vv->goods_title }}</p>
@@ -1430,11 +1482,19 @@
 
 
 <script type="text/javascript">
-    function xz(id,ud)
+    function xz(ty,id,ud)
     {
         $('.'+id).css('background','');
         $(ud).css('background','#ddd');
-        attra = $(ud).find('p').html();
+        uuu = '';
+        $('.'+ty).each(function (k) {
+            if($(this).css('background') == 'rgb(221, 221, 221) none repeat scroll 0% 0% / auto padding-box border-box'){
+                uuu += $(this).find('p').html()+',';
+                aaa = uuu.substr(0, uuu.length - 1);
+            }
+        });
+        // attra = $(ud).find('p').html();
+        console.log(aaa);
     }
     function jr(bh,gid)
     {
@@ -1446,13 +1506,13 @@
                "_token": "{{ csrf_token() }}",
                'goods_id':gid,
                'car_num':car_numa,
-               'attr':attra
+               'attr':aaa
             }, function(data) {
                 if(data.code == '1'){
-                    layer.msg('加入购物车成功');
+                    layer.msg(data.msg);
                     $('#'+bh).modal('hide')
                 }else{
-                    layer.msg('加入购物车失败');
+                    layer.msg(data.msg);
                 }
                 return false;
                         

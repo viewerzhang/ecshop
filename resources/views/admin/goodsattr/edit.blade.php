@@ -19,9 +19,7 @@
                             <div class="col-sm-6">
                                 <select name="type_id"  class="form-control" >
                                     @foreach($res as $k=>$v)
-                                        @if($v->id == $data->type_id)
                                             <option selected value="{{$v->id}}"> {{$v->type_name}} </option>
-                                        @endif
                                     @endforeach
                                 </select>
                             </div>

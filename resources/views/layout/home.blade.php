@@ -27,6 +27,8 @@
         <link rel="stylesheet" href="/static/home/index/style.css">
         <!-- responsive css -->
         <link rel="stylesheet" href="/static/home/index/css/responsive.css">
+        <!-- <link rel="stylesheet" type="text/css" href="/static/admin/assets/layui/css/layui.css"> -->
+        <!-- <link rel="stylesheet" type="text/css" href="/static/admin/assets/layui/css/layui.mobile.css"> -->
         <!-- modernizr js -->
         <script src="/static/home/index/js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="/static/admin/assets/layui/layui.js"></script>
