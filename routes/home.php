@@ -272,6 +272,7 @@ Route::post('/store','UserController@store');
 // 验证码
 Route::get('/yzm','UserController@yzm');
 // 个人中心
-Route::get('/grzx', 'GrzxController@index');
-
+Route::get('/grzx', 'GrzxController@grzx');
+// 用户信息
+Route::get('/grzx/index', 'GrzxController@index');
 
