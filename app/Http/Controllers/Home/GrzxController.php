@@ -13,9 +13,20 @@ class GrzxController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function grzx()
     {
         return view('home.grzx.grzx');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $users = Users::all();
+        return view('home.grzx.index', ['users'=>$users]);
     }
 
     /**
