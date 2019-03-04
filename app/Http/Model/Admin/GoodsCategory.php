@@ -18,11 +18,6 @@ class GoodsCategory extends Model
         return $str.'|--'.$this->cate_name;
     }
 
-    //商品属于分类 一对一属于关系
-    public function goods()
-    {
-        return $this->belongsTo('App\Http\Model\Admin\Goods','cate_id','id');
-    }
 
     // 判断是第三级,返回表单禁止
     public function getCatejzAttribute()

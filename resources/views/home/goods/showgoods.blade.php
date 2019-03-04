@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="shop_menu shop_menu_2">
+
                 <ul class="cramb_area cramb_area_5">
                     <li>
                         <a href="index.html">
@@ -40,13 +41,33 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="elavetor">
-                    <img id="zoom" src="img/elavetor/small/l-8.jpg" data-zoom-image="img/elavetor/large/l-8.jpg"
-                    alt="">
-                    <div class="al_zoom">
+                <!-- 商品主图 -->
+                <div class="elavetor" id="small">
+                    <img id="smallImg" src="/static/admin/images/goods_img/{{$goods->goods_img}}" data-zoom-image="img/elavetor/large/l-8.jpg" alt="" style="width: 360px;height: 360px">
+                    <!-- 放大镜的图 -->
+                    <div class="proinfo" id="big" style="width: 400px;height: 400px;position: absolute;left:400px;top:0px;display: none;overflow: hidden;z-index: 1000">
+                        <img id="bigImg" src="/static/admin/images/goods_img/{{$goods->goods_img}}" style="position: absolute;">
                     </div>
+                    <!-- 移动阴影框 -->
+                    <div id="move" style="width: 100px;height: 100px;position: absolute;left: 0px;top: 0px;display: none;background: url('/static/admin/images/common/bg.png')">
+                    </div>
+                
+                
                 </div>
+                <p>
+                <!-- 遍历小图相册 -->
+                 @foreach($goodsimgs as $k=>$v)
+                 <ul id="uls" style="display: inline-block;border: 1px solid blue">
+                    <div  class="al_zoom" >
+                        <li>
+                            <img id="zoom" src="/static/admin/images/goods_imgs/{{$v->goods_imgs}}" data-zoom-image="img/elavetor/large/l-8.jpg" alt="" style="display: inline-block; width: 80px;height: 80px;">
+                        </li>
+                    </div>
+                </ul>
+                 @endforeach
+                </p>
             </div>
+
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="elav_titel">
                     <div class="elv_heading">
@@ -89,36 +110,67 @@
                         </p>
                     </div>
                     <div class="elavetor_social">
-                        <h3 class="widget-title">
-                            Share this product
-                        </h3>
+                        <h4 class="widget-title">
+                            重量
+                        </h4>
                         <ul class="social-link">
                             <li>
-                                <a class="fb" data-original-title="facebook" href="#" title="" data-toggle="tooltip">
-                                    <i class="fa fa-facebook">
-                                    </i>
-                                </a>
+                             {{$goods->goods_weight}}
                             </li>
 
                         </ul>
                     </div>
+                    <div class="elavetor_social" id="goods_kc">
+                        <h4 class="widget-title">
+                            库存
+                        </h4>
+                        <ul class="social-link">
+                            <li>
+                             {{$goods->goods_num}}&nbsp;件
+                            </li>
+
+                        </ul>
+                    </div>
+                    @foreach($type as $k=>$v)
+                    <div class="elavetor_social">
+                        <h2 class="widget-title">
+                            {{$v->attr_name}}
+                        </h2>
+                        <ul class="social-link"> 
+                            <?php $array = explode(',', $v->attr_value); ?>
+                            @foreach($array as $kk=>$vv)
+                            <li onclick="dian(this)" >
+                                <input type="radio" name="{{ $v->attr_name }}" class="goods-attr" id="attr" value="{{$vv}}">&nbsp;{{$vv}}
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="elav_info">
                     <div class="price_box price_box_acr">
                         <span class="old- price old- price-2">
-                            ${{$goods->markte_price}}
+                            ￥{{$goods->markte_price}}
                         </span>
                         <span class="spical-price spical-price-2">
-                            ${{$goods->goods_price}}
+                            ￥{{$goods->goods_price}}
                         </span>
                     </div>
                     <form class="cart-btn-area" action="#">
-                        <input type="number" value="1">
+                        <a name="" class="minus" href="javascript:void(0);"></a>
+                        <input type="number" value="1" id="buyNum" >
+                        <a name="" class="plus" href="javascript:void(0);"></a>
                         <button class="add-tocart cart_zpf" type="submit">
                             加入购物车
                         </button>
+
+                        <a href="javascript:buyNowTime(this);">
+                        <button class="add-tocart cart_zpf" type="submit" id="buyNowAddCart">
+                            立即购买
+                        </button>
+                        </a>
                     </form>
                     <div class="add_defi">
                         <a href="#" data-original-title="Add to Wishlist" data-toggle="tooltip">
@@ -137,26 +189,25 @@
                     </div>
                     <div class="new_meta">
                         <span class="sku_wrapper">
-                            SKU:
+                            服务:
                             <span class="sku">
-                                W-hat-8
+                                由易c优购商城提供售后服务
                             </span>
                         </span>
-                        <span class="posted_in">
-                            Categories:
-                            <a rel="tag" href="#">
-                                Accessories
-                            </a>
-                            ,
-                            <a rel="tag" href="#">
-                                Hats
-                            </a>
+                        <span class="sku_wrapper">
+                            承诺:
+                            
+                            <span class="sku">
+                                七天无理由退换货
+                            </span>
                         </span>
-                        <span class="tagged_as">
-                            Tag:
-                            <a rel="tag" href="#">
-                                fashion
-                            </a>
+
+                        <span class="sku_wrapper">
+                            提示:
+                            
+                            <span class="sku">
+                                图片仅供参考，以实物为主
+                            </span>
                         </span>
                     </div>
                 </div>
@@ -165,7 +216,48 @@
     </div>
 </div>
 <!-- 上部商品结束 -->
+<script type="text/javascript">
+    
+        function dian(obj){
+            $(obj).click(function(){
+            $(obj).attr('checked','checked').siblings().removeAttr('checked');
+            });
+    }
 
+    <?php session(['ck_goods_id' => $goods->id]) ?>
+
+     <script>
+          function buyNowTime(o)
+          {
+                var buyNum = $('#buyNum').val();
+                var goodsId = '{{ $goods->id }}';
+                if (parseInt(buyNum) < 1) {
+                    alert('您选择的商品数量不能小于1件');
+                    return ;
+                 }
+                var n = false;
+                var attr = $('.goods-attr').each(function(index, el) {
+                    
+                    if ($(this).parent().attr('checked') == 'true') {
+                       n = true;
+                    }
+
+                });;
+
+                if (!n) {
+                    alert('请选择商品属性!')
+                    return ;
+                }
+
+                var kc = $('#goods_kc').attr('value');
+
+                if (parseInt(buyNum) > parseInt(kc)) {
+                    alert('您选择的商品数量已经超过库存!');
+                    $('#buyNum').val(kc);
+                    return ;
+                }
+
+</script>
 <!-- 详情开始 -->
 <div class="tab_area_start">
             <div class="container">
@@ -174,18 +266,17 @@
                         <div class="my-tabs">
                             <!-- Nav tabs -->
                             <ul class="favtabs favtabs-2 favtabs-nytr" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true">Discription</a></li>
-                                <li role="presentation" class=""><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="false">Reviews (2)</a></li>
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true">商品介绍</a></li>
+                                <li role="presentation" class=""><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="false">商品评价</a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="home">
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
-                                            <div class="tb_desc">
-                                                <h2>Product Description</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla. Donec a neque libero. Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante.</p>
-                                                <p>Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget. Nam erat mi, rutrum at sollicitudin rhoncus, ultricies posuere erat. Duis convallis, arcu nec aliquam consequat, purus felis vehicula felis, a dapibus enim lorem nec augue.</p>
+                                            <div class="center" align="center">
+                                                
+                                                <p>{!!$goods->goods_desc!!}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -354,30 +445,31 @@
                             <div class="new_product">
                                 <div class="product_heading">
                                     <i class="fa fa-paper-plane-o"></i>
-                                    <span>Ralated Produtcs</span>
+                                    <span>同品牌排行</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="product_tx">
+                                    @foreach($goods_brand as $k=>$v)
                                     <div class="col-md-3">
                                         <div class="all-pros">
                                             <div class="single_product single_product_2">
                                                 <span>hot</span>
                                             </div>
                                             <div class="sinle_pic">
-                                                <a href="#">
-                                                <img class="primary-img" src="img/top-pic/top_pic_6.jpg" alt="">
-                                                <img class="secondary-img" src="img/product-pic/product_pic_10.jpg" alt="">
+                                                <a href="/goodlist/{{$v->id}}">
+                                                <img class="primary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}" alt="" style="width: 260px;height: 170px">
+                                                <img class="secondary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}" alt="" style="width: 260px;height: 170px">
                                                 </a>
                                             </div>
                                             <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="" data-original-title="Quickview">Quick View</button>   
+                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="" data-original-title="Quickview">快速查看</button>   
                                             </div>
                                             <div class="product_content">
                                                 <div class="usal_pro">
-                                                    <div class="product_name_2">
-                                                        <h2>
-                                                            <a href="#">Purus felis</a>
+                                                    <div class="product_name_2" >
+                                                        <h2 style="height: 50px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
+                                                            <a href="#">{{$v->goods_name}}</a>
                                                         </h2>
                                                     </div>
                                                     <div class="product_price">
@@ -396,7 +488,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="price_box">
-                                                        <span class="spical-price">$200.00</span>
+                                                        <span class="spical-price">￥{{$v->markte_price}}</span>
                                                     </div>
                                                     <div class="last_button_area last_button_area_px">
                                                         <ul class="add-to-links clearfix">
@@ -407,7 +499,7 @@
                                                             </li>
                                                             <li>
                                                                 <div class="new_act">
-                                                                    <a class="button_act button_act_ct" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">Go to Buy</a>
+                                                                    <a class="button_act button_act_ct" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">加入购物车</a>
                                                                 </div>
                                                             </li>
                                                             <li class="addcompare">
@@ -421,189 +513,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 ">
-                                        <div class="all-pros all-pros-2">
-                                            <div class="single_product single_product_2">
-                                                <span>hot</span>
-                                            </div>
-                                            <div class="sinle_pic">
-                                                <a href="#">
-                                                <img class="primary-img" src="img/product-pic/product_pic_3.jpg" alt="">
-                                                <img class="secondary-img" src="img/product-pic/product_pic_4.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="" data-original-title="Quickview">Quick View</button>   
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="usal_pro">
-                                                    <div class="product_name_2">
-                                                        <h2>
-                                                            <a href="#">Accumsan eli</a>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="product_price">
-                                                        <div class="price_rating">
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#">
-                                                            <i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a href="#"><i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a class="not-rated" href="#">
-                                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="spical-price">$100.00</span>
-                                                    </div>
-                                                    <div class="last_button_area last_button_area_px">
-                                                        <ul class="add-to-links clearfix">
-                                                            <li class="addwishlist">
-                                                                <div class="yith-wcwl-add-button show">
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="new_act">
-                                                                    <a class="button_act button_act_ct" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">Add To Cart</a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="addcompare">
-                                                                <div class="woocommerce product compare-button">
-                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="all-pros all-pros-3">
-                                            <div class="single_product_3 ">
-                                                <span>sale</span>
-                                            </div>
-                                            <div class="sinle_pic">
-                                                <a href="#">
-                                                <img class="primary-img" src="img/top-pic/top_pic_1.jpg" alt="">
-                                                <img class="secondary-img" src="img/top-pic/top_pic_1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="" data-original-title="Quickview">Quick View</button>   
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="usal_pro">
-                                                    <div class="product_name_2">
-                                                        <h2>
-                                                            <a href="#">Nam fringilla</a>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="product_price">
-                                                        <div class="price_rating">
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#">
-                                                            <i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a href="#">
-                                                            <i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a href="#">
-                                                            <i class="fa fa-star"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="spical-price">$150.00</span>
-                                                    </div>
-                                                    <div class="last_button_area last_button_area_px">
-                                                        <ul class="add-to-links clearfix">
-                                                            <li class="addwishlist">
-                                                                <div class="yith-wcwl-add-button show">
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="new_act">
-                                                                    <a class="button_act button_act_ct" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">Add To Cart</a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="addcompare">
-                                                                <div class="woocommerce product compare-button">
-                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="all-pros all-pros-4">
-                                            <div class="single_product single_product_2">
-                                                <span>hot</span>
-                                            </div>
-                                            <div class="sinle_pic">
-                                                <a href="#">
-                                                <img class="primary-img" src="img/product-pic/product_pic_15.jpg" alt="">
-                                                <img class="secondary-img" src="img/product-pic/product_pic-14.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="" data-original-title="Quickview">Quick View</button>   
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="usal_pro">
-                                                    <div class="product_name_2">
-                                                        <h2>
-                                                            <a href="#">Nam fringilla</a>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="product_price">
-                                                        <div class="price_rating">
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#">
-                                                            <i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a href="#"><i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a href="#"><i class="fa fa-star"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="spical-price">$100.00</span>
-                                                    </div>
-                                                    <div class="last_button_area last_button_area_px">
-                                                        <ul class="add-to-links clearfix">
-                                                            <li class="addwishlist">
-                                                                <div class="yith-wcwl-add-button show">
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="new_act">
-                                                                    <a class="button_act button_act_ct" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">Add To Cart</a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="addcompare">
-                                                                <div class="woocommerce product compare-button">
-                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -614,56 +524,171 @@
 <!-- 底部同品牌推荐结束 -->
 
 <!-- 最底部同类型推荐开始 -->
-<div class="logo_area">
+<section class="product_area">
             <div class="container">
                 <div class="row">
-                    <div class="brand brand-2 brand-2-dt">
-                        <div class="new_product">
-                            <div class="product_heading product_heading_tf">
-                                <i class="fa fa-coffee"></i>
-                                <span>Brand Logo</span>
+                    <div class="col-md-12">
+                        <div class="all_product">
+                            <div class="new_product">
+                                <div class="product_heading">
+                                    <i class="fa fa-coffee"></i>
+                                    <span>同类型推荐</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="main_brand main_brand_tf">
-                            <div class="all_brand indicator-brand indicator-brand-7 owl-carousel owl-theme" style="opacity: 1; display: block;">
-                                <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 2660px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);"><div class="owl-item" style="width: 190px;"><div class="col-md-12">
-                                    <div class="brand_pix">
-                                        <img src="img/brand-logo/logo_1.jpg" alt="">
+                            <div class="row">
+                                <div class="product_tx">
+                                    @foreach($goods_type as $k=>$v)
+                                    <div class="col-md-3">
+                                        <div class="all-pros">
+                                            <div class="single_product single_product_2">
+                                                <span>hot</span>
+                                            </div>
+                                            <div class="sinle_pic">
+                                                <a href="/goodlist/{{$v->id}}">
+                                                <img class="primary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}" alt="" style="width: 260px;height: 170px">
+                                                <img class="secondary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}" alt="" style="width: 260px;height: 170px">
+                                                </a>
+                                            </div>
+                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
+                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="" data-original-title="Quickview">快速查看</button>   
+                                            </div>
+                                            <div class="product_content">
+                                                <div class="usal_pro">
+                                                    <div class="product_name_2" >
+                                                        <h2 style="height: 50px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
+                                                            <a href="#">{{$v->goods_name}}</a>
+                                                        </h2>
+                                                    </div>
+                                                    <div class="product_price">
+                                                        <div class="price_rating">
+                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                            <a href="#"><i class="fa fa-star"></i></a>
+                                                            <a href="#">
+                                                            <i class="fa fa-star"></i>
+                                                            </a>
+                                                            <a href="#">
+                                                            <i class="fa fa-star"></i>
+                                                            </a>
+                                                            <a href="#">
+                                                            <i class="fa fa-star"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price_box">
+                                                        <span class="spical-price">￥{{$v->markte_price}}</span>
+                                                    </div>
+                                                    <div class="last_button_area last_button_area_px">
+                                                        <ul class="add-to-links clearfix">
+                                                            <li class="addwishlist">
+                                                                <div class="yith-wcwl-add-button show">
+                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="new_act">
+                                                                    <a class="button_act button_act_ct" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">加入购物车</a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="addcompare">
+                                                                <div class="woocommerce product compare-button">
+                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div></div><div class="owl-item" style="width: 190px;"><div class="col-md-12">
-                                    <div class="brand_pix">
-                                        <img src="img/brand-logo/logo_2.jpg" alt="">
-                                    </div>
-                                </div></div><div class="owl-item" style="width: 190px;"><div class="col-md-12">
-                                    <div class="brand_pix">
-                                        <img src="img/brand-logo/logo_3.jpg" alt="">
-                                    </div>
-                                </div></div><div class="owl-item" style="width: 190px;"><div class="col-md-12">
-                                    <div class="brand_pix">
-                                        <img src="img/brand-logo/logo_4.jpg" alt="">
-                                    </div>
-                                </div></div><div class="owl-item" style="width: 190px;"><div class="col-md-12">
-                                    <div class="brand_pix">
-                                        <img src="img/brand-logo/logo_5.jpg" alt="">
-                                    </div>
-                                </div></div><div class="owl-item" style="width: 190px;"><div class="col-md-12">
-                                    <div class="brand_pix">
-                                        <img src="img/brand-logo/logo_6.jpg" alt="">
-                                    </div>
-                                </div></div><div class="owl-item" style="width: 190px;"><div class="col-md-12">
-                                    <div class="brand_pix">
-                                        <img src="img/brand-logo/logo_3.jpg" alt="">
-                                    </div>
-                                </div></div></div></div>
-                                
-               
-                            <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev"><i class="fa fa-angle-left"></i></div><div class="owl-next"><i class="fa fa-angle-right"></i></div></div></div></div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 <!-- 最底部同类型推荐结束 -->
 @endsection
+
+@section('js')
+    <script>
+
+        $('.minus').click(function(){
+            var num = $('#buyNum').val();
+            num--;
+            if(num <= 1){
+                num =1;
+            }
+            $('#buyNum').val(num);
+        });
+        $('.plus').click(function(){
+            var num = $('#buyNum').val();
+            num++;
+            var goods_kc = $('#goods_kc').text();
+            if(num >= goods_kc){
+                num = goods_kc;
+            }
+            $('#buyNum').val(num);
+        });
+       //放大镜
+        $('#small').mouseover(function(){
+            $('#move,#big').show();
+
+            $('#move').mousemove(function(e){
+                //获取移动时获取各项的值
+                var x = e.pageX;
+                var y = e.pageY;
+
+                var l = $('#small').offset().left;
+                var t = $('#small').offset().top;
+
+                var mw = $('#move').width() /2;
+                var mh = $('#move').height() /2;
+
+                var sl = x - l - mw;
+                var sh = y -t - mh;
+                if(sl <= 0){
+                    sl =0;
+                }
+                if(sh <= 0){
+                    sh =0;
+                }
+                var maxl = $('#small').width()-$('#move').width();
+                var maxt = $('#small').height()-$('#move').height();
+                if(sl >= maxl){
+                    sl = maxl;
+                }
+                if(sh >= maxt){
+                    sh = maxt;
+                }
+                //设置偏移量
+                $('#move').css('left',sl+'px');
+                $('#move').css('top',sh+'px');
+
+
+                //2.大图片 移动
+                var bl = sl / $('#small').width() * $('#bigImg').width();
+                var bt = sh / $('#small').height() * $('#bigImg').height();
+
+                $('#bigImg').css('left',-bl+'px');
+                $('#bigImg').css('top',-bt+'px');
+            });
+        });
+
+
+        $('#small').mouseout(function(){
+            $('#move').css('display','none');
+            $('#big').css('display','none');
+        });
+
+        //更换图片
+        $('#uls img').click(function(){
+            var src = $(this).attr('src');
+            $('#bigImg').attr('src',src);
+            $('#smallImg').attr('src',src);
+        });
+    </script>
+@stop
+
+

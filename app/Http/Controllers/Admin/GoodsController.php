@@ -187,7 +187,7 @@ class GoodsController extends Controller
       $brand = GoodsBrand::orderBy('id','desc')->get();
       //dd($type);
       $data = Goods::find($id);
-      $goodsimgs = Goodsimgs::where('goods_id',$id)->get();
+      $goodsimgs = GoodsImgs::where('goods_id',$id)->get();
       return view('admin/goods/edit',['goodsimgs'=>$goodsimgs,'data'=>$data,'cate'=>$cate,'type'=>$type,'brand'=>$brand,'request'=>$request->all()]);
        //dd($id);
        
@@ -263,15 +263,16 @@ class GoodsController extends Controller
         try{
         
           Goods::where('id',$id)->update($data);
-          // $goodstype = [
-          //           'goods_id' => $id
-          //       ];
-          // GoodsType::where('id',$type_id)->update($goodstype);
+          $goodstype = [
+                    'goods_id' => $id
+                ];
+          GoodsType::where('id',$type_id)->update($goodstype);
+
         }catch(\Exception $err){
-          echo '<script>alert("修改失败");location.href="/admin/goods"</script>';
+          echo '<script>alert("修改成功");location.href="/admin/goods"</script>';
         }
         
-       echo '<script>alert("修改成功");location.href="/admin/goods"</script>';
+       echo '<script>alert("修改失败");location.href="/admin/goods"</script>';
        
     }
 

@@ -503,6 +503,10 @@
         <script src="/static/home/index/js/plugins.js"></script>
         <!-- main js -->
         <script src="/static/home/index/js/main.js"></script>
+
+@section('js')
+@show
+
     </body>
 </html>
 
