@@ -4,11 +4,25 @@
 @section('title2', '添加栏目')
 @section('content')
 <div class="col-lg-12 col-sm-12 col-xs-12">
+<!-- 显示错误消息 开始 -->
+    @if (session('success'))
+        <div class="class='alert alert-success" role="lert">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
+    @if (session('error'))
+        <div class="class='alert alert-danger" role="lert">
+            {{ session('error') }}
+        </div>
+    @endif
+<!-- 显示错误消息 结束 -->
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
                 <span class="widget-caption">添加栏目</span>
             </div>
-            <div class="widget-body" style="height: 1000px">
+            <div class="widget-body" style="height: 1100px">
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" action="/admin/column"  method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -40,15 +54,13 @@
                                 <input class="form-control" placeholder="用于栏目排序" name="column_sort" type="number" required="">
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">栏目图</label>
+                            <label for="logo_upload" class="col-sm-2 control-label no-padding-right">栏目图</label>
                             <div class="col-sm-6">
-                                <input placeholder="" name="column_img" type="file" required="">
+                                <input id="logo_upload" name="column_img" type="file" required="">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
-                        
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">栏目内容</label>
                             <div class="col-sm-6">

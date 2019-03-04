@@ -128,7 +128,6 @@
     </div>
 </div>
         <!--social design arae end-->
-
         <!--我的帐户开始-->
         <div class="login-area" >
             <div class="container">
@@ -168,9 +167,6 @@
             </div>
         </div>
         <!--我的帐户开始结束-->
-        <!--newsletter area start-->
-
-        <!--newsletter area end-->
         <!--footer top area start-->
         <!--footer middle area end-->
         <!--footer bottom area start-->

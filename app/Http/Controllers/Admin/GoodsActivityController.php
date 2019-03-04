@@ -4,25 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Model\Admin\Navigation;
-
-class NavigationController extends Controller
+use App\Http\Model\Admin\GoodsActivity;
+use App\Http\Model\Admin\Goods;
+class GoodsActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        // 获取搜索关键字
-        $search = $request->input('search','');
-        // 获取导航所有数据
-        $data = Navigation::where('nav_title','like','%'.$search.'%')
-                ->orderBy('nav_sort','desc')
+        // 获取活动所有数据
+        $data = GoodsActivity::orderBy('id','desc')
                 ->paginate(5);
         // 将数据分配到模板
-        return view('admin/navigation/index',['data'=>$data,'request'=>$request->all()]);
+        return view('admin/activity/index',['data'=>$data]);
     }
 
     /**
@@ -32,8 +29,8 @@ class NavigationController extends Controller
      */
     public function create()
     {
-        // 显示导航添加模板
-        return view('admin/navigation/add');
+        // 显示活动添加页面
+        return view('admin/activity/add');
     }
 
     /**
@@ -46,23 +43,18 @@ class NavigationController extends Controller
     {
         // 接收数据
         $data = $request->except(['_token']);
-        // 判断数据是否为空
+        // 验证数据
         $this->validate($request,[
-            'nav_title' => 'required',
-            'nav_link' => 'required',
+            'goods_id' => 'required',
         ],[
-            'nav_title.required' => '请填写导航标题',
-            'nav_link.required' => '请填写导航链接',
+            'goods_id.required' => '请填写商品id',
         ]);
-        // 如果排序为空。给默认值为0
-        if( !$request->filled('nav_sort') ){
-            $data['nav_sort'] = 0;
-        }
-        // 向数据库插入数据
-        $res = Navigation::insert($data);
-        // 判断数据是否插入成功
+        // 向数据库保存数据
+        $res = GoodsActivity::insert($data);
+
+        // 判断是否保存成功
         if($res){
-            return redirect('/admin/nav')->with('success','添加成功');
+            return redirect('/admin/activity')->with('success','添加成功');
         }else{
             return back()->with('error','添加失败');
         }
@@ -88,9 +80,9 @@ class NavigationController extends Controller
     public function edit($id)
     {
         // 查找数据
-        $data = Navigation::find($id);
+        $data = GoodsActivity::find($id);
         // 分配到模板
-        return view('admin/navigation/edit',['data'=>$data]);
+        return view('admin/activity/edit',['data'=>$data]);
     }
 
     /**
@@ -104,27 +96,21 @@ class NavigationController extends Controller
     {
         // 接收数据
         $data = $request->except(['_token','_method']);
-        // 判断数据是否为空
+        // 验证数据
         $this->validate($request,[
-            'nav_title' => 'required',
-            'nav_link' => 'required',
+            'goods_id' => 'required',
         ],[
-            'nav_title.required' => '请填写导航标题',
-            'nav_link.required' => '请填写导航链接',
+            'goods_id.required' => '请填写商品id',
         ]);
-        // 如果排序为空。给默认值为0
-        if( !$request->filled('nav_sort') ){
-            $data['nav_sort'] = 0;
-        }
         // 向数据库保存数据
-        $res = Navigation::where('id',$id)->update($data);
-        // 判断数据是否插入成功
-        if($res){
-            return redirect('/admin/nav')->with('success','修改成功');
-        }else{
-            return back()->with('error','修改失败,请修改信息或返回上一级');
-        }
+        $res = GoodsActivity::where('id',$id)->update($data);
 
+        // 判断是否保存成功
+        if($res){
+            return redirect('/admin/activity')->with('success','修改成功');
+        }else{
+            return back()->with('error','修改失败');
+        }
     }
 
     /**
@@ -136,10 +122,10 @@ class NavigationController extends Controller
     public function destroy($id)
     {
         // 删除数据库中数据
-        $res = Navigation::destroy($id);
+        $res = GoodsActivity::destroy($id);
         // 判断是否成功
         if($res){
-            return redirect('/admin/nav')->with('success','删除成功');
+            return redirect('/admin/activity')->with('success','删除成功');
         }else{
             return back()->with('error','删除失败');
         }

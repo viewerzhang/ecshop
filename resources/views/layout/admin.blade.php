@@ -433,6 +433,32 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
+                        <!-- 活动管理 -->
+                        <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon glyphicon glyphicon-th"></i>
+                            <span class="menu-text">活动管理 </span>
+                            <i class="menu-expand"></i>                  
+                            <i class="menu-expand"></i>             
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="/admin/activity/create">
+                                    <span class="menu-text">添加活动</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="/admin/activity">
+                                    <span class="menu-text">活动列表</span>
+                                </a>
+                            </li>
+
+                                <ul class="submenu">
+                                </ul>
+                            </li>
+
+                        </ul>
                       <!--  轮播图管理 -->
                       <!--	轮播图管理 -->
                       <li>
