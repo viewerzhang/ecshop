@@ -99,7 +99,6 @@ Route::resource('/shoppingcar','ShoppingCarController');
 
 
 //商品列表页
-
 Route::resource('goodlist','GoodlistController');
 
 

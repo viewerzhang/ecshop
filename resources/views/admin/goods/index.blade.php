@@ -38,13 +38,13 @@
 	                        <thead class="">
 	                            <tr>
 	                                <th class="text-center" width="4px">ID</th>
-	                                <th class="text-center" width="1%">商品编号</th>
-	                                <th class="text-center" >商品名称</th>
+	                                <th class="text-center" width="6%">商品编号</th>
+	                                <th class="text-center" width="12%">商品名称</th>
 	                                <th class="text-center" width="8%">商品图片</th>
 	                                <th class="text-center" width="5%">上架</th>
-	                              	<th class="text-center" width="8%">所属分类</th>
-	                              	<th class="text-center" width="8%">所属类型</th>
-	                              	<th class="text-center" width="8%">所属品牌</th>
+	                              	<th class="text-center" width="7%">所属分类</th>
+	                              	<th class="text-center" width="7%">所属类型</th>
+	                              	<th class="text-center" width="7%">所属品牌</th>
 	                              	<th class="text-center" width="6%">市场价</th>
 	                              	<th class="text-center" width="6%">本店价</th>
 	                              	<th class="text-center" width="6%">浏览量</th>
@@ -58,7 +58,7 @@
 	                           	<tr align="center">
 	                           		<td>{{$v->id}}</td>
 	                           		<td>{{$v->goods_bianhao}}</td>
-	                           		<td style="width: 20px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;">{{$v->goods_name}}</td>
+	                           		<td >{{substr($v->goods_name,0,22)}}</td>
 	                           		<td>
 	                           			<img src="/static/admin/images/goods_img/{{$v->goods_img}}" width="45px" height="30">
 									</td>
@@ -66,9 +66,9 @@
 	                           			{{$v->goods_status == 1 ? '是' : '否'}}
 	                           		</td>
  
-	                           		<td>{{$v->cate_id}}</td>
-	                           		<td>{{$v->type_id}}</td>
-	                           		<td>{{$v->brand_id}}</td>
+	                           		<td>{{$v->GoodsCategory->cate_name}}</td>
+	                           		<td>{{$v->GoodsType->type_name}}</td>
+	                           		<td>{{$v->GoodsBrand->brand_name}}</td>
 	                           		<td>￥{{$v->markte_price}}</td>
 	                           		<td>￥{{$v->goods_price}}</td>
 	                           		<td>{{$v->click_num}}</td>
@@ -86,7 +86,7 @@
 
 	                           				<a href="/admin/goods/{{$v->id}}/edit" class="btn btn-warning btn-xs" style="display: inline-block;"><i class="fa fa-edit"></i>修改</a>
 
-											<button class="btn btn-danger btn-xs" style="display: inline-block;><i class="fa fa-trash-o">
+											<button class="btn btn-danger btn-xs" style="display: inline-block;"><i class="fa fa-trash-o">
                             				</i>删除</button>
 	                           			</form>
 	                           			

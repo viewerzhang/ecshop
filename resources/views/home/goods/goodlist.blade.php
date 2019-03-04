@@ -411,8 +411,8 @@
                                             <img class="primary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}"
                                             alt="" style="width: 260px;height: 170px">
 
-
-                                            <img class="secondary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}" width="260" height="170" alt="">
+                                            
+                                            <img class="secondary-img" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[0]->goods_imgs }}" width="260" height="170" alt="">
                                         </a>
                                     </div>
                                     <div class="product-action" data-toggle="modal" data-target="#myModal">
@@ -424,8 +424,8 @@
                                     <div class="product_content">
                                         <div class="usal_pro">
                                             <div class="product_name_2">
-                                                <h2>
-                                                    <a href="#">
+                                                <h2 style="width: 250px;height: 50px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
+                                                    <a href="#" >
                                                         {{$v->goods_name}}
                                                     </a>
                                                 </h2>
@@ -456,7 +456,7 @@
                                             </div>
                                             <div class="price_box">
                                                 <span class="spical-price">
-                                                    ${{$v->goods_price}}
+                                                    ￥{{$v->shop_price}}
                                                 </span>
                                             </div>
                                             <div class="last_button_area">
