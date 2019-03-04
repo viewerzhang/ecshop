@@ -134,7 +134,29 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-  
+  <!-- 显示错误消息 开始 -->
+    @if (session('success'))
+        <div class="class='alert alert-success" role="lert">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
+    @if (session('error'))
+        <div class="class='alert alert-danger" role="lert">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+<!-- 显示错误消息 结束 -->
                         <div class="login-content login-margin">
                             <h2 class="login-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个新账户</font></font></h2>
                             <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建您自己的Unicase帐户。</font></font></p>
@@ -211,41 +233,45 @@
 
 
 <div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div>
+<script src="/static/admin/assets/layui/layui.js"></script>
 <script type="text/javascript">
     function sendPhone(obj)
-        {
-            // 接收手机号码
-            var user_phone = $('#phone').val();
-            // 定义正则检查手机号是否格式正确
-            var phone_grep = /^1{1}[3456789]{1}[0-9]{9}$/;
-            // 使用正则检查手机号
-            if(!phone_grep.test(user_phone)){
-                alert('请输入正确手机号');
-                return false;
-            }
-
-
-            // 将js对象转化成jquery对象
-            var object = $(obj);
-            // 设置button状态
-            object.attr('disabled',true);
-            // 获取当前的按钮上的文字
-            var text = object.val();
-            // alert(obj);[object HTMLInputElement]  js对象
-            // alert($(obj));[object Object]  jquery对象
-            if(text == '获取验证码'){
-                // 发送ajax 请求后台 
-                $.get('/yzm',{'user_phone':user_phone},function(data){
-                    if(data.code == 0){
-                       
-                        editCon();
-                    }
-                },'json');  
-            }else{
-                return false;
-            }
-            
+    {
+        // 接收手机号码
+        var user_phone = $('#phone').val();
+        // 定义正则检查手机号是否格式正确
+        var phone_grep = /^1{1}[3456789]{1}[0-9]{9}$/;
+        // 使用正则检查手机号
+        if(!phone_grep.test(user_phone)){
+            alert('请输入正确手机号');
+            return false;
         }
+        // 将js对象转化成jquery对象
+        var object = $(obj);
+        // 获取当前的按钮上的文字
+        var text = object.val();
+        // alert(obj);[object HTMLInputElement]  js对象
+        // alert($(obj));[object Object]  jquery对象
+        if(text == '获取验证码'){
+            // 发送ajax 请求后台 
+            $.get('/yzm',{'user_phone':user_phone},function(data){
+                if(data.code == 0){
+                   // 设置button状态
+                    object.attr('disabled',true);
+                    editCon();
+                }else{
+                    layui.use('layer', function(){
+                        var layer = layui.layer;
+                          
+                        layer.msg('该手机号已经注册！');
+                    });
+                }
+            },'json');  
+        }else{
+            return false;
+        }
+        
+    }
 
     function editCon()
     {
@@ -268,6 +294,7 @@
         }
             
     }
+
 </script>
 </body>
 </html>

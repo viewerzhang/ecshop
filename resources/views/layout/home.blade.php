@@ -116,10 +116,9 @@
                 </div>
                 <div class="col-md-9">
                     <div class="header_all search_box_area">
-                        <form class="new_search" role="search" method="get" action="#">
-                            <input id="mix_search" class="search-field" placeholder="Search Products…" value="" name="s" title="Search for:" type="search">
+                        <form class="new_search" role="search" method="get" action="/search">
+                            <input id="mix_search" class="search-field" placeholder="搜索您想找的商品名称" value="{{ $request['search'] or '' }}" name="search" title="Search for:" type="search">
                             <input value="Search" type="submit">
-                            <input name="post_type" value="product" type="hidden">
                         </form>
                     </div>
                     <div class="header_all shopping_cart_area">

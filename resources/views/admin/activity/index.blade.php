@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title', '活动管理')
-@section('url','/admin/ad')
+@section('url','/admin/activity')
 @section('title2', '活动列表')
 @section('content')
 <div class="widget-body">

@@ -456,7 +456,7 @@
                                             </div>
                                             <div class="price_box">
                                                 <span class="spical-price">
-                                                    ￥{{$v->shop_price}}
+                                                    ￥{{$v->goods_price}}
                                                 </span>
                                             </div>
                                             <div class="last_button_area">
