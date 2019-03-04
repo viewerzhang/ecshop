@@ -87,9 +87,7 @@ class GoodlistController extends Controller
             }
            
         })->paginate(15);
-       /* $id = $request->input('id');
-        dd($id);*/
-        /*$goodsimgs = GoodsImgs::where('goods_id',$id)->get();*/
+     
         return view('home/goods/goodlist',['data'=>$data,'request'=>$request->all()]);
     }
 
