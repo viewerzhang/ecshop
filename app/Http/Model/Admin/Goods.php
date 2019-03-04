@@ -13,24 +13,24 @@ class Goods extends Model
     public $timestamps = false;
     // protected $dateFormat = 'U';
   
-    //一个商品对应一个分类  一对一关系
+    //一个商品属于一个分类  一对一属于关系
     public function goodscategory()
     {
-        return $this->hasOne('App\Http\Model\Admin\GoodsCategory','cate_id');
+        return $this->belongsTo('App\Http\Model\Admin\GoodsCategory','cate_id');
     }
 
-    //一个商品对应一个类型  一对一关系
+
+    // //一个商品属于一个类型 一对一属于关系
     // public function goodstype()
     // {
-    //     return $this->hasOne('App\Http\Model\Admin\GoodsType','goods_id');
+    //     return $this->belongsTo('App\Http\Model\Admin\GoodsType','type_id');
     // }
-
-    //一个商品对应一个品牌  一对一关系
+    
+    //一个商品对应一个品牌  一对一属于关系
     public function goodsbrand()
     {
-        return $this->hasOne('App\Http\Model\Admin\GoodsBrand','brand_id');
+        return $this->belongsTo('App\Http\Model\Admin\GoodsBrand','brand_id');
     }
-    
 
     //一个商品对应一个多个小图  一对多关系
     public function goodsimgs()

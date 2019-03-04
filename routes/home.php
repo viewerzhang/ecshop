@@ -99,7 +99,6 @@ Route::resource('/goodsorder','GoodsOrderController');
 
 
 //商品列表页
-
 Route::resource('goodlist','GoodlistController');
 
 
