@@ -24,6 +24,9 @@ Route::resource('/shoppingcar','ShoppingCarController');
 // 订单路由
 Route::resource('/goodsorder','GoodsOrderController');
 
+// 用户地址路由
+Route::resource('/useraddr','UserAddrController');
+
 
 
 

@@ -8,6 +8,7 @@ class GoodsOrder extends Model
 {
     protected $table = 'goods_order';
     protected $primaryKey = 'id';
+    public $timestamps = false;
     public function users()
     {
         return $this->belongsTo('App\Http\Model\Admin\Users','user_id');
