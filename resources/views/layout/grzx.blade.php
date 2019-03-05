@@ -29,7 +29,7 @@
                     <h2 class="cat-menu-title text-uppercase"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" style="border: 1px solid #aaa;">订单中心</font></font></h2>
                     <div class="menu-categories-container">
                         <ul class="menu-categories">
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font></a></li>
+                            <li><a href="/goodsorder"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font></a></li>
                         </ul>
                         <ul class="menu-categories">
                             <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购物车</font></font></a></li>

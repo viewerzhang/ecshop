@@ -41,7 +41,7 @@ class UserAddrController extends Controller
         $data = $request->except(['_token']);
         $data['uid'] = session('user.id');
         try{
-            UserAddr::insert($data);
+            $aid = UserAddr::insertGetId($data);
         }catch(\Exception $err){
             // 返回失败信息
             $arr = [
@@ -49,10 +49,10 @@ class UserAddrController extends Controller
             ];
             return json_encode($arr);
         }
-        $arr = [
-            'code' => '1'
-        ];
-        return json_encode($arr);
+
+        $data['code'] = '1';
+        $data['fhid'] = $aid;
+        return json_encode($data);
 
     }
 
@@ -89,8 +89,9 @@ class UserAddrController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->except(['_token','_method']);
-        $history = UserAddr::find($id);
-        if($history->uid != session('user.id') ){
+        $history = UserAddr::find($data['id']);
+        // var_dump($history->user_title);die;
+        if( $history->uid != session('user.id') ){
             // 返回错误信息
             $arr = [
                 'code' => '0'
@@ -98,7 +99,7 @@ class UserAddrController extends Controller
             return json_encode($arr);
         }
         try{
-            UserAddr::where('id',$id)->update($data);
+            UserAddr::where('uid',$id)->where('id',$data['id'])->update($data);
         }catch(\Exception $err){
             // 返回错误信息
             $arr = [
@@ -107,7 +108,7 @@ class UserAddrController extends Controller
             return json_encode($arr);
         }
         // 返回成功信息
-        $data = UserAddr::find($id);
+        $data = UserAddr::find($data['id']);
         $data['code'] = '1';
         return json_encode($data);
     }

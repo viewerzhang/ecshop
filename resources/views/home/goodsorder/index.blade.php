@@ -10,6 +10,8 @@
                                 <li><a href="/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主页/</font></font></a></li>
                                 <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的购物车/</font></font></a></li>
                                 <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">确认订单</font></font></a></li>
+
+                                    <li style="float: right;"><a id="djtj" href="javascript:;">添加地址</a></li>
                             </ul>
                             <hr class="hrtop">
                         </div>
@@ -23,12 +25,15 @@
                 <div class="row" style="margin-top: -20px">
                     <form action="/goodsorder" method="post">
                         {{ csrf_field() }}
-                        <input type="text" name="code" hidden value="{{ $code }}">
+                        <input type="text" name="code" hidden value="{{ $code }}"> 
                         <div class="col-lg-6 col-md-6">
                             <div class="checkbox-form addr-box">
                                 <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;margin-left: 30px;">配送地址</font></font></h3>
                                 <!-- 配送地址页面 -->
-                                <div class="row">
+                                <div class="row" id="psdzk">
+                                    @if(count($attr) == 0)
+                                    <div id="oop" style="width: 500px;height: 200px;margin-left: 400px;margin-left: 40px;"><h3>您的地址列表没有信息，赶紧去<a id="djtj2" href="javascript:;">添加地址</a>吧！</h3></div>
+                                    @else
                                     <!-- 用户的每一条地址 -->
                                     @foreach($attr as $k => $v)
                                     <div class="col-md-6 address okdz" style="margin-top: 10px" >
@@ -45,6 +50,7 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    @endif
                                     <!-- 用户的每一条地址结束 -->
                                  
                                 </div>
@@ -235,7 +241,26 @@
             </div>
         </div>
 
+
+
+
+
+
+        <div class="col-md-6 address okdz" id="dkl" style="margin-top: 10px;display: none;" >
+            <span>收货人： <span class="shr-txt" id="shr"></span></span>
+            <br>
+            <span>联系电话：<span class="shr-txt" id='lxdh'></span></span>
+            <br>
+            <span>邮编：<span class="shr-txt" id="yb"></span></span>
+            <br>
+            <span>详细地址：<span class="shr-txt" id="xxdz"></span></span>
+            <div class="anniu" onclick="xz(this)">
+            <input type="radio" hidden value="" id="dxk" class="bxyx" name="dz">
+                <p class="xzdz xz">选择</p>
+            </div>
+        </div>
         <script type="text/javascript">
+            pd = true;
             function xz(ud)
             {
                 $('.xzdz').css('color','#888');
@@ -264,5 +289,32 @@
                     return false;
                 }
             }
+
+            $('#djtj,#djtj2').click(function () {
+
+                layui.use(['layer', 'form'], function(){
+                  var layer = layui.layer
+                  ,form = layui.form;
+                  $.ajax({
+                      type:'get',
+                      url:'/useraddr/create',
+                      async:false,
+                      success:function(dataa)
+                      {
+                          data = dataa;
+                      }
+          
+                  });
+                   layer.open({
+                      type: 1,
+                      title:'个人中心 -- 添加地址',
+                      skin: 'layui-layer-rim', //加上边框
+                      area: ['460px', '550px'], //宽高
+                      content: data,
+                    });
+                });    
+
+            });
+
         </script>
 @endsection

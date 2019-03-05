@@ -16,9 +16,13 @@ class ShoppingCarController extends Controller
      */
     public function index()
     {
-        $data = ShoppingCar::where('user_id',session('user.id'))->get();
-        $zhi = self::jszj();
-        return view('home.shoppingcar.index',['zhi'=>$zhi,'data'=>$data]);
+        try{
+            $data = ShoppingCar::where('user_id',session('user.id'))->get();
+            $zhi = self::jszj();
+            return view('home.shoppingcar.index',['zhi'=>$zhi,'data'=>$data]);
+        }catch(\Exception $err){
+            return view('error.index');
+        }
     }
 
     /**
@@ -39,7 +43,64 @@ class ShoppingCarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $data = $request->except(['_token']);
+            $spxx['car_num'] = $data['sum'];
+            $spxx['goods_id'] = $data['goods_id'];
+            $spxx['user_id'] = session('user.id');
+            $spxx['dqtime'] = time() + 60 *20;
+            unset($data['sum']);
+            unset($data['goods_id']);
+            if(count($data) == 0){
+                return back()->with('error','请您选择商品属性');
+            }
+            $attr = '';
+            foreach($data as $k => $v){
+                $attr .= $v.',';
+            }
+            $attr = rtrim($attr,',');
+            $spxx['attr'] = $attr;
+
+            $good = Goods::where('id',$spxx['goods_id'])->first();
+            // 没有找到要添加的商品，返回错误信息
+            if(!$good){
+                return back()->with('error','对不起，该商品可能已下架。');
+            }
+            // 找到要添加的商品，但商品已下架，返回错误信息
+            if($good['goods_status'] != '1'){
+                return back()->with('error','对不起，该商品已下架。');
+            }
+            // 商品没有下架，但要添加的商品大于库存商品，返回错误信息
+            if($good['goods_num'] < $spxx['car_num']){
+                return back()->with('error','对不起，该商品没有那么多了，请合理选择购买数量。');
+            }
+            $em = ShoppingCar::where('user_id',session('user.id'))->where('attr',$attr)->where('goods_id',$spxx['goods_id'])->first();
+            // 用户购物车有相同商品区间
+            if($em){
+                // 在用户购物车商品中直接加上商品数量
+                $em->car_num = $em->car_num + $spxx['car_num'];
+                $good->goods_num = $good->goods_num - $spxx['car_num'];
+                try{
+                    // 保存到数据库
+                    $em->save();
+                    $good->save();
+                    // 捕获系统的错误信息
+                }catch(\Exception $err){
+                   return back()->with('error','商品添加失败');
+                }
+                return back()->with('success','商品添加成功 去我的<a href="/shoppingcar">购物车</a>');
+            }
+            $good->goods_num = $good->goods_num - $spxx['car_num'];
+            try{
+                ShoppingCar::insert($spxx);
+                $good->save();
+            }catch(\Exception $err){
+                return back()->with('error','商品添加失败');
+            }
+            return back()->with('success','商品添加成功 去我的<a href="/shoppingcar">购物车</a>');
+        }catch(\Exception $err){
+            return view('error.index');
+        }
     }
 
     /**
@@ -173,7 +234,21 @@ class ShoppingCarController extends Controller
     public function caradd(Request $request)
     {
         // 获取添加购物车数据
+        if(!session('userlogin')){
+            $arr = [
+                'code' => '0',
+                'msg' => '对不起，您还没有登录，请您先<a href="/login" style="color: #2bf678">登录</a>。'
+            ];
+            return json_encode($arr);
+        }
         $data = $request->except(['_token','_method']);
+        if($data['attr'] == ''){
+            $arr = [
+                'code' => '0',
+                'msg' => '对不起，您还没有选择商品 型号/尺寸。'
+            ];
+            return json_encode($arr);
+        }
         // 获取用户ID
         $data['user_id'] = session('user.id');
         // 查看要添加商品的状态
@@ -208,9 +283,11 @@ class ShoppingCarController extends Controller
         if($em){
             // 在用户购物车商品中直接加上商品数量
             $em->car_num = $em->car_num + $data['car_num'];
+            $good->goods_num = $good->goods_num - $data['car_num'];
             try{
                 // 保存到数据库
                 $em->save();
+                $good->save();
                 // 捕获系统的错误信息
             }catch(\Exception $err){
                 // 返回错误信息
@@ -230,7 +307,9 @@ class ShoppingCarController extends Controller
         }
         // 用户购物车没有添加商品信息区间
         $data['dqtime'] = time() + 60 * 30;
+        $good->goods_num = $good->goods_num - $data['car_num'];
         try{
+            $good->save();
             // 为用户在购物车中插入一条新数据
             ShoppingCar::insert($data);
             // 捕获错误
@@ -268,5 +347,23 @@ class ShoppingCarController extends Controller
         return $value;
     }
 
-
+    public static function quanjugwc()
+    {
+        if(!session('userlogin')){
+            return '您还未登录';
+        }
+        $jc = ShoppingCar::get();
+        foreach($jc as $k => $v){
+            if($v->dqtime < time()){
+                $good = Goods::where('id',$v->goods_id)->first();
+                if($good){
+                    $good->goods_num = $good->goods_num + $v->car_num;
+                    $good->save();
+                }
+                ShoppingCar::destroy($v->id);
+            }
+        }
+        $data = ShoppingCar::where('user_id',session('user.id'))->get();
+        return $data;
+    }
 }

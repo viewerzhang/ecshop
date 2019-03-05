@@ -98,6 +98,9 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="wishlist-content">
+@if(count($data) == 0)
+    <div style="width: 500px;height: 200px;margin-left: 400px;"><h3>您的购物车没有商品，赶紧去<a href="/goodlist">购物</a>吧！</h3></div>
+@else
                             <form action="/goodsorder/{{ session('user.id') }}" method="post">
                                 {{ csrf_field() }}
                                 {{ method_field('put') }}
@@ -140,7 +143,7 @@
                                                 </td>
                                             </tr>
                                             @endforeach
-                                            
+@endif
 
 
 

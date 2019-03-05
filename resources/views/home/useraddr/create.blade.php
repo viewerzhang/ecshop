@@ -66,6 +66,26 @@
                       layer.msg('添加地址失败');
                       return false;
                     }
+                    if(pd == true){
+                      var div = $('#dkl').clone(true);
+                      $(div).find('#shr').html(data.user_take);
+                      $(div).find('#lxdh').html(data.phone);
+                      $(div).find('#yb').html(data.user_code);
+                      $(div).find('#xxdz').html(data.user_addr);
+                      $('.bxyx').prop('checked',false);
+                      $(div).find('#dxk').val(data.fhid);
+                      $(div).find('#dxk').prop('checked',true);
+                      $(div).css('display','block');
+                      $(div).css('border','#000 solid 1px');
+                      $(div).find('.anniu').css('background','#666');
+                      $('.xzdz').css('color','#888');
+                      $('.okdz').css('border','#ddd solid 1px');
+                      $('.anniu').css('background','#eee');
+                      $('#psdzk').append(div);
+                      $('#oop').remove();
+                      layer.closeAll();
+                      return false;
+                    }
                     location.href = '/useraddr';
                 },'json');
         });

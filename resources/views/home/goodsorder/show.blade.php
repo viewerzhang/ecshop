@@ -31,7 +31,7 @@
     @endforeach
     @else
     
-    <div style="width: 500px;height: 200px;margin-left: 400px;"><h3>您的地址列表没有信息，赶紧去<a id="djtj2" href="javascript:;">添加地址</a>吧！</h3></div>
+    <div style="width: 500px;height: 200px;margin-left: 400px;"><h3>您还没有订单，赶紧<a href="/goodlist">去购物</a>吧！</h3></div>
     @endif
 </div>
     {{ $data->links() }}

@@ -1,3 +1,4 @@
+@inject('Sp', 'App\Http\Controllers\Home\ShoppingCarController')
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -126,59 +127,45 @@
                             <div class="topcart">
                                 <a class="cart-toggler" href="">
                                     <i class="icon"></i>
-                                    <span class="my-cart">Shopping cart</span>
-                                    <span class="qty">2 Items</span>
+                                    <span class="my-cart">@if(session('userlogin'))购物车@else请您先登录@endif</span>
+                                    <span class="qty">@if(session('userlogin'))购物车共{{ count($gwc = $Sp::quanjugwc()) }}件商品@else您的专属购物车@endif</span>
                                     <span class="fa fa-angle-down"></span>
                                 </a>
+                                @if(session('userlogin'))
                                 <div class="new_cart_section">
                                     <ol class="new-list">
                                         <!-- single item -->
+                                        <?php $zgjg = 0; ?>
+                                        @foreach($gwc = $Sp::quanjugwc() as $k => $v)
+                                        @if($k <= 1)
                                         <li class="wimix_area">
                                             <a class="pix_product" href="">
-                                                <img alt="" src="/static/home/index/img/product-pic/7-150x98.jpg">
+                                                <img alt="" src="/static/admin/images/goods_img/{{ $v->goods->goods_img }}">
                                             </a>
                                             <div class="product-details">
-                                                <a href="#">Adipiscing cursus eu</a>
-                                                <span class="sig-price">1×$300.00</span>
-                                            </div>
-                                            <div class="cart-remove">
-                                                <a class="action" href="#">
-                                                    <i class="fa fa-close"></i>
-                                                </a>
+                                                <a href="/goodlist/{{ $v->goods_id }}">{{ $v->goods->goods_name }}</a>
+                                                <span class="sig-price">{{ $v->car_num }}×￥{{ $v->goods->goods_price }}</span>
                                             </div>
                                         </li>
-                                        <!-- single item -->
-                                        <!-- single item -->
-                                        <li class="wimix_area">
-                                            <a class="pix_product" href="#">
-                                            <img alt="" src="/static/home/index/img/product-pic/1-150x98.jpg">
-                                            </a>
-                                            <div class="product-details">
-                                                <a href="#">Duis convallis</a>
-                                                <span class="sig-price">1×$100.00</span>
-                                            </div>
-                                            <div class="cart-remove">
-                                                <a class="action" href="#">
-                                                    <i class="fa fa-close"></i>
-                                                </a>
-                                            </div>
-                                        </li>
+                                        @endif
+                                        <?php 
+                                        $zgjg += $v->car_num * $v->goods->goods_price;
+                                         ?>
+                                        @endforeach
                                         <!-- single item -->
                                     </ol>
                                     <div class="top-subtotal">
-                                        Subtotal: <span class="sig-price">$400.00</span>
+                                        合计: <span class="sig-price">￥{{ $zgjg }}</span>
                                     </div>
                                     <div class="cart-button">
                                         <ul>
                                             <li>
-                                                <a href="#">View my cart <i class="fa fa-angle-right"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Checkout <i class="fa fa-angle-right"></i></a>
+                                                <a href="/shoppingcar">去我的购物车 <i class="fa fa-angle-right"></i></a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -226,8 +213,10 @@
                             @foreach($v->sum as $kk => $vv)
                                 <div class="mega_menu_coloumn">
                                     <ul>
-                                        <li><a href="goodlist?cate_id={{$vv->id}}">{{ $vv->cate_name }}</a></li>
+                                        <li><a href="/goodlist?cate_id={{$vv->id}}">{{ $vv->cate_name }}</a></li>
                                             @foreach($vv->sum as $kkk=>$vvv)
+                                            
+                                            <li><a href="/goodlist?cate_id={{$vvv->id}}">{{ $vvv->cate_name }}</a></li>
                                             @endforeach
                                     </ul>
                                 </div>

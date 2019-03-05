@@ -183,12 +183,17 @@ class GoodlistController extends Controller
         //
     }
 
-<<<<<<< HEAD
     //获取二级分类
     public function twocate(Request $req)
     {
         return $data=GoodsCategory::getcate($req->input('cate_pid'));
-=======
+    }  
+
+
+
+
+
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -221,6 +226,5 @@ class GoodlistController extends Controller
 
         // 显示到商品列表页
         return view('home/goods/goodlist',['data'=>$data,'request'=>$request->all()]);
->>>>>>> origin/zzl
     }
 }

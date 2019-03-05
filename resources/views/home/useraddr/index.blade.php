@@ -30,6 +30,7 @@
 <script src="/static/home/gg_bd_ad_720x90.js" type="text/javascript"></script>
 <script src="/static/home/follow.js" type="text/javascript"></script>
 <script type="text/javascript">
+pd = false;
 var title = new Array();
 @foreach($data as $k=>$v)
     title[{{$k}}] = "{{ $v->user_title }}";

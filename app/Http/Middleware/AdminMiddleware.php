@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class VerifyAdmin
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,9 +19,7 @@ class VerifyAdmin
             if (Hash::check($data['upwd'], session(['admin.upwd'])) {
                 return $next($request);
             }
-            session(['adminlogin'=>false]);
-            session(['admin'=>null]);
-            return redirect('/admin/login')->with('error','您的密码已被修改，请重新登录');
+            return back()->with('error','您的密码已被修改');
         }
         return redirect('/admin/login');
     }

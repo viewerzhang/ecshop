@@ -131,6 +131,26 @@
 
                         </ul>
                     </div>
+
+
+
+
+
+
+
+@if (session('error'))
+    <div class="alert alert-error">
+        {{ session('error') }}
+    </div>
+@endif
+@if (session('success'))
+    <div class="alert alert-success">
+        {!! session('success') !!}
+    </div>
+@endif
+                    <form class="cart-btn-area" action="/shoppingcar" method="post">
+                        {{ csrf_field() }}
+
                     @foreach($type as $k=>$v)
                     <div class="elavetor_social">
                         <h2 class="widget-title">
@@ -140,7 +160,7 @@
                             <?php $array = explode(',', $v->attr_value); ?>
                             @foreach($array as $kk=>$vv)
                             <li onclick="dian(this)" >
-                                <input type="radio" name="{{ $v->attr_name }}" class="goods-attr" id="attr" value="{{$vv}}">&nbsp;{{$vv}}
+                                <input type="radio" name="{{ $v->attr_name }}" class="goods-attr sx" id="attr" value="{{$vv}}">&nbsp;{{$vv}}
                             </li>
                             @endforeach
                         </ul>
@@ -158,20 +178,39 @@
                             ￥{{$goods->goods_price}}
                         </span>
                     </div>
-                    <form class="cart-btn-area" action="#">
+                    <input type="text" hidden name="goods_id" value="{{ $goods->id }}">
+                    <div class="cart-btn-area">
                         <a name="" class="minus" href="javascript:void(0);"></a>
-                        <input type="number" value="1" id="buyNum" >
+
+                        <input type="number" id="nua" value="1" id="buyNum" name="sum">
                         <a name="" class="plus" href="javascript:void(0);"></a>
                         <button class="add-tocart cart_zpf" type="submit">
                             加入购物车
                         </button>
-
+                    </form>
+                    </div>
+<form action="/goodsorder/create" method="get">
+    <input type="text" value="1" hidden name="sum" id="nub">
+    <input type="text" hidden name="goods_id" value="{{ $goods->id }}">
+    <input type="text" hidden name="attr" class="sxb" value="">
                         <a href="javascript:buyNowTime(this);">
-                        <button class="add-tocart cart_zpf" type="submit" id="buyNowAddCart">
+
+
+                        <button style="margin-left: 75px;" class="add-tocart cart_zpf" type="submit" id="buyNowAddCart">
                             立即购买
                         </button>
                         </a>
-                    </form>
+</form>
+
+
+
+
+
+
+
+
+
+
                     <div class="add_defi">
                         <a href="#" data-original-title="Add to Wishlist" data-toggle="tooltip">
                             <i class="fa fa-heart another_icon">
@@ -687,6 +726,22 @@
             var src = $(this).attr('src');
             $('#bigImg').attr('src',src);
             $('#smallImg').attr('src',src);
+        });
+
+
+
+        $('#nua').change(function(){
+            $('#nub').val($('#nua').val());
+        });
+
+
+        $('.sx').click(function(){
+            $('.sxb').val('');
+            $('.sx').each(function(){
+                if($(this).prop('checked') == true){
+                    $('.sxb').val($('.sxb').val() + $(this).val() +','); 
+                }
+            });
         });
     </script>
 @stop

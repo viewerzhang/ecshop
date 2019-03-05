@@ -796,12 +796,12 @@
                                                             </li>
                                                             <li>
                                                                 <div class="new_act">
-                                                                    <a class="button_act" data-quick-id="45" onclick="caradd({{ $vv->id }})" href="javascript:;" title="" data-toggle="tooltip" data-original-title="更快捷的添加购物车">添加购物车</a>
+                                                                    <a class="button_act" data-quick-id="45" href="/goodlist/{{ $vv->id }}" target="_blank" title="" data-toggle="tooltip" data-original-title="更详细的商品介绍">查看商品详情</a>
                                                                 </div>
                                                             </li>
                                                             <li class="addcompare">
                                                                 <div class="woocommerce product                                               compare-button">
-                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="更新商品信息"><i class="fa fa-refresh"></i></a>
+                                                                    <a class="compare button" href="/goodlist/{{ $vv->id }}" target="_blank" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="更新商品信息"><i class="fa fa-refresh"></i></a>
                                                                 </div>
                                                             </li>
                                                         </ul>
@@ -939,7 +939,7 @@
                                                             </li>
                                                             <li>
                                                                 <div class="new_act">
-                                                                    <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="更快捷的添加购物车">添加购物车</a>
+                                                                    <a class="button_act" data-quick-id="45" href="/goodlist/{{ $vv->id }}" target="_blank" title="" data-toggle="tooltip" data-original-title="更快捷的添加购物车">查看商品详情</a>
                                                                 </div>
                                                             </li>
                                                             <li class="addcompare">
@@ -1022,7 +1022,7 @@
                                 <div class="all-pros-ex animated fadeInUp">
                                     <div class="llc_pro">
                                         <div class="sinle_pic sinle_pic_2">
-                                            <a href="#">
+                                            <a href="/goodlist/{{ $vv->id }}" target="_blank">
                                             <img class="primary-img" style="width: 100px;height: 65.55px;" src="/static/admin/images/goods_img/{{ $v->goods_img }}" alt="" />
                                             <img class="secondary-img" style="width: 100px;height: 65.55px;" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[0]->goods_imgs }}" alt="" />
                                             </a>
@@ -1032,7 +1032,7 @@
                                         <div class="usal_pro">
                                             <div class=" product_name_new">
                                                 <h2>
-                                                    <a href="#" style=" width: 70px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;" title="{{ $v->goods_name }}">{{ $v->goods_name }}</a>
+                                                    <a href="/goodlist/{{ $vv->id }}" target="_blank" style=" width: 70px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;" title="{{ $v->goods_name }}">{{ $v->goods_name }}</a>
                                                 </h2>
                                             </div>
                                             <div class="product_price product_price_new product_price_new_3">
@@ -1177,7 +1177,7 @@
                             <div class="new_product">
                                 <div class="product_heading">
                                     <i class="fa fa-comments"></i>
-                                    <span>Blog Post</span>
+                                    <span>精选文章</span>
                                 </div>
                             </div>
                         </div>
@@ -1185,126 +1185,45 @@
                 </div>
                 <div class="row">
                     <div class="blog_carasel indicator-brand indicator-brand-6">
+
+
+
+
+                        @foreach( $data_articles as $k => $v )
+                        @if($k <= 5)
                         <div class="col-md-12">
                             <div class="blog_next">
                                 <div class="blog_thumb">
                                     <a href="#">
-                                    <img src="/static/home/index/img/blog-pic/blog_pic_1.jpg" alt="" />
+                                    <img style="width: 290px;height: 163px;" src="/static/admin/images/articles/{{ $v->art_img }}" alt="" />
                                     </a>
                                     <div class="blogdate">
                                         <div>
-                                            <span class="day">29</span>
-                                            <span class="month">Jan</span>
+                                            <span class="day">精</span>
+                                            <span class="month">选</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="blog_info">
                                     <h3 class="post-title">
-                                        <a href="#">Hello world!</a>
+                                        <a href="#">{{ $v->art_title }}</a>
                                     </h3>
-                                    <div class="post-excerpt">Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent …</div>
+                                    <div class="post-excerpt" style="width: 200px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{!! mb_substr($v->art_content,0,100) !!}</div>
                                     <a href="#">
                                     <span class="readmore-text">Read More</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="blog_next">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                    <img src="/static/home/index/img/blog-pic/blog_pic_2.jpg" alt="" />
-                                    </a>
-                                    <div class="blogdate">
-                                        <div>
-                                            <span class="day">19</span>
-                                            <span class="month">Jan</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog_info">
-                                    <h3 class="post-title">
-                                        <a href="#">Curabitur lobortis</a>
-                                    </h3>
-                                    <div class="post-excerpt">Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent …</div>
-                                    <a href="#">
-                                    <span class="readmore-text">Read More</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="blog_next">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                    <img src="/static/home/index/img/blog-pic/blog_pic_3.jpg" alt="" />
-                                    </a>
-                                    <div class="blogdate">
-                                        <div>
-                                            <span class="day">19</span>
-                                            <span class="month">Jan</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog_info">
-                                    <h3 class="post-title">
-                                        <a href="#">Vivamus gravida</a>
-                                    </h3>
-                                    <div class="post-excerpt">Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent …</div>
-                                    <a href="#">
-                                    <span class="readmore-text">Read More</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="blog_next">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                    <img src="/static/home/index/img/blog-pic/blog_pic_6.jpg" alt="" />
-                                    </a>
-                                    <div class="blogdate">
-                                        <div>
-                                            <span class="day">4</span>
-                                            <span class="month">Jan</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog_info">
-                                    <h3 class="post-title">
-                                        <a href="#">Post Format:Image</a>
-                                    </h3>
-                                    <div class="post-excerpt">Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent …</div>
-                                    <a href="#">
-                                    <span class="readmore-text">Read More</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="blog_next">
-                                <div class="blog_thumb">
-                                    <a href="#">
-                                    <img src="/static/home/index/img/blog-pic/blog_pic_5.jpg" alt="" />
-                                    </a>
-                                    <div class="blogdate">
-                                        <div>
-                                            <span class="day">4</span>
-                                            <span class="month">Jan</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog_info">
-                                    <h3 class="post-title">
-                                        <a href="#">Post Format:Gallery</a>
-                                    </h3>
-                                    <div class="post-excerpt">Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent …</div>
-                                    <a href="#">
-                                    <span class="readmore-text">Read More</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
+                        @endforeach
+
+
+
+
+
+
+
                     </div>
                 </div>
             </div>

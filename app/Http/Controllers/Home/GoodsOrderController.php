@@ -8,6 +8,7 @@ use App\Http\Model\Admin\UserAddr;
 use App\Http\Model\Home\ShoppingCar;
 use App\Http\Model\Admin\GoodsOrder;
 use App\Http\Model\Admin\ShopDetail;
+use App\Http\Model\Admin\Goods;
 use DB;
 
 class GoodsOrderController extends Controller
@@ -19,9 +20,13 @@ class GoodsOrderController extends Controller
      */
     public function index(Request $request)
     {
-        $uid = session('user.id');
-        $data = GoodsOrder::where('user_id',$uid)->paginate(4);
-        return view('home.goodsorder.show',['data'=>$data]);
+        try{
+            $uid = session('user.id');
+            $data = GoodsOrder::where('user_id',$uid)->paginate(4);
+            return view('home.goodsorder.show',['data'=>$data]);
+        }catch(\Exception $err){
+            return view('error.index');
+        }
     }
 
     /**
@@ -29,9 +34,37 @@ class GoodsOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        try{
+            if(!session('userlogin')){
+                return back()->with('error','您还没有登录请您先登录！');
+            }
+            $dangood = $request->all();
+            if(!$dangood['attr']){
+                return back()->with('error','您还没有选择商品的属性');
+            }
+            $dangood['attr'] = rtrim($dangood['attr'],',');
+
+            $data[] = [
+                    'goods_id' => $dangood['goods_id'],
+                    'detail_price' => Goods::find($dangood['goods_id'])->goods_price,
+                    'detail_conut' => $dangood['sum'],
+                    'goods_name' => Goods::find($dangood['goods_id'])->goods_name,
+                    'detail_attr' => $dangood['attr'],
+                    'xj' => Goods::find($dangood['goods_id'])->goods_price * $dangood['sum']
+                ];
+             
+            // 保存临时订单
+            $code = str_random(10);
+            session([$code => $data]);
+            session(["{$code}.zongjiaqian" => $data[0]['xj']]);
+            session(["{$code}.zongshuliang" => $data[0]['detail_conut']]);
+            $attr = UserAddr::where('uid',session('user.id'))->get();
+            return view('home.goodsorder.index',['code'=>$code,'zongshuliang'=>$data[0]['detail_conut'],'zongjiaqian'=>$data[0]['xj'],'data'=>$data,'attr'=>$attr]);
+        }catch(\Exception $err){
+            return view('error.index');
+        }
     }
 
     /**
@@ -42,68 +75,69 @@ class GoodsOrderController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        // 开启事务
-        DB::beginTransaction();
-        $goods = session($data['code']);
-        // 获取用户地址
-        $addr = UserAddr::where('id',$data['dz'])->first();
-        // 生成定单号
-        $order['rand_id'] = time().mt_rand(100000,999999);
-        // 获取订单总价钱
-        $order['order_sum'] = session("{$data['code']}.zongjiaqian");
-        // 获取订单总数量
-        $order['order_count'] = session("{$data['code']}.zongshuliang");
-        // 获取用户ID
-        $order['user_id'] = session('user.id');
-        // 获取收货人
-        $order['order_rec'] = $addr['user_take'];
-        // 获取收货地址
-        $order['order_addr'] = $addr['user_addr'];
-        // 获取收货邮编
-        $order['order_code'] = $addr['user_code'];
-        // 获取收货手机号
-        $order['order_phone'] = $addr['user_phone'];
-        // 买家留言 扩展性
-        $order['user_msg'] = '';
-        // 初始化订单状态
-        $order['order_status'] = '0';
-        // 设置下单时间
-        $order['created_at'] = time();
-        // 保存订单表
-        $orderId = GoodsOrder::insertGetId($order);
-        // 销毁无用数组
-        unset($goods['zongjiaqian']);
-        unset($goods['zongshuliang']);
-        // 遍历插入商品详情
-        foreach($goods as $k => $v){
-            $detailgoods['order_id'] = $orderId;
-            $detailgoods['goods_id'] = $v["goods_id"];
-            $detailgoods['detail_price'] = $v["detail_price"];
-            $detailgoods['detail_count'] = $v["detail_conut"];
-            $detailgoods['detail_attr'] = $v["detail_attr"];
-            $judge[] = ShopDetail::insert($detailgoods);
-            ShoppingCar::destroy($v['car_id']);
-        }
-        $pd = true;
-        // 判断是否全部插入数据库
-        foreach($judge as $k => $v){
-            if(!$v){
-                $pd = false;
+        try{
+            $data = $request->all();
+            // 开启事务
+            DB::beginTransaction();
+            $goods = session($data['code']);
+            // 获取用户地址
+            $addr = UserAddr::where('id',$data['dz'])->first();
+            // 生成定单号
+            $order['rand_id'] = time().mt_rand(100000,999999);
+            // 获取订单总价钱
+            $order['order_sum'] = session("{$data['code']}.zongjiaqian");
+            // 获取订单总数量
+            $order['order_count'] = session("{$data['code']}.zongshuliang");
+            // 获取用户ID
+            $order['user_id'] = session('user.id');
+            // 获取收货人
+            $order['order_rec'] = $addr['user_take'];
+            // 获取收货地址
+            $order['order_addr'] = $addr['user_addr'];
+            // 获取收货邮编
+            $order['order_code'] = $addr['user_code'];
+            // 获取收货手机号
+            $order['order_phone'] = $addr['user_phone'];
+            // 买家留言 扩展性
+            $order['user_msg'] = '';
+            // 初始化订单状态
+            $order['order_status'] = '0';
+            // 设置下单时间
+            $order['created_at'] = time();
+            // 保存订单表
+            $orderId = GoodsOrder::insertGetId($order);
+            // 销毁无用数组
+            unset($goods['zongjiaqian']);
+            unset($goods['zongshuliang']);
+            // 遍历插入商品详情
+            foreach($goods as $k => $v){
+                $detailgoods['order_id'] = $orderId;
+                $detailgoods['goods_id'] = $v["goods_id"];
+                $detailgoods['detail_price'] = $v["detail_price"];
+                $detailgoods['detail_count'] = $v["detail_conut"];
+                $detailgoods['detail_attr'] = $v["detail_attr"];
+                $judge[] = ShopDetail::insert($detailgoods);
+                if(!empty($v['car_id'])){
+                    ShoppingCar::destroy($v['car_id']);
+                }
             }
-        }
-        if($pd && $orderId){
-            DB::commit();
+            $pd = true;
+            // 判断是否全部插入数据库
+            foreach($judge as $k => $v){
+                if(!$v){
+                    $pd = false;
+                }
+            }
+            if($pd && $orderId){
+                DB::commit();
+                session([$data['code'] => null]);
+                return '添加成功';
+            }
             session([$data['code'] => null]);
-            return '添加成功';
+            DB::rollBack();
+        }catch(\Exception $err){
+            return view('error.index');
         }
-        session([$data['code'] => null]);
-        DB::rollBack();
-
-
-
-        
-
     }
 
     /**
@@ -165,38 +199,42 @@ class GoodsOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $goods = $request->all();
-        // 总价钱
-        $zongjiaqian = 0;
-        // 总数量
-        $zongshuliang = 0;
-        // 商品简情
-        $data = [];
-        // 在后台重新计算商品数量及价钱，确保数据安全
-        foreach($goods['like'] as $k => $v){
-            $gouwuchedanjian = ShoppingCar::where('id',$v)->first();
-            $zongshuliang += $gouwuchedanjian->car_num;
-            $xj = $gouwuchedanjian->goods->goods_price * $gouwuchedanjian->car_num;
-            $zongjiaqian += $xj;
+        try{
+            $goods = $request->all();
+            // 总价钱
+            $zongjiaqian = 0;
+            // 总数量
+            $zongshuliang = 0;
+            // 商品简情
+            $data = [];
+            // 在后台重新计算商品数量及价钱，确保数据安全
+            foreach($goods['like'] as $k => $v){
+                $gouwuchedanjian = ShoppingCar::where('id',$v)->first();
+                $zongshuliang += $gouwuchedanjian->car_num;
+                $xj = $gouwuchedanjian->goods->goods_price * $gouwuchedanjian->car_num;
+                $zongjiaqian += $xj;
 
-            $data[] = [
-                'goods_id' => $gouwuchedanjian->goods_id,
-                'detail_price' => $gouwuchedanjian->goods->goods_price,
-                'detail_conut' => $gouwuchedanjian->car_num,
-                'goods_name' => $gouwuchedanjian->goods->goods_name,
-                'detail_attr' => $gouwuchedanjian->attr,
-                'car_id' => $gouwuchedanjian->id,
-                'xj' => $xj
-            ];
+                $data[] = [
+                    'goods_id' => $gouwuchedanjian->goods_id,
+                    'detail_price' => $gouwuchedanjian->goods->goods_price,
+                    'detail_conut' => $gouwuchedanjian->car_num,
+                    'goods_name' => $gouwuchedanjian->goods->goods_name,
+                    'detail_attr' => $gouwuchedanjian->attr,
+                    'car_id' => $gouwuchedanjian->id,
+                    'xj' => $xj
+                ];
+            }
+            // 保存临时订单
+            $code = str_random(10);
+            session([$code => $data]);
+            session(["{$code}.zongjiaqian" => $zongjiaqian]);
+            session(["{$code}.zongshuliang" => $zongshuliang]);
+
+            $attr = UserAddr::where('uid',session('user.id'))->get();
+            return view('home.goodsorder.index',['code'=>$code,'zongshuliang'=>$zongshuliang,'zongjiaqian'=>$zongjiaqian,'data'=>$data,'attr'=>$attr]);
+        }catch(\Exception $err){
+            return view('error.index');
         }
-        // 保存临时订单
-        $code = str_random(10);
-        session([$code => $data]);
-        session(["{$code}.zongjiaqian" => $zongjiaqian]);
-        session(["{$code}.zongshuliang" => $zongshuliang]);
-
-        $attr = UserAddr::where('uid',session('user.id'))->get();
-        return view('home.goodsorder.index',['code'=>$code,'zongshuliang'=>$zongshuliang,'zongjiaqian'=>$zongjiaqian,'data'=>$data,'attr'=>$attr]);
     }
 
     /**
