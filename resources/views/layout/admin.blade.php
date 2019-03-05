@@ -242,7 +242,7 @@ Purchase: http://wrapbootstrap.com
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/admin/role/index">
+                                        <a href="/admin/role">
                                             <i class="menu-icon glyphicon glyphicon-stats"></i>
                                             <span class="menu-text">浏览角色</span>
                                         </a>
@@ -266,7 +266,7 @@ Purchase: http://wrapbootstrap.com
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/admin/permission/index">
+                                        <a href="/admin/permission">
                                             <i class="menu-icon glyphicon glyphicon-stats"></i>
                                             <span class="menu-text">浏览权限</span>
                                         </a>

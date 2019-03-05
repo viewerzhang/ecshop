@@ -42,6 +42,9 @@ Route::resource('/useraddr','UserAddrController');
 /*** 管理员Ajax上传头像路由 ***/
 Route::post('/admins/files','AdminsController@files');
 
+//管理员里面链接角色的路由
+Route::get('/userrole/{id}','AdminsController@userrole');
+Route::post('/douserrole/{id}','AdminsController@douserrole');
 Route::resource('/admins','AdminsController');
 
 /*** 系统设置 ***/
@@ -131,9 +134,13 @@ Route::get('goods/huifu/{id}','GoodsController@huifu');
 Route::get('goods/shanchu/{id}','GoodsController@shanchu');
 //商品管理
 Route::resource('goods','GoodsController');
+//添加在角色里面添加权限的路由
+Route::get('roleper/{id}','RoleController@roleper');
+Route::post('doroleper/{id}','RoleController@doroleper');
 //角色管理
 Route::resource('role','RoleController');
 //权限管理
+
 Route::resource('permission','PermissionController');
 
 

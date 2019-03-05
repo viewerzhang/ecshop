@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\Admin;
+use App\Http\Model\Admin\Role;
 use App\common\FileUtil;
 use App\Http\Requests\AdminsRequest;
+use DB;
 
 class AdminsController extends Controller
 {
@@ -165,5 +167,61 @@ class AdminsController extends Controller
             ];
             return json_encode($arr);
         }
+    }
+
+    //添加角色
+    public function userrole(Request $request,$id)
+    {
+        $id = $request->id; 
+        //dd($id);
+        //用户的id
+        $uname = Admin::find($id);
+        //dd($uname);
+        //role的id
+        $roles = Role::all();
+
+        $user_role = $uname->role;
+        //dd($user_role);
+        $ur = [];
+        foreach($user_role as $k=>$v){
+            $ur[] = $v->role_name;
+        }
+
+        return view('admin/admins/userrole',['uname'=>$uname,'roles'=>$roles,'ur'=>$ur]);
+    }
+
+    //接受添加角色的值
+    public function douserrole(Request $request,$id)
+    {
+
+        //用户的id
+        $user_id = $request->id;
+        //dump($user_id);
+        //角色的id
+        $role_id = $request->role_id;
+
+        DB::table('user_role')->where('user_id',$user_id)->delete();
+        
+
+        $info=[];
+        foreach($role_id as $k=>$v){
+            $arr=[];
+            $arr['user_id'] = $user_id;
+            $arr['role_id'] = $v;
+            $info[] = $arr;
+        }
+
+        $key = $request->input('key','');
+        $data = Admin::where('uname','like',"%{$key}%")->paginate(8);;
+
+        $res = DB::table('user_role')->insert($info);
+
+            if($res){
+                return redirect('/admin/admins')->with('success','添加成功');
+                }else{
+                   return back()->with('error','添加失败');   
+                }
+
+     
     }
 }
