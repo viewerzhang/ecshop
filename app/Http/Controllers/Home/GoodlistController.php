@@ -64,7 +64,7 @@ class GoodlistController extends Controller
 
 
 
-
+        
 
         $data = Goods::where(function($query) use ($request){
             // 分类查找
@@ -87,6 +87,8 @@ class GoodlistController extends Controller
             }
            
         })->paginate(15);
+
+        
      
         return view('home/goods/goodlist',['data'=>$data,'request'=>$request->all()]);
     }
@@ -123,7 +125,6 @@ class GoodlistController extends Controller
     public function show($id)
     {
         $goods = Goods::find($id);
-
         if($goods){
             //点击查看商品详情 则修改goods数据库的goods_show  +1
             $click_num = $goods->click_num;
@@ -145,6 +146,8 @@ class GoodlistController extends Controller
  
         return view('home/goods/showgoods',['goods'=>$goods,'goodsimgs'=>$goodsimgs,'type'=>$type,'goods_brand'=>$goods_brand,'goods_type'=>$goods_type]);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -178,5 +181,11 @@ class GoodlistController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //获取二级分类
+    public function twocate(Request $req)
+    {
+        return $data=GoodsCategory::getcate($req->input('cate_pid'));
     }
 }

@@ -20,6 +20,6 @@ class GoodsType extends Model
 
     public function goodsattr()
     {
-        return $this->hasMany('App\Http\Model\Admin\GoodsAttr','type_id');
+        return $this->hasMany('App\Http\Model\Admin\GoodsAttr','type_id','id');
     }
 }

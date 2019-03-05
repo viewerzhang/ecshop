@@ -19,13 +19,6 @@ class Goods extends Model
         return $this->belongsTo('App\Http\Model\Admin\GoodsCategory','cate_id');
     }
 
-
-    // //一个商品属于一个类型 一对一属于关系
-    // public function goodstype()
-    // {
-    //     return $this->belongsTo('App\Http\Model\Admin\GoodsType','type_id');
-    // }
-    
     //一个商品对应一个品牌  一对一属于关系
     public function goodsbrand()
     {
@@ -38,6 +31,7 @@ class Goods extends Model
         return $this->hasMany('App\Http\Model\Admin\GoodsImgs','goods_id');
     }
 
+    // //一个商品属于一个类型 一对一属于关系
     public function goodstype()
     {
         return $this->belongsTo('App\Http\Model\Admin\GoodsType','type_id');

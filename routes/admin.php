@@ -131,6 +131,10 @@ Route::get('goods/huifu/{id}','GoodsController@huifu');
 Route::get('goods/shanchu/{id}','GoodsController@shanchu');
 //商品管理
 Route::resource('goods','GoodsController');
+//角色管理
+Route::resource('role','RoleController');
+//权限管理
+Route::resource('permission','PermissionController');
 
 
 
