@@ -212,7 +212,8 @@ Route::resource('goodlist','GoodlistController');
 // 前台注册页
 Route::get('/register','UserController@create');
 
-
+// 前台搜索
+Route::get('/search','GoodlistController@search');
 
 
 

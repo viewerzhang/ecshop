@@ -456,7 +456,11 @@
                                             </div>
                                             <div class="price_box">
                                                 <span class="spical-price">
+<<<<<<< HEAD
                                                     ￥{{$v->markte_price}}
+=======
+                                                    ￥{{$v->goods_price}}
+>>>>>>> origin/zzl
                                                 </span>
                                             </div>
                                             <div class="last_button_area">

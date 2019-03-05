@@ -1,5 +1,6 @@
 @extends('layout.admin')
 @section('title', '活动管理')
+@section('url','/admin/activity')
 @section('title2', '修改活动商品')
 @section('content')
 <div class="col-lg-12 col-sm-12 col-xs-12">
