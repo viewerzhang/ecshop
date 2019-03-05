@@ -74,6 +74,7 @@ class ConfController extends Controller
     {
         $old = $request->except(['_token','_metch']);
         $conf = Conf::first();
+        // dd($conf);
         $conf->$id =  $old['metch'];
         $judge = $conf->save();
         if($judge){

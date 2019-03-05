@@ -7,7 +7,11 @@
         <div class="row">
             <div class="col-md-4 col-sm-4 pl pr" style="width: 200px;">
                 <div class="sngl-pro" style="margin-left: 16px;">
-                    
+                    @if(empty($data->user_pic))
+                    	<img src="/static/home/users_pic/default.png" alt="" width="180">
+                    @else
+                    	<img src="/static/{{$data->user_pic}}" alt="">
+                    @endif
                 </div>
             </div>
             <div class="col-md-8 col-sm-8 pl pr">
@@ -15,17 +19,21 @@
                     <div class="usal_pro">
                         <div class="product_name_2 product_name_3 prnm">
                             <h2>
-                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font>
+                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$data->user_name}}</font></font>
                             </h2>
                             <div class="pro_discrip">
                             	<p style="vertical-align: inherit;">
-                            		手机号 : 
+                            		手机号 : {{$data->user_phone}}
                             	</p>
                             	<p style="vertical-align: inherit;">
-                            		邮 箱 :
+                            		邮 箱 : @if(empty($data->user_email))
+                            					<a href="/edit">立即验证</a>
+                            				@else
+                            					{{$data->user_email}}
+                            				@endif
                             	</p>
                             	<p style="vertical-align: inherit;">
-                            		上次登陆地点:
+                            		上次登陆地点: {{session('user.user_ip')}}
                             	</p>
                             </div>
                         </div>
@@ -43,12 +51,12 @@
                                     </li>
                                     <li class="addwishlist">
                                         <div class="yith-wcwl-add-button  show">
-                                            <a class="add_to_wishlist_3 add_to_wishlist_tz" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                                            <a class="add_to_wishlist_3 add_to_wishlist_tz" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="我的收藏"><i class="fa fa-heart"></i></a>
                                         </div>
                                     </li>
                                     <li class="addcompare">
                                         <div class="woocommerce product compare-button">
-                                            <a class="compare_3 compare_3r button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
+                                            <a class="compare_3 compare_3r button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="刷新"><i class="fa fa-refresh"></i></a>
                                         </div>
                                     </li>
                                 </ul>

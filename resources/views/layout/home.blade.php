@@ -90,7 +90,7 @@
                             </li>
                             <li>
                         @endif
-                                <a class="Shopping cart" href="/login">我的账户</a>
+                                <a class="Shopping cart" href="/grzx">我的账户</a>
                             </li>
                             <li>
                                 <a class="Shopping cart" href="/login">我的收藏</a>
