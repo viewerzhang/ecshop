@@ -38,4 +38,36 @@ class GoodsCategory extends Model
             return 'disabled';
         }
     }
+
+    static public $cate;
+    static public function getcate($cate_pid = 0){
+
+
+        if(empty(self::$cate)){
+            self::$cate = self::all();
+        }
+        $re=[];
+        foreach (self::$cate as $k => $v) {
+            if($v->cate_pid==$cate_pid){
+                $v->sub = self::getcate($v->id);
+                $re[]   = $v;
+            }
+        }
+        return $re;
+    }
+
+    public function twocate()
+    {
+        if(empty(self::$cate)){
+            self::$cate=self::all();
+        }
+        $data=[];
+        foreach (self::$cate  as $k => $v) {
+            if(substr_count($v->cate_path, ',')==2){
+                $data[]=$v;
+            }
+        }
+        return $data;
+    }
+
 }

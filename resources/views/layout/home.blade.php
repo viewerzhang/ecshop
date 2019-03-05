@@ -202,49 +202,49 @@
                                         <i class="fa fa-angle-down"></i>
                                     </div>
                                 </div>
-                                <div class="catagory_menu_area">
-                                    <div class="catagory_mega_menu">
-                                        <div class="cat_mega_start">
-                                            <ul class="list">
-                                                <!-- 导航开始 -->
-                                                @foreach($common_cate as $k=>$v )
-                                                <li class="next_area">
-                                                    <a class="item_link" href="#">
-                                                        <span class="link_content">
-                                                            <span class="link_text">
-                                                                <!-- <i class="fa fa-television"></i> -->
-                                                                {{ $v->cate_name }}
-                                                                <span class="link_descr">{{ $v->cate_desc }}</span>
-                                                            </span>
-                                                        </span>
-                                                    </a>
-                                                    <ul class="electronics_drpdown">
-                                                        <li class="parent">
-                                                            <a href="#"></a>
-                                                            <div class="mega_menu">
-                                                                    @foreach($v->sum as $kk => $vv)
-                                                                <div class="mega_menu_coloumn">
-                                                                    <ul>
-                                                                        <li><a href="#">{{ $vv->cate_name }}</a></li>
-                                                                        @foreach($vv->sum as $kkk=>$vvv)
-                                                                            <li><a href="#">{{ $vvv->cate_name }}</a></li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                </div>
-                                                                    @endforeach
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                @endforeach
-                                                <!-- 导航结束 -->
-                                            
-                                            </ul>
-                                        </div>
-                                    </div>
+          
+    <div class="catagory_menu_area">
+        <div class="catagory_mega_menu">
+            <div class="cat_mega_start">
+                <ul class="list">
+    <!-- 导航开始 -->
+    @foreach($common_cate as $k=>$v )
+
+        <li class="next_area" >
+                <a class="item_link" href="goodlist?cate_pid={{$v->id}}">
+                    <span class="link_content">
+                        <span class="link_text">
+                    {{ $v->cate_name }}
+                    <span class="link_descr">{{ $v->cate_desc }}</span>
+                        </span>
+                    </span>
+                </a>
+
+            <ul class="electronics_drpdown">
+                <li class="parent">
+                    <a href="#"></a>
+                        <div class="mega_menu">
+                            @foreach($v->sum as $kk => $vv)
+                                <div class="mega_menu_coloumn">
+                                    <ul>
+                                        <li><a href="goodlist?cate_id={{$vv->id}}">{{ $vv->cate_name }}</a></li>
+                                            @foreach($vv->sum as $kkk=>$vvv)
+                                            @endforeach
+                                    </ul>
                                 </div>
-                            </div>
-                            <!--menu area start-->
+                            @endforeach
+                        </div>
+                </li>
+            </ul>
+        </li>
+    @endforeach
+    <!-- 导航结束 -->                                    
+            </ul>
+        </div>
+    </div>
+    </div>
+</div>
+             <!--menu area start-->
                             <div class="col-md-9 pl">
                                 <div class="menu_area">
                                     <div class="menu">
@@ -253,7 +253,7 @@
                                                 @foreach(App\Http\Model\Admin\Navigation::get() as $k =>$v)
                                                     <li><a href="{{ $v->nav_link }}">{{$v->nav_title}}</a></li>
                                                 @endforeach
-												
+                                                
                                             </ul>
                                         </nav>
                                     </div>

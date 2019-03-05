@@ -102,7 +102,10 @@ Route::resource('/useraddr','UserAddrController');
 
 
 //商品列表页
+
 Route::resource('goodlist','GoodlistController');
+
+
 
 
 //
