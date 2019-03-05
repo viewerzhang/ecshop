@@ -47,12 +47,10 @@
                     " style="width: 160px;">
                     手机号
                     </th>
-                    <th class="sorting_disabled text-center" rowspan="1" colspan="1" aria-label="
-                    " style="width: 160px;">
+                    <th class="sorting_disabled text-center" rowspan="1" colspan="1" aria-label="" style="width: 160px;">
                     最后登录
                     </th>
-                    <th class="sorting_disabled text-center" rowspan="1" colspan="1" aria-label="
-                    " style="width: 100px;">
+                    <th class="sorting_disabled text-center" rowspan="1" colspan="1" aria-label="" style="width: 200px;">
                     操作 
                     </th>
                 </tr>
@@ -88,6 +86,9 @@
                         {{ date('Y-m-d H:i:s',$v->last_time) }}
                     </td>
                     <td class="">
+                        <a id="jz" href="/admin/userrole/{{$v->id}}" class="btn btn-primary btn-xs edit" style="display: inline-block;">
+                            <i class="fa fa-user">角色</i>
+                        </a>
                         <a id="jz" href="javascript:;" onclick="del({{ $v->id }},this)" class="btn btn-danger btn-xs edit">
                             <i class="fa fa-edit"></i>
                             @if($v->admin_status == 1)
