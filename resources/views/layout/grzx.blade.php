@@ -49,6 +49,7 @@
                     <h2 class="cat-menu-title text-uppercase"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理中心</font></font></h2>
                     <div class="menu-categories-container">
                     	<ul class="menu-categories">
+<<<<<<< HEAD
                             <li><a href="/grzx/index"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户信息</font></font></a></li>
                         </ul>
                         <ul class="menu-categories">
@@ -62,6 +63,9 @@
                         </ul>
                         <ul class="menu-categories">
                             <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改手机号</font></font></a></li>
+=======
+                            <li><a href="/grzx/grxx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户信息</font></font></a></li>
+>>>>>>> origin/nyx
                         </ul>
                     </div>
                 </div>

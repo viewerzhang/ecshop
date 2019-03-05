@@ -278,7 +278,8 @@ Route::post('/store','UserController@store');
 // 验证码
 Route::get('/yzm','UserController@yzm');
 // 个人中心
-Route::get('/grzx', 'GrzxController@grzx');
-// 用户信息
-Route::get('/grzx/index', 'GrzxController@index');
-
+Route::get('/grzx/grxx', 'GrzxController@grzx');
+Route::post('/grzx/revise/{id}', 'GrzxController@revise');
+Route::post('/grzx/pic/{id}', 'GrzxController@pic');
+Route::post('/grzx/editpwd/{id}', 'GrzxController@editpwd');
+Route::resource('grzx', 'GrzxController');

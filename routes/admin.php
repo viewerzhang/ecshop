@@ -282,3 +282,5 @@ Route::resource('activity','GoodsActivityController');
  Route::view('/index', 'index.index');
  //友情链接部分
  Route::resource('links','LinksController');
+ // 后台登录
+ Route::get('/admin/login', 'AdminsController@login');
