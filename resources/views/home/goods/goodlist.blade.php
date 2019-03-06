@@ -412,7 +412,7 @@
                                             alt="" style="width: 260px;height: 170px">
 
                                             
-                                            <img class="secondary-img" style="width: 260px;height: 170px" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[0]->goods_imgs }}" width="260" height="170" alt="">
+                                            <img class="secondary-img" style="width: 260px;height: 170px" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[1]->goods_imgs }}" width="260" height="170" alt="">
                                         </a>
                                     </div>
                                     <div class="product-action" data-toggle="modal" data-target="#{{ $v->goods_bianhao }}">

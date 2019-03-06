@@ -11,6 +11,7 @@ use App\Http\Model\Admin\GoodsBrand;
 use App\Http\Model\Admin\GoodsImgs;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
@@ -229,12 +230,8 @@ class GoodsController extends Controller
                 
                 //$res = Goods::insert($data);;
 
-
-
-
-
-
         }
+
         if($request->hasFile('goods_imgs')){
           $files = $request->file('goods_imgs');//创建文件上传对象
             foreach ($files as $key => $value) {
@@ -256,8 +253,6 @@ class GoodsController extends Controller
                 GoodsImgs::insert($goodsimgs);
            
           }
-
-
 
         }
         try{
