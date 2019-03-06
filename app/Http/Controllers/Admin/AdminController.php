@@ -310,16 +310,17 @@ class AdminController extends Controller
 
 
     function delogin(Request $request)
-    {   
+    { 
         $data = $request->except(['_token']);
         $admin = Admin::where('uname',$data['uname'])->first();
-        if($admin){
+        if($admin->uname != $data['uname'] ){
             return back()->with('error','您的账号或密码不正确');
         }
         if (Hash::check($data['upwd'], $admin['upwd'])) {
             session(['adminlogin'=>true]);
             session(['admin'=>$admin]);
-            return redirect('/admin/index');
+            $historyUrl = session('historyurl');
+            return redirect($historyUrl ?? '/admin/index');
         }
             return back()->with('error','您的账号或密码不正确');
     }

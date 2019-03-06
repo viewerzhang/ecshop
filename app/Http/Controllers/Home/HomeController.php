@@ -4,12 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Model\Admin\GoodsBrand;
-use App\Http\Model\Admin\Advertising;
-use App\Http\Model\Admin\Links;
-use App\Http\Model\Admin\Lunbo;
-use App\Http\Model\Admin\Goods;
-use App\Http\Model\Admin\Articles;
+use App\Http\Model\Admin\{GoodsBrand,Advertising,Links,Lunbo,Goods,Articles};
 
 class HomeController extends Controller
 {

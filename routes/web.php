@@ -11,5 +11,7 @@
 |
 */
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+ // 后台登录
+ Route::get('/admin/login', 'Admin\AdminController@login');
+ Route::post('/admin/delogin', 'Admin\AdminController@delogin');

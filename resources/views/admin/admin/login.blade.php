@@ -16,7 +16,7 @@ Purchase: http://wrapbootstrap.com
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" href="{{ asset('/static/admin/assets/img/favicon.png') }}" type="image/x-icon">
     <!--Basic Styles-->
-    <link href="{{asset('/static/adminassets/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('/static/admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
     <link href="{{asset('/static/admin/assets/css/font-awesome.min.css')}}" rel="stylesheet" />
 
@@ -24,7 +24,7 @@ Purchase: http://wrapbootstrap.com
     <!-- <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css"> -->
 
     <!--Beyond styles-->
-    <link id="beyond-link" href="{{asset('/static/admin/assets/css/beyond.min.css')}}" rel="stylesheet" />
+    <link href="/static/admin/assets/css/beyond.min.css" rel="stylesheet" />
     <link href="{{asset('/static/admin/assets/css/demo.min.css')}}" rel="stylesheet" />
     <link href="{{asset('/static/admin/assets/css/animate.min.css')}}" rel="stylesheet" />
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
@@ -35,8 +35,7 @@ Purchase: http://wrapbootstrap.com
 <!--Head Ends-->
 <!--Body-->
 <body>
-    <script src="holder.min.js"></script>
-    @if (session('success'))
+                                @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
@@ -46,14 +45,21 @@ Purchase: http://wrapbootstrap.com
         {{ session('error') }}
     </div>
     @endif
+    <script src="holder.min.js"></script>
+
+    <form action="/admin/delogin" method="post">
+        {{ csrf_field() }}
     <div class="login-container animated fadeInDown">
         <div class="loginbox bg-white">
+
+    
             <div class="loginbox-title">EC商城</div>
             
             <div class="loginbox-or">
                 <div class="or-line"></div>
                 <div class="or">OR</div>
             </div>
+
             <div class="loginbox-social">
                 <img src="holder.js/220x100?bg=#FFD800&text=EC商城logo" alt="">
             </div>
@@ -67,11 +73,12 @@ Purchase: http://wrapbootstrap.com
                 <a href="">忘记密码?</a>
             </div>
             <div class="loginbox-submit">
-                <input type="button" class="btn btn-primary btn-block" value="登录">
+                <input type="submit" class="btn btn-primary btn-block" value="登录">
             </div>
 
         </div>
     </div>
+    </form>
 
     <!--Basic Scripts-->
     <script src="{{asset('/static/admin/assets/js/jquery-2.0.3.min.js')}}"></script>

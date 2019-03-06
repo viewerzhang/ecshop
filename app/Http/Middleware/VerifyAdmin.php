@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Model\Admin\Admin;
 
 class VerifyAdmin
 {
@@ -16,7 +17,8 @@ class VerifyAdmin
     public function handle($request, Closure $next)
     {
         if(session('adminlogin')){
-            if (Hash::check($data['upwd'], session(['admin.upwd'])) {
+            $admin = Admin::where('uname',session('admin.uname'))->first();
+            if ($admin->upwd == session('admin.upwd')) {
                 return $next($request);
             }
             session(['adminlogin'=>false]);

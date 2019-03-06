@@ -8,6 +8,7 @@ use App\Http\Model\Admin\Admin;
 use App\Http\Model\Admin\Role;
 use App\common\FileUtil;
 use App\Http\Requests\AdminsRequest;
+use Hash;
 use DB;
 
 class AdminsController extends Controller
@@ -69,6 +70,7 @@ class AdminsController extends Controller
             $newStaticFile = str_replace('\\', '/', $staticFile);
             $fu = new FileUtil();
             $fu->moveFile($newTempFile, $newStaticFile);
+            $data['upwd'] =  Hash::make($data['upwd']);
 
             $judge = Admin::insert($data);
             if($judge){

@@ -27,7 +27,8 @@ Route::resource('/goodsorder','GoodsOrderController');
 // 用户地址路由
 Route::resource('/useraddr','UserAddrController');
 
-
+// 收藏中心
+Route::resource('/goodshouse','GoodsHouseController');
 
 
 
