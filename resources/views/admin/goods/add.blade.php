@@ -63,7 +63,8 @@
                                 <select name="cate_id" class="form-control">
                                 <option value="0">顶级分类</option>
                                 @foreach($cate as $k => $v)
-                                    <option {{ $v->Catejz_no }} value="{{ $v->id }}">{{ $v->catenamea }}</option>
+                                 
+                                    <option {--{{ $v->Catejz_no }}--} value="{{ $v->id }}">{{ $v->catenamea }}</option>
                                 @endforeach
                             </select>
                             </div>

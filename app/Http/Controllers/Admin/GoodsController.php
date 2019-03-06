@@ -111,7 +111,7 @@ class GoodsController extends Controller
 
                 $data['goods_img']=$file_name;
                 
-                //$res = Goods::insert($data);
+                //Goods::insert($data);
                 $rs = Goods::insertGetId($data);
                 //dump($res);
               
