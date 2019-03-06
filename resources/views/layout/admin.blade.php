@@ -653,7 +653,32 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
+                        <!-- 充值管理 -->
+                        <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon glyphicon glyphicon-phone"></i>
+                            <span class="menu-text">充值管理 </span>
+                            <i class="menu-expand"></i>                                     
+                            <i class="menu-expand"></i>                                     
+                        </a>
 
+                        <ul class="submenu">
+                            <li>
+                                <a href="/admin/recharge/create">
+                                    <span class="menu-text">添加充值卡</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="/admin/recharge">
+                                    <span class="menu-text">充值卡列表</span>
+                                </a>
+                            </li>
+
+                                <ul class="submenu">
+                                </ul>
+                            </li>
+
+                        </ul>
                          <!--   系统设置 -->
                          <!--	系统设置 -->
 

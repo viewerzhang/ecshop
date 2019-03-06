@@ -98,6 +98,8 @@ Route::post('/column/files','ColumnController@files');
 Route::resource('column','ColumnController');
 // 活动路由
 Route::resource('activity','GoodsActivityController');
+// 充值卡路由
+Route::resource('recharge','RechargeController');
 
 /**
 * 牛宇新负责的模块
