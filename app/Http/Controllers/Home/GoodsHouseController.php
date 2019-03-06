@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Model\Home\GoodsHouse;
+use App\Http\Model\{Home\GoodsHouse,Admin\Goods};
 
 class GoodsHouseController extends Controller
 {
@@ -15,8 +15,8 @@ class GoodsHouseController extends Controller
      */
     public function index()
     {
-        $data = GoodsHouse::get();
-        return view('home.goodshouse.index');
+        $data = GoodsHouse::where('uid',session('user.id'))->paginate(5);
+        return view('home.goodshouse.index',['data'=>$data]);
     }
 
     /**
@@ -50,6 +50,26 @@ class GoodsHouseController extends Controller
         $data = $request->except(['_token']);
         // 获取用户的ID
         $data['uid'] = session('user.id');
+        // 查看是否已有记录
+        $judge = GoodsHouse::where('uid',$data['uid'])->where('gid',$data['gid'])->first();
+        if($judge){
+            // 用户已有同商品的收藏
+            $arr = [
+                'code' => '0',
+                'msg' => '您已添加该商品，喜欢就购买吧！'
+            ];
+            return json_encode($arr);
+        }
+        // 判断是否有用户收藏的商品
+        $judge = Goods::where('id',$data['gid'])->first();
+        if(!$judge){
+            // 用户已有同商品的收藏
+            $arr = [
+                'code' => '0',
+                'msg' => '该商品不存在，或已被删除'
+            ];
+            return json_encode($arr);
+        }
         //添加到收藏表
         try{
             GoodsHouse::insert($data);
@@ -111,6 +131,27 @@ class GoodsHouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $judge = GoodsHouse::where('id',$id)->where('uid',session('user.id'))->first();
+        if(!$judge){
+            $arr = [
+                'code' => '0',
+                'msg' => '对不起，您并没有收藏这一件商品'
+            ];
+            return json_encode($arr);
+        }
+        try{
+            GoodsHouse::destroy($id);
+        }catch(\Exception $err){
+            $arr = [
+                'code' => '0',
+                'msg' => '对不起，删除失败'
+            ];
+            return json_encode($arr);
+        }
+        $arr = [
+            'code' => '1',
+            'msg' => '删除成功'
+        ];
+        return json_encode($arr);
     }
 }

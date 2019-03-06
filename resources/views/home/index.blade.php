@@ -1445,8 +1445,19 @@
            "_token": "{{ csrf_token() }}",
            'gid':id
         }, function(data) {
-            
-                    
+            if(data.code == 0){
+                layui.use(['layer', 'form'], function(){
+                  var layer = layui.layer
+                  ,form = layui.form;
+                  layer.msg(data.msg);
+                });
+            }else{
+                layui.use(['layer', 'form'], function(){
+                  var layer = layui.layer
+                  ,form = layui.form;
+                  layer.msg(data.msg);
+                });
+            }
         },'json');
     }
 

@@ -94,7 +94,7 @@
                                 <a class="Shopping cart" href="/grzx">我的账户</a>
                             </li>
                             <li>
-                                <a class="Shopping cart" href="/login">我的收藏</a>
+                                <a class="Shopping cart" href="/goodshouse">我的收藏</a>
                             </li>
                             <li>
                                 <a class="Shopping cart" href="/shoppingcar">购物车</a>
