@@ -134,29 +134,6 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-  <!-- 显示错误消息 开始 -->
-    @if (session('success'))
-        <div class="class='alert alert-success" role="lert">
-            {{ session('success') }}
-        </div>
-    @endif
-
-
-    @if (session('error'))
-        <div class="class='alert alert-danger" role="lert">
-            {{ session('error') }}
-        </div>
-    @endif
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-<!-- 显示错误消息 结束 -->
                         <div class="login-content login-margin">
                             <h2 class="login-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个新账户</font></font></h2>
                             <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建您自己的Unicase帐户。</font></font></p>
@@ -243,7 +220,11 @@
         var phone_grep = /^1{1}[3456789]{1}[0-9]{9}$/;
         // 使用正则检查手机号
         if(!phone_grep.test(user_phone)){
-            alert('请输入正确手机号');
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                  
+                layer.msg('请输入正确手机号');
+            });
             return false;
         }
         // 将js对象转化成jquery对象
