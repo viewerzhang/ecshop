@@ -18,7 +18,7 @@ class GrzxController extends Controller
      */
     public function index()
     {
-        $data = Users::first();
+        $data = Users::where('id',session('user.id'))->first();
         // dd($data);
         // dd($data);
         $data['user_phone'] = str_replace(substr($data['user_phone'],3,5), '*****', $data['user_phone']);
@@ -34,36 +34,10 @@ class GrzxController extends Controller
     public function grzx()
     {
         // 获取数据
-        $data = Users::first();
+        $data = Users::where('id',session('user.id'))->first();
         // 将手机号中间五位用星号显示
         $data['user_phone'] = str_replace(substr($data['user_phone'],3,5), '*****', $data['user_phone']);
         return view('home.grzx.index', ['data'=>$data]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edindex(Request $request,$id)
-    {
-        // $users = $request->except(['_token','_metch']);
-        // // dd($users);
-        // $res = Users::first();
-        // $res->$id = $users['metch'];
-        // // dd($res);
-        // $row = $res->save();
-        // if($row){
-        //         $arr = [
-        //             'code'=>'1'
-        //         ];
-        //         return json_encode($arr);
-        // }else{
-        //         $arr = [
-        //             'code'=>'0'
-        //         ];
-        //         return json_encode($arr);
-        // }
     }
 
     /**
@@ -192,7 +166,7 @@ class GrzxController extends Controller
         $old = $request->except(['_token']);
         // json_encode($data);
         // return json_encode($data);
-        $conf = Users::first();
+        $conf = Users::where('id',session('user.id'))->first();
         $conf->$id =  $old['metch'];
         $judge = $conf->save();
         if($judge){
@@ -334,8 +308,8 @@ class GrzxController extends Controller
                 // 更新到数据库中
                 $judge = $history->save();
                 // 判断结果是否更新完成
-                $user = Users::first($history->id);
-                session(['user'=>$user]);
+                // $user = Users::first($history->id);
+                // session(['user'=>$user]);
                 if($judge){
                     // 更新成功删除Redis中用户验证码
                     Redis::del($data['dqphone']);

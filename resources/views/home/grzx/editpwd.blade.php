@@ -155,6 +155,11 @@
             }, function(data) {
                 if(data.code == 1){
                     layer.closeAll();
+                    layui.use(['layer', 'form'], function(){
+                        var layer = layui.layer
+                        ,form = layui.form;
+                        layer.msg('修改成功');
+                    });
                     
                 }else if(data.code == 2){
                     layui.use(['layer', 'form'], function(){

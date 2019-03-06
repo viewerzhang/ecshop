@@ -127,18 +127,22 @@
     $('.bc').change(function (){
         metch = $(this).attr('name');
         zhi = $(this).val();
-        console.log(metch);
-        console.log(zhi);
+        // console.log(metch);
+        // console.log(zhi);
         $.post("/grzx/editgrxx/"+metch, {    
                "_token": "{{ csrf_token() }}",
                metch:zhi
         }, function(data) {
-            console.log(data);
-            if(data.code == '1'){
-                layer.msg('修改成功');
-            }else{
-                layer.msg('修改失败');
-            }
+            // console.log(data);
+            layui.use(['layer', 'form'], function(){
+                var layer = layui.layer
+                ,form = layui.form;
+                if(data.code == '1'){
+                    layer.msg('修改成功');
+                }else{
+                    layer.msg('修改失败');
+                }
+            });
         },'json');
     });
 </script>
