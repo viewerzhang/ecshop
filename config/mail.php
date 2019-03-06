@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', '15801199983@163.com'),
+        'name' => env('MAIL_FROM_NAME', 'admin123456'),
     ],
 
     /*
@@ -70,7 +70,7 @@ return [
     | transport layer security protocol should provide great security.
     |
     */
-
+    
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*

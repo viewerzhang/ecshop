@@ -42,32 +42,6 @@ class GrzxController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edindex(Request $request,$id)
-    {
-        // $users = $request->except(['_token','_metch']);
-        // // dd($users);
-        // $res = Users::first();
-        // $res->$id = $users['metch'];
-        // // dd($res);
-        // $row = $res->save();
-        // if($row){
-        //         $arr = [
-        //             'code'=>'1'
-        //         ];
-        //         return json_encode($arr);
-        // }else{
-        //         $arr = [
-        //             'code'=>'0'
-        //         ];
-        //         return json_encode($arr);
-        // }
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -336,8 +310,8 @@ class GrzxController extends Controller
                 // 更新到数据库中
                 $judge = $history->save();
                 // 判断结果是否更新完成
-                $user = Users::first($history->id);
-                session(['user'=>$user]);
+                // $user = Users::first($history->id);
+                // session(['user'=>$user]);
                 if($judge){
                     // 更新成功删除Redis中用户验证码
                     Redis::del($data['dqphone']);
