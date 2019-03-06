@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                     <div class="header_right_area">
-                        <ul>
+                        <ul style="margin-left: -30px;">
                         @if (session('userlogin'))
                             <li>
                                 <a class="Shopping cart" href="/grzx">欢迎您{{session('user.user_name')}}</a>
@@ -95,6 +95,9 @@
                             </li>
                             <li>
                                 <a class="Shopping cart" href="/goodshouse">我的收藏</a>
+                            </li>
+                            <li>
+                                <a class="Shopping cart" href="/goodshistory">我的足迹</a>
                             </li>
                             <li>
                                 <a class="Shopping cart" href="/shoppingcar">购物车</a>

@@ -9,6 +9,7 @@ use App\Http\Model\Admin\GoodsCategory;
 use App\Http\Model\Admin\GoodsImgs;
 use App\Http\Model\Admin\GoodsType;
 use App\Http\Model\Admin\GoodsAttr;
+use App\Http\Model\Home\GoodsHistory;
 
 class GoodlistController extends Controller
 {
@@ -121,6 +122,26 @@ class GoodlistController extends Controller
     public function show($id)
     {
         $goods = Goods::find($id);
+
+
+        // 记录用户浏览记录 开始 // 
+        if(session('userlogin')){
+            try{
+                $judge = GoodsHistory::where('uid',session('user.id'))->where('gid',$id)->first();
+                if($judge){
+                    $zd = GoodsHistory::where('uid',session('user.id'))->max('px');
+                    GoodsHistory::where('uid',session('user.id'))->where('gid',$id)->update(['px'=>$zd+1]);
+                }else{
+                    $zd = GoodsHistory::where('uid',session('user.id'))->max('px');
+                    GoodsHistory::insert(['uid'=>session('user.id'),'gid'=>$id,'px'=>$zd+1]);
+                }
+            }catch(\Exception $err){
+                return view('error.index');
+            }
+        }
+        // 记录用户浏览记录 结束 //
+
+
         if($goods){
             //点击查看商品详情 则修改goods数据库的goods_show  +1
             $click_num = $goods->click_num;

@@ -502,7 +502,6 @@
                                                 </a>
                                             </div>
                                             <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="" data-original-title="Quickview">快速查看</button>   
                                             </div>
                                             <div class="product_content">
                                                 <div class="usal_pro">
@@ -533,12 +532,12 @@
                                                         <ul class="add-to-links clearfix">
                                                             <li class="addwishlist">
                                                                 <div class="yith-wcwl-add-button show">
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                                                                    <a onclick="tjsc({{ $v->id }},this);" class="add_to_wishlist" href="javascript:;" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="添加到收藏"><i class="fa fa-heart"></i></a>
                                                                 </div>
                                                             </li>
                                                             <li>
                                                                 <div class="new_act">
-                                                                    <a class="button_act button_act_ct" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">加入购物车</a>
+                                                                    <a class="button_act" data-quick-id="45" href="/goodlist/{{ $v->id }}" target="_blank" title="" data-toggle="tooltip" data-original-title="更快捷的添加购物车">查看商品详情</a>
                                                                 </div>
                                                             </li>
                                                             <li class="addcompare">
@@ -588,8 +587,7 @@
                                                 <img class="secondary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}" alt="" style="width: 260px;height: 170px">
                                                 </a>
                                             </div>
-                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="" data-original-title="Quickview">快速查看</button>   
+                                            <div class="product-action" data-toggle="modal" data-target="#myModal">  
                                             </div>
                                             <div class="product_content">
                                                 <div class="usal_pro">
@@ -620,12 +618,12 @@
                                                         <ul class="add-to-links clearfix">
                                                             <li class="addwishlist">
                                                                 <div class="yith-wcwl-add-button show">
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                                                                    <a onclick="tjsc({{ $v->id }},this);" class="add_to_wishlist" href="javascript:;" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="添加到收藏"><i class="fa fa-heart"></i></a>
                                                                 </div>
                                                             </li>
                                                             <li>
                                                                 <div class="new_act">
-                                                                    <a class="button_act button_act_ct" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">加入购物车</a>
+                                                                    <a class="button_act" data-quick-id="45" href="/goodlist/{{ $v->id }}" target="_blank" title="" data-toggle="tooltip" data-original-title="更快捷的添加购物车">查看商品详情</a>
                                                                 </div>
                                                             </li>
                                                             <li class="addcompare">
@@ -743,6 +741,30 @@
                 }
             });
         });
+
+
+
+        function tjsc(id,ud)
+        {
+            $.post("/goodshouse", {    
+               "_token": "{{ csrf_token() }}",
+               'gid':id
+            }, function(data) {
+                if(data.code == 0){
+                    layui.use(['layer', 'form'], function(){
+                      var layer = layui.layer
+                      ,form = layui.form;
+                      layer.msg(data.msg);
+                    });
+                }else{
+                    layui.use(['layer', 'form'], function(){
+                      var layer = layui.layer
+                      ,form = layui.form;
+                      layer.msg(data.msg);
+                    });
+                }
+            },'json');
+        }
     </script>
 @stop
 

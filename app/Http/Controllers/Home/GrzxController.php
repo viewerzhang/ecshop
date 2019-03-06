@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\Users;
 use App\common\Sms;
 use Illuminate\Support\Facades\Redis;
+use App\common\getIp;
 use Hash;
 
 class GrzxController extends Controller
@@ -18,7 +19,7 @@ class GrzxController extends Controller
      */
     public function index()
     {
-        $data = Users::first();
+        $data = Users::where('id',session('user.id'))->first();
         // dd($data);
         // dd($data);
         $data['user_phone'] = str_replace(substr($data['user_phone'],3,5), '*****', $data['user_phone']);
@@ -34,7 +35,7 @@ class GrzxController extends Controller
     public function grzx()
     {
         // 获取数据
-        $data = Users::first();
+        $data = Users::where('id',session('user.id'))->first();
         // 将手机号中间五位用星号显示
         $data['user_phone'] = str_replace(substr($data['user_phone'],3,5), '*****', $data['user_phone']);
         return view('home.grzx.index', ['data'=>$data]);
@@ -176,6 +177,37 @@ class GrzxController extends Controller
             ];
             return json_encode($arr);
         }
+
+        
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function xgxx(Request $request, $id)
+    {
+        $old = $request->except(['_token']);
+        // json_encode($data);
+        // return json_encode($data);
+        $conf = Users::where('id',session('user.id'))->first();
+        $conf->$id =  $old['metch'];
+        $judge = $conf->save();
+        if($judge){
+                $arr = [
+                    'code'=>'1'
+                ];
+                session(['user'=>$conf]);
+                return json_encode($arr);
+        }else{
+                $arr = [
+                    'code'=>'0'
+                ];
+                return json_encode($arr);
+        }
     }
 
     /**
@@ -196,7 +228,7 @@ class GrzxController extends Controller
         // 获取用户提交数据，去除token值
         $data = $request->except('_token');
         // 重新更新用户信息
-        $history = Users::find($id);
+        $history = Users::find(session('user.id'));
         // 对比用户提交手机号与更新后的信息是否一致
         if($history->user_phone == $data['dqphone']){
             // 对比用户输入验证码是否正确
@@ -246,7 +278,7 @@ class GrzxController extends Controller
      */
     public function pic(Request $request,$id)
     {
-        dump($request->file('pic'));die;
+        // dump($request->file('pic'));die;
         if($request->hasFile('pic')){
             $files = $request->file('pic');
             $fileName = $files->store('/static/home/user_pic');
@@ -297,10 +329,15 @@ class GrzxController extends Controller
             // 对比用户输入验证码是否正确
             if(Redis::get($history->user_phone) == $data['code']){
                 // 身份确认完成，修改数据库信息
+                if (Hash::needsRehash($data['newpwd'])) {
+                    $data['newpwd'] = Hash::make($data['newpwd']);
+                }
                 $history->password = $data['newpwd'];
                 // 更新到数据库中
                 $judge = $history->save();
                 // 判断结果是否更新完成
+                $user = Users::first($history->id);
+                session(['user'=>$user]);
                 if($judge){
                     // 更新成功删除Redis中用户验证码
                     Redis::del($data['dqphone']);
@@ -336,7 +373,11 @@ class GrzxController extends Controller
         }
     }
 
-
+    public function balance()
+    {
+        $data = Users::where('id',session('user.id'))->first();
+        return view('home.grzx.balance',['data'=>$data]);
+    }
 
     
 }

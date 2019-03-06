@@ -1,5 +1,6 @@
 @extends('layout.grzx')
 @section('title','个人中心');
+@inject('getIp', 'App\common\getIp')
 @section('grzx')
 <!-- 个人中心主页显示的详细信息 开始 -->
 <div class="col-md-9">
@@ -33,7 +34,7 @@
                             				@endif
                             	</p>
                             	<p style="vertical-align: inherit;">
-                            		上次登陆地点: {{session('user.user_ip')}}
+                            		上次登陆地点: {{ $getIp::getIp(session('user.user_ip')) }}
                             	</p>
                             </div>
                         </div>

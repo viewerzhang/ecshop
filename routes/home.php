@@ -30,11 +30,12 @@ Route::resource('/useraddr','UserAddrController');
 // 收藏中心
 Route::resource('/goodshouse','GoodsHouseController');
 
+// 历史浏览
+Route::get('/goodshistory','GoodsHistoryController@index');
+Route::delete('/goodshistory/{id}','GoodsHistoryController@del');
 
-
-
-
-
+// 个人中心 -- 账户充值
+Route::get('/grzx/balance','GrzxController@balance');
 
 
 
@@ -283,4 +284,5 @@ Route::get('/grzx/grxx', 'GrzxController@grzx');
 Route::post('/grzx/revise/{id}', 'GrzxController@revise');
 Route::post('/grzx/pic/{id}', 'GrzxController@pic');
 Route::post('/grzx/editpwd/{id}', 'GrzxController@editpwd');
+Route::post('/grzx/editgrxx/{id}', 'GrzxController@xgxx');
 Route::resource('grzx', 'GrzxController');

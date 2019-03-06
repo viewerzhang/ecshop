@@ -934,7 +934,7 @@
                                                         <ul class="add-to-links clearfix">
                                                             <li class="addwishlist">
                                                                 <div class="yith-wcwl-add-button show" >
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="添加到收藏"><i class="fa fa-heart"></i></a>
+                                                                    <a onclick="tjsc({{ $vv->id }},this);" class="add_to_wishlist" href="javascript:;" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="添加到收藏"><i class="fa fa-heart"></i></a>
                                                                 </div>
                                                             </li>
                                                             <li>
