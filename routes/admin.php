@@ -8,7 +8,7 @@ Route::get('/index', function () {
 });
 
 //权限的提醒信息
-Route::get('remind','AdminsController@remind');
+Route::get('/remind','AdminsController@remind');
 //'middleware'=>'RolePer'
 /*路由组开始*/
 Route::group([],function(){

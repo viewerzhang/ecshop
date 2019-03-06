@@ -69,6 +69,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'AdminRoute' => \App\Http\middleware\VerifyAdmin::class, // 后台路由中间件
         'HomeRoute' => \App\Http\middleware\VerifyHome::class, // 前台路由中间件
-        'RolePer' => \App\Http\middleware\RolePerMiddleware::class, // 前台路由中间件
+        'RolePer' => \App\Http\middleware\RolePerMiddleware::class // 前台路由中间件
     ];
 }
