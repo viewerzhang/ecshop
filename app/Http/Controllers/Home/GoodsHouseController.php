@@ -39,7 +39,11 @@ class GoodsHouseController extends Controller
     {
         if(!session('userlogin')){
             // 返回错误信息，原因用户没有登录
-
+            $arr = [
+                'code' => '0',
+                'msg' => '对不起您还未登录' 
+            ];
+            return json_encode($arr);
         }
 
         // 去除多余信息
@@ -51,10 +55,18 @@ class GoodsHouseController extends Controller
             GoodsHouse::insert($data);
         }catch(\Exception $err){
             // 插入失败返回错误信息
-            
+            $arr = [
+                'code' => '0',
+                'msg' => '对不起，添加收藏失败'
+            ];
+            return json_encode($arr);
         }
         // 插入成功返回成功信息
-        
+        $arr = [
+            'code' => '1',
+            'msg' => '添加收藏成功'
+        ];
+        return json_encode($arr);
     }
 
     /**
