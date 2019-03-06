@@ -131,6 +131,10 @@ Route::get('goods/huifu/{id}','GoodsController@huifu');
 Route::get('goods/shanchu/{id}','GoodsController@shanchu');
 //商品管理
 Route::resource('goods','GoodsController');
+//角色管理
+Route::resource('role','RoleController');
+//权限管理
+Route::resource('permission','PermissionController');
 
 
 
@@ -179,7 +183,8 @@ Route::resource('goods','GoodsController');
 
 
 
-
+// 广告图片上传
+Route::post('/ad/files','AdvertisingController@files');
 
 // 广告路由
 Route::resource('ad','AdvertisingController');
@@ -187,8 +192,15 @@ Route::resource('ad','AdvertisingController');
 // 导航路由
 Route::resource('nav','NavigationController');
 
+// 栏目图片上传
+Route::post('/column/files','ColumnController@files');
+
 // 栏目路由
 Route::resource('column','ColumnController');
+
+// 活动路由
+Route::resource('activity','GoodsActivityController');
+
 
 
 

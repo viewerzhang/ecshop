@@ -176,6 +176,36 @@ class GrzxController extends Controller
             ];
             return json_encode($arr);
         }
+
+        
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function xgxx(Request $request, $id)
+    {
+        $old = $request->except(['_token']);
+        // json_encode($data);
+        // return json_encode($data);
+        $conf = Users::first();
+        $conf->$id =  $old['metch'];
+        $judge = $conf->save();
+        if($judge){
+                $arr = [
+                    'code'=>'1'
+                ];
+                return json_encode($arr);
+        }else{
+                $arr = [
+                    'code'=>'0'
+                ];
+                return json_encode($arr);
+        }
     }
 
     /**
@@ -246,7 +276,7 @@ class GrzxController extends Controller
      */
     public function pic(Request $request,$id)
     {
-        dump($request->file('pic'));die;
+        // dump($request->file('pic'));die;
         if($request->hasFile('pic')){
             $files = $request->file('pic');
             $fileName = $files->store('/static/home/user_pic');
@@ -297,10 +327,15 @@ class GrzxController extends Controller
             // 对比用户输入验证码是否正确
             if(Redis::get($history->user_phone) == $data['code']){
                 // 身份确认完成，修改数据库信息
+                if (Hash::needsRehash($data['newpwd'])) {
+                    $data['newpwd'] = Hash::make($data['newpwd']);
+                }
                 $history->password = $data['newpwd'];
                 // 更新到数据库中
                 $judge = $history->save();
                 // 判断结果是否更新完成
+                $user = Users::first($history->id);
+                session(['user'=>$user]);
                 if($judge){
                     // 更新成功删除Redis中用户验证码
                     Redis::del($data['dqphone']);

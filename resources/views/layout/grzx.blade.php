@@ -10,7 +10,7 @@
                 <div class="shop_menu shop_menu_tk " style="padding-bottom: 0px;">
                     <ul class="cramb_area cramb_area_2 cramb_area_ktp">
                         <li><a href="/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主页/</font></font></a></li>
-                        <li><a href="/grzx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的账号</font></font></a></li>
+                        <li><a href="/grzx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@yield('title')</font></font></a></li>
                     </ul>
                     <hr class="hrtop">
                 </div>
@@ -26,7 +26,7 @@
 			<!-- 详情链接跳转地址 开始 -->
 			<div class="col-md-3">
 				<div class="category-widget-menu">
-                    <h2 class="cat-menu-title text-uppercase"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单中心</font></font></h2>
+                    <h2 class="cat-menu-title text-uppercase"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" style="border: 1px solid #aaa;">订单中心</font></font></h2>
                     <div class="menu-categories-container">
                         <ul class="menu-categories">
                             <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font></a></li>
@@ -50,6 +50,18 @@
                     <div class="menu-categories-container">
                     	<ul class="menu-categories">
                             <li><a href="/grzx/grxx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户信息</font></font></a></li>
+                        </ul>
+                        <ul class="menu-categories">
+                            <li><a href="/useraddr"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址管理</font></font></a></li>
+                        </ul>
+                        <ul class="menu-categories">
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改信息</font></font></a></li>
+                        </ul>
+                        <ul class="menu-categories">
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改密码</font></font></a></li>
+                        </ul>
+                        <ul class="menu-categories">
+                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改手机号</font></font></a></li>
                         </ul>
                     </div>
                 </div>

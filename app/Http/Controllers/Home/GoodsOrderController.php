@@ -19,7 +19,9 @@ class GoodsOrderController extends Controller
      */
     public function index(Request $request)
     {
-        
+        $uid = session('user.id');
+        $data = GoodsOrder::where('user_id',$uid)->paginate(4);
+        return view('home.goodsorder.show',['data'=>$data]);
     }
 
     /**
@@ -33,7 +35,7 @@ class GoodsOrderController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 生成新订单
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -58,6 +60,8 @@ class GoodsOrderController extends Controller
         $order['order_rec'] = $addr['user_take'];
         // 获取收货地址
         $order['order_addr'] = $addr['user_addr'];
+        // 获取收货邮编
+        $order['order_code'] = $addr['user_code'];
         // 获取收货手机号
         $order['order_phone'] = $addr['user_phone'];
         // 买家留言 扩展性
@@ -103,29 +107,57 @@ class GoodsOrderController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 用户确认收货
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $data = GoodsOrder::where('user_id',session('user.id'))->where('id',$id)->first();
+        // var_dump($data->order_status);die;
+        if(!$data){
+            $arr = [
+                'code' => '0'
+            ];
+            return json_encode($arr);
+        }
+        if($data->order_status != 1){
+            $arr = [
+                'code' => '0'
+            ];
+            return json_encode($arr);
+        }
+        $data->order_status = '2';
+        try{
+            $data->save();
+        }catch(\Exception $err){
+            $arr = [
+                'code' => '0'
+            ];
+            return json_encode($arr);
+        }
+        $arr = [
+            'code' => '1'
+        ];
+        return json_encode($arr);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 订单详情
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $data = ShopDetail::where('order_id',$id)->paginate(3);
+        $su = ShopDetail::where('order_id',$id)->get();
+        return view('home.goodsorder.detail',['su'=>$su,'data'=>$data]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * 预生成新订单
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -168,13 +200,39 @@ class GoodsOrderController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 用户关闭订单
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $data = GoodsOrder::where('user_id',session('user.id'))->where('id',$id)->first();
+        // var_dump($data->order_status);die;
+        if(!$data){
+            $arr = [
+                'code' => '0'
+            ];
+            return json_encode($arr);
+        }
+        if($data->order_status != 1 && $data->order_status != 0){
+            $arr = [
+                'code' => '0'
+            ];
+            return json_encode($arr);
+        }
+        $data->order_status = '3';
+        try{
+            $data->save();
+        }catch(\Exception $err){
+            $arr = [
+                'code' => '0'
+            ];
+            return json_encode($arr);
+        }
+        $arr = [
+            'code' => '1'
+        ];
+        return json_encode($arr);
     }
 }

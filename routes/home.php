@@ -24,6 +24,9 @@ Route::resource('/shoppingcar','ShoppingCarController');
 // 订单路由
 Route::resource('/goodsorder','GoodsOrderController');
 
+// 用户地址路由
+Route::resource('/useraddr','UserAddrController');
+
 
 
 
@@ -101,6 +104,8 @@ Route::resource('/goodsorder','GoodsOrderController');
 //商品列表页
 
 Route::resource('goodlist','GoodlistController');
+
+
 
 
 //
@@ -207,7 +212,8 @@ Route::resource('goodlist','GoodlistController');
 // 前台注册页
 Route::get('/register','UserController@create');
 
-
+// 前台搜索
+Route::get('/search','GoodlistController@search');
 
 
 
@@ -276,4 +282,5 @@ Route::get('/grzx/grxx', 'GrzxController@grzx');
 Route::post('/grzx/revise/{id}', 'GrzxController@revise');
 Route::post('/grzx/pic/{id}', 'GrzxController@pic');
 Route::post('/grzx/editpwd/{id}', 'GrzxController@editpwd');
+Route::post('/grzx/editgrxx/{id}', 'GrzxController@xgxx');
 Route::resource('grzx', 'GrzxController');

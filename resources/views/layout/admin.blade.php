@@ -227,7 +227,7 @@ Purchase: http://wrapbootstrap.com
                         <ul class="submenu">
 
                             <li>
-                                <a href="#" class="menu-dropdown">
+                                <a href="http://www.ecshop.com/admin/role/index" class="menu-dropdown">
                                     <span class="menu-text">
                                      角色管理
                                     </span>
@@ -236,13 +236,13 @@ Purchase: http://wrapbootstrap.com
 
                                 <ul class="submenu">
                                     <li>
-                                        <a href="font-awesome.html">
+                                        <a href="/admin/role/create">
                                             <i class="menu-icon fa fa-rocket"></i>
                                             <span class="menu-text">添加角色</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="glyph-icons.html">
+                                        <a href="/admin/role/index">
                                             <i class="menu-icon glyphicon glyphicon-stats"></i>
                                             <span class="menu-text">浏览角色</span>
                                         </a>
@@ -251,7 +251,7 @@ Purchase: http://wrapbootstrap.com
                                 </ul>
                             </li>
                            <li>
-                                <a href="#" class="menu-dropdown">
+                                <a href="http://www.ecshop.com/admin/permission/index" class="menu-dropdown">
                                     <span class="menu-text">
                                      权限管理
                                     </span>
@@ -260,13 +260,13 @@ Purchase: http://wrapbootstrap.com
 
                                 <ul class="submenu">
                                     <li>
-                                        <a href="font-awesome.html">
+                                        <a href="/admin/permission/create">
                                             <i class="menu-icon fa fa-rocket"></i>
                                             <span class="menu-text">添加权限</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="glyph-icons.html">
+                                        <a href="/admin/permission/index">
                                             <i class="menu-icon glyphicon glyphicon-stats"></i>
                                             <span class="menu-text">浏览权限</span>
                                         </a>
@@ -433,7 +433,33 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
-                      <!--  轮播图管理 -->
+                        <!-- 活动管理 -->
+                        <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon glyphicon glyphicon-th"></i>
+                            <span class="menu-text">活动管理 </span>
+                            <i class="menu-expand"></i>                  
+                            <i class="menu-expand"></i>             
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="/admin/activity/create">
+                                    <span class="menu-text">添加活动</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="/admin/activity">
+                                    <span class="menu-text">活动列表</span>
+                                </a>
+                            </li>
+
+                                <ul class="submenu">
+                                </ul>
+                            </li>
+
+                        </ul>
+                 
                       <!--	轮播图管理 -->
                       <li>
                         <a href="http://www.ecshop.com/admin/lunbo/index" class="menu-dropdown">

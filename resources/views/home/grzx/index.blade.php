@@ -30,7 +30,7 @@
 			  	<input type="radio" class="bc" name="user_sex" id="inlineRadio2" value="1" @if($data->user_sex == 1) checked @endif> 男
 			</label>
 			<label class="radio-inline">
-			  	<input type="radio" class="bc" name="user_sex" id="inlineRadio3" value="2" @if($data->user_sex == 2) checked @endif> 女
+			  	<input type="radio" class="bc" onchange="" name="user_sex" id="inlineRadio3" value="2" @if($data->user_sex == 2) checked @endif> 女
 			</label>
 			<div class="input-group"></div>
 		</div>
@@ -122,6 +122,24 @@
               content: data,
             });
         });
+    });
+
+    $('.bc').change(function (){
+        metch = $(this).attr('name');
+        zhi = $(this).val();
+        console.log(metch);
+        console.log(zhi);
+        $.post("/grzx/editgrxx/"+metch, {    
+               "_token": "{{ csrf_token() }}",
+               metch:zhi
+        }, function(data) {
+            console.log(data);
+            if(data.code == '1'){
+                layer.msg('修改成功');
+            }else{
+                layer.msg('修改失败');
+            }
+        },'json');
     });
 </script>
 

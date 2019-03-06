@@ -1,5 +1,5 @@
 @extends('layout.grzx')
-
+@section('title','个人中心');
 @section('grzx')
 <!-- 个人中心主页显示的详细信息 开始 -->
 <div class="col-md-9">

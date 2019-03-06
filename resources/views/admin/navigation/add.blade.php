@@ -4,6 +4,29 @@
 @section('title2', '添加导航')
 @section('content')
 	<div class="col-lg-6 col-sm-6 col-xs-12" width="700px">
+<!-- 显示错误消息 开始 -->
+    @if (session('success'))
+        <div class="class='alert alert-success" role="lert">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
+    @if (session('error'))
+        <div class="class='alert alert-danger" role="lert">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+<!-- 显示错误消息 结束 -->
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
                 <span class="widget-caption">导航添加</span>

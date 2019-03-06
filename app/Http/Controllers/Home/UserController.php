@@ -42,6 +42,7 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
+        
         // 判断验证码输入是否正确
         if(Redis::get($request->input('user_phone')) == $request->input('yzm')) {
             // 接收注册数据
@@ -63,6 +64,9 @@ class UserController extends Controller
             $res = Users::insert($data);
             // 判断数据是否插入成功
             if($res){
+                $user = Users::where('user_phone',$data['user_phone'])->first();
+                session(['userlogin'=>true]);
+                session(['user'=>$user]);
                 return "<script>alert('注册成功');location.href='/'</script>";
             }else{
                 return "<script>alert('注册失败');location.href='/register'</script>";
@@ -130,16 +134,22 @@ class UserController extends Controller
 
         // 接收手机号
         $phone = $request->user_phone;
-        // 生成验证码
-        $yzm = rand(1000,9999);
-        // 存到redis中
-        Redis::setex($phone,120,$yzm);
-        // 使用接口发送短信
-        Sms::sms($phone,$yzm);
-        // 返回值code为0
-        $data = [
-            'code' => 0,
-        ];
-        return $data;
+        $res=Users::where('user_phone',$phone)->first();
+        if(empty($res)){
+            // 生成验证码
+            $yzm = rand(1000,9999);
+            // 存到redis中
+            Redis::setex($phone,120,$yzm);
+            // 使用接口发送短信
+            Sms::sms($phone,$yzm);
+            // 返回值code为0
+            $data = [
+                'code' => 0,
+            ];
+            return $data;
+        }else{
+            $data=['code'=>1];
+            return $data;
+        }
     }
 }

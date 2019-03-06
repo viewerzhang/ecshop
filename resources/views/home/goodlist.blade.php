@@ -276,10 +276,10 @@
                                         </div>
                                         <div class="price_box price_box_new price_box_new_3">
                                             <span class="old- price old- price-3">
-                                                $250.00
+                                                ￥250.00
                                             </span>
                                             <span class="spical-price">
-                                                $200.00
+                                                ￥200.00
                                             </span>
                                         </div>
                                     </div>
@@ -306,10 +306,10 @@
                                         </div>
                                         <div class="price_box price_box_new price_box_new_3">
                                             <span class="old- price old- price-3">
-                                                $250.00
+                                                ￥250.00
                                             </span>
                                             <span class="spical-price">
-                                                $200.00
+                                                ￥200.00
                                             </span>
                                         </div>
                                     </div>
@@ -336,10 +336,10 @@
                                         </div>
                                         <div class="price_box price_box_new price_box_new_3">
                                             <span class="old- price old- price-3">
-                                                $200.00
+                                                ￥200.00
                                             </span>
                                             <span class="spical-price">
-                                                $150.00
+                                                ￥150.00
                                             </span>
                                         </div>
                                     </div>
@@ -456,7 +456,7 @@
                                             </div>
                                             <div class="price_box">
                                                 <span class="spical-price">
-                                                    ${{$v->goods_price}}
+                                                    ￥{{$v->goods_price}}
                                                 </span>
                                             </div>
                                             <div class="last_button_area">
@@ -571,7 +571,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $100.00
+                                                                ￥100.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -686,7 +686,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $300.00
+                                                                ￥300.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -801,7 +801,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $2.00
+                                                                ￥2.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -921,7 +921,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $200.00
+                                                                ￥200.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -1031,7 +1031,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $200.00
+                                                                ￥200.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -1146,7 +1146,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $200.00
+                                                                ￥200.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -1261,7 +1261,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $250.00
+                                                                ￥250.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -1376,7 +1376,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $200.00
+                                                                ￥200.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -1491,7 +1491,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $100.00
+                                                                ￥100.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -1607,7 +1607,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $150.00
+                                                                ￥150.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -1723,7 +1723,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $200.00
+                                                                ￥200.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -1838,7 +1838,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $220.00
+                                                                ￥220.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -1953,7 +1953,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $150.00
+                                                                ￥150.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -2063,7 +2063,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $9.00
+                                                                ￥9.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">
@@ -2173,7 +2173,7 @@
                                                         </div>
                                                         <div class="price_box price_box_tz">
                                                             <span class="spical-price">
-                                                                $100.00
+                                                                ￥100.00
                                                             </span>
                                                         </div>
                                                         <div class="last_button_area">

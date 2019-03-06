@@ -46,45 +46,23 @@ class AdvertisingController extends Controller
     {
         // 接收数据
         $data = $request->except(['_token']);
-        // 判断有没有文件上传
-        if($request->hasfile('ad_img')){
-            // 实例化图片对象
-            $files = $request->file('ad_img');
+        // 验证数据
+        $this->validate($request,[
+            'ad_desc' => 'required',
+            'ad_link' => 'required',
+        ],[
+            'ad_desc.required' => '请填写广告描述',
+            'ad_link.required' => '请填写广告链接',
+        ]);
+        // 向数据库保存数据
+        $res = Advertising::insert($data);
 
-            // 调用保存图片方法
-            $fileName = $files->store('images/add');
-
-            // 将名字存入数组
-            $data['ad_img'] = $fileName;
-
-            // 判断是否有未填写的信息
-            if( $request->filled('ad_desc') && $request->filled('ad_link') ){
-                // 向数据库保存数据
-                $res = Advertising::insert($data);
-
-                // 判断是否保存成功
-                if($res){
-                    echo '<script>alert("添加成功");location.href="/admin/ad"</script>';
-                }else{
-                    echo '<script>alert("添加失败");location.href="/admin/ad/create"</script>';
-                }
-
-            }else{
-                echo '<script>alert("添加失败,请填写所有信息");location.href="/admin/ad/create"</script>';
-            }
-
-            // 验证数据
-            // $this->validate($request,[
-            //     'ad_desc' => 'required',
-            //     'ad_link' => 'required',
-            // ],[
-            //     'ad_desc.required' => '请填写广告描述',
-            //     'ad_link.required' => '请填写广告链接',
-            // ]);
-
+        // 判断是否保存成功
+        if($res){
+            return redirect('/admin/ad')->with('success','添加成功');
         }else{
-            echo '<script>alert("添加失败,请上传图片");location.href="/admin/ad/create"</script>';
-        }   
+            return back()->with('error','添加失败');
+        }
     }
 
     /**
@@ -123,38 +101,25 @@ class AdvertisingController extends Controller
     {
         // 接收数据
         $data = $request->except(['_token','_method']);
-        // 判断有没有文件上传
-        if($request->hasfile('ad_img')){
-            // 实例化图片对象
-            $files = $request->file('ad_img');
 
-            // 调用保存图片方法
-            $fileName = $files->store('images/add');
+        // 验证数据
+        $this->validate($request,[
+            'ad_desc' => 'required',
+            'ad_link' => 'required',
+        ],[
+            'ad_desc.required' => '请填写广告描述',
+            'ad_link.required' => '请填写广告链接',
+        ]);
+            
+        // 向数据库保存数据
+        $res = Advertising::where('id',$id)->update($data);
 
-            // 将名字存入数组
-            $data['ad_img'] = $fileName;
-
-            // 判断是否有未填写的信息
-            if($request->filled('ad_desc') && $request->filled('ad_link')){
-
-                // 向数据库保存数据
-                $res = Advertising::where('id',$id)->update($data);
-
-                // 判断是否保存成功
-                if($res){
-                    echo '<script>alert("修改成功");location.href="/admin/ad"</script>';
-                }else{
-                    echo '<script>alert("修改失败");location.href="/admin/ad/'.$id.'/edit"</script>';
-                }
-
-            }else{
-                echo '<script>alert("修改失败,请填写所有信息");location.href="/admin/ad/'.$id.'/edit"</script>';
-            }
-
+        // 判断是否保存成功
+        if($res){
+            return redirect('/admin/ad')->with('success','修改成功');
         }else{
-            echo '<script>alert("修改失败,请上传图片");location.href="/admin/ad/'.$id.'/edit"</script>';
+            return back()->with('error','修改失败,请修改信息或返回上一级');
         }
-
     }
 
     /**
@@ -169,9 +134,34 @@ class AdvertisingController extends Controller
         $res = Advertising::destroy($id);
         // 判断是否成功
         if($res){
-            echo '<script>alert("删除成功");location.href="/admin/ad"</script>';
+            return redirect('/admin/ad')->with('success','删除成功');
         }else{
-            echo '<script>alert("删除失败");location.href="/admin/ad"</script>';
+            return back()->with('error','删除失败');
+        }
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function files(Request $request)
+    {
+        if($request->hasFile('ad_img')){
+            $files = $request->file('ad_img');
+            $fileName = $files->store('images/add/temp');
+            $trueFileName = str_replace('/temp', '', $fileName);
+            $arr = [
+                'src'=>asset('static/'.$fileName),
+                'hdsrc'=>'static/'.$fileName,
+                'code'=>'1'
+            ];
+            return json_encode($arr);
+        }else{
+            $arr = [
+                'code'=>'0',
+            ];
+            return json_encode($arr);
         }
     }
 }
