@@ -32,7 +32,7 @@
                             <li><a href="/goodsorder"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的订单</font></font></a></li>
                         </ul>
                         <ul class="menu-categories">
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购物车</font></font></a></li>
+                            <li><a href="/shoppingcar"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购物车</font></font></a></li>
                         </ul>
                         <ul class="menu-categories">
                             <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">已发货</font></font></a></li>

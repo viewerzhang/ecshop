@@ -35,10 +35,10 @@ Route::get('/goodshistory','GoodsHistoryController@index');
 Route::delete('/goodshistory/{id}','GoodsHistoryController@del');
 
 // 个人中心 -- 账户充值
-Route::get('/grzx/balance','GrzxController@balance');
+Route::get('/grzx/balance','UserBalanceController@balance');
 
-
-
+// 提交充值
+Route::post('/balance','UserBalanceController@index');
 
 
 

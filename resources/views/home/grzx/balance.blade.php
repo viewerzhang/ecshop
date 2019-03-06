@@ -52,72 +52,9 @@
         <!-- <link rel="stylesheet" type="text/css" href="/static/home/css/demo.css" /> -->
         <link rel="stylesheet" type="text/css" href="/static/home/css/component.css" />
 <div class="col-md-9">
-    <div class="all-pros br-ntf" style="margin-top: 0px;">
-        <div class="row">
-            <div class="col-md-4 col-sm-4 pl pr" style="width: 200px;">
-                <div class="sngl-pro" style="margin-left: 16px;">
-                    @if(empty($data->user_pic))
-                        <img src="/static/home/users_pic/default.png" alt="" width="180">
-                    @else
-                        <img src="/static/{{$data->user_pic}}" alt="">
-                    @endif
-                </div>
-            </div>
-            <div class="col-md-8 col-sm-8 pl pr">
-                <div class="product_content product_content_nx">
-                    <div class="usal_pro">
-                        <div class="product_name_2 product_name_3 prnm">
-                            <h2>
-                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$data->user_name}}</font></font>
-                            </h2>
-                            <div class="pro_discrip">
-                                <p style="vertical-align: inherit;">
-                                    手机号 : {{$data->user_phone}}
-                                </p>
-                                <p style="vertical-align: inherit;">
-                                    邮 箱 : @if(empty($data->user_email))
-                                                <a href="/edit">立即验证</a>
-                                            @else
-                                                {{$data->user_email}}
-                                            @endif
-                                </p>
-                                <p style="vertical-align: inherit;">
-                                    上次登陆地点: {{-- $getIp::getIp(session('user.user_ip')) --}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="action actionmm">
-                            <div class="price_box price_box_tz">
-                                <font style="vertical-align: inherit;">余额 :</font>
-                                <span class="spical-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 100.00</font></font></span>
-                            </div>
-                            <div class="last_button_area">
-                                <ul class="add-to-links clearfix">
-                                    <li>
-                                        <div class="new_act">
-                                            <a class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充值</font></font></a>
-                                        </div>
-                                    </li>
-                                    <li class="addwishlist">
-                                        <div class="yith-wcwl-add-button  show">
-                                            <a class="add_to_wishlist_3 add_to_wishlist_tz" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="我的收藏"><i class="fa fa-heart"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="addcompare">
-                                        <div class="woocommerce product compare-button">
-                                            <a class="compare_3 compare_3r button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="刷新"><i class="fa fa-refresh"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 好友动态 开始 -->
-    <div class="category-widget-menu" style="margin-top: 30px;">
+
+    <!-- 充值 开始 -->
+    <div class="category-widget-menu" style="margin-top: 0px;">
         <h2 class="cat-menu-title text-uppercase"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EC优卡充值</font></font></h2>
         <hr>
 
@@ -130,22 +67,61 @@
                 <!-- 其余六格 开始 -->
                 <div class="col-md-8" style="padding-left: 20px;margin-top: -20px;">
                     <span class="input input--minoru" style="display: inline;">
-                        <input class="input__field input__field--yoko" type="text" id="input-18" />
+                        <input class="input__field input__field--yoko kalman" type="text" id="input-18" />
                         <label class="input__label input__label--yoko" for="input-18">
                         </label>
                     </span>
-                    <button id="tjdd" type="submit" class="otn otn-bubble" style="width: 160px;height: 50px;position: absolute;right: -160px;margin-top: 6px;">
+                    <button id="tjdd" onclick="cz()" class="otn otn-bubble" style="width: 160px;height: 50px;position: absolute;right: -160px;margin-top: 6px;">
                         <i class="layui-icon layui-icon-cart"></i>立即充值
                     </button>
                 <!-- 六格结束 -->
                 </div>
             </div>
         </div>
+    </div>
+    <!-- 充值 结束 -->
+        <!-- 好友动态 开始 -->
+    <div class="category-widget-menu" style="margin-top: 0px;">
+        <h2 class="cat-menu-title text-uppercase"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">E充值记录</font></font></h2>
+        <hr>
 
 
+        @foreach($data as $k => $v)
+        <div class="menu-categories-container">
+            <div class="row">
+                <div class="category-widget-menu" style="margin-top: -20px;width: 95.5%;margin-left: 20px;">
 
+                    <h2 class="cat-menu-title text-uppercase" style="float: left;">
+                        充值时间：{{ date('Y年m月d日 H时i分s秒',$v->czsj) }}
+                    </h2>
 
+                    <h2 class="cat-menu-title text-uppercase" style="float: right;">
+                        <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充值金额：{{ $v->recharge_money }}元</font></font>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        @endforeach
     </div>
     <!-- 好友动态 结束 -->
+    {{ $data->links() }}
 </div>
+<script type="text/javascript">
+    function cz()
+    {
+        $.post("/balance", {    
+               "_token": "{{ csrf_token() }}",
+               'kalman':$('.kalman').val()
+            }, function(data) {
+                layui.use(['layer', 'form'], function(){
+                var layer = layui.layer
+                  ,form = layui.form;
+                      layer.msg(data.msg);
+                      $('.kalman').val('');
+                });
+            },'json');
+    }
+
+</script>
+
 @endsection

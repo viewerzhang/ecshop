@@ -373,11 +373,7 @@ class GrzxController extends Controller
         }
     }
 
-    public function balance()
-    {
-        $data = Users::where('id',session('user.id'))->first();
-        return view('home.grzx.balance',['data'=>$data]);
-    }
+    
 
     
 }
