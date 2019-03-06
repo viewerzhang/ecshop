@@ -63,9 +63,6 @@ class GoodlistController extends Controller
         return view('home/goodlist',['data'=>$data,'request'=>$request->all()]);*/
 
 
-
-        
-
         $data = Goods::where(function($query) use ($request){
             // 分类查找
             if(!empty($request->input('cate_id'))){
@@ -88,8 +85,7 @@ class GoodlistController extends Controller
            
         })->paginate(15);
 
-        
-     
+
         return view('home/goods/goodlist',['data'=>$data,'request'=>$request->all()]);
     }
 

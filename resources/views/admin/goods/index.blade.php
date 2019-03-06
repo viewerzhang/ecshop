@@ -48,8 +48,8 @@
 	                              	<th class="text-center" width="6%">市场价</th>
 	                              	<th class="text-center" width="6%">本店价</th>
 	                              	<th class="text-center" width="6%">浏览量</th>
-	                              	<th class="text-center" width="4%">重量</th>
-	                              	<th class="text-center" width="7%">库存</th>
+	                              	<th class="text-center" width="5%">重量</th>
+	                              	<th class="text-center" width="6%">库存</th>
 	                             	<th class="text-center" width="13%">操作</th>
 	                            </tr>
 	                        </thead>
@@ -65,17 +65,16 @@
 	                           		<td>
 	                           			{{$v->goods_status == 1 ? '是' : '否'}}
 	                           		</td>
-<<<<<<< HEAD
 
 	                           		<td>{{$v->GoodsCategory->cate_name}}</td>
 	                           		<td>{{$v->GoodsType->type_name}}</td>
 	                           		<td>{{$v->GoodsBrand->brand_name}}</td>
-<!-- =======
+
  
-	                           		<td>{{$v->cate_id}}</td>
+	                       <!--     		<td>{{$v->cate_id}}</td>
 	                           		<td>{{$v->type_id}}</td>
-	                           		<td>{{$v->brand_id}}</td>
->>>>>>> origin/zzl -->
+	                           		<td>{{$v->brand_id}}</td> -->
+
 	                           		<td>￥{{$v->markte_price}}</td>
 	                           		<td>￥{{$v->goods_price}}</td>
 	                           		<td>{{$v->click_num}}</td>

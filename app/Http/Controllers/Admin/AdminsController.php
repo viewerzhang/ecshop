@@ -243,7 +243,12 @@ class AdminsController extends Controller
                 }else{
                    return back()->with('error','添加失败');   
                 }
-
      
+    }
+
+    //用户权限的提醒信息
+    public function remind()
+    {
+        return view('admin/admins/remind');
     }
 }
