@@ -47,10 +47,8 @@
 	                            <tr>
 	                                <th class="text-center" width="5%">ID</th>
 	                                <th class="text-center" width="10%">栏目标题</th>
-	                                <th class="text-center" width="10%">栏目描述</th>
 	                              	<th class="text-center" width="20%">外链网址</th>
-	                                <th class="text-center" width="10%">栏目图</th>
-	                                <th class="text-center" width="8%">排序</th>
+	                                <th class="text-center" width="8%">栏目位置</th>
 	                               <th class="text-center" width="19%">操作</th>
 	                            </tr>
 	                        </thead>
@@ -59,13 +57,15 @@
 	                           	<tr align="center">
 	                           		<td>{{$v->id}}</td>
 	                           		<td>{{$v->column_title}}</td>
-	                           		<td>{{$v->column_desc}}</td>
 	                           		<td>{{$v->column_url}}</td>
-	                       			<td>
-	                           			<img src="/static/{{ $v->column_img }}" width="30px">
-	                           		</td>
 	                           		<td>
-	                          			{{$v->column_sort}}
+	                          			@if($v->column_sort==0)
+	                          			栏目一
+	                          			@elseif($v->column_sort==1)
+	                          			栏目二
+	                          			@else
+	                          			栏目三
+	                          			@endif
 	                           		</td>
 	                           		
 	                           		<td width="200px">
@@ -82,7 +82,7 @@
 	                           			
 	                           			</form>
 	                           			<a href="/admin/column/{{$v->id}}/edit" class="btn btn-warning btn-sm">修改</a>
-	                           			<a href="javascript:;" onclick="show({{$v->id}})" class="btn btn-info btn-sm">查看详情</a>
+	                           			
 	                           		</td>
 
 	                           	</tr>

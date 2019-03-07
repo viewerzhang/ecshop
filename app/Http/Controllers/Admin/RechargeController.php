@@ -18,9 +18,13 @@ class RechargeController extends Controller
         // 接收参数
         $status = $request->input('status','');
         // 查询数据
-        $data = Recharge::where('recharge_status',$status)->paginate(5);
+        if($status == ''){
+            $data = Recharge::paginate(5);
+        }else{
+            $data = Recharge::where('recharge_status',$status)->paginate(5);
+        }
         // 将数据分配到模板
-        return view('admin/recharge/index',['data'=>$data,'status'=>$status]);
+        return view('admin/recharge/index',['data'=>$data,'request'=>$request->all()]);
     }
 
     /**

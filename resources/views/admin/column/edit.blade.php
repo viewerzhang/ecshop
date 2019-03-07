@@ -24,7 +24,7 @@
             </div>
             <div class="widget-body" style="height: 1100px">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" id="files" role="form" action="/admin/column/{{ $data->id }}"  method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" id="files" role="form" action="/admin/column/{{ $data->id }}"  method="post">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <br>
@@ -36,13 +36,6 @@
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">栏目描述</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写概述" name="column_desc" type="text" required="" value="{{ $data->column_desc }}">
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
-                        <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">外链网址</label>
                             <div class="col-sm-6">
                                 <input class="form-control" placeholder="请填写外链url地址" name="column_url" type="url" required="" value="{{ $data->column_url }}">
@@ -50,31 +43,21 @@
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">栏目排序</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" placeholder="用于栏目排序" name="column_sort" type="number" required="" value="{{ $data->column_sort }}">
+                            <label class="col-sm-2 control-label no-padding-right">栏目位置</label>
+                            <div class="col-sm-10">
+                                <label class="col-sm-offset-1">
+                                    <input type="radio" class="colored-blue" name="column_sort" @if($data->column_sort==0) checked @endif value="0">
+                                    <span class="text">栏目一</span>
+                                </label>
+                                <label style="margin-left: 20px;">
+                                    <input type="radio" class="colored-blue" name="column_sort" value="1" @if($data->column_sort==1) checked @endif>
+                                    <span class="text">栏目二</span>
+                                </label>
+                                <label style="margin-left: 20px;">
+                                    <input type="radio" class="colored-blue" name="column_sort" value="2" @if($data->column_sort==2) checked @endif>
+                                    <span class="text">栏目三</span>
+                                </label>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="logo_upload" class="col-sm-2 control-label no-padding-right">栏目图</label>
-                            <div class="col-sm-6">
-                                <input id="logo_upload" name="column_img" type="file" required="">
-                            @if( old('ad_img') )
-                                <img width="60" id="ad_img" title="建议图片尺寸为：358*204" src="{{ asset(old('ad_img')) }}">
-                            @else
-                                <img width="60" id="ad_img" title="建议图片尺寸为：358*204" src="/static/{{ $data->column_img }}">
-                            @endif
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">栏目内容</label>
-                            <div class="col-sm-6">
-                                <!-- 加载编辑器的容器 -->
-                            <script id="container" name="column_content" type="text/plain" style="width: 800px;height: 500px">{{ $data->column_content }}
-                            </script>
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">

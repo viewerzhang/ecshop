@@ -96,7 +96,7 @@
         </style>
         <div class="row DTTTFooter">
             <ul class="pagination">
-                <li>{{ $data->links() }}</li>
+                <li>{{ $data->appends($request)->links() }}</li>
             </ul>
         </div>
     </div>

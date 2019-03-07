@@ -46,28 +46,14 @@ class ColumnController extends Controller
     {
         // 接收数据
         $data = $request->except(['_token']);
-        // 判断有没有文件上传
-        if($request->hasfile('column_img')){
-            // 实例化图片对象
-            $files = $request->file('column_img');
+        // 向数据库存储数据
+        $res = Column::insert($data);
 
-            // 调用保存图片方法
-            $fileName = $files->store('images/column/temp');
-
-            // 将名字存入数组
-            $data['column_img'] = $fileName;
-
-            $res = Column::insert($data);
-
-            // 判断是否保存成功
-            if($res){
-                return redirect('/admin/column')->with('success','添加成功');
-            }else{
-                return back()->with('error','添加失败');
-            }
-
+        // 判断是否保存成功
+        if($res){
+            return redirect('/admin/column')->with('success','添加成功');
         }else{
-            return back()->with('error','添加失败,请上传图片');
+            return back()->with('error','添加失败');
         }
     }
 
@@ -108,29 +94,16 @@ class ColumnController extends Controller
     {
         // 接收数据
         $data = $request->except(['_token','_method']);
-        // 判断有没有文件上传
-        if($request->hasfile('column_img')){
-            // 实例化图片对象
-            $files = $request->file('column_img');
+        //修改数据
+        $res = Column::where('id',$id)->update($data);
 
-            // 调用保存图片方法
-            $fileName = $files->store('images/column');
-
-            // 将名字存入数组
-            $data['column_img'] = $fileName;
-
-            $res = Column::where('id',$id)->update($data);
-
-            // 判断是否保存成功
-            if($res){
-                return redirect('/admin/column')->with('success','修改成功');
-            }else{
-                return back()->with('error','修改失败,请修改信息或返回上一级');
-            }
-
+        // 判断是否修改成功
+        if($res){
+            return redirect('/admin/column')->with('success','修改成功');
         }else{
-            return back()->with('error','修改失败,请上传图片');
+            return back()->with('error','修改失败,请修改信息或返回上一级');
         }
+
     }
 
     /**
