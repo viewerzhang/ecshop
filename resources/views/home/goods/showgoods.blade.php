@@ -35,8 +35,7 @@
         </div>
     </div>
 </div>
-<link rel="stylesheet" type="text/css" href="css/zzsc.css">
-<script type="text/javascript" class="library" src="js/zzsc.js"></script>
+
 <!-- 上部商品开始 -->
 <div class="elavator_area">
     <div class="container">
@@ -44,16 +43,16 @@
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <!-- 商品主图 -->
                 <div class="elavetor" id="small">
-                    <img id="smallImg" src="/static/admin/images/goods_img/100.jpg" data-zoom-image="img/elavetor/large/l-8.jpg" alt="" style="width: 400px;height: 400px">
+                    <img id="smallImg" src="/static/admin/images/goods_img/{{$goods->goods_img}}" data-zoom-image="img/elavetor/large/l-8.jpg" alt="" style="width: 360px;height: 360px">
+                    <!-- 放大镜的图 -->
+                    <div class="proinfo" id="big" style="width: 400px;height: 400px;position: absolute;left:400px;top:0px;display: none;overflow: hidden;z-index: 1000">
+                        <img id="bigImg" src="/static/admin/images/goods_img/{{$goods->goods_img}}" style="position: absolute;">
+                    </div>
                     <!-- 移动阴影框 -->
                     <div id="move" style="width: 100px;height: 100px;position: absolute;left: 0px;top: 0px;display: none;background: url('/static/admin/images/common/bg.png')">
                     </div>
-
-                    <!-- 放大镜的图 -->
-                    <div class="proinfo" id="big" style="width: 400px;height: 400px;position: absolute;left:400px;top:0px;display: none;overflow: hidden;z-index: 1000">
-                        <img id="bigImg" src="/static/admin/images/goods_img/100.jpg" style="position: absolute;width: 1000px;height: 1000px">
-                    </div>
-  
+                
+                
                 </div>
                 <p>
                 <!-- 遍历小图相册 -->
@@ -718,7 +717,7 @@
 
 
         $('#small').mouseout(function(){
-            $('#move').css('display','none')
+            $('#move').css('display','none');
             $('#big').css('display','none');
         });
 

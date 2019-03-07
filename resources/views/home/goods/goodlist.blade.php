@@ -24,330 +24,34 @@
         <!--bar area start-->
         <div class="row">
             <div class="col-md-3">
+                
                 <div class="category-widget-menu">
                     <h2 class="cat-menu-title text-uppercase">
-                        categories
+                        热销商品排行
                     </h2>
                     <div class="menu-categories-container">
                         <ul class="menu-categories">
+                            @foreach($res as $k=>$v)
                             <li>
-                                <a href="#">
-                                    Accessories
-                                </a>
+                                <center><img src="/static/admin/images/goods_img/{{$v->goods_img}}" style="width:200px;">
+                                </center>
+
+                                <div style="padding: 30px">{{$v->goods_name}}
+
+                            
+                                <div style="margin: 5px;color: #ed1c24;font-size: 15px"><b>￥{{$v->goods_price}}</b>
+                                </div>
+
+                                <div style="margin: 5px;color: #999999">已有{{$v->click_num}}人评价
+                                </div>
+                                
+                                
                             </li>
-                            <li class="expandable">
-                                <a href="#">
-                                    Electronic
-                                </a>
-                                <ul class="category-sub">
-                                    <li>
-                                        <a href="#">
-                                            Hoodies (17)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            T-shirts (3)
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="expandable">
-                                <a href="#">
-                                    Headlight
-                                </a>
-                                <ul class="category-sub">
-                                    <li>
-                                        <a href="#">
-                                            Hats (10)
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="expandable">
-                                <a href="#">
-                                    Mirriors (12)
-                                </a>
-                                <ul class="category-sub">
-                                    <li>
-                                        <a href="#">
-                                            Albums(1)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Singles(3)
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Posters
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Electronic
-                                </a>
-                            </li>
+                           @endforeach
                         </ul>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="category-widget-menu">
-                            <h2 class="cat-menu-title text-uppercase">
-                                size
-                            </h2>
-                            <div class="menu-categories-container">
-                                <ul class="menu-categories">
-                                    <li>
-                                        <a href="#">
-                                            L (1)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            M (1)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            S (1)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            XL (1)
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="category-widget-menu">
-                            <h2 class="cat-menu-title text-uppercase">
-                                color
-                            </h2>
-                            <div class="menu-categories-container">
-                                <ul class="menu-categories">
-                                    <li>
-                                        <a href="#">
-                                            Gold (1)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Green (1)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            White (1)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            Yellow (1)
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="single-sidebar-dr">
-                            <aside class="single-sidebar">
-                                <h3>
-                                    Filter By Price
-                                </h3>
-                                <div class="info_widget">
-                                    <div class="price_filter">
-                                        <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                            <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;">
-                                            </div>
-                                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
-                                            style="left: 0%;">
-                                            </span>
-                                            <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
-                                            style="left: 100%;">
-                                            </span>
-                                        </div>
-                                        <div class="price_slider_amount">
-                                            <input type="text" id="amount" name="price" placeholder="Add Your Price">
-                                        </div>
-                                        <div class="amount-range">
-                                            <p>
-                                                Price:
-                                            </p>
-                                            <input type="submit" value="Filter">
-                                        </div>
-                                    </div>
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="single-sidebar-dr">
-                            <aside class="single-sidebar single-sidebar-2 single-sidebar-c3 ">
-                                <h3>
-                                    Compare
-                                </h3>
-                                <ul class="products-list" data-lang="">
-                                    <li class="list_empty">
-                                        No products to compare
-                                    </li>
-                                </ul>
-                                <div class="amount-range">
-                                    <a class="clear-all" href="#" data-product_id="all">
-                                        Clear all
-                                    </a>
-                                    <input type="submit" value="COMPARE">
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="single-sidebar-dr">
-                            <aside class="single-sidebar single-sidebar-vg">
-                                <h3>
-                                    Products Tags
-                                </h3>
-                                <div class="compare_content compare_content_2">
-                                    <div class="new_tag">
-                                        <a href="#">
-                                            Clothing
-                                        </a>
-                                        <a href="#">
-                                            Enim
-                                        </a>
-                                        <a href="#">
-                                            Fashion
-                                        </a>
-                                        <a href="#">
-                                            Glasses
-                                        </a>
-                                        <a href="#">
-                                            Hats
-                                        </a>
-                                        <a href="#">
-                                            Hoodies
-                                        </a>
-                                    </div>
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="category-widget-menu">
-                            <h2 class="cat-menu-title text-uppercase">
-                                On Sale
-                            </h2>
-                            <div class="all-pros-ex all-pros-ex-2">
-                                <div class="llc_pro">
-                                    <div class="sinle_pic_3">
-                                        <a href="#">
-                                            <img class="primary-img" src="img/product-pic/product_pic_7.jpg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product_content_2">
-                                    <div class="usal_pro">
-                                        <div class=" product_name_new">
-                                            <h2>
-                                                <a href="#">
-                                                    Cras nec nisl ut era
-                                                </a>
-                                            </h2>
-                                        </div>
-                                        <div class="product_price product_price_new product_price_new_3">
-                                        </div>
-                                        <div class="price_box price_box_new price_box_new_3">
-                                            <span class="old- price old- price-3">
-                                                $250.00
-                                            </span>
-                                            <span class="spical-price">
-                                                $200.00
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="all-pros-ex all-pros-ex-2">
-                                <div class="llc_pro">
-                                    <div class="sinle_pic_3">
-                                        <a href="#">
-                                            <img class="secondary-img" src="img/top-pic/top_pic_7.jpg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product_content_2">
-                                    <div class="usal_pro">
-                                        <div class=" product_name_new">
-                                            <h2>
-                                                <a href="#">
-                                                    Metus nisi posuere n
-                                                </a>
-                                            </h2>
-                                        </div>
-                                        <div class="product_price product_price_new product_price_new_3">
-                                        </div>
-                                        <div class="price_box price_box_new price_box_new_3">
-                                            <span class="old- price old- price-3">
-                                                $250.00
-                                            </span>
-                                            <span class="spical-price">
-                                                $200.00
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="all-pros-ex all-pros-ex-2">
-                                <div class="llc_pro">
-                                    <div class="sinle_pic_3">
-                                        <a href="#">
-                                            <img class="primary-img" src="img/top-pic/top_pic_1.jpg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product_content_2">
-                                    <div class="usal_pro">
-                                        <div class=" product_name_new">
-                                            <h2>
-                                                <a href="#">
-                                                    Nam fringilla
-                                                </a>
-                                            </h2>
-                                        </div>
-                                        <div class="product_price product_price_new product_price_new_3">
-                                        </div>
-                                        <div class="price_box price_box_new price_box_new_3">
-                                            <span class="old- price old- price-3">
-                                                $200.00
-                                            </span>
-                                            <span class="spical-price">
-                                                $150.00
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="col-md-9">
                 <div class="bar">
@@ -514,7 +218,7 @@
                                                     <a href="/goodlist/{{$v->id}}">
                                                         <img class="primary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}" alt="" style="width: 291px;height: 200px">
 
-                                                        <img class="secondary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}" width="260" height="170" alt="" style="width: 291px;height: 200px">
+                                                        <img class="secondary-img" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[1]->goods_imgs }}" width="260" height="170" alt="" style="width: 291px;height: 200px">
                                                     </a>
                                                 </div>
                                                 <div class="product-action" data-toggle="modal" data-target="#{{ $v->goods_bianhao }}">
