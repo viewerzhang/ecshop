@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\Articles;
+use App\Http\Requests\ArticlesRequest;
 
 class ArticlesController extends Controller
 {
@@ -39,8 +40,14 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticlesRequest $request)
     {
+        $this->validate($request, [
+            'art_img' => 'required',  
+        ],[
+            'art_img.required' => '缩略图必填',  
+        ]);
+        
         $data = $request->except('_token');
         //dump($data);
 
@@ -104,7 +111,7 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticlesRequest $request, $id)
     {
         $data  = $request->except(['_token','_method']);
         //dd($data);

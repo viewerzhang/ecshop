@@ -10,20 +10,34 @@
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-warning fade in">
+                            <ul>
+                                <button class="close" data-dismiss="alert">
+                                ×
+                                </button>
+                                    @foreach ($errors->all() as $error)
+                                        <i class="fa-fw fa fa-warning"></i>
+                                            <strong>Warning</strong> {{ $error }}
+                                         <br>
+                                    @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form class="form-horizontal" role="form" action="/admin/articles/{{$data->id}}"  method="post" enctype="multipart/form-data">
                        {{ csrf_field() }}
                        {{ method_field('PUT') }}
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">文章标题</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="art_title" required="" type="text" value="{{$data->art_title}}">
+                                <input class="form-control" placeholder="" name="art_title"  type="text" value="{{$data->art_title}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">文章描述</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="art_desc" type="text" required="" value="{{$data->art_desc}}">
+                                <input class="form-control" placeholder="" name="art_desc" type="text"  value="{{$data->art_desc}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -31,21 +45,21 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">作者</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="art_author" type="text" required="" value="{{$data->art_author}}">
+                                <input class="form-control" placeholder="" name="art_author" type="text"  value="{{$data->art_author}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">外链网址</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="art_url" type="text" required="" value="{{$data->art_url}}">
+                                <input class="form-control" placeholder="" name="art_url" type="text"  value="{{$data->art_url}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                           <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
                             <div class="col-sm-6">
-                                <input placeholder="" name="art_img" type="file" required="" value="{{'/static/admin/images/articles/'.$data->art_img}}"><br>
+                                <input placeholder="" name="art_img" type="file"  value="{{'/static/admin/images/articles/'.$data->art_img}}"><br>
                                 <img src="{{'/static/admin/images/articles/'.$data->art_img}}" width="100px" height="50px">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
@@ -80,7 +94,15 @@
                             </label>
                         </div>
                         </div> 
-                            
+                         <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right" name="art_content">文章内容</label>
+                            <div class="col-sm-6">
+                                <!-- 加载编辑器的容器 -->
+                            <script id="container" name="art_content" type="text/plain" style="width: 800px;height: 500px"><p value="{{old('art_content')}}">{!!$data->art_content!!}</p>
+                            </script>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">确认修改</button>
@@ -91,4 +113,12 @@
             </div>
         </div>
     </div>
+         <!-- 配置文件 -->
+    <script type="text/javascript" src="/static/admin/udit/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/static/admin/udit/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container',{ initialFrameWidth: null , autoHeightEnabled: false});
+    </script>
 @endsection

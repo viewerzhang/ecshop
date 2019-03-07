@@ -10,21 +10,36 @@
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
+
+                    @if (count($errors) > 0)
+                        <div class="alert alert-warning fade in">
+                            <ul>
+                                <button class="close" data-dismiss="alert">
+                                ×
+                                </button>
+                                    @foreach ($errors->all() as $error)
+                                        <i class="fa-fw fa fa-warning"></i>
+                                            <strong>Warning</strong> {{ $error }}
+                                         <br>
+                                    @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form class="form-horizontal" role="form" action="/admin/lunbo"  method="post" enctype="multipart/form-data">
-                        
-                        
+                                 
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right" >轮播图名称</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="lunbo_name" required="" type="text" value="{{old('lunbo_name')}}">
+                                <input class="form-control" placeholder="" name="lunbo_name"  type="text" value="{{old('lunbo_name')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right" >轮播图描述</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="lunbo_desc" type="text" required="" value="{{old('lunbo_desc')}}">
+                                <input class="form-control" placeholder="" name="lunbo_desc" type="text"  value="{{old('lunbo_desc')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -33,14 +48,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right" >链接网址</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="lunbo_link" type="text" required="" value="{{old('lunbo_link')}}">
+                                <input class="form-control" placeholder="" name="lunbo_link" type="url"  value="{{old('lunbo_link')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">轮播图</label>
                             <div class="col-sm-6">
-                                <input placeholder="" name="lunbo_img" type="file" required="" value="{{old('lunbo_img')}}">
+                                <input placeholder="" name="lunbo_img" type="file"  value="{{old('lunbo_img')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>

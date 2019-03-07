@@ -10,6 +10,20 @@
             </div>
             <div class="widget-body" style="height: 1450px">
                 <div id="horizontal-form">
+                     @if (count($errors) > 0)
+                        <div class="alert alert-warning fade in">
+                            <ul>
+                                <button class="close" data-dismiss="alert">
+                                ×
+                                </button>
+                                    @foreach ($errors->all() as $error)
+                                        <i class="fa-fw fa fa-warning"></i>
+                                            <strong>Warning</strong> {{ $error }}
+                                         <br>
+                                    @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form class="form-horizontal" role="form" action="/admin/goods/{{$data->id}}"  method="post" enctype="multipart/form-data" >
                         
                         {{ csrf_field() }}
@@ -18,14 +32,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">商品名称</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写名称" name="goods_name" required="" type="text" value="{{$data->goods_name}}">
+                                <input class="form-control" placeholder="请填写名称" name="goods_name"  type="text" value="{{$data->goods_name}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">商品标语</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写标语" name="goods_title" required="" type="text" value="{{$data->goods_title}}">
+                                <input class="form-control" placeholder="请填写标语" name="goods_title"  type="text" value="{{$data->goods_title}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -120,35 +134,35 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">市场价</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="markte_price" required="" type="text" value="{{$data->markte_price}}">
+                                <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="markte_price"  type="text" value="{{$data->markte_price}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">本店价</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="goods_price" required="" type="text" value="{{$data->goods_price}}">
+                                <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="goods_price"  type="text" value="{{$data->goods_price}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">浏览量</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right"  >浏览量</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写点击数量" name="click_num" required="" type="text" value="{{$data->click_num}}">
+                                <input class="form-control" placeholder="请填写点击数量" name="click_num"  readonly type="text" value="{{$data->click_num}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">商品重量</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写商品重量" name="goods_weight" required="" type="text" value="{{$data->goods_weight}}">
+                                <input class="form-control" placeholder="请填写商品重量" name="goods_weight"  type="text" value="{{$data->goods_weight}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">库存</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写库存数量" name="goods_num" required="" type="text" value="{{$data->goods_num}}">
+                                <input class="form-control" placeholder="请填写库存数量" name="goods_num"  type="text" value="{{$data->goods_num}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\Lunbo;
 use DB;
+use App\Http\Requests\LunboRequest;
 
 class LunboController extends Controller
 {
@@ -57,8 +58,14 @@ class LunboController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LunboRequest $request)
     {
+        $this->validate($request, [
+            'lunbo_img' => 'required',  
+        ],[
+            'lunbo_img.required' => '链接图必填',  
+        ]);
+
         $data = $request->except(['_token']);
 
 
@@ -76,14 +83,20 @@ class LunboController extends Controller
                 $file->storeAs('/admin/images/lunbo',$file_name);
 
                 $data['lunbo_img']=$file_name;
-                
-                $res = Lunbo::insert($data);
+ 
                 //dump($res);
               
         }        
 
-        return redirect('/admin/lunbo');
-        
+        try{
+            $res = Lunbo::insert($data);
+            if($res){
+                return redirect('/admin/lunbo')->with('success','添加成功');
+            }
+        }catch(\Exception $e){
+            return back()->with('error','添加失败');
+        }
+          
     }
 
     /**
@@ -123,7 +136,7 @@ class LunboController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LunboRequest $request, $id)
     {
         $data  = $request->except(['_token','_method']);
         //dd($data);
@@ -142,14 +155,18 @@ class LunboController extends Controller
                 $file->storeAs('/admin/images/lunbo',$file_name);
 
                 $data['lunbo_img']=$file_name;
-                
-             
-                 Lunbo::where('id',$id)->update($data);
-                //dump($res);
-              
+                           
         }        
 
-        return redirect('admin/lunbo/index');
+        try{
+           $res = Lunbo::where('id',$id)->update($data);
+            if($res){
+                return redirect('/admin/lunbo')->with('success','修改成功');
+            }
+        }catch(\Exception $e){
+            return back()->with('error','修改失败');
+        }
+            return redirect('/admin/lunbo')->with('success','修改成功');
     }
 
     /**
