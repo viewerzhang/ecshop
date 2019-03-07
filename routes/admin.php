@@ -6,7 +6,8 @@ Route::resource('user','UsersController');
 Route::get('/index', function () {
     return view('layout/admin');
 });
-
+// 管理员退出路由
+Route::get('/oulogin','AdminController@outlogin');
 //权限的提醒信息
 Route::get('/remind','AdminsController@remind');
 //'middleware'=>'RolePer'
@@ -50,7 +51,6 @@ Route::resource('/admins','AdminsController');
 /*** 系统设置 ***/
 Route::post('/conf/files','ConfController@files');
 Route::resource('/conf','ConfController');
-
 
 /**
 * 冯雪娇负责的模块

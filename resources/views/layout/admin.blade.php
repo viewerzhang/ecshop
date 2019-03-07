@@ -118,8 +118,8 @@ Purchase: http://wrapbootstrap.com
                                     </li>
                                     <!--/Theme Selector Area-->
                                     <li class="dropdown-footer">
-                                        <a href="login.html">
-                                            Sign out
+                                        <a href="/admin/oulogin">
+                                            退出
                                         </a>
                                     </li>
                                 </ul>

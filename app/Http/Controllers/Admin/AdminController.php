@@ -325,5 +325,13 @@ class AdminController extends Controller
             return back()->with('error','您的账号或密码不正确');
     }
 
+    function outlogin()
+    {
+        session(['adminlogin' => false]);
+        session(['admin' => null]);
+        return redirect('/admin/login');
+    }
+
+
     
 }
