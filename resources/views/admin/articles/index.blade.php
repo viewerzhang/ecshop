@@ -34,12 +34,12 @@
 	                                <th class="text-center" width="5%">ID</th>
 	                                <th class="text-center" width="10%">文章标题</th>
 	                                <th class="text-center" width="10%">文章描述</th>
-	                                <th class="text-center" width="10%">作者</th>
-	                              	<th class="text-center" width="20%">外链网址</th>
+	                                <th class="text-center" width="6%">作者</th>
+	                              	<th class="text-center" width="14%">外链网址</th>
 	                                <th class="text-center" width="10%">缩略图</th>
-	                                <th class="text-center" width="8%">置顶</th>
-	                                <th class="text-center" width="8%">状态</th>
-	                               <th class="text-center" width="19%">操作</th>
+	                                <th class="text-center" width="7%">置顶</th>
+	                                <th class="text-center" width="7%">状态</th>
+	                               <th class="text-center" width="25%">操作</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
@@ -72,11 +72,14 @@
 	                           			<!-- <a class="btn btn-info btn-sm" onclick="show({{$v->id}})">查看详情</a> -->
 	                           				{{  csrf_field() }}
 	                           				{{  method_field('DELETE') }}
-	                           				<button class="btn btn-danger btn-sm">删除</button>
+	                           				<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o">
+                            		</i>删除</button>
 	                           			
 	                           			</form>
-	                           			<a href="/admin/articles/{{$v->id}}/edit" class="btn btn-warning btn-sm">修改</a>
-	                           			<a href="javascript:;" onclick="show({{$v->id}})" class="btn btn-info btn-sm">查看详情</a>
+	                           			<a href="/admin/articles/{{$v->id}}/edit" class="btn btn-warning btn-sm"><i class="fa fa-edit">
+		                            </i>修改</a>
+	                           			<a href="javascript:;" onclick="show({{$v->id}})" class="btn btn-info btn-sm"><i class="fa  fa-tags">
+                            		</i>查看详情</a>
 	                           		</td>
 
 	                           	</tr>

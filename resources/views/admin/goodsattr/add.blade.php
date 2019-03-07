@@ -10,9 +10,24 @@
             </div>
             <div class="widget-body"> 
                 <div id="horizontal-form">
+
+                     @if (count($errors) > 0)
+                        <div class="alert alert-warning fade in">
+                            <ul>
+                                <button class="close" data-dismiss="alert">
+                                ×
+                                </button>
+                                    @foreach ($errors->all() as $error)
+                                        <i class="fa-fw fa fa-warning"></i>
+                                            <strong>Warning</strong> {{ $error }}
+                                         <br>
+                                    @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form class="form-horizontal" role="form" action="/admin/goodsattr"  method="post" enctype="multipart/form-data">
-                        
-                        
+      
                         {{ csrf_field() }}
 
                         <div class="form-group">
@@ -30,14 +45,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">属性名称</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="attr_name" required="" type="text" value="{{old('attr_name')}}">
+                                <input class="form-control" placeholder="" name="attr_name"  type="text" value="{{old('attr_name')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">属性值</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="" name="attr_value" type="text" required=""  value="{{old('attr_value')}}">
+                                <input class="form-control" placeholder="" name="attr_value" type="text"   value="{{old('attr_value')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填 [多个属性值请以 , 分隔]</p>
                         </div>

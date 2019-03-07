@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\GoodsAttr;
 use App\Http\Model\Admin\GoodsType; 
+use App\Http\Requests\GoodsAttrRequest;
 
 class GoodsAttrController extends Controller
 {
@@ -44,7 +45,7 @@ class GoodsAttrController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GoodsAttrRequest $request)
     {
         /* $res = $request->all();
         dd($res);*/
@@ -93,7 +94,7 @@ class GoodsAttrController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GoodsAttrRequest $request, $id)
     {
         $data  = $request->except(['_token','_method']);
         //dd($data);

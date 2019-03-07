@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Admin\GoodsType;
 use App\Http\Model\Admin\GoodsAttr;
+use App\Http\Requests\GoodsTypeRequest;
 
 class GoodsTypeController extends Controller
 {
@@ -39,7 +40,7 @@ class GoodsTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GoodsTypeRequest $request)
     {
         
         $data = $request->except(['_token']);
@@ -84,7 +85,7 @@ class GoodsTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GoodsTypeRequest $request, $id)
     {
        $data = $request->except(['_token','_method']);
        GoodsType::where('id',$id)->update($data);

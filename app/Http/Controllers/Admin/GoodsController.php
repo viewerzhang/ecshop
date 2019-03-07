@@ -11,7 +11,9 @@ use App\Http\Model\Admin\GoodsBrand;
 use App\Http\Model\Admin\GoodsImgs;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
+/*use App\Http\Requests\Request;*/
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 
 
@@ -93,6 +95,13 @@ class GoodsController extends Controller
     public function store(Request $request)
     {
 
+     /* $this->validate($request, [
+            'goods_img' => 'required',  
+            'goods_imgs' => 'required',  
+        ],[
+            'goods_img.required' => '商品主图必填',  
+            'goods_imgs.required' => '商品相册必填',  
+        ]);*/
       //接受表单的值
         $data = $request->except(['_token','goods_img','goods_imgs']);
         // dd($data);
@@ -118,10 +127,7 @@ class GoodsController extends Controller
               
         }    
 
-        
-        
         //接受上面插入的id
-        
 
         //接受4个小图表单的值
         if ($request->hasFile('goods_imgs')) {

@@ -7,8 +7,23 @@
             <div class="widget-header bordered-bottom bordered-blue">
                 <span class="widget-caption">添加文章</span>
             </div>
-            <div class="widget-body" style="height: 1100px">
+            <div class="widget-body" style="height: 1200px">
                 <div id="horizontal-form">
+
+                     @if (count($errors) > 0)
+                        <div class="alert alert-warning fade in">
+                            <ul>
+                                <button class="close" data-dismiss="alert">
+                                ×
+                                </button>
+                                    @foreach ($errors->all() as $error)
+                                        <i class="fa-fw fa fa-warning"></i>
+                                            <strong>Warning</strong> {{ $error }}
+                                         <br>
+                                    @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form class="form-horizontal" role="form" action="/admin/articles"  method="post" enctype="multipart/form-data">
                         
                         
@@ -17,14 +32,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">文章标题</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写标题" name="art_title" required="" type="text" value="{{old('art_title')}}">
+                                <input class="form-control" placeholder="请填写标题" name="art_title"  type="text" value="{{old('art_title')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">文章描述</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写概述" name="art_desc" type="text" required="" value="{{old('art_desc')}}">
+                                <input class="form-control" placeholder="请填写概述" name="art_desc" type="text"  value="{{old('art_desc')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -32,14 +47,14 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">作者</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写作者" name="art_author" type="text" required="" value="{{old('art_author')}}">
+                                <input class="form-control" placeholder="请填写作者" name="art_author" type="text"  value="{{old('art_author')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">外链网址</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写外链url地址" name="art_url" type="text" required="" value="{{old('art_url')}}">
+                                <input class="form-control" placeholder="请填写外链url地址" name="art_url" type="text"  value="{{old('art_url')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -47,7 +62,7 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
                             <div class="col-sm-6">
-                                <input placeholder="" name="art_img" type="file" required="" value="{{old('art_img')}}">
+                                <input placeholder="" name="art_img" type="file"  value="{{old('art_img')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -81,7 +96,7 @@
                             <label for="username" class="col-sm-2 control-label no-padding-right" name="art_content">文章内容</label>
                             <div class="col-sm-6">
                                 <!-- 加载编辑器的容器 -->
-                            <script id="container" name="art_content" type="text/plain" style="width: 800px;height: 500px"><p value="{{old('art_content')}}">这里写你的初始化内容</p>
+                            <script id="container" name="art_content" type="text/plain" style="width: 800px;height: 500px"><p value="{{old('art_content')}}">{!!old('art_content')!!}</p>
                             </script>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
