@@ -47,6 +47,7 @@ class LoginController extends Controller
             $uip=[];
             $uip = [ 'user_ip' => $request->getClientIp() ];
             Users::where('user_name', $user)->update($uip);
+            session(['login'=>true]);
             return "<script>location.href='/'</script>";
         }
             return redirect('/login')->with('error','您的用户名或密码不正确');
@@ -61,7 +62,7 @@ class LoginController extends Controller
     public function logout()
     {
         //退出登录
-        session(['user'=>null]);
+        session(['user'=>false]);
         session(['userlogin'=>null]);
         return redirect('/');
     }
@@ -93,12 +94,16 @@ class LoginController extends Controller
                 $uip=[];
                 $uip['user_ip'] = $request->getClientIp();
                 Users::where('user_phone', $phone)->update($uip);
-                 return "<script>alert('登录成功');location.href='/'</script>";
+                Redis::del($phone);
+                session(['login'=>true]);
+                 return "<script>location.href='/'</script>";
             }else{
-                 return "<script>alert('登录失败');location.href='/yzmlogin'</script>";
+                session(['loginfalse'=>true]);
+                 return "<script>location.href='/yzmlogin'</script>";
             }
         }else{
-             return "<script>alert('验证码不正确');location.href='/yzmlogin'</script>";
+             session(['loginfalse'=>true]);
+                 return "<script>location.href='/yzmlogin'</script>";
         }
         
     }
@@ -112,17 +117,51 @@ class LoginController extends Controller
     public function yzm(Request $request)
     {
         // 接收手机号
-        $phone = $request->user_phone;
+        $phone = $request->input('dqphone');
+
+
+        $judge = Users::where('user_phone',$phone)->first();
+
+        if(!$judge){
+            $arr = [
+                'code' => '0',
+                'msg' => '对不起，您的账号不存在'
+            ];
+            return json_encode($arr);
+        }
+
+
+        $judge = Redis::get($phone);
+
+        if($judge){
+            $arr = [
+                'code' => '0',
+                'msg' => '对不起，您的验证码已发送，请不要重复发送'
+            ];
+            return json_encode($arr);            
+        }
+
         // 生成验证码
         $yzm = rand(1000,9999);
+
         // 存到redis中
         Redis::setex($phone,120,$yzm);
+
         // 使用接口发送短信
         Sms::sms($phone,$yzm);
+
         // 返回值code为0
-        $data = [
-            'code' => 0,
+        $arr = [
+            'code' => '1',
+            'msg' => '验证码发送成功'
         ];
-        return $data;
+        return $arr;
+
+
+
+
+
+
+
     }
 }

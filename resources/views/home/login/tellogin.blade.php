@@ -4,7 +4,7 @@
         <title>我的帐户</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+                <script src="/static/admin/assets/layui/layui.js"></script>
         <!-- all css here -->
         <!-- bootstrap v3.3.6 css -->
         <link rel="stylesheet" href="/static/home/index/css/bootstrap.min.css">
@@ -136,16 +136,7 @@
 
 
 <!--我的帐户开始-->
-    @if (count($errors) > 0)
-    <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+    
 <div class="login-area">
     <div class="container">
         <div class="row">
@@ -184,6 +175,16 @@
                             </font>
                         </a>
                     </div>
+                    @if (count($errors) > 0)
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <ul>
+            @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
                     <form action="/teldologin" method="get">
                         {{ csrf_field() }}
                         <label>
@@ -193,7 +194,7 @@
                                 </font>
                             </font>
                         </label>
-                        <input type="number" name="user_phone" id="phone" style="width: 88%">
+                        <input id="curphone" type="number" name="user_phone" id="phone" style="width: 88%">
                         <label>
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
@@ -202,7 +203,7 @@
                             </font>
                         </label>
                         <input type="number" name="yzm" style="width: 260px;">
-                        <input type="button" class="login-sub" id="sendBtn" onclick="sendPhone(this)" value="获取验证码">
+                        <input type="button" class="login-sub" id="hqcode" value="获取验证码">
                         <font style="vertical-align: inherit;">
                             <font style="vertical-align: inherit;">
                                 <input class="login-sub" type="submit" value="登录" style="margin-left:39%;">
@@ -253,71 +254,115 @@
         <!-- plugins js -->
         <script src="/static/home/index/js/plugins.js"></script>
         <!-- main js -->
-        <script src="/static/home/index/js/main.js"></script><a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: none;"><i class="fa fa-angle-double-up"></i></a><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+        <script src="/static/home/index/js/main.js"></script>
     
 
 
 
 <div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>
 
-<script type="text/javascript">
-    function sendPhone(obj)
+
+
+
+
+
+
+
+    <!-- 点击获取验证码执行 -->
+    <script type="text/javascript">
+        var a;
+        var out = null;
+        if(a > 0){
+            $('#hqcode').prop('disabled',true); 
+        }else{
+            var timea = null;
+        }
+
+        $('#hqcode').click(function(){
+
+            var dqphone = $('#curphone').val();
+            if(dqphone == ''){
+                layui.use(['layer', 'form'], function(){
+                  var layer = layui.layer
+                  ,form = layui.form;
+                  layer.msg('您的手机号没有填写');
+                });
+                return false;
+            }
+
+            $('#hqcode').prop('disabled',true); 
+            $.post("/yzm", {    
+               "_token": "{{ csrf_token() }}",
+               'dqphone':dqphone
+            }, function(data) {
+               if(data.code == '1'){
+                        layui.use(['layer', 'form'], function(){
+                          var layer = layui.layer
+                          ,form = layui.form;
+                          out = 0;
+                          layer.msg(data.msg);
+                        });
+               }else if(data.code == '0'){
+                console.log(data);
+                        layui.use(['layer', 'form'], function(){
+                          var layer = layui.layer
+                          ,form = layui.form;
+                          out = 1;
+                          layer.msg(data.msg);
+                          $('#hqcode').prop('disabled',false); 
+                        });
+               }
+            },'json');
+            // $.ajaxSettings.async = true;
+             setTimeout("pd()",1000);
+            
+        });
+        function js()
         {
-            // 接收手机号码
-            var user_phone = $('#phone').val();
-            // 定义正则检查手机号是否格式正确
-            var phone_grep = /^1{1}[3456789]{1}[0-9]{9}$/;
-            // 使用正则检查手机号
-            if(!phone_grep.test(user_phone)){
-                alert('请输入正确手机号');
-                return false;
-            }
-
-
-
-
-            // 将js对象转化成jquery对象
-            var object = $(obj);
-            // 设置button状态
-            object.attr('disabled',true);
-            // 获取当前的按钮上的文字
-            var text = object.val();
-            // alert(obj);[object HTMLInputElement]  js对象
-            // alert($(obj));[object Object]  jquery对象
-            if(text == '获取验证码'){
-                // 发送ajax 请求后台 
-                $.get('/yzm',{'user_phone':user_phone},function(data){
-                    if(data.code == 0){
-                       
-                        editCon();
-                    }
-                },'json');  
+            console.log(a);
+            if(a<1){
+                $('#hqcode').prop('disabled',false); 
+                $('#hqcode').val('获取验证码');
+                clearInterval(timea);
+                timea = null;
             }else{
+                a -= 1;
+                var txt = a + '秒可发送';
+                $('#hqcode').val(txt);
+                $('#hqcode').prop('disabled',true); 
+            }
+        }
+        function pd()
+        {
+            if(out == 1){
+                return false;
+            }else if(out == null){
+                layui.use(['layer', 'form'], function(){
+                  var layer = layui.layer
+                  ,form = layui.form;
+                  out = null;
+                  layer.msg('发送超时'); 
+                });
+                $('#hqcode').prop('disabled',false); 
                 return false;
             }
-            
+            if(timea != null){
+                return false;
+            }else{
+                a = 60;
+                js();
+                timea = setInterval('js()',1000);
+            }
         }
-
-
-    function editCon()
-    {
-        var t = 120;                                                        ;
-        var time = null;
-        if(time == null){
-            time = setInterval(function(){
-                t--;
-                // 修改当前button 和 内容
-                $('#sendBtn').val('重新发送('+t+'s)');
-                if(t < 1){
-                    // 清除定时器
-                    clearInterval(time);
-                    time = null;
-                    $('#sendBtn').val('获取验证码');
-                    // 设置button状态
-                    $('#sendBtn').attr('disabled',false);
-                }
-            },1000);
-        }
-            
-    }
-</script>
+    </script>
+        @if(session('loginfalse'))
+    <?php session(['loginfalse'=>false]) ?>
+    <script type="text/javascript">
+        layui.use(['layer', 'form'], function(){
+          var layer = layui.layer
+          ,form = layui.form;
+          out = 1;
+          layer.msg('登录失败');
+        });
+    </script>
+    @endif

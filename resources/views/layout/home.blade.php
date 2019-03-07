@@ -4,8 +4,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Home</title>
+        <title>{{ $data_conf['seo_title'] }}</title>
         <meta name="description" content="">
+        <meta name="description" content="{{ $data_conf['seo_content'] }}" />
+  <meta name="Keywords" content="{{ $data_conf['seo_key'] }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
         <!-- all css here -->
@@ -285,60 +287,7 @@
 
 @show
         <!--newsletter area start-->
-        <div class="all_news_letter">
-            <div class="news_letter">
-                <div class="news_middele">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="news_heading">
-                                    <h3> newsletter </h3>
-                                </div>
-                                <div class="full_form">
-                                    <form id="form-newsletter1" class="widget_wysija" method="post" action="#wysija">
-                                        <p class="wysija-paragraph">
-                                            <input name="wysija[user][email]" class="wysija-input validate[required,custom[email]]" title="Enter Your Mail..." placeholder="Enter Your Mail..." value="" id="form-validation-field-0" style="" type="text">
-                                        </p>
-                                        <input class="wysija-submit wysija-submit-field" value="Subscribe!" type="submit">
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <div class="dxpt_area">
-                                    <div class="news_right">
-                                        <div class="news_heading news_heading_3">
-                                            <h3 class="follow_mix">Follow us:</h3>
-                                        </div>
-                                        <ul class="social-icons">
-                                            <li>
-                                                <a class="facebook social-icon" href="#facebook" title="" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
-                                                <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="twitter social-icon" href="#twitter.com" title="" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
-                                                <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="google-plus social-icon" href="#google-plus" title="" target="_blank" data-toggle="tooltip" data-original-title="Google-plus">
-                                                <i class="fa fa-google-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="youtube social-icon" href="#youtube" title="" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
-                                                <i class="fa fa-youtube"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <!--newsletter area end-->
         <!--footer top area start-->
         <div class="footer_area">
@@ -499,6 +448,17 @@
 @show
 
     </body>
+    @if(session('login'))
+    <?php session(['login'=>false]) ?>
+    <script type="text/javascript">
+        layui.use(['layer', 'form'], function(){
+          var layer = layui.layer
+          ,form = layui.form;
+          out = 1;
+          layer.msg('恭喜你，登录成功');
+        });
+    </script>
+    @endif
 </html>
 
 

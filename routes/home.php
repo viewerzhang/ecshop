@@ -74,7 +74,7 @@ Route::get('/logout','LoginController@logout');
 Route::get('/yzmlogin', 'LoginController@tellogin');
 // 手机号登录
 Route::get('/teldologin', 'LoginController@teldologin');
-Route::get('/yzm', 'LoginController@yzm');
+Route::post('/yzm', 'LoginController@yzm');
 // 手机号短信验证
 Route::post('/store','UserController@store');
 // 验证码

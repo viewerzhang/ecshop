@@ -105,9 +105,9 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="home">
                         <div class="row">
-
                         	<!-- 单个商品开始 -->
-                        	@foreach($data as $k=>$v)
+                        	@foreach($data as $k => $v)
+
                             <div class="col-md-4 col-sm-4">
                                 <div class="all-pros all-pros-3 all-pros-latest">
                                     <div class="sinle_pic">
@@ -116,7 +116,7 @@
                                             alt="" style="width: 260px;height: 170px">
 
                                             
-                                            <img class="secondary-img" style="width: 260px;height: 170px" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[1]->goods_imgs }}" width="260" height="170" alt="">
+                                            <img class="secondary-img" style="width: 260px;height: 170px" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[0]->goods_imgs }}" width="260" height="170" alt="">
                                         </a>
                                     </div>
                                     <div class="product-action" data-toggle="modal" data-target="#{{ $v->goods_bianhao }}">
@@ -193,7 +193,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>    
                             @endforeach
                             <!-- 单个商品结束 -->
                         </div>
@@ -203,6 +203,9 @@
                     
                     <div role="tabpanel" class="tab-pane" id="profile">
                         @foreach($data as $k=>$v)
+                        @if($k>1)
+                            <?php break ?>
+                            @endif
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="all-pros br-ntf">
@@ -218,7 +221,7 @@
                                                     <a href="/goodlist/{{$v->id}}">
                                                         <img class="primary-img" src="/static/admin/images/goods_img/{{$v->goods_img}}" alt="" style="width: 291px;height: 200px">
 
-                                                        <img class="secondary-img" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[1]->goods_imgs }}" width="260" height="170" alt="" style="width: 291px;height: 200px">
+                                                        <img class="secondary-img" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[0]->goods_imgs }}" width="260" height="170" alt="" style="width: 291px;height: 200px">
                                                     </a>
                                                 </div>
                                                 <div class="product-action" data-toggle="modal" data-target="#{{ $v->goods_bianhao }}">

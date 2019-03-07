@@ -39,9 +39,11 @@
                             </div>
                         </div>
                         <div class="action actionmm">
-                            <div class="price_box price_box_tz">
-                            	<font style="vertical-align: inherit;">余额 :</font>
-                                <span class="spical-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 100.00</font></font></span>
+                            <div style="margin-left: 30%;margin-top: 30px;width: 200px;">
+                                <div class="price_box price_box_tz" >
+                                	<font style="vertical-align: inherit;">余额 :</font>
+                                    <span class="spical-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $data->user_balance }}元</font></font></span>
+                                
                             </div>
                             <div class="last_button_area">
                                 <ul class="add-to-links clearfix">
@@ -50,17 +52,9 @@
                                             <a href="/grzx/balance" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充值</font></font></a>
                                         </div>
                                     </li>
-                                    <li class="addwishlist">
-                                        <div class="yith-wcwl-add-button  show">
-                                            <a class="add_to_wishlist_3 add_to_wishlist_tz" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="我的收藏"><i class="fa fa-heart"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="addcompare">
-                                        <div class="woocommerce product compare-button">
-                                            <a class="compare_3 compare_3r button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="刷新"><i class="fa fa-refresh"></i></a>
-                                        </div>
-                                    </li>
+                                    
                                 </ul>
+                            </div>
                             </div>
                         </div>
                     </div>
