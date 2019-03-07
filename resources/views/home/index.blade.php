@@ -665,7 +665,7 @@
                                 <div class="all-pros-ex animated fadeInUp">
                                     <div class="llc_pro">
                                         <div class="sinle_pic sinle_pic_2">
-                                            <a href="/goodlist/{{ $vv->id }}" target="_blank">
+                                            <a href="/goodlist/{{ $v->id }}" target="_blank">
                                             <img class="primary-img" style="width: 100px;height: 65.55px;" src="/static/admin/images/goods_img/{{ $v->goods_img }}" alt="" />
                                             <img class="secondary-img" style="width: 100px;height: 65.55px;" src="/static/admin/images/goods_imgs/{{ $v->goodsimgs[0]->goods_imgs }}" alt="" />
                                             </a>
@@ -675,7 +675,7 @@
                                         <div class="usal_pro">
                                             <div class=" product_name_new">
                                                 <h2>
-                                                    <a href="/goodlist/{{ $vv->id }}" target="_blank" style=" width: 70px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;" title="{{ $v->goods_name }}">{{ $v->goods_name }}</a>
+                                                    <a href="/goodlist/{{ $v->id }}" target="_blank" style=" width: 70px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;" title="{{ $v->goods_name }}">{{ $v->goods_name }}</a>
                                                 </h2>
                                             </div>
                                             <div class="product_price product_price_new product_price_new_3">

@@ -296,22 +296,17 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="footer_menu">
                             <div class="news_heading_2">
-                                <h3>Information </h3>
+                                <h3>栏目一</h3>
                             </div>
                             <div class="footer_menu">
                                 <ul>
+                                    @foreach($data_column as $k=>$va)
+                                    @if($v->column_sort==0)
                                     <li>
-                                        <a href="#">our blog</a>
+                                        <a href="#">{{ $va->column_title }}</a>
                                     </li>
-                                    <li>
-                                        <a href="#">about our shop</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">secure shopping</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">privecy policy</a>
-                                    </li>
+                                    @endif
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -319,22 +314,17 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="footer_menu">
                             <div class="news_heading_2">
-                                <h3>My Account </h3>
+                                <h3>栏目二</h3>
                             </div>
                             <div class="footer_menu">
                                 <ul>
+                                    @foreach($data_column as $k=>$val)
+                                    @if($v->column_sort==1)
                                     <li>
-                                        <a href="#">My Account</a>
+                                        <a href="#">{{ $val->column_title }}</a>
                                     </li>
-                                    <li>
-                                        <a href="#">Wishlist</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Shopping Cart</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Checkout</a>
-                                    </li>
+                                    @endif
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -342,22 +332,17 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="footer_menu">
                             <div class="news_heading_2">
-                                <h3> Our Services </h3>
+                                <h3>栏目三</h3>
                             </div>
                             <div class="footer_menu">
                                 <ul>
+                                    @foreach($data_column as $k=>$value)
+                                    @if($v->column_sort==2)
                                     <li>
-                                        <a href="#">Shipping & Returns</a>
+                                        <a href="#">{{ $value->column_title }}</a>
                                     </li>
-                                    <li>
-                                        <a href="#">Secure Shopping</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">International Shipping</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Affiliates</a>
-                                    </li>
+                                    @endif
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

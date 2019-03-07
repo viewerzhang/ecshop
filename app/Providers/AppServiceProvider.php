@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::share('common_cate',GoodsCategoryController::paixu());
         View::share('data_conf',HomeController::config());
+        View::share('data_column',HomeController::data_column());
     }
 
     /**
