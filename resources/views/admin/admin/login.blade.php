@@ -35,7 +35,7 @@ Purchase: http://wrapbootstrap.com
 <!--Head Ends-->
 <!--Body-->
 <body>
-                                @if (session('success'))
+     @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
@@ -52,19 +52,19 @@ Purchase: http://wrapbootstrap.com
     <div class="login-container animated fadeInDown">
         <div class="loginbox bg-white">
 
-    
+            <br>
             <div class="loginbox-title">EC商城</div>
-            
+            <br>
             <div class="loginbox-or">
                 <div class="or-line"></div>
                 <div class="or">OR</div>
             </div>
-
+            <br>
             <div class="loginbox-social">
-                <img src="holder.js/220x100?bg=#FFD800&text=EC商城logo" alt="">
+                <img src="/static/admin/images/common/EClogo.png" alt="">
             </div>
             <div class="loginbox-textbox">
-                <input type="text" class="form-control" name="uname" placeholder="管理员账号..." />
+                <input type="text" class="form-control" name="uname" placeholder="账号..." />
             </div>
             <div class="loginbox-textbox">
                 <input type="text" class="form-control" name="upwd" placeholder="密码..." />
@@ -72,6 +72,7 @@ Purchase: http://wrapbootstrap.com
             <div class="loginbox-forgot">
                 <a href="">忘记密码?</a>
             </div>
+            <br>
             <div class="loginbox-submit">
                 <input type="submit" class="btn btn-primary btn-block" value="登录">
             </div>

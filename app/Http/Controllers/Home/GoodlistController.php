@@ -86,8 +86,9 @@ class GoodlistController extends Controller
            
         })->paginate(15);
 
-
-        return view('home/goods/goodlist',['data'=>$data,'request'=>$request->all()]);
+        $res = Goods::orderBy('click_num','desc')->paginate(16);
+        //dd($res);
+        return view('home/goods/goodlist',['res'=>$res,'data'=>$data,'request'=>$request->all()]);
     }
 
     /**
