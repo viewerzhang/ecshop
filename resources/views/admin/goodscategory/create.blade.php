@@ -25,7 +25,7 @@
                             <select name="cate_pid" id="xl">
                                 <option value="0">顶级分类</option>
                                 @foreach($data as $k => $v)
-                                    <option {{ $v->catejz }} @if($key == $v->id) selected @endif value="{{ $v->id }}" @if($v->id == old('cate_pid')) selected @endif>{{ $v->catenamea }}</option>
+                                    <option {{ $v->catejzNo }} @if($key == $v->id) selected @endif value="{{ $v->id }}" @if($v->id == old('cate_pid')) selected @endif>{{ $v->catenamea }}</option>
                                 @endforeach
                             </select>
                         </div>

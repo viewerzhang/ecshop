@@ -12,6 +12,6 @@ class GoodsActivity extends Model
 
     public function goods()
     {
-        return $this->hasOne('App\Http\Model\Admin\Goods','goods_id');
+        return $this->belongsTo('App\Http\Model\Admin\Goods','goods_id');
     }
 }
