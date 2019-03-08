@@ -243,8 +243,8 @@ class GoodlistController extends Controller
             }
            
         })->paginate(15);
-
+        $res = Goods::orderBy('click_num','desc')->paginate(16);
         // 显示到商品列表页
-        return view('home/goods/goodlist',['data'=>$data,'request'=>$request->all()]);
+        return view('home/goods/goodlist',['res'=>$res,'data'=>$data,'request'=>$request->all()]);
     }
 }

@@ -23,6 +23,8 @@ Route::get('/register','UserController@create');
 // 前台搜索
 Route::get('/search','GoodlistController@search');
 
+// 前台优惠券
+Route::get('/coupons','CouponsController@index');
 
 //商品列表页
 Route::resource('goodlist','GoodlistController');

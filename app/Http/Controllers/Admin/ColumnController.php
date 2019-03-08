@@ -65,7 +65,9 @@ class ColumnController extends Controller
      */
     public function show($id)
     {
+        // 查询数据
         $data = Column::where('id',$id)->first();
+        // 分配到模板
         return view('admin/column/show',['data'=>$data]);
     }
 

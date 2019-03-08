@@ -1,0 +1,141 @@
+@media (max-width: 1280px) {
+
+    .list .item {
+        width: 100%;
+        margin: 0 0 15px 0!important;
+    }
+
+    .list .item:last-child {
+        margin-bottom: 0!important;
+    }
+
+    .list .item .bottom,
+    .list2 .item .bottom,
+    .list3 .item .bottom,
+    .list4 .item .bottom {
+        padding: 15px;
+    }
+
+    .list .item .image,
+    .list4 .item .image {
+        width: 100px;
+        padding-top: 15px;
+    }
+
+    .list .item .content,
+    .list4 .item .content {
+        padding: 15px 15px 0 0;
+    }
+
+    .list .item .image img,
+    .list4 .item .image img {
+        width: 90%;
+    }
+
+    .hero-search .search-form-container,
+    .hero-search .search-input,
+    .hero-search button {
+        width: 100%;
+    }
+
+    .list2 .item {
+        width: calc( 50% - 7.5px );
+        margin: 0 0 15px 0!important;
+    }
+
+    .list2 .item:nth-child(2n) {
+        margin-left: 15px!important;
+    }
+
+    .list2 .item:nth-last-child(-n+2) {
+        margin-bottom: 0!important;
+    }
+
+    .list .item .bottom,
+    .list2 .item .bottom,
+    .list3 .item .bottom,
+    .list4 .item .bottom {
+        line-height: 1;
+    }
+
+    .list4 .item {
+        padding-bottom: 15px;
+    }
+
+    .features .feature .img-container img {
+        width: 100%;
+    }
+
+    .features > .col-12:not(:last-child) .feature,
+    .posts > .col-12:not(:last-child) .post {
+        margin-bottom: 15px;
+    }
+
+    .hero-search .search-input {
+        margin-right: 0;
+    }
+
+    .menu-container:not(.fixed) {
+        border-bottom: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .pagination {
+        width: 100%;
+        padding: 0;
+    }
+
+    .header-menu .menu {
+        display: none;
+    }
+
+    .header-menu .mob-menu {
+        display: table-cell;
+    }
+
+    .header-menu > .logo img {
+        max-height: 50%;
+    }
+
+    .menu-container.active {
+        height: 80%;
+    }
+
+    .menu-container.active .mobile-overlay {
+        display: block;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .m-mt-30 {
+        margin-top: 30px;
+    }
+
+    .m-mb-30 {
+        margin-bottom: 30px;
+    }
+
+    .list .item .bottom .rating,
+    .list2 .item .bottom .rating {
+        display: none;
+    }
+
+    .pagination li:first-child,
+    .pagination li:last-child {
+        display: none;
+    }
+
+    button span, .button span {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .form-box {
+        width: 100%;
+    }
+
+}
