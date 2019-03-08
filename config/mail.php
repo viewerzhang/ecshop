@@ -58,6 +58,7 @@ return [
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', '15161782822@163.com'),
         'name' => env('MAIL_FROM_NAME', ''),
+
     ],
 
     /*

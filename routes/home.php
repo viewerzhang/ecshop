@@ -64,6 +64,218 @@ Route::post('/balance','UserBalanceController@index');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//商品列表页
+
+Route::resource('goodlist','GoodlistController');
+
+
+
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 前台注册页
+Route::get('/register','UserController@create');
+
+// 前台搜索
+Route::get('/search','GoodlistController@search');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 前台登录
 // 跳转到登录页面
 Route::get('/login','LoginController@login');
@@ -84,11 +296,22 @@ Route::get('/yzm','UserController@yzm');
 Route::get('/grzx/yzyx','GrzxController@yzyx');
 Route::post('/grzx/revisea/{id}','GrzxController@revisea');
 Route::put('/grzx/sendcode/{id}','GrzxController@sendcode');
+// 个人信息
 Route::get('/grzx/grxx', 'GrzxController@grzx');
+// 修改手机号
 Route::post('/grzx/revise/{id}', 'GrzxController@revise');
+// 修改头像
 Route::post('/grzx/pic/{id}', 'GrzxController@pic');
+// 修改密码
 Route::post('/grzx/editpwd/{id}', 'GrzxController@editpwd');
+// 修改个人信息
 Route::post('/grzx/editgrxx/{id}', 'GrzxController@xgxx');
 Route::resource('grzx', 'GrzxController');
 
 Route::get('/yxyx/{email}/{token}/{id}','GrzxController@jm');
+// 个人中心资源路由
+Route::resource('grzx', 'GrzxController');
+// 邮箱验证
+Route::resource('email', 'EmailController');
+// 回复
+Route::resource('reply', 'ReplyController');

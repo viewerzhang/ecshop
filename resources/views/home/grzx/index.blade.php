@@ -39,6 +39,7 @@
 					  <a href="javascript:;" id="yzyx">立即验证</a>
 				  @else
 					  {{$data->user_email}}
+            <a href="javascript:;" id="yzyx">立即修改</a>
 				  @endif
         </p>
     </div>
@@ -168,8 +169,6 @@
               content: data,
             });
         });
-
-
 
     });
 </script>

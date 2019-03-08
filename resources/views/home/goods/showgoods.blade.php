@@ -139,12 +139,12 @@
 
 
 @if (session('error'))
-    <div class="alert alert-error">
+    <div class="alert alert-error" id="ts">
         {{ session('error') }}
     </div>
 @endif
 @if (session('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success" id="ts">
         {!! session('success') !!}
     </div>
 @endif

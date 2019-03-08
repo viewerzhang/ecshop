@@ -14,6 +14,16 @@ use Hash;
 
 class LoginController extends Controller
 {
+    public function aaa()
+    {
+        $user = '123';
+         Mail::send('home.email.index', ['user' => $user], function ($m) {
+            
+
+            $a = $m->to('295367893@qq.com')->subject('Your Reminder!');
+            dump($a);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
