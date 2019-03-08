@@ -350,20 +350,20 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="footer_menu footer_menu_2">
                             <div class="news_heading_2">
-                                <h3> Store Information </h3>
+                                <h3> EC优购 </h3>
                             </div>
                             <ul>
                                 <li>
                                     <i class="fa fa-home"></i>
-                                    <p>My Company : 42 avenue des Champs Elysées 75000  France</p>
+                                    <p>网站备案号：{{ $data_conf->conf_record }}</p>
                                 </li>
                                 <li>
                                     <i class="fa fa-phone"></i>
-                                    <p>Phone: (0123) 456789</p>
+                                    <p>商务洽谈: (010) 56595733</p>
                                 </li>
                                 <li>
                                     <i class="fa fa-envelope"></i>
-                                    <p>Email: admin@hastech.company</p>
+                                    <p>Email: 295367893@qq.com</p>
                                 </li>
                             </ul>
                         </div>
@@ -383,15 +383,7 @@
             </div>
         </div>
         <!--footer middle area end-->
-        <!--footer bottom area start-->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="widget-copyright text-center">
-                    Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-                </div>
-            </div>
-        </div>
-        <!--footer bottom area end-->
+ 
         <!--modal content start-->
 
 		

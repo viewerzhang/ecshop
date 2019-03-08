@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="action actionmm">
-                            <div style="margin-left: 30%;margin-top: 30px;width: 200px;">
+                            <div style="margin-left: 30%;margin-top: 30px;width: 300px;">
                                 <div class="price_box price_box_tz" >
                                 	<font style="vertical-align: inherit;">余额 :</font>
                                     <span class="spical-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $data->user_balance }}元</font></font></span>

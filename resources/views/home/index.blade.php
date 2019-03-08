@@ -1057,6 +1057,23 @@
                 </div>
             </div>
         </div>
+        <!-- 大屏广告 -->
+<script type="text/javascript" src="/static/home/js/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/static/home/css/guide-septAct.css">
+
+<div class="guide-all">
+    <div class="all-bg">
+        <div class="all-layout">
+            <a href="#"></a>
+            <span class="guide-all-close"></span>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/static/home/js/guidetool.js"></script>
+<!-- 大屏广告 结束-->
 @endforeach
         <!--modal 活动content end-->
 

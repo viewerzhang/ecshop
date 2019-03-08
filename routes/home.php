@@ -15,6 +15,7 @@
  * 浏览器地址 输入 网址访问网站首页
  * 
  */
+Route::get('/aaa','GoodsOrderController@share');
 Route::get('/','HomeController@index');
 
 // 前台注册页
@@ -80,9 +81,14 @@ Route::post('/store','UserController@store');
 // 验证码
 Route::get('/yzm','UserController@yzm');
 // 个人中心
+Route::get('/grzx/yzyx','GrzxController@yzyx');
+Route::post('/grzx/revisea/{id}','GrzxController@revisea');
+Route::put('/grzx/sendcode/{id}','GrzxController@sendcode');
 Route::get('/grzx/grxx', 'GrzxController@grzx');
 Route::post('/grzx/revise/{id}', 'GrzxController@revise');
 Route::post('/grzx/pic/{id}', 'GrzxController@pic');
 Route::post('/grzx/editpwd/{id}', 'GrzxController@editpwd');
 Route::post('/grzx/editgrxx/{id}', 'GrzxController@xgxx');
 Route::resource('grzx', 'GrzxController');
+
+Route::get('/yxyx/{email}/{token}/{id}','GrzxController@jm');

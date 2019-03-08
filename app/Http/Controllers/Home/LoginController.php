@@ -9,6 +9,7 @@ use App\Http\Requests\LoginDologinRequest;
 use App\Http\Requests\TelLoginRequest;
 use App\common\Sms;
 use Illuminate\Support\Facades\Redis;
+use Mail;
 use Hash;
 
 class LoginController extends Controller

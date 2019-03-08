@@ -9,10 +9,10 @@
     <button style="" id="hqcode" class="btn btn-primary">获取验证码</button>
   </div>
   <div class="form-group">
-    <label for="phone">修改手机</label>
-    <input type="text" id="newphone" class="form-control" id="phone" placeholder="请输入需要修改成的手机号">
+    <label for="phone">修改邮箱</label>
+    <input type="text" id="newemail" class="form-control" id="phone" placeholder="请输入需要修改成的手机号">
   </div>
-    <button id="okqd" style="margin-left: 36%;" type="submit" class="btn btn-danger">确定修改</button>
+    <a id="okqd" style="margin-left: 36%;" type="submit" class="btn btn-danger">确定修改</a>
   </div>
     <!-- 点击获取验证码执行 -->
     <script type="text/javascript">
@@ -27,13 +27,13 @@
         $('#hqcode').click(function(){
             $('#hqcode').prop('disabled',true); 
             var dqphone = $('#curphone').val();
-            // var newphone = $('#newphone').val();
+            // var newemail = $('#newemail').val();
             // var code = $('#code').val();
-            $.post("/admin/admin/" + id, {    
-               "_token": csrf,
+            $.post("/grzx/sendcode/" + {{session('user.id')}}, {    
+               "_token": "{{ csrf_token() }}",
                "_method": "put",
                'dqphone':dqphone,
-               // 'newphone':newphone,
+               // 'newemail':newemail,
                // 'code':code
             }, function(data) {
                if(data.code == '1'){
@@ -115,41 +115,17 @@
     <script type="text/javascript">
         $('#okqd').click(function(){
             var dqphone = $('#curphone').val();
-            var newphone = $('#newphone').val();
+            var newemail = $('#newemail').val();
             var code = $('#code').val();
-            var myreg= /^[1][3,4,5,7,8,9][0-9]{9}$/;
-            if(!myreg.test(dqphone)){
-                layui.use(['layer', 'form'], function(){
-                      var layer = layui.layer
-                      ,form = layui.form;
-                      layer.msg('您的历史手机号格式填写不正确');
-                });
-                return false;
-            }
-            if(!myreg.test(newphone)){
-                layui.use(['layer', 'form'], function(){
-                      var layer = layui.layer
-                      ,form = layui.form;
-                      layer.msg('您要修改的手机号格式填写不正确');
-                });
-                return false;
-            }
-            var codeyz= /^[0-9]{4}$/;
-            if(!codeyz.test(code)){
-                layui.use(['layer', 'form'], function(){
-                      var layer = layui.layer
-                      ,form = layui.form;
-                      layer.msg('您的验证码格式不正确');
-                });
-                return false;
-            }
-            $.post("/admin/admin/revise/" + id, {    
-               "_token": csrf,
+             $.post("/grzx/revisea/" + {{session('user.id')}}, {    
+               "_token": "{{ csrf_token() }}",
                'dqphone':dqphone,
-               'newphone':newphone,
+               'newemail':newemail,
                'code':code
+               // 'newemail':newemail,
+               // 'code':code
             }, function(data) {
-                if(data.code == 1){
+              if(data.code == 1){
                     $('#oop').html("<h1 style='margin:auto;'>修改成功</h1>");
                 }else if(data.code == 2){
                     layui.use(['layer', 'form'], function(){
@@ -170,9 +146,7 @@
                       layer.msg('您的当前手机号不正确');
                     });
                 }
-
             },'json');
-
         });
 
     </script>

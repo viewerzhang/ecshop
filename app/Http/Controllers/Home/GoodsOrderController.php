@@ -9,6 +9,7 @@ use App\Http\Model\Home\ShoppingCar;
 use App\Http\Model\Admin\GoodsOrder;
 use App\Http\Model\Admin\ShopDetail;
 use App\Http\Model\Admin\Goods;
+use App\Http\Model\Admin\Users;
 use DB;
 
 class GoodsOrderController extends Controller
@@ -68,7 +69,7 @@ class GoodsOrderController extends Controller
     }
 
     /**
-     * 生成新订单
+     * 生成新订单 支付中
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -79,6 +80,16 @@ class GoodsOrderController extends Controller
             $data = $request->all();
             // 开启事务
             DB::beginTransaction();
+            // 判断用户有没有钱
+            $user = Users::where('id',session('user.id'))->first();
+            if($user->user_balance < session("{$data['code']}.zongjiaqian")){
+                // 用户余额不足
+                session([$data['code'] => null]);
+                return view('success.yuebuzu');
+            }
+            // 现将用户账户余额扣除
+            $user->user_balance = $user->user_balance - session("{$data['code']}.zongjiaqian");
+
             $goods = session($data['code']);
             // 获取用户地址
             $addr = UserAddr::where('id',$data['dz'])->first();
@@ -106,6 +117,8 @@ class GoodsOrderController extends Controller
             $order['created_at'] = time();
             // 保存订单表
             $orderId = GoodsOrder::insertGetId($order);
+            // 更新用户账户余额
+            $pdcg = $user->save();
             // 销毁无用数组
             unset($goods['zongjiaqian']);
             unset($goods['zongshuliang']);
@@ -128,7 +141,7 @@ class GoodsOrderController extends Controller
                     $pd = false;
                 }
             }
-            if($pd && $orderId){
+            if($pd && $orderId && $pdcg){
                 DB::commit();
                 session([$data['code'] => null]);
                 return '添加成功';
@@ -136,6 +149,7 @@ class GoodsOrderController extends Controller
             session([$data['code'] => null]);
             DB::rollBack();
         }catch(\Exception $err){
+            session([$data['code'] => null]);
             return view('error.index');
         }
     }
@@ -262,6 +276,15 @@ class GoodsOrderController extends Controller
         $data->order_status = '3';
         try{
             $data->save();
+            // 查询订单价钱 
+            $sum = $data->order_sum;
+            // 找到关闭订单用户
+            $user = Users::where('id',session('user.id'))->first();
+            // 将订单金额退还用户
+            $user->user_balance = $user->user_balance + $sum;
+            // 更新用户信息
+            $user->save();
+            // 查询错误异常
         }catch(\Exception $err){
             $arr = [
                 'code' => '0'
@@ -273,4 +296,16 @@ class GoodsOrderController extends Controller
         ];
         return json_encode($arr);
     }
+
+
+    // 处理分享订单
+    function share()
+    {
+        return view('home.goodsorder.share');
+    }
+
+
+
+
+
 }
