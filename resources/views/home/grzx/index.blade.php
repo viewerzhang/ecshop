@@ -36,7 +36,7 @@
 		</div>
         <p style="font-size: 18px; margin-bottom: 40px;">
             邮箱: @if(empty($data->user_email))
-					  <a href="/edit">立即验证</a>
+					  <a href="javascript:;" id="email">立即验证</a>
 				  @else
 					  {{$data->user_email}}
 				  @endif
@@ -144,6 +144,28 @@
                 }
             });
         },'json');
+    });
+    $('#email').click(function(){
+        layui.use(['layer', 'form'], function(){
+          var layer = layui.layer
+          ,form = layui.form;
+          $.ajax({
+              type:'get',
+              url:'/email',
+              async:false,
+              success:function(dataa)
+              {
+                  data = dataa;
+              }
+          });
+          layer.open({
+              type: 1,
+              title:'验证邮箱',
+              skin: 'layui-layer-rim', //加上边框
+              area: ['420px', '300px'], //宽高
+              content: data,
+            });
+        });
     });
 </script>
 
