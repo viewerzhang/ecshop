@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         try{
             $data_goods_top = Goods::orderBy('goods_sales','asc')->get();
-            $data_brand = GoodsBrand::get();
+            $data_brand = GoodsBrand::where('brand_status','1')->get();
             $data_ad = Advertising::get();
             $data_links = Links::get();
             $data_lunbo = Lunbo::get();

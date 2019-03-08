@@ -83,7 +83,8 @@ class GoodlistController extends Controller
                 $query->whereIn('cate_id',$data);
                 
             }
-           
+           $cate_id_hidden = GoodsCategory::where('cate_status','1')->pluck('id');
+           $query->whereIn('cate_id',$cate_id_hidden);
         })->paginate(15);
 
         $res = Goods::orderBy('click_num','desc')->paginate(16);
@@ -125,7 +126,6 @@ class GoodlistController extends Controller
     public function show($id)
     {
         $goods = Goods::find($id);
-
 
         // 记录用户浏览记录 开始 // 
         if(session('userlogin')){

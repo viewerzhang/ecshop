@@ -24,7 +24,7 @@ class GoodsOrderController extends Controller
     {
         try{
             $uid = session('user.id');
-            $data = GoodsOrder::where('user_id',$uid)->paginate(4);
+            $data = GoodsOrder::where('user_id',$uid)->orderBy('created_at','desc')->paginate(4);
             return view('home.goodsorder.show',['data'=>$data]);
         }catch(\Exception $err){
             return view('error.index');
@@ -45,6 +45,9 @@ class GoodsOrderController extends Controller
             $dangood = $request->all();
             if(!$dangood['attr']){
                 return back()->with('error','您还没有选择商品的属性');
+            }
+            if($dangood['sum'] < '0'){
+                return back()->with('error','您的意思是要白送我吗？');
             }
             $dangood['attr'] = rtrim($dangood['attr'],',');
 
@@ -90,7 +93,6 @@ class GoodsOrderController extends Controller
             }
             // 现将用户账户余额扣除
             $user->user_balance = $user->user_balance - session("{$data['code']}.zongjiaqian");
-
             $goods = session($data['code']);
             // 获取用户地址
             $addr = UserAddr::where('id',$data['dz'])->first();
@@ -123,6 +125,18 @@ class GoodsOrderController extends Controller
             // 销毁无用数组
             unset($goods['zongjiaqian']);
             unset($goods['zongshuliang']);
+            // 遍历检查商品状态
+            foreach($goods as $k => $v){
+                $detailgoods['goods_id'] = $v["goods_id"];
+                $goods_status = Goods::find($v['goods_id']);
+                if(!$goods_status){
+                    return back()->with('error','对不起，您选择的商品不存在');
+                }else{
+                    if($goods_status->goods_status == 2){
+                        return back()->with('error','对不起，您选择的商品已下架');
+                    }
+                }
+            }
             // 遍历插入商品详情
             foreach($goods as $k => $v){
                 $detailgoods['order_id'] = $orderId;
@@ -284,6 +298,8 @@ class GoodsOrderController extends Controller
             $user = Users::where('id',session('user.id'))->first();
             // 将订单金额退还用户
             $user->user_balance = $user->user_balance + $sum;
+            // 将用户积分扣除
+            $user->jf = $user->jf-10;
             // 更新用户信息
             $user->save();
             // 查询错误异常
@@ -323,9 +339,5 @@ class GoodsOrderController extends Controller
             return redirect('/goodsorder')->with('share','对不起，商品分享失败');
         }
     }
-
-
-
-
 
 }

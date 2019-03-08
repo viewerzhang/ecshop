@@ -274,8 +274,6 @@ layui.use(['layer', 'form'], function(){
             $(ud).parent().next().next().next().next().next().find('input').prop('disabled',true);
         }
     }
-
-
 </script>
 <script src="/static/home/demo/highlight-9.5.0.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>

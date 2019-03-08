@@ -138,16 +138,7 @@
 
 
 
-@if (session('error'))
-    <div class="alert alert-error" id="ts">
-        {{ session('error') }}
-    </div>
-@endif
-@if (session('success'))
-    <div class="alert alert-success" id="ts">
-        {!! session('success') !!}
-    </div>
-@endif
+
                     <form class="cart-btn-area" action="/shoppingcar" method="post">
                         {{ csrf_field() }}
 
@@ -766,6 +757,69 @@
             },'json');
         }
     </script>
+<script src="/static/home/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="/static/home/js/iziToast.min.js" type="text/javascript"></script>
+<script src="/static/home/js/demo.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/home/css/iziToast.min.css">
+<!-- <link rel="stylesheet" href="/static/home/css/dem.css"> -->
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        iziToast.show({
+        icon: 'icon-contacts',
+        title: "错误提示",
+        message: ' {{ $error }}',
+        position: 'topCenter',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        progressBarColor: 'rgb(0, 255, 184)',
+        image: '/static/home/img/avatar.jpg',
+        imageWidth: 70,
+        layout:2,
+        onClose: function(){
+            console.info('onClose');
+        },
+        iconColor: 'rgb(0, 255, 184)'
+    });
+        @endforeach
+    @endif
+    @if(session('error'))
+        iziToast.show({
+        icon: 'icon-contacts',
+        title: "友情提示",
+        message: "{{ session('error') }}",
+        position: 'topCenter',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        progressBarColor: 'rgb(0, 255, 184)',
+        image: '/static/home/img/avatar.jpg',
+        imageWidth: 70,
+        layout:5,
+        onClose: function(){
+            console.info('onClose');
+        },
+        iconColor: 'rgb(0, 255, 184)'
+    });
+    @endif
+    @if(session('success'))
+        iziToast.show({
+        icon: 'icon-contacts',
+        title: "成功提示",
+        message: "{{ session('success') }}",
+        position: 'topCenter',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        progressBarColor: 'rgb(0, 255, 184)',
+        image: '/static/home/img/avatar.jpg',
+        imageWidth: 70,
+        layout:5,
+        onClose: function(){
+            console.info('onClose');
+        },
+        iconColor: 'rgb(0, 255, 184)'
+    });
+    @endif
+</script>
 @stop
 
 

@@ -1,8 +1,9 @@
 @extends('layout.home')
 @section('content')
-
+<style type="text/css">
+</style>
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/static/coupons/assets/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/static/coupons/assets/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="/static/coupons/assets/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="/static/coupons/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/coupons/assets/css/styles.css">
@@ -12,8 +13,26 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
 
 <div class="bgGray pt-75 pb-75 clearfix">
+
     <div class="container">
-        
+        <div class="row" style="margin-top: -70px;">
+            <div class="col-md-12">
+                <div class="shop_menu">
+                    <ul class="cramb_area cramb_area_5">
+                        <li>
+                            <a href="/grzx">
+                                个人中心 /
+                            </a>
+                        </li>
+                        <li class="br-active">
+                            <a href="#">
+                                折扣卷中心
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="list clearfix">
             <div class="item">
                 <div class="image">

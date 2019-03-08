@@ -208,7 +208,7 @@ class GoodsCategoryController extends Controller
     {
         try{
             // 找出是父级的记录
-            $cate = GoodsCategory::where('cate_pid',$pid)->get();
+            $cate = GoodsCategory::where('cate_status','1')->where('cate_pid',$pid)->get();
             // 遍历排序
             foreach($cate as $k => $v){
                 // 判断下标是否溢出

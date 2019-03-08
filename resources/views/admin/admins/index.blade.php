@@ -8,6 +8,12 @@
             <a id="editabledatatable_new" href="/admin/admins/create" class="btn btn-blue">
                <span class="glyphicon glyphicon-plus"></span>Add
             </a>
+            <a id="editabledatatable_new" href="/admin/admins?jz=1" class="btn btn-blue">
+               <span class="glyphicon glyphicon-plus"></span>启用中管理员
+            </a>
+            <a id="editabledatatable_new" href="/admin/admins?jz=2" class="btn btn-blue">
+               <span class="glyphicon glyphicon-plus"></span>禁止中管理员
+            </a>
             <form action="/admin/admins" style="float: right;" method="get">
                 <span class="input-icon inverted">
                     <input name="key" type="text" class="form-control input-sm" value="{{ $key }}" placeholder="用户名关键字" name="title" value="">
@@ -62,7 +68,7 @@
                         {{ $v->id }}
                     </td>
                     <td class="center" style="cursor: pointer;" onclick="image($(this).text())">
-                                                    <img src="{{ asset("$v->upic") }}" alt="" height="25">
+                                                    <img src="/{{ $v->upic }}" alt="" height="25">
                                             </td>
                     <td class="">
                         {{ $v->uname }}
@@ -146,6 +152,7 @@ function del(id,ud)
                 },'json');
             });
         });    
-}
+}   
+                        
 </script>
 @endsection

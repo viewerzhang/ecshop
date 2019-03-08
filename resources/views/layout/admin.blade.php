@@ -65,8 +65,7 @@ Purchase: http://wrapbootstrap.com
                 <div class="sidebar-collapse" id="sidebar-collapse">
                     <i class="collapse-icon fa fa-bars"></i>
                 </div>
-                <!-- /Sidebar Collapse -->
-                <!-- Account Area and Settings --->
+                
                 <div class="navbar-header pull-right">
                     <div class="navbar-account">
                         <ul class="account-area">
@@ -74,30 +73,25 @@ Purchase: http://wrapbootstrap.com
 
                             <li>
                                 <a class="login-area dropdown-toggle" data-toggle="dropdown">
-                                    <div class="avatar" title="View your public profile">
-                                        <img src="/static/admin/assets/img/avatars/adam-jansen.jpg">
+                                    <div class="avatar" title="View your public profile" style="margin-right: 80px;">
+                                        <img src="/{{ session('admin.upic') }}">
                                     </div>
                                     <section>
-                                        <h2><span class="profile"><span>David Stevenson</span></span></h2>
+                                        <h2><span class="profile"><span>{{ session('admin.uname') }}</span></span></h2>
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                    <li class="username"><a>David Stevenson</a></li>
-                                    <li class="email"><a>David.Stevenson@live.com</a></li>
+                                    <li class="username"><a>{{ session('admin.uname') }}</a></li>
+                                    <li class="email"><a>{{ session('admin.admin_email') }}</a></li>
                                     <!--Avatar Area-->
                                     <li>
                                         <div class="avatar-area">
                                             <a href="/admin/admin">
-                                                <img src="{{ asset('/static/admin/assets/img/avatars/adam-jansen.jpg') }}" class="avatar">
+                                                <img src="/{{ session('admin.upic') }}" class="avatar">
                                             </a>
-                                            <span class="caption">Change Photo</span>
+                                            <span class="caption">进入个人中心</span>
                                         </div>
-                                    </li>
-                                    <!--Avatar Area-->
-                                    <li class="edit">
-                                        <a href="profile.html" class="pull-left">Profile</a>
-                                        <a href="#" class="pull-right">Setting</a>
                                     </li>
                                     <!--Theme Selector Area-->
                                     <li class="theme-area">

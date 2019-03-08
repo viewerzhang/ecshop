@@ -51,6 +51,9 @@ class ShoppingCarController extends Controller
             $spxx['dqtime'] = time() + 60 *20;
             unset($data['sum']);
             unset($data['goods_id']);
+            if($spxx['car_num'] <= '0'){
+                return back()->with('error','白送我，我要啊！');
+            }
             if(count($data) == 0){
                 return back()->with('error','请您选择商品属性');
             }
@@ -62,6 +65,9 @@ class ShoppingCarController extends Controller
             $spxx['attr'] = $attr;
 
             $good = Goods::where('id',$spxx['goods_id'])->first();
+            if($good->goods_status == 2){
+                return back()->with('error','对不起，您选择的商品已下架');
+            }
             // 没有找到要添加的商品，返回错误信息
             if(!$good){
                 return back()->with('error','对不起，该商品可能已下架。');
@@ -249,6 +255,13 @@ class ShoppingCarController extends Controller
             ];
             return json_encode($arr);
         }
+        if($data['car_num'] <= '0'){
+            $arr = [
+                'code' => '0',
+                'msg' => '您的意思是要白送我吗？'
+            ];
+            return json_encode($arr);
+            }
         // 获取用户ID
         $data['user_id'] = session('user.id');
         // 查看要添加商品的状态

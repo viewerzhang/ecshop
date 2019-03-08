@@ -336,11 +336,11 @@
             @foreach($data_ad as $k => $v)
             @if($sum <= 2)
                     <?php $sum++; ?>
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="margin-top: -30px;">
                         <div class="plus_pic">
                             <div class="pix_new">
                                 <a href="{{ $v->ad_link }}">
-                                <img style="width: 553px;height: 174px;" src="/static/{{ $v->ad_img }}" alt="{{ $v->ad_desc }}" title="{{ $v->ad_desc }}">
+                                <img style="width: 553px;height: 174px;" src="/{{ $v->ad_img }}" alt="{{ $v->ad_desc }}" title="{{ $v->ad_desc }}">
                                 </a>
                             </div>
                         </div>

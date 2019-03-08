@@ -18,7 +18,7 @@
         progressBarColor: 'rgb(0, 255, 184)',
         image: '/static/home/img/avatar.jpg',
         imageWidth: 70,
-        layout:2,
+        layout:1,
         onClose: function(){
             console.info('onClose');
         },
@@ -45,17 +45,28 @@
                             <h2>
                                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$data->user_name}}</font></font>
                                 @if($data->jf<5000 && $data->jf>=10)
-                                <img title="新新会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip1.png">
+                                    <a href="/grzx/vip">
+                                <img title="新新会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip1.png"></a>
                                 @elseif($data->jf<10000 && $data->jf>=5000)
+                                    <a href="/grzx/vip">
                                 <img title="青铜会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip2.png">
+                                    </a>
                                 @elseif($data->jf<30000 && $data->jf>=10000)
+                                    <a href="/grzx/vip">
                                 <img title="白银会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip3.png">
+                                    </a>
                                 @elseif($data->jf<50000 && $data->jf>=30000)
+                                    <a href="/grzx/vip">
                                 <img title="黄金会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip4.png">
+                                    </a>    
                                 @elseif($data->jf<100000 && $data->jf>=50000)
+                                    <a href="/grzx/vip">
                                 <img title="钻石会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip5.png">
+                                    </a>
                                 @elseif($data->jf>=100000)
+                                    <a href="/grzx/vip">
                                 <img title="铂金会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip6.png">
+                                    </a>
                                 @endif
                             </h2>
                             <div class="pro_discrip">
@@ -73,7 +84,7 @@
                             		上次登陆地点: {{ $getIp::getIp(session('user.user_ip')) }}
                             	</p>
                                 <p style="vertical-align: inherit;">
-                                    会员积分:<span title="@if($data->jf<5000 && $data->jf>=10)
+                                    会员积分:<a href="/grzx/vip"><span title="@if($data->jf<5000 && $data->jf>=10)
                                             尊贵的新新会员
                                             @elseif($data->jf<10000 && $data->jf>=5000)
                                             尊贵的青铜会员
@@ -86,7 +97,7 @@
                                             @elseif($data->jf>=100000)
                                             尊贵的铂金会员
                                             @endif">{{ $data->jf }}
-                                        </span> 
+                                        </span> </a>
                                 </p>
                             </div>
                         </div>
@@ -100,8 +111,9 @@
                             <div class="last_button_area">
                                 <ul class="add-to-links clearfix">
                                     <li>
-                                        <div class="new_act">
+                                        <div class="new_act" style="width: 400px;">
                                             <a href="/grzx/balance" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充值</font></font></a>
+                                            <br>
                                             <a href="/coupons" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">领取优惠券</font></font></a>
                                         </div>
                                     </li>

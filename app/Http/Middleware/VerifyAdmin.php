@@ -18,6 +18,9 @@ class VerifyAdmin
     {
         if(session('adminlogin')){
             $admin = Admin::where('uname',session('admin.uname'))->first();
+            if($admin->admin_status == 2){
+                return redirect('/admin/login')->with('error','您的账号已被禁用');
+            }
             if ($admin->upwd == session('admin.upwd')) {
                 return $next($request);
             }

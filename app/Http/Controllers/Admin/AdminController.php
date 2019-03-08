@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function index()
     {
         try{
-            $data = Admin::find(2);
+            $data = Admin::find(session('admin.id'));
             return view('admin.admin.index',['data'=>$data]);
         }catch(\Exception $err){
             return view('error.index');
@@ -315,6 +315,9 @@ class AdminController extends Controller
         $admin = Admin::where('uname',$data['uname'])->first();
         if($admin->uname != $data['uname'] ){
             return back()->with('error','您的账号或密码不正确');
+        }
+        if ($admin->admin_status == 2) {
+            return back()->with('error','您的账号已被禁用');
         }
         if (Hash::check($data['upwd'], $admin['upwd'])) {
             session(['adminlogin'=>true]);

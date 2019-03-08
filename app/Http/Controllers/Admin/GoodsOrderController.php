@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Model\Admin\GoodsOrder;
+use App\Http\Model\Admin\{GoodsOrder,Users};
 
 class GoodsOrderController extends Controller
 {
@@ -16,7 +16,7 @@ class GoodsOrderController extends Controller
     public function index(Request $request)
     {
         $key = $request->input('key');
-        $data = GoodsOrder::where('rand_id','like',"%{$key}%")->paginate(8);
+        $data = GoodsOrder::where('rand_id','like',"%{$key}%")->orderBy('created_at','desc')->paginate(8);
         return view('admin.goodsorder.index',['key'=>$key,'data'=>$data]);
     }
 
@@ -108,8 +108,12 @@ class GoodsOrderController extends Controller
         $data = GoodsOrder::find($id);
         if($data->order_status != '3' && $data->order_status != '2' ){
             $data->order_status = '3';
+            $molin = $data->order_sum;
+            $user = Users::find($data->user_id);
+            $user->user_balance = $user->user_balance + $molin;
+            $judge2 = $user->save();
             $judge = $data->save();
-            if($judge){
+            if($judge && $judge2){
                 $arr = [
                     'code'=>'1'
                 ];

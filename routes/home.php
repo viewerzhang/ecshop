@@ -60,8 +60,8 @@ Route::get('/grzx/balance','UserBalanceController@balance');
 // 提交充值
 Route::post('/balance','UserBalanceController@index');
 
-
-
+// VIP简介
+Route::view('/grzx/vip','home.grzx.vip');
 
 
 

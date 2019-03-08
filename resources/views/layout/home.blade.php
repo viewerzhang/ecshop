@@ -144,7 +144,7 @@
                                         @foreach($gwc = $Sp::quanjugwc() as $k => $v)
                                         @if($k <= 1)
                                         <li class="wimix_area">
-                                            <a class="pix_product" href="">
+                                            <a class="pix_product" href="/goodlist/{{ $v->goods_id }}">
                                                 <img alt="" src="/static/admin/images/goods_img/{{ $v->goods->goods_img }}">
                                             </a>
                                             <div class="product-details">

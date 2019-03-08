@@ -21,8 +21,9 @@ class AdminsController extends Controller
     public function index(Request $request)
     {
         try{
+            $jz = $request->input('jz','');
             $key = $request->input('key','');
-            $data = Admin::where('uname','like',"%{$key}%")->paginate(8);;
+            $data = Admin::where('uname','like',"%{$key}%")->where('admin_status','like',"%{$jz}%")->paginate(8);;
             return view('admin.admins.index',['key'=>$key,'data'=>$data]);;
         }catch(\Exception $err){
             return view('error.index');
@@ -53,6 +54,12 @@ class AdminsController extends Controller
     {
         try{
             $data = $request->except(['_token','rupwd','lspic']);
+            if(Admin::where('uname',$data['uname'])->first()){
+                $request->flash();
+                $request->session()->flash('error','用户名，已被使用');
+                return back();
+            }
+
             if(array_key_exists('admin_status', $data)){
                 $data['admin_status'] = '1';
             }else{
@@ -64,7 +71,7 @@ class AdminsController extends Controller
             $data['admin_ip'] = '0';
             // 将图片从临时文件区移动到静态文件区
             $newFile = substr($data['upic'], strrpos($data['upic'], '/'));
-            $tempFile = public_path('static/admin/images/goodsbrand/temp'.$newFile);
+            $tempFile = public_path('static/admin/images/admins/temp'.$newFile);
             $staticFile = public_path($data['upic']);
             $newTempFile = str_replace('\\', '/', $tempFile);
             $newStaticFile = str_replace('\\', '/', $staticFile);
@@ -74,8 +81,10 @@ class AdminsController extends Controller
 
             $judge = Admin::insert($data);
             if($judge){
+                $request->session()->flash('success','请继续添加新管理员');
                 return "<script>var a = confirm('管理员牌成功，是否继续添加？');a ? location.href='/admin/admins/create' : location.href='/admin/admins'</script>";
             }else{
+                $request->session()->flash('error','sorry，请继续添加新管理员');
                 return redirect('/admin/admins/create')->with('error','对不起因为系统问题添加失败，请稍后再试或联系网站管理员！');
             }
         }catch(\Exception $err){

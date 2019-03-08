@@ -3,24 +3,6 @@
 @section('title2', '添加管理员')
 @section('content')
 <div class="col-lg-6 col-sm-6 col-xs-12" width="700px">
-    @if (count($errors) > 0)
-    <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-    @if (session('error'))
-    <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <ul>
-                <li>{{ session('error') }}</li>
-        </ul>
-    </div>
-    @endif
                                     <div class="widget">
                                         <div class="widget-header bordered-bottom bordered-blue">
                                             <span class="widget-caption">添加管理员</span>
@@ -83,7 +65,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <input type="submit" class="btn btn-blue">
+                                                    <button type="submit" class="btn btn-info">提交</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -118,5 +100,74 @@
                 }
             });
     })
+                        
+                        
+</script>
+
+
+
+
+<script src="/static/home/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="/static/home/js/iziToast.min.js" type="text/javascript"></script>
+<script src="/static/home/js/demo.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/home/css/iziToast.min.css">
+<!-- <link rel="stylesheet" href="/static/home/css/dem.css"> -->
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        iziToast.show({
+        icon: 'icon-contacts',
+        title: "错误提示",
+        message: ' {{ $error }}',
+        position: 'topCenter',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        progressBarColor: 'rgb(0, 255, 184)',
+        image: '/static/home/img/avatar.jpg',
+        imageWidth: 70,
+        layout:2,
+        onClose: function(){
+            console.info('onClose');
+        },
+        iconColor: 'rgb(0, 255, 184)'
+    });
+        @endforeach
+    @endif
+    @if(session('error'))
+        iziToast.show({
+        icon: 'icon-contacts',
+        title: "错误提示",
+        message: "{{ session('error') }}",
+        position: 'topCenter',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        progressBarColor: 'rgb(0, 255, 184)',
+        image: '/static/home/img/avatar.jpg',
+        imageWidth: 70,
+        layout:5,
+        onClose: function(){
+            console.info('onClose');
+        },
+        iconColor: 'rgb(0, 255, 184)'
+    });
+    @endif
+    @if(session('success'))
+        iziToast.show({
+        icon: 'icon-contacts',
+        title: "成功提示",
+        message: "{{ session('success') }}",
+        position: 'topCenter',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        progressBarColor: 'rgb(0, 255, 184)',
+        image: '/static/home/img/avatar.jpg',
+        imageWidth: 70,
+        layout:5,
+        onClose: function(){
+            console.info('onClose');
+        },
+        iconColor: 'rgb(0, 255, 184)'
+    });
+    @endif
 </script>
 @endsection

@@ -167,8 +167,7 @@
                    "_method": "put"
                 }, function(data) {
                     if(data.code == '1'){
-                        
-                            layer.msg('关闭订单成功');
+                            layer.msg('发货订单成功');
                             $(ud).parent().prev().html('已发货');
                             $(ud).remove();
                     }else{

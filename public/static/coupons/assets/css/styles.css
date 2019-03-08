@@ -29,9 +29,6 @@ body {
     overflow-x: hidden;
 }
 
-a {
-    color: #000;
-}
 
 a:hover {
     color: #a4006a;
