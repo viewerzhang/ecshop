@@ -19,11 +19,31 @@
             @endforeach
         </div>
         <div style="height: 150px;width: 28%;border-left: 1px #aaa solid;float: right;">
+          @if($v->order_status == 3)
+          <div style="position: absolute;left: 550px;transform: rotate(30deg);width: 120px;">
+            <img src="/static/home/img/ygb.png">
+          </div>
+          @endif
+          @if($v->order_status == 2)
+          <div style="position: absolute;left: 550px;transform: rotate(30deg);width: 120px;">
+            <img src="/static/home/img/ywc.png">
+          </div>
+          @endif
+          @if($v->order_status == 0)
+          <div style="position: absolute;left: 550px;transform: rotate(30deg);width: 120px;">
+            <img src="/static/home/img/dfh.png">
+          </div>
+          @endif
+          @if($v->order_status == 1)
+          <div style="position: absolute;left: 550px;transform: rotate(30deg);width: 120px;">
+            <img src="/static/home/img/dsh.png">
+          </div>
+          @endif
             <a href="/goodsorder/{{ $v->id }}/edit"><div class="button green" style="height: 30px;width: 150px;margin-left: 43px;margin-top: @if($v->order_status != 0 && $v->order_status != 1)40px @else 20px @endif;"><div class="shine"></div><div style="margin-left: 15px;margin-top: -8px;font-size: 12px;width: 150px;">查看详情</div></div><br/></a>
             @if($v->order_status != 3)
             <div class="button red" @if($v->order_status == 1)onclick="dj2({{ $v->id }},this)"@elseif($v->order_status == 2) onclick="jywc(this)"@endif style="height: 30px;width: 150px;margin-left: 43px;margin-top: 10px"><div class="shine"></div><div class="bbq" style="margin-left: 15px;margin-top: -8px;font-size: 12px;width: 150px;">@if($v->order_status == 0)等待发货@elseif($v->order_status == 1)确定收货@elseif($v->order_status == 2)交易完成@elseif($v->order_status == 3)交易关闭@endif</div></div>
             @endif
-            @if($v->order_status == 0 || $v->order_status == 1 || $v->order_status == 3)
+            @if($v->order_status == 0 || $v->order_status == 1)
             <div class="button orange" @if($v->order_status != 3)onclick="gbdd({{ $v->id }},this)"@endif style="height: 30px;width: 150px;margin-left: 43px;margin-top: 10px;"><div class="shine"></div><div class="gbddd" style="margin-left: 15px;margin-top: -8px;font-size: 12px;width: 150px;">关闭订单</div></div><br/>
             @endif
         </div>
@@ -90,5 +110,17 @@
          });
         });
   }
+        @if(session('share'))
+
+
+            layui.use(['layer', 'form'], function(){
+              var layer = layui.layer
+              ,form = layui.form;
+                  layer.msg('{{ session('share') }}');
+            }); 
+
+
+
+        @endif
 </script>
 @endsection

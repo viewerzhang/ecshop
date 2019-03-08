@@ -10,6 +10,7 @@ use App\Http\Model\Admin\GoodsOrder;
 use App\Http\Model\Admin\ShopDetail;
 use App\Http\Model\Admin\Goods;
 use App\Http\Model\Admin\Users;
+use App\Http\Model\Home\GoodsShare;
 use DB;
 
 class GoodsOrderController extends Controller
@@ -144,7 +145,8 @@ class GoodsOrderController extends Controller
             if($pd && $orderId && $pdcg){
                 DB::commit();
                 session([$data['code'] => null]);
-                return '添加成功';
+                $request->session()->flash('oid',$orderId);
+                return view('home.goodsorder.share');
             }
             session([$data['code'] => null]);
             DB::rollBack();
@@ -299,9 +301,27 @@ class GoodsOrderController extends Controller
 
 
     // 处理分享订单
-    function share()
+    function share(Request $request)
     {
-        return view('home.goodsorder.share');
+        $data = $request->except(['_token']);
+        $data['uid'] = session('user.id');
+        $data['time'] = time();
+        $order = GoodsShare::where('uid',$data['uid'])->where('oid',$data['oid'])->first();
+        if($order){
+            return redirect('/goodsorder')->with('share','您已经分享过，请勿重复分享');
+        }
+
+        $user = Users::find(session('user.id'));
+        $user->jf = $user->jf + 10;
+        try{
+            $judge = GoodsShare::insert($data);
+            $user->save();
+            if($judge && $user){
+                return redirect('/goodsorder')->with('share','恭喜您分享成功');
+            }
+        }catch(\Exception $err){
+            return redirect('/goodsorder')->with('share','对不起，商品分享失败');
+        }
     }
 
 

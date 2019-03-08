@@ -2,6 +2,29 @@
 @section('title','个人中心');
 @inject('getIp', 'App\common\getIp')
 @section('grzx')
+<script src="/static/home/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="/static/home/js/iziToast.min.js" type="text/javascript"></script>
+<script src="/static/home/js/demo.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/home/css/iziToast.min.css">
+<link rel="stylesheet" href="/static/home/css/dem.css">
+<script type="text/javascript">
+    iziToast.show({
+        icon: 'icon-contacts',
+        title: "@if($data->jf<5000 && $data->jf>=10)尊贵的新新会员@elseif($data->jf<10000 && $data->jf>=5000)尊贵的青铜会员@elseif($data->jf<30000 && $data->jf>=10000)尊贵的白银会员 @elseif($data->jf<50000 && $data->jf>=30000)尊贵的黄金会员@elseif($data->jf<100000 && $data->jf>=50000)尊贵的钻石会员@elseif($data->jf>=100000)尊贵的铂金会员@endif{{ $data->user_name }}",
+        message: ' 远方的钟声叮咛,我在晨曦清醒;手表的滴答渐明,写下的祝福语,送给你快乐满盈。',
+        position: 'topCenter',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        progressBarColor: 'rgb(0, 255, 184)',
+        image: '/static/home/img/avatar.jpg',
+        imageWidth: 70,
+        layout:2,
+        onClose: function(){
+            console.info('onClose');
+        },
+        iconColor: 'rgb(0, 255, 184)'
+    });
+</script>
 <!-- 个人中心主页显示的详细信息 开始 -->
 <div class="col-md-9">
 	<div class="all-pros br-ntf" style="margin-top: 0px;">
@@ -21,6 +44,19 @@
                         <div class="product_name_2 product_name_3 prnm">
                             <h2>
                                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$data->user_name}}</font></font>
+                                @if($data->jf<5000 && $data->jf>=10)
+                                <img title="新新会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip1.png">
+                                @elseif($data->jf<10000 && $data->jf>=5000)
+                                <img title="青铜会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip2.png">
+                                @elseif($data->jf<30000 && $data->jf>=10000)
+                                <img title="白银会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip3.png">
+                                @elseif($data->jf<50000 && $data->jf>=30000)
+                                <img title="黄金会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip4.png">
+                                @elseif($data->jf<100000 && $data->jf>=50000)
+                                <img title="钻石会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip5.png">
+                                @elseif($data->jf>=100000)
+                                <img title="铂金会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip6.png">
+                                @endif
                             </h2>
                             <div class="pro_discrip">
                             	<p style="vertical-align: inherit;">
@@ -36,6 +72,22 @@
                             	<p style="vertical-align: inherit;">
                             		上次登陆地点: {{ $getIp::getIp(session('user.user_ip')) }}
                             	</p>
+                                <p style="vertical-align: inherit;">
+                                    会员积分:<span title="@if($data->jf<5000 && $data->jf>=10)
+                                            尊贵的新新会员
+                                            @elseif($data->jf<10000 && $data->jf>=5000)
+                                            尊贵的青铜会员
+                                            @elseif($data->jf<30000 && $data->jf>=10000)
+                                            尊贵的白银会员
+                                            @elseif($data->jf<50000 && $data->jf>=30000)
+                                            尊贵的黄金会员
+                                            @elseif($data->jf<100000 && $data->jf>=50000)
+                                            尊贵的钻石会员
+                                            @elseif($data->jf>=100000)
+                                            尊贵的铂金会员
+                                            @endif">{{ $data->jf }}
+                                        </span> 
+                                </p>
                             </div>
                         </div>
                         <div class="action actionmm">

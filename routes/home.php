@@ -37,7 +37,8 @@ Route::resource('goodlist','GoodlistController');
 Route::post('/shoppingcar/caradd','ShoppingCarController@caradd');
 // 购物车资源路由
 Route::resource('/shoppingcar','ShoppingCarController');
-
+// 订单完成，分享页面
+Route::post('/goodsorder/share','GoodsOrderController@share');
 // 订单路由
 Route::resource('/goodsorder','GoodsOrderController');
 
