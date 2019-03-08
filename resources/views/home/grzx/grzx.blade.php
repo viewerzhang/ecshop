@@ -102,6 +102,7 @@
                                     <li>
                                         <div class="new_act">
                                             <a href="/grzx/balance" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充值</font></font></a>
+                                            <a href="/coupons" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">领取优惠券</font></font></a>
                                         </div>
                                     </li>
                                     

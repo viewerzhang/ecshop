@@ -147,15 +147,21 @@ class AdvertisingController extends Controller
      */
     public function files(Request $request)
     {
+        // 判断是否有文件上传
         if($request->hasFile('ad_img')){
+            // 获取文件对象
             $files = $request->file('ad_img');
+            // 存入文件路径
             $fileName = $files->store('images/add/temp');
+            // 返回正确文件路径
             $trueFileName = str_replace('/temp', '', $fileName);
+            // 将数据存入数组
             $arr = [
                 'src'=>asset('static/'.$fileName),
                 'hdsrc'=>'static/'.$fileName,
                 'code'=>'1'
             ];
+            // 转为json对象返回
             return json_encode($arr);
         }else{
             $arr = [

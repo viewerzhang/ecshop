@@ -117,7 +117,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="logo_area">
-                        <a href="index.html"><img src="/static/home/index/img/logo-pic/logo.png" alt="" /></a>
+                        <a href="/"><img src="/static/home/index/img/logo-pic/logo.png" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-md-9">
