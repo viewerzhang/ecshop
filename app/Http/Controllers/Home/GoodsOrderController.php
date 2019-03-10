@@ -11,6 +11,8 @@ use App\Http\Model\Admin\ShopDetail;
 use App\Http\Model\Admin\Goods;
 use App\Http\Model\Admin\Users;
 use App\Http\Model\Home\GoodsShare;
+use App\Http\Model\Home\Coupons;
+use App\Http\Model\Admin\Discount;
 use DB;
 
 class GoodsOrderController extends Controller
@@ -66,7 +68,9 @@ class GoodsOrderController extends Controller
             session(["{$code}.zongjiaqian" => $data[0]['xj']]);
             session(["{$code}.zongshuliang" => $data[0]['detail_conut']]);
             $attr = UserAddr::where('uid',session('user.id'))->get();
-            return view('home.goodsorder.index',['code'=>$code,'zongshuliang'=>$data[0]['detail_conut'],'zongjiaqian'=>$data[0]['xj'],'data'=>$data,'attr'=>$attr]);
+            // 获取用户优惠券
+            $discount = Coupons::where('uid',session('user.id'))->where('ky','1')->where('dq_time','>',time())->get();
+            return view('home.goodsorder.index',['discount'=>$discount,'code'=>$code,'zongshuliang'=>$data[0]['detail_conut'],'zongjiaqian'=>$data[0]['xj'],'data'=>$data,'attr'=>$attr]);
         }catch(\Exception $err){
             return view('error.index');
         }
@@ -83,23 +87,84 @@ class GoodsOrderController extends Controller
         try{
             $data = $request->all();
             // 开启事务
+            // dump($data);die;
             DB::beginTransaction();
+            // 获取订单总价钱
+            $order['order_sum'] = session("{$data['code']}.zongjiaqian");
+            // 判断用户有没有使用优惠券
+            if($data['discount'] != '0'){
+                // 用户使用优惠券，找到这张优惠券
+                $discount = Coupons::where('uid',session('user.id'))->where('ky','1')->where('dq_time','>',time())->find($data['discount']);
+                // 判断有没有这一张优惠券
+                if(!$discount){
+                    // 没有这张优惠券，可能过期或已被使用或被禁用，或者被黑了
+                    return back()->with('error','对不起，您的优惠券不存在或已过期');
+                }
+                // 找到优惠券，并且可用
+                // 判断类型
+                // 现金券
+                if($discount->discount->type == 0){
+                    // 直接抵扣支付金额
+                    $order['order_sum'] = $order['order_sum'] - $discount->discount->discount;
+                    // 判断抵扣后总金额是否为负数
+                    if($order['order_sum'] <= 0){
+                        // 重置订单总金额
+                        $order['order_sum'] = 0;
+                    }
+                    // 更新优惠券状态
+                    $discount->ky = 0;
+                    $order['discount'] = $discount->id;
+                }
+                // 折扣券
+                if($discount->discount->type == 1){
+                    // 直接折合总价钱
+                    $order['order_sum'] = $order['order_sum'] * ($discount->discount->discount / 10);
+                    // 更新优惠券状态
+                    $discount->ky = 0;
+                    $order['discount'] = $discount->id;
+                }
+                // 满减券
+                if($discount->discount->type == 2){
+                    // 再次判断是否满足条件
+                    if($order['order_sum'] > $discount->discount->full){
+                        // 条件满足
+                        $order['order_sum'] = $order['order_sum'] - $discount->discount->discount;
+                        // 判断满减后总金额是否小于0
+                        if($order['order_sum'] <= 0){
+                            // 重置总金额
+                            $order['order_sum'] = 0;
+                        }
+                        // 更新优惠券状态
+                        $discount->ky = 0;
+                        $order['discount'] = $discount->id;
+                    }else{
+                        // 条件不满足
+                        return back()->with('error','对不起，您的优惠券不能再本订单中使用');
+                    }
+                    // 更新优惠券状态
+                    $discount->ky = 0;
+                }
+                // 更新优惠券状态
+                $yhq = $discount->save();
+            }else{
+                // 用户没有使用优惠券
+                $order['discount'] = '0';
+                $yhq = true;
+            }
             // 判断用户有没有钱
             $user = Users::where('id',session('user.id'))->first();
-            if($user->user_balance < session("{$data['code']}.zongjiaqian")){
+            if($user->user_balance < $order['order_sum']){
                 // 用户余额不足
                 session([$data['code'] => null]);
                 return view('success.yuebuzu');
             }
             // 现将用户账户余额扣除
-            $user->user_balance = $user->user_balance - session("{$data['code']}.zongjiaqian");
+            $user->user_balance = $user->user_balance - $order['order_sum'];
             $goods = session($data['code']);
             // 获取用户地址
             $addr = UserAddr::where('id',$data['dz'])->first();
             // 生成定单号
             $order['rand_id'] = time().mt_rand(100000,999999);
-            // 获取订单总价钱
-            $order['order_sum'] = session("{$data['code']}.zongjiaqian");
             // 获取订单总数量
             $order['order_count'] = session("{$data['code']}.zongshuliang");
             // 获取用户ID
@@ -156,7 +221,8 @@ class GoodsOrderController extends Controller
                     $pd = false;
                 }
             }
-            if($pd && $orderId && $pdcg){
+            // 检测使用操作是否成功
+            if($pd && $orderId && $pdcg && $yhq){
                 DB::commit();
                 session([$data['code'] => null]);
                 $request->session()->flash('oid',$orderId);
@@ -214,10 +280,14 @@ class GoodsOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    { 
         $data = ShopDetail::where('order_id',$id)->paginate(3);
         $su = ShopDetail::where('order_id',$id)->get();
-        return view('home.goodsorder.detail',['su'=>$su,'data'=>$data]);
+        $zongjiaqian = GoodsOrder::where('id',$id)->first()->order_sum;
+        $discount = GoodsOrder::where('id',$id)->first();
+        $yhq = Coupons::find($discount->discount);
+        
+        return view('home.goodsorder.detail',['yhq'=>$yhq,'discount'=>$discount,'zongjiaqian'=>$zongjiaqian,'su'=>$su,'data'=>$data]);
     }
 
     /**
@@ -259,9 +329,10 @@ class GoodsOrderController extends Controller
             session([$code => $data]);
             session(["{$code}.zongjiaqian" => $zongjiaqian]);
             session(["{$code}.zongshuliang" => $zongshuliang]);
-
+            // 获取用户优惠券
+            $discount = Coupons::where('uid',session('user.id'))->where('ky','1')->where('dq_time','>',time())->get();
             $attr = UserAddr::where('uid',session('user.id'))->get();
-            return view('home.goodsorder.index',['code'=>$code,'zongshuliang'=>$zongshuliang,'zongjiaqian'=>$zongjiaqian,'data'=>$data,'attr'=>$attr]);
+            return view('home.goodsorder.index',['discount'=>$discount,'code'=>$code,'zongshuliang'=>$zongshuliang,'zongjiaqian'=>$zongjiaqian,'data'=>$data,'attr'=>$attr]);
         }catch(\Exception $err){
             return view('error.index');
         }

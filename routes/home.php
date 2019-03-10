@@ -63,6 +63,9 @@ Route::post('/balance','UserBalanceController@index');
 // VIP简介
 Route::view('/grzx/vip','home.grzx.vip');
 
+// 我的礼品券
+Route::get('/coupons/my','CouponsController@my');
+
 
 
 
@@ -311,7 +314,7 @@ Route::post('/grzx/editpwd/{id}', 'GrzxController@editpwd');
 Route::post('/grzx/editgrxx/{id}', 'GrzxController@xgxx');
 Route::resource('grzx', 'GrzxController');
 
-Route::get('/yxyx/{email}/{token}/{id}','GrzxController@jm');
+
 // 个人中心资源路由
 Route::resource('grzx', 'GrzxController');
 // 邮箱验证

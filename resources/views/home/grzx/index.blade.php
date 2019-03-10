@@ -1,8 +1,12 @@
 @extends('layout.grzx')
 
 @section('grzx')
+<script src="/static/home/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="/static/home/js/iziToast.min.js" type="text/javascript"></script>
+<script src="/static/home/js/demo.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/home/css/iziToast.min.css">
 <div class="all-pros br-ntf" style="margin-top: 0px;">
-	<h1 style="margin-left: 3px;"><small> 会员信息-----</small></h1><hr>
+	<h1 style="margin-left: 3px;"><small> 您的会员信息</small></h1><hr>
     <div class="al_form-fields al_form-fields-2">
         <div style="font-size: 18px; margin-bottom: 40px;">
             @if(empty($data->user_pic))
@@ -14,10 +18,16 @@
         </div>
              <div class="input-group" style="width: 200px;">
 				  <div class="input-group-btn" style="font-size: 18px; margin-bottom: 40px; padding-top: 0px;">
-				  	用户名:
+				  	用户账号:
 				  </div>
-				  <input type="text" class="form-control bc" name="user_name" value="{{$data->user_name}}" style="margin-top: 15px;">
+				  <input type="text" disabled class="form-control bc" name="user_name" value="{{$data->user_name}}" style="margin-top: 15px;">
 			</div>
+      <div class="input-group" style="width: 200px;">
+          <div class="input-group-btn" style="font-size: 18px; margin-bottom: 40px; padding-top: 0px;">
+            用户昵称:
+          </div>
+          <input type="text" class="form-control bc" name="nicheng" value="{{$data->nicheng}}" style="margin-top: 15px;">
+      </div>
         <p style="font-size: 18px; margin-bottom: 40px;">
             手机号: {{$data->user_phone}} <a href="javascript:;" class="btn btn-info btn-xs" onclick="editphone({{ $data->id }})">修改</a>
         </p>
@@ -49,7 +59,6 @@
 <script type="text/javascript">
    var data;
    var phone = '{{ $data->user_phone }}';
-   var upic = "{{ asset("$data->user_pic") }}";
    var id = {{ $data->id }};
    var csrf = "{{ csrf_token() }}";
    function editphone(id)
@@ -170,6 +179,19 @@
             });
         });
 
+    });
+    iziToast.success({
+        title: '安全级别检测',
+        message: '您当前操作环境安全，可以设置个人信息',
+        position: 'bottomRight',
+        transitionIn: 'bounceInLeft',
+        // iconText: 'star',
+        onOpen: function(){
+            console.log('callback abriu! success');
+        },
+        onClose: function(){
+            console.log("callback fechou! success");
+        }
     });
 </script>
 

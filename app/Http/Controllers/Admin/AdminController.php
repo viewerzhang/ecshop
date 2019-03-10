@@ -8,6 +8,7 @@ use App\Http\Model\Admin\Admin;
 use App\common\Sms;
 use Illuminate\Support\Facades\Redis;
 use Hash;
+use Mail;
 
 class AdminController extends Controller
 {
@@ -311,21 +312,32 @@ class AdminController extends Controller
 
     function delogin(Request $request)
     { 
-        $data = $request->except(['_token']);
-        $admin = Admin::where('uname',$data['uname'])->first();
-        if($admin->uname != $data['uname'] ){
-            return back()->with('error','您的账号或密码不正确');
+        try{
+            $data = $request->except(['_token']);
+            $admin = Admin::where('uname',$data['uname'])->first();
+            if(!$admin){
+                return back()->with('error','您的账号或密码不正确');
+            }
+            if($admin->uname != $data['uname'] ){
+                return back()->with('error','您的账号或密码不正确');
+            }
+            if ($admin->admin_status == 2) {
+                return back()->with('error','您的账号已被禁用');
+            }
+            if (Hash::check($data['upwd'], $admin['upwd'])) {
+                session(['adminlogin'=>true]);
+                session(['admin'=>$admin]);
+                $admin->admin_historyip = $request->getClientIp();
+                $admin->last_time = time();
+                $admin->save();
+                $historyUrl = session('historyurl');
+                session(['historyurl'=>null]);
+                return redirect($historyUrl ?? '/admin/index');
+            }
+                return back()->with('error','您的账号或密码不正确');
+        }catch(\Exception $err){
+            return view('error.index');
         }
-        if ($admin->admin_status == 2) {
-            return back()->with('error','您的账号已被禁用');
-        }
-        if (Hash::check($data['upwd'], $admin['upwd'])) {
-            session(['adminlogin'=>true]);
-            session(['admin'=>$admin]);
-            $historyUrl = session('historyurl');
-            return redirect($historyUrl ?? '/admin/index');
-        }
-            return back()->with('error','您的账号或密码不正确');
     }
 
     function outlogin()
@@ -335,6 +347,70 @@ class AdminController extends Controller
         return redirect('/admin/login');
     }
 
+        public function sendemail(Request $request,$id)
+    {
+        try{
+            // 获取用户提交数据，去除token值
+             $data = $request->except('_token');
+            // 重新更新用户信息
+             $history = Admin::find($id);
+            // 对比用户提交手机号与更新后的信息是否一致
+            if($history->admin_phone == $data['dqphone']){
+                // 对比用户输入验证码是否正确
+                if(Redis::get($history->admin_phone) == $data['code']){
+                    // 身份确认完成
+                    $token = str_random(32);
+                    $history->token = $token;
+                    $encryptEmail = encrypt($data['newemail']);
+                    $history->save();
+                    $url = 'http://laravel5.com/admin/yxyx/'.$encryptEmail.'/'.$token.'/'.$id;
+                    Mail::send('home.grzx.emailmb', ['encryptEmail'=>$encryptEmail,'id'=>$id,'token' => $token,'url'=>$url], function ($m) use ($data) {
+                         $m->from('15161782822@163.com', 'EC优购邮箱验证通知');
+                         $m->to($data['newemail'])->subject('EC邮箱验证通知');
+                    });
+                    Redis::del($history->admin_phone);
+                    $arr = [
+                        'code' => '1'
+                    ];
+                    return json_encode($arr);
+                }else{
+                    // 验证码不匹配
+                    $arr = [
+                        // code 3 代表验证码错误
+                        'code' => '3'
+                    ];
+                    return json_encode($arr);
+                }
+            }else{
+                // 用户提交手机号时与数据库原始手机号不符
+                $arr = [
+                    // code 4 代表原始手机号不正确
+                    'code' => '4'
+                ];
+                return json_encode($arr);
+            }
+        }catch(\Exception $err){
+            return view('error.index');
+        }
+    }
 
-    
+    public function yxyx($email,$token,$id)
+    {
+        $admin = Admin::find($id);
+        if(!$admin){
+            // 用户不存在
+            return view('error.index');
+        }
+        if($admin->token == $token){
+            // 用户存在且验证通过
+            // 解密邮箱
+            $email = decrypt($email);
+            $admin->admin_email = $email;
+            $admin->token = str_random(32);
+            $admin->save();
+            return view('success.success');
+        }
+        // 验证失败
+        return view('error.index');
+    }
 }

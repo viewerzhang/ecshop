@@ -10,7 +10,7 @@
 <script type="text/javascript">
     iziToast.show({
         icon: 'icon-contacts',
-        title: "@if($data->jf<5000 && $data->jf>=10)尊贵的新新会员@elseif($data->jf<10000 && $data->jf>=5000)尊贵的青铜会员@elseif($data->jf<30000 && $data->jf>=10000)尊贵的白银会员 @elseif($data->jf<50000 && $data->jf>=30000)尊贵的黄金会员@elseif($data->jf<100000 && $data->jf>=50000)尊贵的钻石会员@elseif($data->jf>=100000)尊贵的铂金会员@endif{{ $data->user_name }}",
+        title: "@if($data->jf<5000 && $data->jf>=10)尊贵的新新会员@elseif($data->jf<10000 && $data->jf>=5000)尊贵的青铜会员@elseif($data->jf<30000 && $data->jf>=10000)尊贵的白银会员 @elseif($data->jf<50000 && $data->jf>=30000)尊贵的黄金会员@elseif($data->jf<100000 && $data->jf>=50000)尊贵的钻石会员@elseif($data->jf>=100000)尊贵的铂金会员@endif{{ $data->nicheng }}",
         message: ' 远方的钟声叮咛,我在晨曦清醒;手表的滴答渐明,写下的祝福语,送给你快乐满盈。',
         position: 'topCenter',
         transitionIn: 'flipInX',
@@ -24,26 +24,28 @@
         },
         iconColor: 'rgb(0, 255, 184)'
     });
+
+
 </script>
 <!-- 个人中心主页显示的详细信息 开始 -->
 <div class="col-md-9">
 	<div class="all-pros br-ntf" style="margin-top: 0px;">
         <div class="row">
-            <div class="col-md-4 col-sm-4 pl pr" style="width: 200px;">
+            <div class="col-md-3 col-sm-3 pl pr" style="width: 200px;">
                 <div class="sngl-pro" style="margin-left: 16px;">
                     @if(empty($data->user_pic))
-                    	<img src="/static/home/users_pic/default.png" alt="" width="180">
+                    	<img src="/static/home/users_pic/default.png" alt="" style="width: 184px;height:200px;margin-top: 30px;">
                     @else
-                    	<img src="/static/{{$data->user_pic}}" alt="">
+                    	<img src="/static/{{$data->user_pic}}" style="width: 184px;height:200px;margin-top: 30px;" alt="">
                     @endif
                 </div>
             </div>
-            <div class="col-md-8 col-sm-8 pl pr">
+            <div class="col-md-9 col-sm-9 pl pr">
                 <div class="product_content product_content_nx">
                     <div class="usal_pro">
                         <div class="product_name_2 product_name_3 prnm">
                             <h2>
-                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$data->user_name}}</font></font>
+                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$data->nicheng}}</font></font>
                                 @if($data->jf<5000 && $data->jf>=10)
                                     <a href="/grzx/vip">
                                 <img title="新新会员" style="margin-top: -10px;" width="40" height="40" src="/static/home/img/vip1.png"></a>
@@ -84,6 +86,9 @@
                             		上次登陆地点: {{ $getIp::getIp(session('user.user_ip')) }}
                             	</p>
                                 <p style="vertical-align: inherit;">
+                                    上次登陆时间: {{ date('Y年m月d日 H时i时s秒',$data->last_time) }}
+                                </p>
+                                <p style="vertical-align: inherit;">
                                     会员积分:<a href="/grzx/vip"><span title="@if($data->jf<5000 && $data->jf>=10)
                                             尊贵的新新会员
                                             @elseif($data->jf<10000 && $data->jf>=5000)
@@ -102,16 +107,16 @@
                             </div>
                         </div>
                         <div class="action actionmm">
-                            <div style="margin-left: 30%;margin-top: 30px;width: 300px;">
-                                <div class="price_box price_box_tz" >
+                            <div style="margin-left: 20px;margin-top: 30px;width: 500px;">
+                                <div class="price_box price_box_tz" style="width: 500px;">
                                 	<font style="vertical-align: inherit;">余额 :</font>
-                                    <span class="spical-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $data->user_balance }}元</font></font></span>
+                                    {{ $data->user_balance }}元
                                 
                             </div>
                             <div class="last_button_area">
                                 <ul class="add-to-links clearfix">
                                     <li>
-                                        <div class="new_act" style="width: 400px;">
+                                        <div class="new_act" style="width: 500px;">
                                             <a href="/grzx/balance" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充值</font></font></a>
                                             <br>
                                             <a href="/coupons" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">领取优惠券</font></font></a>

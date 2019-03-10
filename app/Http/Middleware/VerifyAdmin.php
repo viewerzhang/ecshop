@@ -28,6 +28,7 @@ class VerifyAdmin
             session(['admin'=>null]);
             return redirect('/admin/login')->with('error','您的密码已被修改，请重新登录');
         }
+        session(['historyurl'=>$_SERVER["REQUEST_URI"]]);
         return redirect('/admin/login');
     }
 }

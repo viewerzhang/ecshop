@@ -3,7 +3,7 @@
 @section('grzx')
 <?php $sum = 0; ?>
 @foreach($su as $k => $v)
-    <?php $sum += $v->detail_price ?>
+    <?php $sum += $v->detail_count ?>
 @endforeach
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
  <link rel="stylesheet" href="/static/home/orderdetail/css/index.css" />
@@ -18,9 +18,16 @@
                     </div>
                     <div class="copy" style="margin-left: 30px;margin-top: 10px;">
                         <text class="sign">共计</text>
-                        <span>{{ $sum }}</span>
+                        <span>{{ $zongjiaqian }}</span>
                         <text>元</text>
-                        <div>共{{ count($su) }}共件商品</div>
+                        <div>共{{ $sum }}共件商品</div>
+                        <div>优惠券：
+                        @if($discount->discount == 0)
+                        未使用优惠券
+                        @else
+                        【{{ $yhq->discount->name }}】
+                        @endif
+                        </div>
                     </div>
                 </div>
 </div>

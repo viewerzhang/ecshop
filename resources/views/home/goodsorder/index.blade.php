@@ -166,15 +166,30 @@
                                                 <td><span class="amount"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">￥{{ $zongjiaqian }}</font></font></span></td>
                                             </tr>
                                             <tr class="shipping">
-                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运输</font></font></th>
+                                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">优惠券：</font></font></th>
                                                 <td>
-                                                    <ul>
-                                                        <li>
-                                                            <input type="radio">
-                                                            <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">免费送货：</font></font></label>
-                                                        </li>
-                                                        <li></li>
-                                                    </ul>
+                                                    <select name="discount">
+                                                        <option value="0">不使用优惠券</option>
+                                                        @foreach($discount as $k => $v)
+                                                            @if($v->discount->type == 2)
+                                                                @if($v->discount->full > $zongjiaqian)
+                                                                    <?php continue; ?>
+                                                                @endif
+                                                            @endif
+                                                            <option value="{{ $v->id }}">
+                                                                【{{ $v->discount->name }}】
+                                                                @if($v->discount->type == 2)
+                                                                满 {{ $v->discount->full }} 减
+                                                                @endif
+                                                                {{ $v->discount->discount }}
+                                                                @if($v->discount->type == 0 || $v->discount->type == 2)
+                                                                元 现金券
+                                                                @else
+                                                                折 折扣券
+                                                                @endif 
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                 </td>
                                             </tr>
                                             <tr class="order-total">

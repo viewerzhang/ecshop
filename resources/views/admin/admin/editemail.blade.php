@@ -117,7 +117,7 @@
             var dqphone = $('#curphone').val();
             var newemail = $('#newemail').val();
             var code = $('#code').val();
-             $.post("/grzx/revisea/" + {{session('user.id')}}, {    
+             $.post("/admin/sendemail/" + {{session('admin.id')}}, {    
                "_token": "{{ csrf_token() }}",
                'dqphone':dqphone,
                'newemail':newemail,
@@ -125,13 +125,10 @@
                // 'newemail':newemail,
                // 'code':code
             }, function(data) {
-              if(data.code == 1){
-                   layer.closeAll();
-                   layer.msg('验证邮件发送成功，请您及时验证');
-                  }else{
-                    layer.msg('验证邮件发送失败');
-                  }
+              
             },'json');
+             layer.closeAll();
+             layer.msg('验证邮件，发送成功');
         });
-
+                  
     </script>

@@ -205,7 +205,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="price_box">
-                                                        <span class="spical-price">￥{{ $v->goods->goods_price }}}</span>
+                                                        <span class="spical-price">￥{{ $v->goods->goods_price }}</span>
                                                     </div>
                                                     <div class="last_button_area">
                                                         <ul class="add-to-links clearfix">
@@ -283,7 +283,7 @@
                                                         123312123
                                                     </div>
                                                     <div class="price_box">
-                                                        <span class="spical-price">￥{{ $v->goods->goods_price }}}</span>
+                                                        <span class="spical-price">￥{{ $v->goods->goods_price }}</span>
                                                     </div>
                                                     <div class="last_button_area">
                                                         <ul class="add-to-links clearfix">
@@ -428,7 +428,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="price_box">
-                                                        <span class="spical-price">￥{{ $vv->goods_price }}}</span>
+                                                        <span class="spical-price">￥{{ $vv->goods_price }}</span>
                                                     </div>
                                                     <div class="last_button_area">
                                                         <ul class="add-to-links clearfix">
@@ -571,7 +571,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="price_box">
-                                                        <span class="spical-price">￥{{ $vv->goods_price }}}</span>
+                                                        <span class="spical-price">￥{{ $vv->goods_price }}</span>
                                                     </div>
                                                     <div class="last_button_area">
                                                         <ul class="add-to-links clearfix">

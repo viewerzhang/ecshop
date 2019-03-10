@@ -507,7 +507,50 @@ Purchase: http://wrapbootstrap.com
                             </li>
 
                         </ul>
+                   <!--  优惠卷管理  -->
+                       <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon glyphicon glyphicon-wrench"></i>
+                            <span class="menu-text"> 优惠劵管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
 
+                        <ul class="submenu">
+
+                            <li>
+                                <a href="http://www.ecshop.com/admin/role/index" class="menu-dropdown">
+                                    <span class="menu-text">
+                                     类型管理
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="/admin/discount/create">
+                                            <i class="menu-icon fa fa-rocket"></i>
+                                            <span class="menu-text">添加优惠卷</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/discount">
+                                            <i class="menu-icon glyphicon glyphicon-stats"></i>
+                                            <span class="menu-text">浏览优惠卷</span>
+                                        </a>
+                                    </li>
+                                   
+                                </ul>
+                            </li>
+                           <li>
+                                <a href="http://www.ecshop.com/admin/permission/index" class="menu-dropdown">
+                                    <span class="menu-text">
+                                     发放管理
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                          <!--   导航管理 -->
                          <!--	导航管理 -->
                       <li>

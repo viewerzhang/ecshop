@@ -150,7 +150,9 @@
                'code':code
             }, function(data) {
                 if(data.code == 1){
-                    $('#oop').html("<h1 style='margin:auto;'>修改成功</h1>");
+                    
+                    layer.closeAll();
+                    layer.msg('手机号修改成功');
                 }else if(data.code == 2){
                     layui.use(['layer', 'form'], function(){
                       var layer = layui.layer

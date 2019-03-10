@@ -1,3 +1,4 @@
+@inject('getIp', 'App\common\getIp')
 @extends('layout.admin')
 @section('title', '管理员')
 @section('title2', '个人中心')
@@ -32,23 +33,27 @@
                     </div>
                     <div class="form-group">
                          <span> 邮  箱： </span> 
-                        {{ $data->admin_email }}　<a href="" class="btn btn-primary btn-xs">修改</a>
+                        {{ $data->admin_email }}　<a href="javascript:;" id="yzyx" class="btn btn-primary btn-xs">修改</a>
                     </div>
                     <div class="form-group">
                          <span> 当前状态： </span> 
-                        {{ $data->status }}
+                        @if($data->admin_status == 1)
+                        激活
+                        @else
+                        禁止
+                        @endif
                     </div>
                     <div class="form-group">
                          <span> 注册时间： </span> 
-                        {{ $data->admin_created_time }}
+                        {{ date('Y年m月d日 H时i分s秒',$data->created_time) }}
                     </div>
                     <div class="form-group">
                          <span> 上次登录时间： </span> 
-                        {{ $data->last_time }}
+                        {{ date('Y年m月d日 H时i分s秒',$data->last_time) }}
                     </div>
                     <div class="form-group">
                          <span> 上次登录地点： </span> 
-                        {{ $data->historyip }}
+                        {{ $getIp::getIp($data->admin_historyip) }}
                     </div>
                 </div>
                     <!-- <div class="form-group">
@@ -168,6 +173,31 @@
               content: data,
             });
         });
+    });
+    // 验证邮箱
+    $('#yzyx').click(function () {
+
+      layui.use(['layer', 'form'], function(){
+          var layer = layui.layer
+          ,form = layui.form;
+          $.ajax({
+              type:'get',
+              url:'/admin/editemail',
+              async:false,
+              success:function(dataa)
+              {
+                  data = dataa;
+              }
+          });
+          layer.open({
+              type: 1,
+              title:'验证邮箱',
+              skin: 'layui-layer-rim', //加上边框
+              area: ['480px', '340px'], //宽高
+              content: data,
+            });
+        });
+
     });
 </script>
 @endsection

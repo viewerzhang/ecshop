@@ -14,16 +14,6 @@ use Hash;
 
 class LoginController extends Controller
 {
-    public function aaa()
-    {
-        $user = '123';
-         Mail::send('home.email.index', ['user' => $user], function ($m) {
-            
-
-            $a = $m->to('295367893@qq.com')->subject('Your Reminder!');
-            dump($a);
-        });
-    }
     /**
      * Display a listing of the resource.
      *
@@ -55,8 +45,7 @@ class LoginController extends Controller
         if (Hash::check($pass, $data->password)) {
             session(['user'=>$data]);
             session(['userlogin'=>true]);
-            $uip=[];
-            $uip = [ 'user_ip' => $request->getClientIp() ];
+            $uip = [ 'user_ip' => $request->getClientIp(),'last_time' => time() ];
             Users::where('user_name', $user)->update($uip);
             session(['login'=>true]);
             return "<script>location.href='/'</script>";

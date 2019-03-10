@@ -17,6 +17,10 @@ Route::group([],function(){
 /**
 * 张宇童负责的模块
 */
+// 修改邮箱
+Route::view('/editemail','admin.admin.editemail');
+// 发送邮件
+Route::post('/sendemail/{id}','AdminController@sendemail');
 // 商品品牌图标上传路由
 Route::post('/goodsbrand/files','GoodsBrandController@files');
 // 商品品牌 状态调整 路由
@@ -51,7 +55,10 @@ Route::resource('/admins','AdminsController');
 /*** 系统设置 ***/
 Route::post('/conf/files','ConfController@files');
 Route::resource('/conf','ConfController');
-
+/*** 优惠卷管理 ***/
+// 查看发放详情
+Route::get('/discount/indexdetail','DiscountController@indexdetail');
+Route::resource('/discount','DiscountController');
 /**
 * 冯雪娇负责的模块
 */

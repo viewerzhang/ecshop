@@ -3,6 +3,7 @@
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>{{ $data_conf['seo_title'] }}</title>
         <meta name="description" content="">
@@ -79,7 +80,7 @@
                         <ul style="margin-left: -30px;">
                         @if (session('userlogin'))
                             <li>
-                                <a class="Shopping cart" href="/grzx">欢迎您{{session('user.user_name')}}</a>
+                                <a class="Shopping cart" href="/grzx">欢迎您{{session('user.nicheng')}}</a>
                             </li>
                             <li>
                                 <a class="Shopping cart" href="/logout">退出</a>

@@ -52,6 +52,9 @@
                             <li><a href="/grzx/grxx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户信息</font></font></a></li>
                         </ul>
                         <ul class="menu-categories">
+                            <li><a href="/coupons/my"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的优惠券</font></font></a></li>
+                        </ul>
+                        <ul class="menu-categories">
                             <li><a href="/useraddr"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址管理</font></font></a></li>
                         </ul>
                         <ul class="menu-categories">

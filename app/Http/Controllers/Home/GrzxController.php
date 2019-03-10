@@ -74,9 +74,9 @@ class GrzxController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Users::find(session('user.id'));
         // 修改头像页面
-        return view('home.grzx.editpic');
+        return view('home.grzx.editpic',['data'=>$data]);
     }
 
     /**
@@ -253,7 +253,7 @@ class GrzxController extends Controller
      */
     public function pic(Request $request,$id)
     {
-        // dump($request->file('pic'));die;
+
         if($request->hasFile('pic')){
             $files = $request->file('pic');
             $fileName = $files->store('/static/home/user_pic');
@@ -261,7 +261,7 @@ class GrzxController extends Controller
             $historyFile = $data->user_pic;
             $data->user_pic = $fileName;
             $judge = $data->save();
-            if($historyFile != '/static/home/user_pic/default.png'){
+            if($historyFile != ''){
                 $fileUrl = public_path($historyFile);
                 if(file_exists($fileUrl)){
                     unlink($fileUrl);
@@ -274,7 +274,7 @@ class GrzxController extends Controller
                 return json_encode($arr);
             }
             $arr = [
-                'src'=>asset($fileName),
+                'src'=>$fileName,
                 'code'=>'1'
             ];
             return json_encode($arr);
@@ -436,26 +436,13 @@ class GrzxController extends Controller
                     $url = 'http://laravel5.com/yxyx/'.$encryptEmail.'/'.$token.'/'.$id;
                     Mail::send('home.grzx.emailmb', ['encryptEmail'=>$encryptEmail,'id'=>$id,'token' => $token,'url'=>$url], function ($m) use ($data) {
                          $m->from('15161782822@163.com', 'EC优购邮箱验证通知');
-                        $m->to($data['newemail'])->subject('EC邮箱验证通知');
+                         $m->to($data['newemail'])->subject('EC邮箱验证通知');
                     });
-                    // 判断结果是否更新完成
-                    if($judge){
-                        // 更新成功删除Redis中用户验证码
-                        Redis::del($data['dqphone']);
-                        $arr = [
-                            // code 1 代表修改成功
-                            'code' => '1'
-                        ];
-                        // 修改手机号码成功返回状态码
-                        return json_encode($arr);
-                    }else{
-                        $arr = [
-                            // code 2 代表验证成功但服务器问题修改失败
-                            'code' => '2'
-                        ];
-                        // 返回状态码
-                        return json_encode($arr);
-                    }
+                    Redis::del($history->user_phone);
+                    $arr = [
+                        'code' => '1'
+                    ];
+                    return json_encode($arr);
                 }else{
                     // 验证码不匹配
                     $arr = [
@@ -481,7 +468,7 @@ class GrzxController extends Controller
     public function jm($email,$token,$id)
     {
         $user = Users::find($id);
-        if($user){
+        if(!$user){
             // 用户不存在
             return view('error.index');
         }
