@@ -29,11 +29,11 @@ class GoodsRequest extends FormRequest
             'cate_id' => 'required',  
             'type_id' => 'required',  
             'brand_id' => 'required',   
-            /*'markte_price' => 'required|regex:/^[0-9]\.[0-9]{2}$/',  
-            'goods_price' => 'required|regex:/^[0-9]\.[0-9]{2}$/',  */
-            'click_num' => 'required|regex:/^[0-9]$/',  
-            /*'goods_weight' => 'required|regex:/^[0-9]$/',  
-            'goods_num' => 'required|regex:/^[0-9]$/', */ 
+            'markte_price' => 'required|regex:/^\d{1,}\.\d{2}$/',  
+            'goods_price' => 'required|regex:/^\d{1,}\.\d{2}$/',  
+            'click_num' => 'required|regex:/^\d{1,}$/',  
+            'goods_weight' => 'required|regex:/^\d{1,}$/',  
+            'goods_num' => 'required|regex:/^\d{1,}$/',  
             'goods_desc' => 'required',  
 
         ];
@@ -48,10 +48,14 @@ class GoodsRequest extends FormRequest
             'type_id.required' => '所属类型必填',  
             'brand_id.required' => '所属品牌必填',  
             'markte_price.required'=> '市场价必填',  
+            'markte_price.regex'=> '市场价必须为数字且小数点后保留两位',  
             'goods_price.required'=> '本店价必填',  
+            'goods_price.regex'=> '本店价必须为数字且小数点后保留两位',  
             'click_num.required'=> '浏览量必填',  
             'goods_weight.required' => '商品重量必填',  
+            'goods_weight.regex' => '商品重量需填写至少一位数字',  
             'goods_num.required' => '库存必填',  
+            'goods_num.regex' => '库存需填写至少一位数字',  
             'goods_desc.required' => '商品详情必填',  
 
         ];
