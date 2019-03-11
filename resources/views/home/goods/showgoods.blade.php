@@ -120,21 +120,17 @@
 
                         </ul>
                     </div>
-                    <div class="elavetor_social" id="goods_kc">
+                    <div class="elavetor_social" id="goods_num">
                         <h4 class="widget-title">
                             库存
                         </h4>
-                        <ul class="social-link">
-                            <li>
+                        <ul class="social-link" id="goods_num">
+                            <li id="goods_num">
                              {{$goods->goods_num}}&nbsp;件
                             </li>
 
                         </ul>
                     </div>
-
-
-
-
 
 
 
@@ -148,7 +144,8 @@
         {!! session('success') !!}
     </div>
 @endif
-                    <form class="cart-btn-area" action="/shoppingcar" method="post">
+
+                    <form class="cart-btn-area" action="/shoppingcar" method="post" >
                         {{ csrf_field() }}
 
                     @foreach($type as $k=>$v)
@@ -179,34 +176,29 @@
                         </span>
                     </div>
                     <input type="text" hidden name="goods_id" value="{{ $goods->id }}">
-                    <div class="cart-btn-area">
-                        <a name="" class="minus" href="javascript:void(0);"></a>
-
-                        <input type="number" id="nua" value="1" id="buyNum" name="sum">
-                        <a name="" class="plus" href="javascript:void(0);"></a>
-                        <button class="add-tocart cart_zpf" type="submit">
+                    <div class="cart-btn-area" style="display: inline-block;">
+                        <button type="button" id='pn-add'>+</button>
+                        <input id='p-cnt' type="text" name='cnt' value='1' style="width: 30px;text-align: center;">
+                        
+                        <button type="button" id='pn-dec'>-</button>
+                     
+                        <button class="add-tocart cart_zpf" type="submit"  style="display: inline-block;text-align: center;">
                             加入购物车
                         </button>
-                    </form>
-                    </div>
-<form action="/goodsorder/create" method="get">
-    <input type="text" value="1" hidden name="sum" id="nub">
-    <input type="text" hidden name="goods_id" value="{{ $goods->id }}">
-    <input type="text" hidden name="attr" class="sxb" value="">
-                        <a href="javascript:buyNowTime(this);">
 
+                        <form action="/goodsorder/create" method="get"  style="display: inline-block;">
+                            <input type="text" value="1" hidden name="sum" id="nub">
+                            <input type="text" hidden name="goods_id" value="{{ $goods->id }}">
+                            <input type="text" hidden name="attr" class="sxb" value="">
+                                   <a href="javascript:buyNowTime(this);">
 
-                        <button style="margin-left: 75px;" class="add-tocart cart_zpf" type="submit" id="buyNowAddCart">
-                            立即购买
-                        </button>
-                        </a>
+                                     <button style="margin-left: 0px;" class="add-tocart cart_zpf" type="submit" id="buyNowAddCart" >立即购买
+                                      </button>
+                                    </a>
 </form>
+ </form>
 
-
-
-
-
-
+                    </div>
 
 
 
@@ -255,48 +247,7 @@
     </div>
 </div>
 <!-- 上部商品结束 -->
-<script type="text/javascript">
-    
-        function dian(obj){
-            $(obj).click(function(){
-            $(obj).attr('checked','checked').siblings().removeAttr('checked');
-            });
-    }
 
-    <?php session(['ck_goods_id' => $goods->id]) ?>
-
-     <script>
-          function buyNowTime(o)
-          {
-                var buyNum = $('#buyNum').val();
-                var goodsId = '{{ $goods->id }}';
-                if (parseInt(buyNum) < 1) {
-                    alert('您选择的商品数量不能小于1件');
-                    return ;
-                 }
-                var n = false;
-                var attr = $('.goods-attr').each(function(index, el) {
-                    
-                    if ($(this).parent().attr('checked') == 'true') {
-                       n = true;
-                    }
-
-                });;
-
-                if (!n) {
-                    alert('请选择商品属性!')
-                    return ;
-                }
-
-                var kc = $('#goods_kc').attr('value');
-
-                if (parseInt(buyNum) > parseInt(kc)) {
-                    alert('您选择的商品数量已经超过库存!');
-                    $('#buyNum').val(kc);
-                    return ;
-                }
-
-</script>
 <!-- 详情开始 -->
 <div class="tab_area_start">
             <div class="container">
@@ -651,23 +602,70 @@
 @section('js')
     <script>
 
-        $('.minus').click(function(){
-            var num = $('#buyNum').val();
-            num--;
-            if(num <= 1){
-                num =1;
+    function dian(obj){
+            $(obj).click(function(){
+            $(obj).attr('checked','checked').siblings().removeAttr('checked');
+            });
+    }
+
+    <?php session(['ck_goods_id' => $goods->id]) ?>
+
+   
+          function buyNowTime(o)
+          {
+                var buyNum = $('#buyNum').val();
+                var goodsId = '{{ $goods->id }}';
+                if (parseInt(buyNum) < 1) {
+                    alert('您选择的商品数量不能小于1件');
+                    return ;
+                 }
+                var n = false;
+                var attr = $('.goods-attr').each(function(index, el) {
+                    
+                    if ($(this).parent().attr('checked') == 'true') {
+                       n = true;
+                    }
+
+                });;
+
+                if (!n) {
+                    alert('请选择商品属性!')
+                    return ;
+                }
+
+                var goods_num = $('#goods_num').attr('value');
+
+                if (parseInt(buyNum) > parseInt(goods_num)) {
+                    alert('您选择的商品数量已经超过库存!');
+                    $('#buyNum').val(goods_num);
+                    return ;
+                }
+
             }
-            $('#buyNum').val(num);
-        });
-        $('.plus').click(function(){
-            var num = $('#buyNum').val();
-            num++;
-            var goods_kc = $('#goods_kc').text();
-            if(num >= goods_kc){
-                num = goods_kc;
-            }
-            $('#buyNum').val(num);
-        });
+
+
+
+        var add = document.getElementById('pn-add');
+        var dec = document.getElementById('pn-dec');
+        var cnt = document.getElementById('p-cnt');
+
+                        add.onclick = function(){
+                            cnt.value++;
+                            var goods_num = $('#goods_num').text();
+                            if(cnt >= goods_num){
+                                    cnt = goods_num;
+                                }
+                        };
+
+                        dec.onclick = function(){
+                            cnt.value--;
+                            if (cnt.value<=1) {
+                                cnt.value = 1;
+                            }
+                           
+         };
+
+
        //放大镜
         $('#small').mouseover(function(){
             $('#move,#big').show();
@@ -728,8 +726,8 @@
 
 
 
-        $('#nua').change(function(){
-            $('#nub').val($('#nua').val());
+        $('#buyNum').change(function(){
+            $('#nub').val($('#buyNum').val());
         });
 
 

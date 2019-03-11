@@ -67,7 +67,7 @@ Purchase: http://wrapbootstrap.com
                 <input type="text" class="form-control" name="uname" placeholder="账号..." />
             </div>
             <div class="loginbox-textbox">
-                <input type="text" class="form-control" name="upwd" placeholder="密码..." />
+                <input type="password" class="form-control" name="upwd" placeholder="密码..." />
             </div>
             <div class="loginbox-forgot">
                 <a href="">忘记密码?</a>

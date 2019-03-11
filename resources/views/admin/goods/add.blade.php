@@ -8,38 +8,54 @@
             <div class="widget-header bordered-bottom bordered-blue">
                 <span class="widget-caption">添加商品</span>
             </div>
-            <div class="widget-body" style="height: 1400px">
+            <div class="widget-body" style="height: 1570px">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="/admin/goods"  method="post" enctype="multipart/form-data" >
-                        
+
+
+                    @if (count($errors) > 0)
+                        <div class="alert alert-warning fade in">
+                            <ul>
+                                <button class="close" data-dismiss="alert">
+                                ×
+                                </button>
+                                    @foreach ($errors->all() as $error)
+                                        <i class="fa-fw fa fa-warning"></i>
+                                            <strong>Warning</strong> {{ $error }}
+                                         <br>
+                                    @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form class="form-horizontal" role="form" action="/admin/goods"  method="post" enctype="multipart/form-data" >                    
                         
                         {{ csrf_field() }}
                         <br>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">商品名称</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写名称" name="goods_name" required="" type="text" value="{{old('goods_name')}}">
+                                <input class="form-control" placeholder="请填写名称" name="goods_name"  type="text" value="{{old('goods_name')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">商品标语</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写标语" name="goods_title" required="" type="text" value="{{old('goods_title')}}">
+                                <input class="form-control" placeholder="请填写标语" name="goods_title"  type="text" value="{{old('goods_title')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">商品主图</label>
                             <div class="col-sm-6">
-                                <input placeholder="" name="goods_img" type="file" required="" value="{{old('goods_img')}}">
+                                <input placeholder="" name="goods_img" type="file"  value="{{old('goods_img')}}">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">商品相册</label>
                             <div class="col-sm-6">
-                                <input placeholder="" name="goods_imgs[]" type="file"  multiple required=""  >
+                                <input placeholder="" name="goods_imgs[]" type="file"  multiple   >
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -102,43 +118,43 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">市场价</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="markte_price" required="" type="text" value="{{old('markte_price')}}">
+                                <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="markte_price"  type="text" value="{{old('markte_price')}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 市场价必须为数字且小数点后保留两位</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">本店价</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="goods_price" required="" type="text" value="{{old('goods_price')}}">
+                                <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="goods_price"  type="text" value="{{old('goods_price')}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 本店价必须为数字且小数点后保留两位</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">浏览量</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写点击数量" name="click_num" required="" type="text" value="{{old('click_num')}}">
+                                <input class="form-control" placeholder="请填写点击数量" name="click_num"  type="text" value="0" readonly>
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 无需填写，默认为0</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">商品重量</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写商品重量" name="goods_weight" required="" type="text" value="{{old('goods_weight')}}">
+                                <input class="form-control" placeholder="请填写商品重量" name="goods_weight"  type="text" value="{{old('goods_weight')}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 商品重量需填写至少一位数字</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">库存</label>
                             <div class="col-sm-6">
-                                <input class="form-control" placeholder="请填写库存数量" name="goods_num" required="" type="text" value="{{old('goods_num')}}">
+                                <input class="form-control" placeholder="请填写库存数量" name="goods_num"  type="text" value="{{old('goods_num')}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 库存需填写至少一位数字</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right" name="goods_desc">商品详情</label>
                             <div class="col-sm-6">
                                 <!-- 加载编辑器的容器 -->
-                            <script id="container" name="goods_desc" type="text/plain" style="width: 800px;height: 500px"><p value="{{old('goods_desc')}}">请上传商品详情（文字或图片）</p></script>
+                            <script id="container" name="goods_desc" type="text/plain" style="width: 800px;height: 500px"><p value="{{old('goods_desc')}}">{!!old('goods_desc')!!}</p></script>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>

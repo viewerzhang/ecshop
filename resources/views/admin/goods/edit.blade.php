@@ -8,9 +8,10 @@
             <div class="widget-header bordered-bottom bordered-blue">
                 <span class="widget-caption">修改商品</span>
             </div>
-            <div class="widget-body" style="height: 1450px">
+            <div class="widget-body" style="height: 1570px">
                 <div id="horizontal-form">
-                     @if (count($errors) > 0)
+
+                    @if (count($errors) > 0)
                         <div class="alert alert-warning fade in">
                             <ul>
                                 <button class="close" data-dismiss="alert">
@@ -24,6 +25,7 @@
                             </ul>
                         </div>
                     @endif
+
                     <form class="form-horizontal" role="form" action="/admin/goods/{{$data->id}}"  method="post" enctype="multipart/form-data" >
                         
                         {{ csrf_field() }}
@@ -136,41 +138,41 @@
                             <div class="col-sm-6">
                                 <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="markte_price"  type="text" value="{{$data->markte_price}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 市场价必须为数字且小数点后保留两位</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">本店价</label>
                             <div class="col-sm-6">
                                 <input class="form-control" placeholder="￥:124.11(保留小数点后两位)" name="goods_price"  type="text" value="{{$data->goods_price}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 市场价必须为数字且小数点后保留两位</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right"  >浏览量</label>
                             <div class="col-sm-6">
                                 <input class="form-control" placeholder="请填写点击数量" name="click_num"  readonly type="text" value="{{$data->click_num}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 无需填写</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">商品重量</label>
                             <div class="col-sm-6">
                                 <input class="form-control" placeholder="请填写商品重量" name="goods_weight"  type="text" value="{{$data->goods_weight}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 商品重量需填写至少一位数字</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">库存</label>
                             <div class="col-sm-6">
                                 <input class="form-control" placeholder="请填写库存数量" name="goods_num"  type="text" value="{{$data->goods_num}}">
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
+                            <p class="help-block col-sm-4 red">* 库存需填写至少一位数字</p>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right" name="goods_desc">商品详情</label>
                             <div class="col-sm-6">
                                 <!-- 加载编辑器的容器 -->
-                            <script id="container" name="goods_desc" type="text/plain" style="width: 800px;height: 500px"><p value="{{$data->goods_desc}}">请上传商品详情（文字或图片）</p></script>
+                            <script id="container" name="goods_desc" type="text/plain" style="width: 800px;height: 500px"><p value="{{$data->goods_desc}}">{!!$data->goods_desc!!}</p></script>
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>

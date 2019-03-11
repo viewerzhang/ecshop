@@ -11,7 +11,7 @@ use App\Http\Model\Admin\GoodsBrand;
 use App\Http\Model\Admin\GoodsImgs;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
-/*use App\Http\Requests\Request;*/
+use App\Http\Requests\GoodsRequest;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -92,16 +92,16 @@ class GoodsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GoodsRequest $request)
     {
 
-     /* $this->validate($request, [
+      $this->validate($request, [
             'goods_img' => 'required',  
             'goods_imgs' => 'required',  
         ],[
             'goods_img.required' => '商品主图必填',  
             'goods_imgs.required' => '商品相册必填',  
-        ]);*/
+        ]);
       //接受表单的值
         $data = $request->except(['_token','goods_img','goods_imgs']);
         // dd($data);
@@ -211,7 +211,7 @@ class GoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GoodsRequest $request, $id)
     {
       $data = $request->except(['_token','_method','goods_img','goods_imgs']);
        /* $data=$request->all();*/

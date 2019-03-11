@@ -4560,15 +4560,17 @@ button.add-tocart {
   color: #ffffff;
   display: inline-block;
   font-family: Oswald,sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: normal;
-  height: 55px;
+  height: 40px;
   padding: 0 20px !important;
   text-shadow: none;
   text-transform: uppercase;
   transition: all 0.3s ease 0s;
   white-space: nowrap;
-  margin-left: 8px;    
+  margin-left: 8px;
+
+
 }
 button.add-tocart:hover{
  background: #fa7c63;
