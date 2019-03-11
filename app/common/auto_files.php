@@ -521,3 +521,16 @@ class getIp
         // return $str;
     }
 }
+
+// 生成二维码类
+class Erweima
+{
+    public static function sc($content)
+    {
+        $data = file_get_contents("https://cli.im/api/qrcode/code?text={$content}&mhid=s0PDDA68zJ0hMHcoK9ZSOao");
+        $ptn = '%<img src="//qr.*?style="background: rgb\(255, 255, 255\);width: 200px;">%';
+        $arr = [];
+        preg_match_all($ptn, $data, $arr);
+        print_r($arr[0][0]);
+    }
+}

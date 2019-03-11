@@ -542,7 +542,7 @@ Purchase: http://wrapbootstrap.com
                                 </ul>
                             </li>
                            <li>
-                                <a href="http://www.ecshop.com/admin/permission/index" class="menu-dropdown">
+                                <a href="/admin/discount/indexdetail" class="menu-dropdown">
                                     <span class="menu-text">
                                      发放管理
                                     </span>

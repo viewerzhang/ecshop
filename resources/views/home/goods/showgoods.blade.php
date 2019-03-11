@@ -1,6 +1,6 @@
 @extends('layout.home')
 @section('content')
-
+@inject('Erweima', 'App\common\Erweima')
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -218,7 +218,7 @@
                         </a>
                     </div>
                     <div class="new_meta">
-                        <span class="sku_wrapper">
+                        <!-- <span class="sku_wrapper">
                             服务:
                             <span class="sku">
                                 由易c优购商城提供售后服务
@@ -238,7 +238,12 @@
                             <span class="sku">
                                 图片仅供参考，以实物为主
                             </span>
-                        </span>
+                        </span> -->
+                        <span class="sku_wrapper">
+                            扫码购物:<br>
+                            {{ $Erweima::sc('http://www.ecuuu.com/goodlist/'.$goods->id) }}
+                            
+                                                    </span>
                     </div>
                 </div>
             </div>
