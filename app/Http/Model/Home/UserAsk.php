@@ -4,16 +4,11 @@ namespace App\Http\Model\Home;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GoodsShare extends Model
+class UserAsk extends Model
 {
-    protected $table = 'goods_share';
-    protected $primaryKey = 'id';
+    protected $table = 'user_ask';
+    protected $primarKey = 'id';
     public $timestamps = false;
-
-    public function order()
-    {
-        return $this->belongsTo('App\Http\Model\Admin\GoodsOrder','oid');
-    }
 
     public function user()
     {

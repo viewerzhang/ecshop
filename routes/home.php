@@ -65,8 +65,17 @@ Route::view('/grzx/vip','home.grzx.vip');
 
 // 我的礼品券
 Route::get('/coupons/my','CouponsController@my');
-
-
+// 注意以上路由/circle/**** 只要使用过的 用户昵称不可填 ************************************
+// 好友请求页面
+Route::get('/circle/fwllowask','CircleController@fwllowask');
+// 同意添加好友
+Route::get('/circle/agree/{id}','CircleController@agree');
+// 好友列表页面
+Route::get('/circle/fwllow','CircleController@fwllow');
+// 请求添加好友
+Route::get('/circle/add/{id}','CircleController@add');
+// 我的购物圈
+Route::resource('/circle','CircleController');
 
 
 

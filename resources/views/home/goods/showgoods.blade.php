@@ -261,7 +261,6 @@
 
     <?php session(['ck_goods_id' => $goods->id]) ?>
 
-     <script>
           function buyNowTime(o)
           {
                 var buyNum = $('#buyNum').val();
