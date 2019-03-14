@@ -433,7 +433,7 @@
           var layer = layui.layer
           ,form = layui.form;
           out = 1;
-          layer.msg('恭喜你，登录成功');
+          layer.msg('session('login')');
         });
     </script>
     @endif

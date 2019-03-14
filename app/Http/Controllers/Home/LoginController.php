@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
@@ -47,7 +47,7 @@ class LoginController extends Controller
             session(['userlogin'=>true]);
             $uip = [ 'user_ip' => $request->getClientIp(),'last_time' => time() ];
             Users::where('user_name', $user)->update($uip);
-            session(['login'=>true]);
+            session(['login'=>'恭喜您，登陆成功']);
             return "<script>location.href='/'</script>";
         }
             return redirect('/login')->with('error','您的用户名或密码不正确');

@@ -369,10 +369,9 @@
 <header>
   <nav id="nav">
       <ul>
-          <li><a href="/circle/{{ session('user.id') }}">我的的购物圈</a></li>
-            <li><a href="/circle/fwllow" title="我的好友">我的好友</a></li>
-            <li><a href="#" target="_blank" title="相册">我的相册</a></li>
-            <li><a href="#" target="_blank" title="心情日志">心情日志</a></li>
+          <li><a href="/circle" title="个人中心">个人中心</a></li>
+          <li><a href="/circle/fwllow" title="我的好友">我的好友</a></li>
+          <li><a href="/circle/{{ session('user.id') }}" style="float: right;">我的的购物圈</a></li>
         </ul>
          <script src="js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
     </nav>
@@ -387,7 +386,7 @@
            <h1>好友申请列表</h1>
           <ul class="bloglist">
             @if(count($data) == 0)
-              <h1>暂无好友请求</h1>
+              <h1 style="margin-top: 50px;margin-left: 50px;">暂无好友请求</h1>
             @else
             @foreach($data as $k => $v)
           <!-- 每一个好友请求 -->
@@ -396,7 +395,7 @@
                     <ul class="textinfo">
                         <div  style="margin-top: 10px;">
                             <!-- 好友头像 -->
-                            <img src="/static/{{ $v->user->user_pic }}" style="width: 80px;height: 80px;background: #aaa;margin-left: 20px;margin-bottom: 10px;"></img>
+                            <img src="@if($v->user->user_pic == '') /static/home/users_pic/default.png @else /static/{{ $v->user->user_pic }} @endif" style="width: 80px;height: 80px;background: #aaa;margin-left: 20px;margin-bottom: 10px;"></img>
                             <!-- 好友头像结束 -->
                             <!-- 好友姓名 -->
                             <strong><h3>好友昵称：{{ $v->user->nicheng }}</h3></strong>

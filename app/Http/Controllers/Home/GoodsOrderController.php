@@ -48,7 +48,7 @@ class GoodsOrderController extends Controller
             if(!$dangood['attr']){
                 return back()->with('error','您还没有选择商品的属性');
             }
-            if($dangood['sum'] < '0'){
+            if($dangood['sum'] <= '0'){
                 return back()->with('error','您的意思是要白送我吗？');
             }
             $dangood['attr'] = rtrim($dangood['attr'],',');

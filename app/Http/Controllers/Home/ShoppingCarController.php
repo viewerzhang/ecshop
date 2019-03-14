@@ -10,17 +10,23 @@ use App\Http\Model\Admin\Goods;
 class ShoppingCarController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 我的购物车
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        // 捕获异常
         try{
+            // 获取购物车中所有记录
             $data = ShoppingCar::where('user_id',session('user.id'))->get();
+            // 调用静态方法
             $zhi = self::jszj();
+            // 返回视图
             return view('home.shoppingcar.index',['zhi'=>$zhi,'data'=>$data]);
+            // 捕获到异常
         }catch(\Exception $err){
+            // 返回异常界面
             return view('error.index');
         }
     }
@@ -36,36 +42,53 @@ class ShoppingCarController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 通过商品详情页加入购物车
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        // 捕获异常
         try{
+            // 去除多余信息
             $data = $request->except(['_token']);
+            // 获取数量
             $spxx['car_num'] = $data['sum'];
+            // 获取商品
             $spxx['goods_id'] = $data['goods_id'];
+            // 获取用户ID
             $spxx['user_id'] = session('user.id');
+            // 获取加入购物的时间
             $spxx['dqtime'] = time() + 60 *20;
+            // 销毁没用的信息
             unset($data['sum']);
             unset($data['goods_id']);
+            // 判断商品数量是否合法
             if($spxx['car_num'] <= '0'){
+                // 不合法 返回
                 return back()->with('error','白送我，我要啊！');
             }
+            // 判断用户是否选择了商品属性
             if(count($data) == 0){
+                // 没有选择返回
                 return back()->with('error','请您选择商品属性');
             }
+            // 初始化
             $attr = '';
+            // 拼接商品属性
             foreach($data as $k => $v){
                 $attr .= $v.',';
             }
+            // 去除最后一个点
             $attr = rtrim($attr,',');
+            // 将商品属性加入数组
             $spxx['attr'] = $attr;
-
+            // 获取商品信息
             $good = Goods::where('id',$spxx['goods_id'])->first();
+            // 判断商品是否下架
             if($good->goods_status == 2){
+                // 商品下架 直接返回
                 return back()->with('error','对不起，您选择的商品已下架');
             }
             // 没有找到要添加的商品，返回错误信息
@@ -92,45 +115,33 @@ class ShoppingCarController extends Controller
                     $good->save();
                     // 捕获系统的错误信息
                 }catch(\Exception $err){
+                    // 捕获到异常直接返回
                    return back()->with('error','商品添加失败');
                 }
+                // 添加商品成功
                 return back()->with('success','商品添加成功 去我的<a href="/shoppingcar">购物车</a>');
             }
+            // 商品总库存去除用户加入购物车的数量
             $good->goods_num = $good->goods_num - $spxx['car_num'];
+            // 捕获异常
             try{
+                // 将数据插入购物车
                 ShoppingCar::insert($spxx);
+                // 保存购物车信息
                 $good->save();
+                // 捕获到异常
             }catch(\Exception $err){
+                // 返回报错信息
                 return back()->with('error','商品添加失败');
             }
+            // 没有捕获到异常 返回成功信息
             return back()->with('success','商品添加成功 去我的<a href="/shoppingcar">购物车</a>');
+            // 总体捕获异常
         }catch(\Exception $err){
+            // 捕获到异常返货错误信息
             return view('error.index');
         }
     }
-
-    /**
-     * 
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id,$sum,$attr)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
     /**
      * 在购物车中添加商品数量
      *
@@ -140,22 +151,28 @@ class ShoppingCarController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // 获取数据
         $data = $request->except(['_token','_method']);
         // 准确获取购物车表中的用户信息
         $goods = ShoppingCar::where('id',$data['id'])->where('user_id',session('user.id'))->first();
-
+        // 判断用户购物车中有误该商品
         if(!$goods){
+            // 没有改商品，返货错误信息
             $arr=[
                 'code' => '0',
                 'msg' => '对不起，该商品可能已下架'
             ];
+            // 返回给客户端json格式
             return json_encode($arr);
         }
+        // 判断商品是否下架了
         if($goods->goods->goods_status != '1'){
+            // 当商品下架时
             $arr=[
                 'code' => '0',
                 'msg' => '对不起，该商品已下架'
             ];
+            // 
             $num = $shopping->car_num;
             $historynum = $shopping->goods->goods_num;
             $newsl = $historynum + $num;

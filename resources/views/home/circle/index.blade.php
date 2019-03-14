@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>{{ $user->nicheng }} 的购物圈</title>
+<title>@if($user->desc->title == '默认'){{ $user->nicheng }}的购物圈@else {{$user->desc->title}} @endif -- EC优购</title>
 <link href="/static/home/circle/css/style.css" rel="stylesheet">
 <link href="/static/home/circle/css/animation.css" rel="stylesheet">
 <link href="/static/home/circle/css/lrtk.css" rel="stylesheet" />
@@ -39,7 +39,7 @@
 <header>
   <nav id="nav">
       <ul>
-          <li><a href="javascript:;">{{ $user->nicheng }}的购物圈</a></li>
+          <li><a href="javascript:;">@if($user->desc->title == '默认'){{ $user->nicheng }}的购物圈@else {{$user->desc->title}} @endif</a></li>
           <li><a href="/circle" style="float: right;">个人中心</a></li>
         </ul>
          <script src="js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
@@ -52,8 +52,9 @@
         <figure>
             <img src="/static/home/circle/images/art.jpg" alt="秋。。。相知">
             <figcaption>
-                <strong>渡人如渡己，渡己，亦是渡。</strong>
-                当我们被误解时，会花很多时间去辩白。 但没有用，没人愿意听，大家习惯按自己的所闻、理解做出判别，每个人其实都很固执。与其努力且痛苦的试图扭转别人的评判，不如默默承受，给大家多一点时间和空间去了解。而我们省下辩解的功夫，去实现自身更久远的人生价值。其实，渡人如渡己，渡已，亦是渡人。
+                <strong>@if($user->desc->config_title == '默认')渡人如渡己，渡己，亦是渡。@else {{$user->desc->config_title}} @endif</strong>
+                @if($user->desc->config_desc == '默认')当我们被误解时，会花很多时间去辩白。 但没有用，没人愿意听，大家习惯按自己的所闻、理解做出判别，每个人其实都很固执。与其努力且痛苦的试图扭转别人的评判，不如默默承受，给大家多一点时间和空间去了解。而我们省下辩解的功夫，去实现自身更久远的人生价值。其实，渡人如渡己，渡已，亦是渡人。@else {{$user->desc->config_desc}} @endif
+                
             </figcaption>
         </figure>
         <div class="card">
@@ -139,7 +140,7 @@
                 <ul>
                     @for($i = 0 ; $i <= 2;$i++)
                     <?php $js = mt_rand(0,count($users)-1); ?>
-                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') @else/static/{{ $users[$js]->user_pic }}@endif">{{ $users[$js]->user_name }}</a><a href="/circle/add/{{ $users[$js]->id }}"><p>加好友</p></a> </li>
+                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') /static/home/users_pic/default.png @else/static/{{ $users[$js]->user_pic }}@endif">{{ $users[$js]->nicheng }}</a><a href="/circle/add/{{ $users[$js]->id }}"><p>加好友</p></a> </li>
                     @endfor
                 </ul>
             </div>

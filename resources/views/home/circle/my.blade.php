@@ -10,8 +10,9 @@
 <script type="text/javascript" src="/static/home/circle/js/js.js"></script>
     <script type="text/javascript" src="{{ asset('/static/admin/assets/js/jquery.js') }}"></script>
 <style>
-
-
+.row_box img {
+      float: none;    padding: 0px;
+}
 .cta {
   background-color: #343434;
   display: inline-block;
@@ -369,9 +370,9 @@
 <header>
   <nav id="nav">
       <ul>
+        <li><a href="/circle" title="个人中心">个人中心</a></li>
             <li><a href="/circle/fwllow" title="我的好友">我的好友</a></li>
-            <li><a href="#" target="_blank" title="相册">我的相册</a></li>
-            <li><a href="#" target="_blank" title="心情日志">心情日志</a></li>
+          <li><a href="/circle/config" style="float: right;">设置</a></li>
           <li><a href="/circle/{{ session('user.id') }}" style="float: right;">我的的购物圈</a></li>
         </ul>
          <script src="js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
@@ -406,7 +407,7 @@
                 <div class="row_box">
                     <div class="ti"></div><!--三角形-->
                     <div class="ci"></div><!--圆形-->
-                    <h2 class="title"> <a href="/goodlist">
+                    <h2 class="title"> <a href="/circle/{{ $v->uid }}">
                         @if($v->type == '0')
                         今天购买了{{ $v->order->order_count }}件商品，超便宜大家赶紧去看看吧
                         @elseif($v->type == '1')
@@ -460,7 +461,7 @@
                 <ul>
                     @for($i = 0 ; $i <= 2;$i++)
                     <?php $js = mt_rand(0,count($users)-1); ?>
-                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') @else/static/{{ $users[$js]->user_pic }}@endif">{{ $users[$js]->user_name }}</a><a href="/circle/add/{{ $users[$js]->id }}"><p>加好友</p></a> </li>
+                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') /static/home/users_pic/default.png @else/static/{{ $users[$js]->user_pic }}@endif">{{ $users[$js]->nicheng }}</a><a href="/circle/add/{{ $users[$js]->id }}"><p>加好友</p></a> </li>
                     @endfor
                 </ul>
             </div>

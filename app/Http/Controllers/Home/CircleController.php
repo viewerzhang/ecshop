@@ -9,6 +9,7 @@ use App\Http\Model\Admin\Articles;
 use App\Http\Model\Home\User;
 use App\Http\Model\Home\UserAsk;
 use App\Http\Model\Home\UserFwllow;
+use App\Http\Model\Home\UserDetail;
 
 class CircleController extends Controller
 {
@@ -161,7 +162,7 @@ class CircleController extends Controller
         if($id == session('user.id')){
             return back()->with('error','对不起，您不可以给自己发送好友申请');
         }
-        $judge = UserAsk::where('uid',session('user.id'))->where('fid',$id)->first();
+        $judge = UserFwllow::where('uid',session('user.id'))->where('fid',$id)->first();
         if($judge){
             return back()->with('error','对方已是您的好友');
         }
@@ -169,10 +170,38 @@ class CircleController extends Controller
         if($judge){
             return back()->with('error','好友请求已发送，请不要重复发送');
         }
-        $data = UserAsk::insert(['uid'=>session('user.id'),'fid'=>$id]);
+        $data = UserAsk::insert(['uid'=>session('user.id'),'fid'=>$id,'time'=>time()]);
         if($data){
             return back()->with('success','好友请求发送成功');
         }
         return back()->with('error','好友请求发送失败');
+    }
+
+    // 购物圈设置页面
+    public function config()
+    {
+        $data = UserDetail::where('uid',session('user.id'))->first();
+        return view('home.circle.config',['data'=>$data]);
+    }
+
+    // 提交设置
+    public function doconfig(Request $request,$method)
+    {
+        $value = $request->input('method');
+        $data = [$method => $value];
+        $res = UserDetail::where('uid',session('user.id'))->update($data);
+        if($res){
+            $arr = [
+                'code' => '1',
+                'msg' => '修改成功'
+            ];
+            return json_encode($arr);
+        }else{
+            $arr = [
+                'code' => '0',
+                'msg' => '修改失败'
+            ];
+            return json_encode($arr);
+        }
     }
 }
