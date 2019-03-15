@@ -165,9 +165,8 @@
                                 @endif
                         </font>
                     </p>
-                    <div class="social-sign"  style="padding-left: 24%;">
+                    <div class="social-sign"  style="padding-left: 27%;">
                         <a href="/login">
-                            <i class="fa fa-facebook"></i>
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
                                      用户名登录
@@ -175,7 +174,6 @@
                             </font>
                         </a>
                         <a class="twitter" href="/yzmlogin">
-                            <i class="fa fa-twitter"></i>
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
                                      手机号登录

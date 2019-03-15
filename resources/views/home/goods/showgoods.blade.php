@@ -300,140 +300,100 @@
                                             <div class="tb_desc">
                                                 <div class="review_area_heading">
                                                     <div id="comnt">
-                                                        <h2>2 reviews for Cras nec nisl ut erat</h2>
-                                                        <ol class="commentlist">
-                                                            <li id="li-comment-22" class="comment even thread-even depth-1" itemscope="">
-                                                                <div id="comment-22" class="comment_container">
-                                                                    <img class="avatar avatar-60 photo" src="img/icon/men_icon.jpg" alt="" width="60" height="60">
-                                                                    <div class="comment-text">
-                                                                        <div class="star-rating" title="Rated 4 out of 5" itemscope="">
-                                                                            <div class="price_rating price_rating_2">
-                                                                                <a href="#">
-                                                                                <i class="fa fa-star"></i>
-                                                                                </a>
-                                                                                <a href="#">
-                                                                                <i class="fa fa-star"></i>
-                                                                                </a>
-                                                                                <a href="#">
-                                                                                <i class="fa fa-star"></i>
-                                                                                </a>
-                                                                                <a href="#">
-                                                                                <i class="fa fa-star"></i>
-                                                                                </a>
-                                                                                <a class="not-rated" href="#">
-                                                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                                                </a>
-                                                                                <span>
-                                                                                <strong>4</strong>
-                                                                                out of 5
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p class="meta">
-                                                                            <strong>admin</strong>
-                                                                            –
-                                                                            <time datetime="2015-12-16T15:26:49+00:00">December 16, 2015</time>
-                                                                            :
-                                                                        </p>
-                                                                        <div class="description">
-                                                                            <p>like</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="comment even thread-even depth-1" itemscope="">
-                                                                <div class="comment_container">
-                                                                    <img class="avatar avatar-60 photo" src="img/icon/men_icon.jpg" alt="" width="60" height="60">
-                                                                    <div class="comment-text">
-                                                                        <div class="star-rating" title="Rated 4 out of 5" itemscope="">
-                                                                            <div class="price_rating price_rating_2">
-                                                                                <a href="#">
-                                                                                <i class="fa fa-star"></i>
-                                                                                </a>
-                                                                                <a href="#">
-                                                                                <i class="fa fa-star"></i>
-                                                                                </a>
-                                                                                <a href="#">
-                                                                                <i class="fa fa-star"></i>
-                                                                                </a>
-                                                                                <a href="#">
-                                                                                <i class="fa fa-star"></i>
-                                                                                </a>
-                                                                                <a class="not-rated" href="#">
-                                                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                                                </a>
-                                                                                <span>
-                                                                                <strong>4</strong>
-                                                                                out of 5
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p class="meta">
-                                                                            <strong>alex</strong>
-                                                                            –
-                                                                            <time datetime="2015-12-16T15:26:49+00:00">December 18, 2015</time>
-                                                                            :
-                                                                        </p>
-                                                                        <div class="description">
-                                                                            <p>google</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                        <h2>这是一种很好的方法</h2>
+                                                        <ol class="commentlist" style="padding-left: 0px;">
+@foreach($data as $k=>$v)
+<li class="comment even thread-even depth-1" itemscope="" id="res">
+    <div class="comment_container">
+        <div class="comment-text" style="margin-left: 0px;">
+            <div class="star-rating" title="Rated 4 out of 5" itemscope="">
+            </div>
+            <p class="meta">
+                <strong>{{$v->users->user_name}}</strong>
+                –
+                <time datetime="2015-12-16T15:26:49+00:00">{{date('Y/m/d H:i:s',$v->goods_create_time)}}</time>
+            </p>
+            <div class="description">
+                <p>{{$v->goods_content}}</p>
+            </div>
+        </div>
+    </div>
+</li>
+@endforeach
+
+<li style="display: none;" class="comment even thread-even depth-1 ooooo" itemscope="" id="res">
+    <div class="comment_container">
+        <div class="comment-text" style="margin-left: 0px;">
+            <div class="star-rating" title="Rated 4 out of 5" itemscope="">
+            </div>
+            <p class="meta">
+                <strong id="yhnc"></strong>
+                <time datetime="2015-12-16T15:26:49+00:00" id="fbsj"></time>
+            </p>
+            <div class="description">
+                <p id="yhnr"></p>
+            </div>
+        </div>
+    </div>
+</li>
+
                                                         </ol>
+                                                        {{ $data->links() }}
                                                     </div>
                                                     <div class="review_form_area">
                                                         <div class="review_form">
                                                             <div class="revew_form_content">
                                                                 <h3 id="reply-title" class="comment-reply-title">
-                                                                    Add a review
+                                                                    请添加一条评论
                                                                     <small>
                                                                     <a id="cancel-comment-reply-link" style="display:none;" href="#" rel="nofollow">Cancel reply</a>
                                                                     </small>
                                                                 </h3>
-                                                                <form id="commentform" class="comment-form" method="post" action="form">
-                                                                    <div class="comment-form-rating">
-                                                                        <label class="comment">Your Rating</label>
-                                                                        <div class="price_rating price_rating_2 price_rating_3">
-                                                                            <a href="#">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            </a>
-                                                                            <a href="#">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            </a>
-                                                                            <a href="#">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            </a>
-                                                                            <a href="#">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            </a>
-                                                                            <a href="#">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="comment-form-comment">
-                                                                        <label class="comment">Your Review</label>
-                                                                        <textarea id="comment" aria-required="true" rows="8" cols="45" name="comment"></textarea>
-                                                                    </div>
-                                                                    <div class="comment-form-author">
-                                                                        <label class="comment">
-                                                                        Name
-                                                                        <span class="required required_menu">*</span>
-                                                                        </label>
-                                                                        <input id="author" class="mix_type" type="text" aria-required="true" size="30" value="" name="author">
-                                                                    </div>
-                                                                    <div class="comment-form-email">
-                                                                        <label class="comment">
-                                                                        Email
-                                                                        <span class="required required_menu">*</span>
-                                                                        </label>
-                                                                        <input id="email" class="mix_type" type="text" aria-required="true" size="30" value="" name="email">
-                                                                    </div>
-                                                                    <div class="form-submit">
-                                                                        <input id="sub" class="submt" type="submit" value="Submit" name="submit">
-                                                                    </div>
-                                                                </form>
+<div id="commentform" class="comment-form">
+    <div class="comment-form-comment">
+        <label class="comment">你的评论</label>
+        <textarea id="comment" aria-required="true" rows="8" cols="45" name="goods_content"></textarea>
+    </div>
+    <div class="form-submit">
+        <input id="sub" class="submt" type="submit" value="评论">
+    </div>
+</div>
+<script>
+    $('#sub').click(function(){
+        $.post("/reply",{
+            "_token": "{{ csrf_token() }}",
+            goods_content:$('#comment').val(),
+            gid:{{$goods->id}}
+        },function(data){
+            if(data.code == 0){
+                layui.use(['layer', 'form'], function(){
+                    var layer = layui.layer
+                    ,form = layui.form;
+                    layer.msg(data.msg);
+                });
+            }else if(data.code == 1){
+                layui.use(['layer', 'form'], function(){
+                    var layer = layui.layer
+                    ,form = layui.form;
+                    layer.msg(data.msg);
+                    $('#comment').val('');// 当评论成功时 让文本域里的值为空
+                    var abcd = $('#res').append($('.ooooo')); //获取
+                    $(abcd).find('#yhnc').html("{{ session('user.user_name') }}"); //填充用户名
+                    $(abcd).find('#fbsj').html('- 刚刚'); //发表时间
+                    $(abcd).find('#yhnr').html(data.goods_content); //发表内容
+                    $('.ooooo').css('display','block'); //显示出来
+                    $('.commentlist').prepend(abcd);//插入到ol里
+                });
+            }else if(data.code == 2){
+                layui.use(['layer', 'form'], function(){
+                    var layer = layui.layer
+                    ,form = layui.form;
+                    layer.msg(data.msg);
+                });
+            }
+        },'json')
+    });
+</script>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -499,9 +459,9 @@
                                                             </a>
                                                         </div>
                                                     </div>
-                                                    <div class="price_box">
-                                                        <span class="spical-price">￥{{$v->markte_price}}</span>
-                                                    </div>
+                            <div class="price_box">
+                                <span class="spical-price">￥{{ $v->markte_price }}</span>
+                            </div>
                                                     <div class="last_button_area last_button_area_px">
                                                         <ul class="add-to-links clearfix">
                                                             <li class="addwishlist">

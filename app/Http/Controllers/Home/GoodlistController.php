@@ -10,6 +10,8 @@ use App\Http\Model\Admin\GoodsImgs;
 use App\Http\Model\Admin\GoodsType;
 use App\Http\Model\Admin\GoodsAttr;
 use App\Http\Model\Home\GoodsHistory;
+use App\Http\Model\Home\Reply;
+use App\Http\Model\Home\User;
 
 class GoodlistController extends Controller
 {
@@ -162,9 +164,11 @@ class GoodlistController extends Controller
 
         $goodsimgs = GoodsImgs::where('goods_id',$id)->get();
 
+        $data = Reply::where('gid',$id)->paginate(10);
+
 
  
-        return view('home/goods/showgoods',['goods'=>$goods,'goodsimgs'=>$goodsimgs,'type'=>$type,'goods_brand'=>$goods_brand,'goods_type'=>$goods_type]);
+        return view('home/goods/showgoods',['goods'=>$goods,'goodsimgs'=>$goodsimgs,'type'=>$type,'goods_brand'=>$goods_brand,'goods_type'=>$goods_type, 'data'=>$data]);
     }
 
 
