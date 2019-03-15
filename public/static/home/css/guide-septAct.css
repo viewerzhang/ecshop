@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+body {
+	position: relative;
+}
+
+.guide-hidden {
+	overflow: hidden;
+}
+
+.guide-all {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1999;
+    background: url(../images/bg.png);
+}
+
+.guide-all .all-layout {
+    width: 1065px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.guide-all a {
+    display: block;
+    height: 729px;
+    width: 100%;
+    margin: 100px auto;
+    background: url(../images/guide_present_all.png) no-repeat center center;
+}
+
+.guide-all .guide-all-close {
+	width: 39px;
+    height: 39px;
+    display: block;
+    position: absolute;
+    right: 80px;
+    top: 0;
+    cursor: pointer;
+    background: url(../images/close_big.png) no-repeat center center;
+}
+
+.guide-all .guide-all-close:hover {
+	background: url(../images/close_big_opa6.png) no-repeat center center;
+}
+
+.guide-bar {
+	background: #472273;
+    display: none;
+}
+
+.guide-bar-layout {
+	width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    height: 55px;
+}
+
+.guide-bar .guide-bar-close {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background: url(../images/close_small.png) no-repeat center center;
+}
+.guide-bar .guide-bar-close:hover {
+	background: url(../images/close_small_opa6.png) no-repeat center center;
+}

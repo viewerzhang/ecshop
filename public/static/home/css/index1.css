@@ -1,0 +1,31 @@
+/* 公共样式表css */
+body,html{font:14px/1.5 微软雅黑,"Microsoft Yahei",tahoma,arial,"Hiragino Sans GB",宋体,sans-serif}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+a{text-decoration:none;color:#000}
+img{border:0}
+body{background:#fff;color:#666}
+blockquote,body,button,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,html,input,legend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}
+a{text-decoration:none;color:#08acee}
+button{outline:0}
+img{border:0}
+button,input,optgroup,select,textarea{margin:0;font:inherit;color:inherit;outline:0}
+li{list-style:none}
+a{color:#666}
+a:hover{color:#eee}
+.clearfix::after{clear:both;content:".";display:block;height:0;visibility:hidden}
+
+
+
+.procedure{padding-top:110px;width:100%;height:1167px;background:url(../images/procedure.jpg) no-repeat top center;text-align:center;color:#fff}
+.procedure h2{font-size:36px}
+.procedure .note{margin:20px auto 0;width:760px;font-size:16px;line-height:160%}
+.procedure ul{position:relative}
+.procedure ul li{position:absolute;top:0;left:50%;width:240px}
+.procedure ul li.item-1{text-align:left;top:75px;margin-left:190px}
+.procedure ul li.item-2{text-align:right;top:180px;margin-left:-430px}
+.procedure ul li.item-3{text-align:left;top:290px;margin-left:190px}
+.procedure ul li.item-4{text-align:right;top:398px;margin-left:-430px}
+.procedure ul li.item-5{text-align:left;top:500px;margin-left:190px}
+.procedure ul li.item-6{text-align:right;top:610px;margin-left:-430px}
+.procedure ul li strong{font-size:20px}
+.procedure ul li p{margin-top:8px;font-size:15px;line-height:140%}

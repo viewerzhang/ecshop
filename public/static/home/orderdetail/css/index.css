@@ -1,0 +1,134 @@
+.topTile {
+	font-size: 16px;
+	margin: 20px 4%;
+	color: #333;
+}
+
+.couponList {
+	margin-bottom: 63px;
+}
+
+.stamp {
+	width: 89.3%;
+	margin-bottom: 15px;
+	margin-left: 3.6%;
+	min-height: 120px;
+	padding: 0 2%;
+	position: relative;
+	overflow: hidden;
+	list-style: none;
+	background: #4cb551;
+	background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 4px, #4cb551 4px);
+	background-size: 12px 8px;
+	background-position: 2%;
+}
+
+.stamp:before {
+	background-color: #4cb551;
+	left: 5px;
+	right: 5px;
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+}
+
+.stamp:after {
+	content: '';
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	right: 10px;
+	bottom: 10px;
+	box-shadow: 0 0 20px 1px rgb(255, 255, 255);
+	z-index: -2;
+}
+
+.stamp .par {
+	float: left;
+	padding: 16px 7% 16px 2%;
+	width: 54%;
+	border-right: 2px dashed rgba(255, 255, 255, 0.3);
+	text-align: left;
+}
+
+.stamp .copy {
+	padding: 13px 2% 12px 4%;
+	font-size: 24px;
+	display: inline-block;
+	width: 30%;
+	vertical-align: text-bottom;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	line-height: initial;
+}
+
+.stamp .par text {
+	position: relative;
+	top: -5px;
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 15px;
+}
+
+.stamp .par span {
+	font-size: 28px;
+	color: #fff;
+	margin-right: 5px;
+	line-height: 45px;
+}
+
+.stamp .par div {
+	color: #fff;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.stamp .copy div {
+	font-size: 14px;
+	margin-top: 5px;
+	margin-bottom: 8px;
+}
+
+.stamp .copy .chooseNav {
+	background-color: #fff;
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	display: block;
+}
+
+.stamp i {
+	position: absolute;
+	left: 20%;
+	top: 45px;
+	height: 190px;
+	width: 390px;
+	background-color: rgba(255, 255, 255, 0.15);
+	transform: rotate(-30deg);
+}
+
+.page .invalid {
+	background: #827d76;
+	background: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 4px, #a9a6a0 4px);
+	background-size: 12px 8px;
+	background-position: 2%;
+}
+
+.page .invalid:before {
+	background-color: #a9a6a0;
+}
+
+.bottom {
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	color: #333;
+	border-top: 1px solid #f1f1f1;
+	text-align: center;
+	font-size: 16px;
+	line-height: 45px;
+	background: #f9f9f9;
+}
