@@ -138,7 +138,7 @@
                 <ul>
                     @for($i = 0 ; $i <= 2;$i++)
                     <?php $js = mt_rand(0,count($users)-1); ?>
-                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') @else/static/{{ $users[$js]->user_pic }}@endif"></a><a href="/circle/add/">{{ $users[$js]->user_name }}<p>加好友</p></a> </li>
+                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') @else/static/{{ $users[$js]->user_pic }}@endif"></a><a href="/circle/add/{{ $users[$js]->id }}">{{ $users[$js]->user_name }}<p>加好友</p></a> </li>
                     @endfor
                 </ul>
             </div>
@@ -187,4 +187,40 @@
   
 $('.yhdt').find('img').css('width','50px');
 $('.yhdt').find('img').css('hieght','50px');
+</script>
+<script src="/static/home/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="/static/home/js/iziToast.min.js" type="text/javascript"></script>
+<script src="/static/home/js/demo.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/home/css/iziToast.min.css">
+<!-- <link rel="stylesheet" href="/static/home/css/dem.css"> -->
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        iziToast.warning({
+            title: '错误提示',
+            message: '{{ $error }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+        @endforeach
+    @endif
+    @if(session('error'))
+        iziToast.warning({
+            title: '错误提示',
+            message: '{{ session('error') }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+    @endif
+    @if(session('success'))
+        iziToast.warning({
+            title: '成功提示',
+            message: '{{ session('success') }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+    @endif
 </script>

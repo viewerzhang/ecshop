@@ -303,9 +303,9 @@
                             <div class="footer_menu">
                                 <ul>
                                     @foreach($data_column as $k=>$va)
-                                    @if($v->column_sort==0)
+                                    @if($va->column_sort==0)
                                     <li>
-                                        <a href="#">{{ $va->column_title }}</a>
+                                        <a href="{{ $va->column_url }}">{{ $va->column_title }}</a>
                                     </li>
                                     @endif
                                     @endforeach
@@ -321,9 +321,9 @@
                             <div class="footer_menu">
                                 <ul>
                                     @foreach($data_column as $k=>$val)
-                                    @if($v->column_sort==1)
+                                    @if($val->column_sort==1)
                                     <li>
-                                        <a href="#">{{ $val->column_title }}</a>
+                                        <a href="{{ $val->column_url }}">{{ $val->column_title }}</a>
                                     </li>
                                     @endif
                                     @endforeach
@@ -339,9 +339,9 @@
                             <div class="footer_menu">
                                 <ul>
                                     @foreach($data_column as $k=>$value)
-                                    @if($v->column_sort==2)
+                                    @if($value->column_sort==2)
                                     <li>
-                                        <a href="#">{{ $value->column_title }}</a>
+                                        <a href="{{ $value->column_url }}">{{ $value->column_title }}</a>
                                     </li>
                                     @endif
                                     @endforeach

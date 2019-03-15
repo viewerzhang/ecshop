@@ -11,6 +11,8 @@ Route::get('/coupons','CouponsController@index');
 Route::resource('goodlist','GoodlistController');
 //文章列表页
 Route::resource('articles','ArticlesController');
+// 用户签到页
+Route::get('/qd','GrzxController@qdcreate');
 // 添加到购物车路由
 Route::post('/shoppingcar/caradd','ShoppingCarController@caradd');
 // 购物车资源路由
