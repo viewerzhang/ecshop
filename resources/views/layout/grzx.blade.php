@@ -58,13 +58,7 @@
                             <li><a href="/useraddr"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址管理</font></font></a></li>
                         </ul>
                         <ul class="menu-categories">
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改信息</font></font></a></li>
-                        </ul>
-                        <ul class="menu-categories">
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改密码</font></font></a></li>
-                        </ul>
-                        <ul class="menu-categories">
-                            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改手机号</font></font></a></li>
+                            <li><a href="/circle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的购物圈</font></font></a></li>
                         </ul>
                     </div>
                 </div>

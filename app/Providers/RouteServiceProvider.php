@@ -93,7 +93,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapHomeRoutes()
     {
-        Route::middleware('web')
+        Route::middleware('home')
              ->namespace($this->namespace.'\Home')
              ->group(base_path('routes/home.php'));
     }

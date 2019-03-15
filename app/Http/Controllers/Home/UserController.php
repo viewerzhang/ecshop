@@ -49,6 +49,12 @@ class UserController extends Controller
             // 接收注册数据
             $data = $request->except(['_token','yzm']);
             // 补充数据
+            $jz = [
+                'fwllowask','agree','fwllow','add','delete','config','index','update','destroy','edit','store','app','create','cao','fack','nimabi'
+            ];
+            if(in_array($data['user_name'], $jz)){
+                return back()->with('error','对不起，您的用户名有敏感词');
+            }
             // 密码加密
             $data['password'] = Hash::make($data['password']);
             // 先存空字符串。待用户自己完善信息

@@ -378,8 +378,9 @@
 </header>
 
 <div id="mainbody">
-      <input value="查找" type="submit" name="" style="float: right;margin-top: 10px;margin-right: 200px;">
-      <input placeholder="请输入好友昵称" style="float: right;margin-top: 10px;margin-right: 10px;" type="text" name="">
+  <form class="searchform" method="get" action="/searchform">
+      <input placeholder="请输入好友昵称" style="float: right;margin-top: 10px;margin-right: 200px;" type="text" name="user_name">
+      </form>
     <!-- 个人介绍头部 -->
   <div class="info">
         <div class="card" style="width: 100%;">

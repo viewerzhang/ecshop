@@ -10,9 +10,8 @@
 <script type="text/javascript" src="/static/home/circle/js/js.js"></script>
     <script type="text/javascript" src="{{ asset('/static/admin/assets/js/jquery.js') }}"></script>
 <style>
-.row_box img {
-      float: none;    padding: 0px;
-}
+
+
 .cta {
   background-color: #343434;
   display: inline-block;
@@ -370,9 +369,8 @@
 <header>
   <nav id="nav">
       <ul>
-        <li><a href="/circle" title="个人中心">个人中心</a></li>
-            <li><a href="/circle/fwllow" title="我的好友">我的好友</a></li>
-          <li><a href="/circle/config" style="float: right;">设置</a></li>
+          <li><a href="/circle" title="个人中心">个人中心</a></li>
+          <li><a href="/circle/fwllow" title="我的好友">我的好友</a></li>
           <li><a href="/circle/{{ session('user.id') }}" style="float: right;">我的的购物圈</a></li>
         </ul>
          <script src="js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
@@ -380,109 +378,46 @@
 </header>
 
 <div id="mainbody">
+        <form class="searchform" method="get" action="/searchform">
+      <input placeholder="请输入好友昵称" style="float: right;margin-top: 10px;margin-right: 200px;" type="text" name="user_name">
+      </form>
     <!-- 个人介绍头部 -->
   <div class="info">
         <div class="card" style="width: 100%;">
-           <h1>发布动态</h1>
-           <form action="/circle" method="post">
-            {{ csrf_field() }}
-           <script id="container" name="content" type="text/plain" style="width: 100%;background:#ddd;height: 100px"></script>
-            <!-- <a type="submit" href="javascript:;" onclick="" style="float: right;" class="cta">发表动态</a> -->
-            <input type="submit" style="float: right;border: #343434 solid 1px;cursor: pointer;" class="cta" name="" value="发表动态">
-            </form>
+           <h1>搜索好友</h1>
+          <ul class="bloglist">
+            @if(count($user) == 0)
+              <h1 style="margin-top: 50px;margin-left: 50px;">没有该好友</h1>
+            @else
+            @foreach($user as $k => $v)
+          <!-- 每一个好友请求 -->
+            <li style="margin-left: 30px;">
+                <div class="row_box">
+                    <ul class="textinfo">
+                        <div  style="margin-top: 10px;">
+                            <!-- 好友头像 -->
+                            <img src="@if($v->user_pic == '') /static/home/users_pic/default.png @else /static/{{ $v->user_pic }} @endif" style="width: 80px;height: 80px;background: #aaa;margin-left: 20px;margin-bottom: 10px;"></img>
+                            <!-- 好友头像结束 -->
+                            <!-- 好友姓名 -->
+                            <strong><h3>用户昵称：{{ $v->nicheng }}</h3></strong>
+                            <br>
+                            <strong><h3>个性签名：{{ $v->desc->desc }}</h3></strong>
+                            <!-- 好友姓名结束 -->
+                            <a href="/circle/add/{{ $v->id }}" style="float: right;position: relative;top: -60px;right: 10px;height: 20px;" class="cta">申请好友</a>
+                        </div>
+                    </ul>
+                </div>
+            </li>
+            @endforeach
+            @endif
+
+            </ul>
         </div>
     </div>
 <!-- 个人介绍介绍 -->
 
 
 
-    <div class="blogs">
-        <!--博客的列表开始-->
-        <ul class="bloglist">
-
-
-          <!-- 每一个分享内容 -->
-          @foreach($data as $k=>$v)
-            <li>
-                <div class="row_box">
-                    <div class="ti"></div><!--三角形-->
-                    <div class="ci"></div><!--圆形-->
-                    <h2 class="title"> <a href="/circle/{{ $v->uid }}">
-                        @if($v->type == '0')
-                        今天购买了{{ $v->order->order_count }}件商品，超便宜大家赶紧去看看吧
-                        @elseif($v->type == '1')
-                        {{$v->user->nicheng}}发表了一条动态
-                        @endif
-                    </a></h2>
-                    <ul class="textinfo">
-                        @if($v->type == '0')
-                          @foreach($v->order->shopdetail as $kk => $vv)
-                            <a href="/goodlist/{{ $vv->goods->id }}" target="_blank"><img style="width: 158px;height: 113px;" src="/static/admin/images/goods_img/{{ $vv->goods->goods_img }}"></a>
-                          @endforeach
-                          <div style="clear: both;">
-                          <p><strong>购物评论：</strong>{{ $v->content }}</p>
-                          </div>
-                        @endif
-                        @if($v->type == '1')
-                        <div class="yhdt">
-                        {!! $v->content !!}
-                        </div>
-                        @endif
-                    </ul>
-                    <ul class="details">
-                        <li class="icon_time"><a href="javascript:;">{{ date('Y年m月d日 H时i分s秒',$v->time) }}</a></li>
-                    </ul>
-                </div>
-            </li>
-          @endforeach
-          <!-- 每一个分享内容介绍 -->
-    {{ $data->links() }}
-
-        </ul>
-    
-    <!--博客列表部分结束-->
-    
-    
-    <!--右半部分开始-->
-        <aside>
-            <div class="tuijian">
-                <h2>热门文章</h2>
-                <ol>
-                    @foreach($articles as $k => $v)
-                    @if($k >= 5)
-                    <?php break; ?>
-                    @endif
-                    <li><span> <strong>{{ $k+1 }}</strong></span><a target="_blank" href="/articles/{{ $v->id }}">{{ $v->art_title }}</a></li>
-                    @endforeach
-                </ol>
-            </div>
-            <div class="toppic">
-                <h2>猜你认识</h2>
-                <ul>
-                    @for($i = 0 ; $i <= 2;$i++)
-                    <?php $js = mt_rand(0,count($users)-1); ?>
-                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') /static/home/users_pic/default.png @else/static/{{ $users[$js]->user_pic }}@endif">{{ $users[$js]->nicheng }}</a><a href="/circle/add/{{ $users[$js]->id }}"><p>加好友</p></a> </li>
-                    @endfor
-                </ul>
-            </div>
-
-            <div class="search">
-                <form class="searchform" method="get" action="/searchform">
-                    <input type="text" placeholder="搜索用户昵称" name="user_name" onFocus="" onBlur="">
-                </form>
-            </div>
-            <div class="viny">
-                <dl>
-                    <dt class="art"><img src="/static/home/circle/images/artwork.png" alt="专辑"></dt>
-                    <dd class="icon_song"><span></span>南方姑娘</dd>
-                    <dd class="icon_artist"><span></span>歌手：赵雷</dd>
-                    <dd class="icon_album"><span></span>所属专辑：《赵小雷》</dd>
-                    <dd class="icon_like"><span></span><a href="#">喜欢</a></dd>
-                    <dd class="music"><audio src="/static/home/circle/images/nf1.mp3" controls loop></audio></dd>
-                </dl>
-            </div>
-        </aside>
-  </div>
     <!--blogs结束-->
 </div>
 <!--mainbody结束-->
@@ -506,25 +441,7 @@
 
 </body>
 </html>
- <!-- 配置文件 -->
-    <script type="text/javascript" src="/static/admin/udit/ueditor.config.js"></script>
-    <!-- 编辑器源码文件 -->
-    <script type="text/javascript" src="/static/admin/udit/ueditor.all.js"></script>
-    <!-- 实例化编辑器 -->
-    <script type="text/javascript">
-        var ue = UE.getEditor('container',{
-            toolbars: [
-                          ['emotion'],
-                      ],
-                      autoHeightEnabled: true,
-                      autoFloatEnabled: true,
-                      maximumWords:30,
-                      wordCountMsg:'<span style="color:#000;">尊敬的EC优购会员, 您还可以输入{#leave}个字。</span>',
-                      wordOverFlowMsg:'<span style="color:red;">尊敬EC优购会员，你的字数已超出最大限制，可能导致发表失败</span>',
-                      enableAutoSave:false,
-                      pasteplain:true,
-        });
-    </script>
+ 
 <!--这部分代码直接使用，只要修改文字即可-->
 <script type="text/javascript">
 var $cta = $('.cta');

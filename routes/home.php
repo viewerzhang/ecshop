@@ -1,26 +1,17 @@
-<?php 
-Route::get('/aaa','GoodsOrderController@share');
-Route::get('/','HomeController@index');
-// 前台注册页
-Route::get('/register','UserController@create');
-// 前台搜索
-Route::get('/search','GoodlistController@search');
+<?php
+
 // 前台优惠券
 Route::get('/coupons','CouponsController@index');
-//商品列表页
-Route::resource('goodlist','GoodlistController');
-//文章列表页
-Route::resource('articles','ArticlesController');
 // 用户签到页
 Route::get('/qd','GrzxController@qdcreate');
-// 添加到购物车路由
-Route::post('/shoppingcar/caradd','ShoppingCarController@caradd');
-// 购物车资源路由
-Route::resource('/shoppingcar','ShoppingCarController');
 // 订单完成，分享页面
 Route::post('/goodsorder/share','GoodsOrderController@share');
 // 订单路由
 Route::resource('/goodsorder','GoodsOrderController');
+// 添加到购物车路由
+Route::post('/shoppingcar/caradd','ShoppingCarController@caradd');
+// 购物车资源路由
+Route::resource('/shoppingcar','ShoppingCarController');
 // 用户地址路由
 Route::resource('/useraddr','UserAddrController');
 // 收藏中心
@@ -61,13 +52,6 @@ Route::get('/search','GoodlistController@search');
 Route::get('/logout','LoginController@logout');
 // 手机号登录页面
 Route::get('/yzmlogin', 'LoginController@tellogin');
-// 手机号登录
-Route::get('/teldologin', 'LoginController@teldologin');
-Route::post('/yzm', 'LoginController@yzm');
-// 手机号短信验证
-Route::post('/store','UserController@store');
-// 验证码
-Route::get('/yzm','UserController@yzm');
 // 个人中心
 Route::get('/grzx/yzyx','GrzxController@yzyx');
 Route::post('/grzx/revisea/{id}','GrzxController@revisea');
@@ -89,3 +73,5 @@ Route::resource('grzx', 'GrzxController');
 Route::resource('email', 'EmailController');
 // 回复
 Route::resource('reply', 'ReplyController');
+// 搜索好友
+Route::get('/searchform','CircleController@searchform');

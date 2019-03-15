@@ -37,7 +37,7 @@ class LoginController extends Controller
         $user = $request -> post('user_name');
         $pass = $request -> post('password');
         $data = Users::where('user_name', $user)->first();
-
+ 
         if(!$data){
             return redirect('/login')->with('error','您的用户名或密码不正确');
         }
@@ -47,7 +47,9 @@ class LoginController extends Controller
             $uip = [ 'user_ip' => $request->getClientIp(),'last_time' => time() ];
             Users::where('user_name', $user)->update($uip);
             session(['login'=>'恭喜您，登陆成功']);
-            return "<script>location.href='/'</script>";
+            $historyUrl = session('historyurl');
+            session(['historyurl'=>null]);
+            return redirect($historyUrl ?? '/');
         }
             return redirect('/login')->with('error','您的用户名或密码不正确');
     }

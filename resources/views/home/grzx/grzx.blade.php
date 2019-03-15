@@ -77,7 +77,7 @@
                             	</p>
                             	<p style="vertical-align: inherit;">
                             		邮 箱 : @if(empty($data->user_email))
-                            					<a href="/edit">立即验证</a>
+                            					<a href="/grzx/grxx">立即验证</a>
                             				@else
                             					{{$data->user_email}}
                             				@endif

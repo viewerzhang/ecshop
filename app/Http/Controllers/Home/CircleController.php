@@ -206,4 +206,13 @@ class CircleController extends Controller
             return json_encode($arr);
         }
     }
+
+
+    // 搜索好友
+    public function searchform(Request $request)
+    {
+        $key = $request->input('user_name');
+        $user = User::where('nicheng','like',"%{$key}%")->get();
+        return view('home.circle.ss',['user'=>$user]);
+    }
 }
