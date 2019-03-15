@@ -101,8 +101,15 @@
                                 <ul class="add-to-links clearfix">
                                     <li>
                                         <div class="new_act">
-                                            <a href="/grzx/balance" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充值</font></font></a>
-                                            <a href="/coupons" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">领取优惠券</font></font></a>
+                                            <a href="/grzx/balance" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">充值</font></font></a><br>
+                                            <a href="/coupons" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">领取优惠券</font></font></a><br>
+                                            <a href="/qd" class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                                @if($data->qd == date('Y-m-d',time()))
+                                                今日已签到
+                                                @else
+                                                签到领积分
+                                                @endif
+                                            </font></font></a>
                                         </div>
                                     </li>
                                     
@@ -348,4 +355,40 @@
 	<!-- 好友动态 结束 -->
 </div>
 <!-- 个人中心主页显示的详细信息 结束 -->
+<script src="/static/home/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="/static/home/js/iziToast.min.js" type="text/javascript"></script>
+<script src="/static/home/js/demo.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/home/css/iziToast.min.css">
+<!-- <link rel="stylesheet" href="/static/home/css/dem.css"> -->
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        iziToast.warning({
+            title: '错误提示',
+            message: '{{ $error }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+        @endforeach
+    @endif
+    @if(session('error'))
+        iziToast.warning({
+            title: '错误提示',
+            message: '{{ session('error') }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+    @endif
+    @if(session('success'))
+        iziToast.warning({
+            title: '成功提示',
+            message: '{{ session('success') }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+    @endif
+</script>
 @endsection

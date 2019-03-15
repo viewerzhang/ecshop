@@ -27,8 +27,11 @@ Route::get('/search','GoodlistController@search');
 // 前台优惠券
 Route::get('/coupons','CouponsController@index');
 
-//商品列表页
+// 商品列表页
 Route::resource('goodlist','GoodlistController');
+
+// 用户签到页
+Route::get('/qd','GrzxController@qdcreate');
 
 
 

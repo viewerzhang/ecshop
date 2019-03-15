@@ -497,5 +497,34 @@ class GrzxController extends Controller
         // 验证失败
         return view('error.index');
     }
-    
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  用户签到
+     * @return \Illuminate\Http\Response
+     */
+    public function qdcreate()
+    {
+        // 查数据
+        $data = Users::where('id',session('user.id'))->first();
+        // 判断今日是否已经签到
+        if($data['qd'] == date('Y-m-d',time())){
+            return back()->with('error','今日已签到');
+        }else{
+            // 将当前时间存入数组
+            $data = ['qd'=>date('Y-m-d',time())];
+            // 将积分加10
+            $data['jf'] += 10;
+            // 修改数据库中数据
+            $res = Users::where('id',session('user.id'))->update($data);
+            // 判断数据是否修改成功
+            if($res){
+                return redirect('/grzx')->with('success','签到成功');
+            }else{
+                return back()->with('error','签到失败');
+            }
+        }
+        
+    }
 }
