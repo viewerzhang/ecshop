@@ -74,6 +74,14 @@ Route::get('/circle/agree/{id}','CircleController@agree');
 Route::get('/circle/fwllow','CircleController@fwllow');
 // 请求添加好友
 Route::get('/circle/add/{id}','CircleController@add');
+// 删除好友
+Route::get('/circle/delete/{id}','CircleController@delete');
+// 请求添加好友
+Route::get('/circle/add/{id}','CircleController@add');
+// 设置购物圈
+Route::get('/circle/config','CircleController@config');
+// 提交设置
+Route::post('/circle/config/{method}','CircleController@doconfig');
 // 我的购物圈
 Route::resource('/circle','CircleController');
 

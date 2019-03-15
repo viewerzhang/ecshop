@@ -10,8 +10,9 @@
 <script type="text/javascript" src="/static/home/circle/js/js.js"></script>
     <script type="text/javascript" src="{{ asset('/static/admin/assets/js/jquery.js') }}"></script>
 <style>
-
-
+.row_box img {
+      float: none;    padding: 0px;
+}
 .cta {
   background-color: #343434;
   display: inline-block;
@@ -369,10 +370,10 @@
 <header>
   <nav id="nav">
       <ul>
-          <li><a href="/circle/{{ session('user.id') }}">我的的购物圈</a></li>
+        <li><a href="/circle" title="个人中心">个人中心</a></li>
             <li><a href="/circle/fwllow" title="我的好友">我的好友</a></li>
-            <li><a href="#" target="_blank" title="相册">我的相册</a></li>
-            <li><a href="#" target="_blank" title="心情日志">心情日志</a></li>
+          <li><a href="/circle/config" style="float: right;">设置</a></li>
+          <li><a href="/circle/{{ session('user.id') }}" style="float: right;">我的的购物圈</a></li>
         </ul>
          <script src="js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
     </nav>
@@ -406,7 +407,7 @@
                 <div class="row_box">
                     <div class="ti"></div><!--三角形-->
                     <div class="ci"></div><!--圆形-->
-                    <h2 class="title"> <a href="/goodlist">
+                    <h2 class="title"> <a href="/circle/{{ $v->uid }}">
                         @if($v->type == '0')
                         今天购买了{{ $v->order->order_count }}件商品，超便宜大家赶紧去看看吧
                         @elseif($v->type == '1')
@@ -460,7 +461,7 @@
                 <ul>
                     @for($i = 0 ; $i <= 2;$i++)
                     <?php $js = mt_rand(0,count($users)-1); ?>
-                    <li><a target="_blank" href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') @else/static/{{ $users[$js]->user_pic }}@endif">{{ $users[$js]->user_name }}<p>加好友</p></a> </li>
+                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') /static/home/users_pic/default.png @else/static/{{ $users[$js]->user_pic }}@endif">{{ $users[$js]->nicheng }}</a><a href="/circle/add/{{ $users[$js]->id }}"><p>加好友</p></a> </li>
                     @endfor
                 </ul>
             </div>
@@ -549,4 +550,40 @@ window.onLoad = createBtnsMarkup();
 $('.yhdt').find('img').css('width','50px');
 $('.yhdt').find('img').css('hieght','50px');
 
+</script>
+<script src="/static/home/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="/static/home/js/iziToast.min.js" type="text/javascript"></script>
+<script src="/static/home/js/demo.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/home/css/iziToast.min.css">
+<!-- <link rel="stylesheet" href="/static/home/css/dem.css"> -->
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        iziToast.warning({
+            title: '错误提示',
+            message: '{{ $error }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+        @endforeach
+    @endif
+    @if(session('error'))
+        iziToast.warning({
+            title: '错误提示',
+            message: '{{ session('error') }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+    @endif
+    @if(session('success'))
+        iziToast.warning({
+            title: '成功提示',
+            message: '{{ session('success') }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+    @endif
 </script>

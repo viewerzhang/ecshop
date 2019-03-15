@@ -369,10 +369,16 @@
 <header>
   <nav id="nav">
       <ul>
+<<<<<<< HEAD
           <li><a href="/circle/{{ session('user.id') }}">我的的购物圈</a></li>
             <li><a href="/circle/fwllow" title="我的好友">我的好友</a></li>
             <li><a href="#" target="_blank" title="相册">我的相册</a></li>
             <li><a href="#" target="_blank" title="心情日志">心情日志</a></li>
+=======
+          <li><a href="/circle" title="个人中心">个人中心</a></li>
+          <li><a href="/circle/fwllow" title="我的好友">我的好友</a></li>
+          <li><a href="/circle/{{ session('user.id') }}" style="float: right;">我的的购物圈</a></li>
+>>>>>>> 48a19093d9eeea2b22ea93c6b31a158f21b2cfde
         </ul>
          <script src="js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
     </nav>
@@ -387,7 +393,11 @@
            <h1>好友申请列表</h1>
           <ul class="bloglist">
             @if(count($data) == 0)
+<<<<<<< HEAD
               <h1>暂无好友请求</h1>
+=======
+              <h1 style="margin-top: 50px;margin-left: 50px;">暂无好友请求</h1>
+>>>>>>> 48a19093d9eeea2b22ea93c6b31a158f21b2cfde
             @else
             @foreach($data as $k => $v)
           <!-- 每一个好友请求 -->
@@ -396,19 +406,31 @@
                     <ul class="textinfo">
                         <div  style="margin-top: 10px;">
                             <!-- 好友头像 -->
+<<<<<<< HEAD
                             <img src="/static/{{ $v->user->user_pic }}" style="width: 80px;height: 80px;background: #aaa;margin-left: 20px;margin-bottom: 10px;"></img>
+=======
+                            <img src="@if($v->user->user_pic == '') /static/home/users_pic/default.png @else /static/{{ $v->user->user_pic }} @endif" style="width: 80px;height: 80px;background: #aaa;margin-left: 20px;margin-bottom: 10px;"></img>
+>>>>>>> 48a19093d9eeea2b22ea93c6b31a158f21b2cfde
                             <!-- 好友头像结束 -->
                             <!-- 好友姓名 -->
                             <strong><h3>好友昵称：{{ $v->user->nicheng }}</h3></strong>
                             <br>
+<<<<<<< HEAD
                             <strong><h3>个性签名：{{ $v->desc }}</h3></strong>
+=======
+                            <strong><h3>个性签名：{{ $v->user->desc->desc }}</h3></strong>
+>>>>>>> 48a19093d9eeea2b22ea93c6b31a158f21b2cfde
                             <!-- 好友姓名结束 -->
                             <a href="/circle/agree/{{ $v->id }}" style="float: right;position: relative;top: -60px;right: 10px;height: 20px;" href="" class="cta">接受申请</a>
                             <a href="/circle/trun/{{ $v->id }}" style="float: right;position: relative;top: -10px;right: -138px;height: 20px;" href="" class="cta">拒绝申请</a>
                         </div>
                     </ul>
                     <ul class="details">
+<<<<<<< HEAD
                         <li class="icon_time"><a href="javascript:;">2019年03月11日 19时01分21秒</a></li>
+=======
+                        <li class="icon_time"><a href="javascript:;">申请时间：{{date('Y年m月d日 H时i分s秒',$v->time)}}</a></li>
+>>>>>>> 48a19093d9eeea2b22ea93c6b31a158f21b2cfde
                     </ul>
                 </div>
             </li>
@@ -489,4 +511,43 @@ window.onLoad = createBtnsMarkup();
 $('.yhdt').find('img').css('width','50px');
 $('.yhdt').find('img').css('hieght','50px');
 
+<<<<<<< HEAD
+=======
+</script>
+<script src="/static/home/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="/static/home/js/iziToast.min.js" type="text/javascript"></script>
+<script src="/static/home/js/demo.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/home/css/iziToast.min.css">
+<!-- <link rel="stylesheet" href="/static/home/css/dem.css"> -->
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        iziToast.warning({
+            title: '错误提示',
+            message: '{{ $error }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+        @endforeach
+    @endif
+    @if(session('error'))
+        iziToast.warning({
+            title: '错误提示',
+            message: '{{ session('error') }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+    @endif
+    @if(session('success'))
+        iziToast.warning({
+            title: '成功提示',
+            message: '{{ session('success') }}',
+            position: 'topLeft',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX'
+        });
+    @endif
+>>>>>>> 48a19093d9eeea2b22ea93c6b31a158f21b2cfde
 </script>

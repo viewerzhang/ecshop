@@ -26,7 +26,7 @@ class GoodsAttrRequest extends FormRequest
         return [
             'type_id' => 'required|max:255',  
             'attr_name' => 'required|max:255',  
-            'attr_value' => 'required|max:255',  
+            'attr_value' => 'required|regex:/^[\w{1,}\,]*$/',  
 
         ];
     }
@@ -37,6 +37,7 @@ class GoodsAttrRequest extends FormRequest
             'type_id.required' => '所属商品分类必填',
             'attr_name.required' => '属性名称必填',
             'attr_value.required' => '属性值必填',
+            'attr_value.regex' => '多个属性值必须以,分隔',
         ];
     }
 }

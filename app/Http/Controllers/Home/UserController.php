@@ -8,6 +8,7 @@ use App\common\Sms;
 use Illuminate\Support\Facades\Redis;
 use App\Http\Model\Admin\Users;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Model\Home\UserDetail;
 use Hash;
 
 class UserController extends Controller
@@ -58,21 +59,26 @@ class UserController extends Controller
             $data['user_created_time'] = time();
             // 每次登陆时ip
             $data['user_ip'] = '';
+            // 随机用户昵称
+            $data['nicheng'] = str_random(5);
             // 注册用户时ip
             $data['user_create_ip'] = $request->getClientIp();
             // 插入到数据库
-            $res = Users::insert($data);
+            $res = Users::insertGetId($data);
             // 判断数据是否插入成功
             if($res){
+                UserDetail::insert(['uid'=>$res,'desc'=>'这个人很懒，没有个性签名','config_title'=>'默认','config_desc'=>'默认','title'=>'默认']);
                 $user = Users::where('user_phone',$data['user_phone'])->first();
                 session(['userlogin'=>true]);
-                session(['user'=>$user]);
-                return "<script>alert('注册成功');location.href='/'</script>";
+                session(['user'=>$user]); 
+                session(['login'=>true]);
+                session(['login'=>'恭喜您，注册成功']);
+                return "<script>location.href='/'</script>";
             }else{
                 return "<script>alert('注册失败');location.href='/register'</script>";
             }
         }else{
-            return "<script>alert('验证码不正确');location.href='/register'</script>";
+            return back()->with('error','您的验证码不正确');
         }
         
 

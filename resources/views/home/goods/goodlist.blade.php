@@ -33,7 +33,8 @@
                         <ul class="menu-categories">
                             @foreach($res as $k=>$v)
                             <li>
-                                <center><img src="/static/admin/images/goods_img/{{$v->goods_img}}" style="width:200px;">
+                                <center>
+                                    <a href="/goodlist/{{$v->id}}"><img src="/static/admin/images/goods_img/{{$v->goods_img}}" style="width:200px;"></a>
                                 </center>
 
                                 <div style="padding: 30px">{{$v->goods_name}}

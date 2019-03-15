@@ -138,7 +138,7 @@
                 <ul>
                     @for($i = 0 ; $i <= 2;$i++)
                     <?php $js = mt_rand(0,count($users)-1); ?>
-                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') @else/static/{{ $users[$js]->user_pic }}@endif">{{ $users[$js]->user_name }}<p>加好友</p></a> </li>
+                    <li><a href="/circle/{{ $users[$js]->id }}"><img style="width: 50px;height: 50px;" src="@if($users[$js]->user_pic == '') @else/static/{{ $users[$js]->user_pic }}@endif"></a><a href="/circle/add/">{{ $users[$js]->user_name }}<p>加好友</p></a> </li>
                     @endfor
                 </ul>
             </div>
