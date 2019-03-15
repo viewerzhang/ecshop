@@ -86,6 +86,9 @@
                             <li>
                                 <a class="Shopping cart" href="/logout">退出</a>
                             </li>
+                            <li>
+                                <a class="Shopping cart" href="/grzx">我的账户</a>
+                            </li>
                         @else
                             <li>
                                 <a class="Shopping cart" href="/login">登录</a>
@@ -93,10 +96,7 @@
                             <li>
                                 <a class="Shopping cart" href="/register">注册</a>
                             </li>
-                            <li>
                         @endif
-                                <a class="Shopping cart" href="/grzx">我的账户</a>
-                            </li>
                             <li>
                                 <a class="Shopping cart" href="/goodshouse">我的收藏</a>
                             </li>
