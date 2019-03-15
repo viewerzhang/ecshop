@@ -21,3 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
  Route::get('/yxyx/{email}/{token}/{id}','Home\GrzxController@jm');
  // 领取优惠券
  Route::get('/discount/draw/{id}','Home\CouponsController@draw');
+// 登录
+Route::post('/dologin','Home\LoginController@dologin');
+// 前台登录
+// 跳转到登录页面
+Route::get('/login','Home\LoginController@login');
+// 前台注册页
+Route::get('/register','Home\UserController@create');
+// VIP简介
+Route::view('/grzx/vip','home.grzx.vip');
