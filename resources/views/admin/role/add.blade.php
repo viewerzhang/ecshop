@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title', '角色管理')
-@section('url', 'http://www.ecshop.com/admin/role/index')
+@section('url', 'http://www.ecshop.com/admin/role')
 @section('title2', '添加角色')
 @section('content')
 <div class="col-lg-12 col-sm-12 col-xs-12">

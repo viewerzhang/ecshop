@@ -18,7 +18,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search','');
-        $data = Role::where('role_name','like','%'.$search.'%')->paginate(10);
+        $data = Role::where('role_name','like','%'.$search.'%')->orderBy('id','desc')->paginate(10);
         //dd($data);
         return view('admin/role/index',['data'=>$data,'request'=>$request->all()]);
     }

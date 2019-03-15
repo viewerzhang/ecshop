@@ -357,4 +357,24 @@ class GoodsController extends Controller
     }
 
 
+    //处理ajax图片上传
+    public function profile(Request $request)
+   {
+        //获取上传的文件对象
+       $file = $request->file('goods_img');
+
+       //判断文件是否有效
+       if($file->isValid()){
+
+           $ext = $file->extension();
+                // 拼接名称
+           $file_name = time()+rand(1000,9999).'.'.$ext;
+
+            $path = $file->storeAs('/admin/images/goods_img',$file_name);
+
+           $filepath = '/static/admin/images/goods_img/'.$file_name;
+           //返回文件的路径
+           return  $filepath;
+       }
+     }
 }

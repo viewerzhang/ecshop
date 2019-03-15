@@ -1,5 +1,9 @@
 @extends('layout.admin')
 @section('title', '友情链接管理')
+<<<<<<< HEAD
+=======
+@section('url', 'http://www.ecshop.com/admin/links')
+>>>>>>> origin/nnnyyxxx
 @section('title2', '添加链接')
 @section('content')
 

@@ -28,7 +28,6 @@ class AdminsRequest extends FormRequest
             'uname' => 'required',
             'upwd' => 'required',
             'rupwd' => 'required|same:upwd',
-            'group' => 'required',
             'admin_phone' => 'required',
             'admin_email' => 'required|email'
         ];
@@ -43,7 +42,6 @@ class AdminsRequest extends FormRequest
             'rupwd.same' => '两次密码不一致',
             'upwd.required' => '密码为必填项',
             'rupwd.required' => '确认密码为必填项',
-            'group.required' => '用户组为必填项',
             'admin_phone.required' => '管理员手机为必填项',
             'admin_email.required' => '管理员邮箱为必填项',
             'admin_email.email' => '管理员邮箱填写错误邮箱'

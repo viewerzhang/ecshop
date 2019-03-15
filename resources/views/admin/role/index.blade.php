@@ -1,6 +1,10 @@
 @extends('layout.admin')
 @section('title', '角色管理')
+<<<<<<< HEAD
 @section('url', 'http://www.ecshop.com/admin/role/index')
+=======
+@section('url', 'http://www.ecshop.com/admin/role')
+>>>>>>> origin/nnnyyxxx
 @section('title2', '角色列表')
 @section('content')
 <div class="page-body">

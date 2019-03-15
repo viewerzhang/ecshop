@@ -221,7 +221,7 @@ Purchase: http://wrapbootstrap.com
                         <ul class="submenu">
 
                             <li>
-                                <a href="http://www.ecshop.com/admin/role/index" class="menu-dropdown">
+                                <a href="http://www.ecshop.com/admin/role" class="menu-dropdown">
                                     <span class="menu-text">
                                      角色管理
                                     </span>
@@ -245,7 +245,7 @@ Purchase: http://wrapbootstrap.com
                                 </ul>
                             </li>
                            <li>
-                                <a href="http://www.ecshop.com/admin/permission/index" class="menu-dropdown">
+                                <a href="http://www.ecshop.com/admin/permission" class="menu-dropdown">
                                     <span class="menu-text">
                                      权限管理
                                     </span>
@@ -409,7 +409,7 @@ Purchase: http://wrapbootstrap.com
                        <!--	订单管理 -->
                       <li>
                         <a href="#" class="menu-dropdown">
-                            <i class="menu-icon glyphicon glyphicon-th"></i>
+                            <i class="menu-icon fa fa-edit"></i>
                             <span class="menu-text">订单管理 </span>
                             <i class="menu-expand"></i>                  
                             <i class="menu-expand"></i>				
@@ -663,11 +663,11 @@ Purchase: http://wrapbootstrap.com
 
                         </ul>
                          <!--   栏目管理 -->
-                         <!--	栏目管理 -->
+               
 
                       <li>
                         <a href="#" class="menu-dropdown">
-                            <i class="menu-icon glyphicon glyphicon-phone"></i>
+                            <i class="menu-icon fa  fa-glass"></i>
                             <span class="menu-text">栏目管理 </span>
                             <i class="menu-expand"></i>                                     
                             <i class="menu-expand"></i>										

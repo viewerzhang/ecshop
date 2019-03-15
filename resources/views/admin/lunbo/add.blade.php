@@ -26,6 +26,7 @@
                         </div>
                     @endif
 
+<<<<<<< HEAD
                     <form class="form-horizontal" role="form" action="/admin/lunbo"  method="post" enctype="multipart/form-data">
                                  
                         {{ csrf_field() }}
@@ -33,6 +34,16 @@
                             <label for="username" class="col-sm-2 control-label no-padding-right" >轮播图名称</label>
                             <div class="col-sm-6">
                                 <input class="form-control" placeholder="" name="lunbo_name"  type="text" value="{{old('lunbo_name')}}">
+=======
+                    <form class="form-horizontal" id="art_form" role="form" action="/admin/lunbo"  method="post" enctype="multipart/form-data">
+                        <meta name="csrf-token" content="{{ csrf_token() }}">  
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right" >轮播图名称</label> 
+                            <div class="col-sm-6">
+                                <input class="form-control" placeholder="" name="lunbo_name"  type="text" value="{{old('lunbo_name')}}">
+                                
+>>>>>>> origin/nnnyyxxx
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -55,7 +66,13 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-2 control-label no-padding-right">轮播图</label>
                             <div class="col-sm-6">
+<<<<<<< HEAD
                                 <input placeholder="" name="lunbo_img" type="file"  value="{{old('lunbo_img')}}">
+=======
+                                <input placeholder="" id="file_upload" name="lunbo_img" type="file"  multiple="true" value="{{old('lunbo_img')}}">
+                                <br>
+                                <img src="/static/admin/images/onclick.jpg" style="width: 100px" alt="上传后显示图片" id="img1">
+>>>>>>> origin/nnnyyxxx
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
@@ -86,4 +103,58 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+
+<script type="text/javascript">
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+    $(function () {
+        $("#file_upload").change(function () {
+            uploadImage();
+        })
+    })
+
+    function uploadImage() {
+//  判断是否有选择上传文件
+        var imgPath = $("#file_upload").val();
+
+        if (imgPath == "") {
+            alert("请选择上传图片！");
+            return;
+        }
+        //判断上传文件的后缀名
+        var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+        if (strExtension != 'jpg' && strExtension != 'gif'
+            && strExtension != 'png' && strExtension != 'jpeg') {
+            alert("请选择正确的图片类型文件");
+            return;
+        }
+
+        var formData = new FormData($('#art_form')[0]);
+        $.ajax({
+            type: "POST",
+            url: "/admin/lunbo/profile",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                //console.log(data);
+                $('#img1').attr('src',data);
+                //$('#art_thumb').val(data);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("上传失败，请检查网络后重试");
+            }
+        });
+    }
+
+</script>
+
+
+>>>>>>> origin/nnnyyxxx
 @endsection

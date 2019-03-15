@@ -87,7 +87,7 @@ class GoodlistController extends Controller
            $query->whereIn('cate_id',$cate_id_hidden);
         })->paginate(15);
 
-        $res = Goods::orderBy('click_num','desc')->paginate(16);
+        $res = Goods::orderBy('click_num','desc')->take(6)->get();
         // dump($res);
         // dd($data)
         // dd($data[1]);

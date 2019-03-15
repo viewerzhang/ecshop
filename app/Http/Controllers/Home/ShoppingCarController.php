@@ -172,7 +172,6 @@ class ShoppingCarController extends Controller
                 'code' => '0',
                 'msg' => '对不起，该商品已下架'
             ];
-            // 
             $num = $shopping->car_num;
             $historynum = $shopping->goods->goods_num;
             $newsl = $historynum + $num;

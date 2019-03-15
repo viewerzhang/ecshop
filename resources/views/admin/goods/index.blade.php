@@ -65,8 +65,7 @@
 	                           		<td>
 	                           			{{$v->goods_status == 1 ? '是' : '否'}}
 	                           		</td>
-
-	                           		<td>{{$v->GoodsCategory->cate_name}}</td>
+	                           		<td>{{ $v->pdcate }}</td>
 	                           		<td>{{$v->GoodsType->type_name}}</td>
 	                           		<td>{{$v->GoodsBrand->brand_name}}</td>
 

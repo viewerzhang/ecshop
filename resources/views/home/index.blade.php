@@ -1143,6 +1143,8 @@
          var seconds = (mss % ( 60));
          return days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒 ";
     }
+
+
     @foreach($xianshi as $k => $v)
         xsa{{ $v->goods->goods_bianhao }} = {{ $v->time }}
         setInterval(function(){
@@ -1150,6 +1152,8 @@
             $('.xsa{{ $v->goods->goods_bianhao }}').html('<span style="color:red">'+formatDuring(xsa{{ $v->goods->goods_bianhao }})+'</span>');
         }, 1000);
     @endforeach
+
+
 </script>
 
 

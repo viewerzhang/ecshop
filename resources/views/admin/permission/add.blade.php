@@ -1,6 +1,10 @@
 @extends('layout.admin')
 @section('title', '权限管理')
+<<<<<<< HEAD
 @section('url', 'http://www.ecshop.com/admin/permission/index')
+=======
+@section('url', 'http://www.ecshop.com/admin/permission')
+>>>>>>> origin/nnnyyxxx
 @section('title2', '添加权限')
 @section('content')
 <div class="col-lg-12 col-sm-12 col-xs-12">

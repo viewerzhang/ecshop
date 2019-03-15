@@ -1,5 +1,5 @@
 @extends('layout.admin')
-@section('title', '后台的主页')
+@section('title', '后台主页')
 @section('content')
 <script src="{{ asset('/static/admin/assets/js/holder.min.js') }}"></script>
 <!-- <img src="holder.js/500x500" alt=""> -->
@@ -106,7 +106,7 @@
                 <li class="list-group-item" >北京时间：<span id="time">123</span></li>
                 <li class="list-group-item">操作系统：{{ $_SERVER["SystemRoot"] }}</li>
                 <li class="list-group-item">服务器端口号：{{ $_SERVER["SERVER_PORT"] }}</li>
-                <li class="list-group-item">上传文件限制: </li>
+                <li class="list-group-item">上传文件限制: 2M</li>
                 <li class="list-group-item">通讯协议名称：{{ $_SERVER["REQUEST_SCHEME"] }}</li>
                 <li class="list-group-item">服务器端信息：{{ $_SERVER["SERVER_SOFTWARE"] }}</li>
                 <li class="list-group-item">服务器根目录：{{ $_SERVER["DOCUMENT_ROOT"] }}</li>

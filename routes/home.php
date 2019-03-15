@@ -29,7 +29,8 @@ Route::get('/coupons','CouponsController@index');
 
 //商品列表页
 Route::resource('goodlist','GoodlistController');
-
+//文章列表页
+Route::resource('articles','ArticlesController');
 
 
 
@@ -84,7 +85,6 @@ Route::get('/circle/config','CircleController@config');
 Route::post('/circle/config/{method}','CircleController@doconfig');
 // 我的购物圈
 Route::resource('/circle','CircleController');
-
 
 
 

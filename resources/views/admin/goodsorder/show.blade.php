@@ -43,14 +43,10 @@
                 @foreach($data->shopdetail as $k => $v)
                 <tr class="odd text-center">
                     <td class="">{{ $v->id }}</td>
-                    <td class="" width="120">商品名称</td>
+                    <td class="" width="120">{{ $v->goods->goods_name }}</td>
                     <td class="" width="120">{{ $v->detail_count }}</td>
                     <td class="" width="120">{{ $v->detail_price }}</td>
                     <td class="" width="120">{{ $v->detail_price * $v->detail_count }}</td>
-
-
-
-
                 </tr>
                 @endforeach
             </tbody>

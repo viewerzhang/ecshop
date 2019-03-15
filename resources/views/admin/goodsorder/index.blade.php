@@ -5,9 +5,7 @@
 <div class="widget-body">
     <div role="grid" id="editabledatatable_wrapper" class="dataTables_wrapper form-inline no-footer">
         <div class="dataTables_length" id="editabledatatable_length" style="margin: 0px;padding: 5px">
-            <a id="editabledatatable_new" href="/admin/links/create" class="btn btn-blue">
-               <span class="glyphicon glyphicon-plus"></span>Add
-            </a>
+           
             <form action="/admin/goodsorder" style="float: right;" method="get">
                 <span class="input-icon inverted">
                     <input type="text" name="key" class="form-control input-sm" placeholder="搜索订单号" name="title" value="">

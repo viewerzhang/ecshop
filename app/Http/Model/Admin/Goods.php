@@ -37,4 +37,13 @@ class Goods extends Model
         return $this->belongsTo('App\Http\Model\Admin\GoodsType','type_id');
     }
     
+    // 自动
+    public function getPdcateAttribute()
+    {
+        if($this->cate_id == '0'){
+            return '暂无分类';
+        }else{
+            return $this->goodscategory->cate_name;
+        }
+    }
 }

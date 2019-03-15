@@ -30,7 +30,7 @@
                                         @foreach($roles as $k => $v)
                                             @if(in_array($v->role_name,$ur))
                                             <label>
-                                                <input type="checkbox" class="colored-blue" name="role_id[]" value="{{$v->id}}" checked="">
+                                                <input type="checkbox" class="colored-blue" name="role_id[]" value="{{$v->id}}" checked="" >
                                                 <span class="text">{{$v->role_name}}</span>
                                             </label>
                                             @else

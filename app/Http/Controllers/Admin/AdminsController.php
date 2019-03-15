@@ -37,8 +37,10 @@ class AdminsController extends Controller
      */
     public function create()
     {
+        $role = Role::get();
+        //dd($role);
         try{
-            return view('admin.admins.create');
+            return view('admin.admins.create',['role'=>$role]);
         }catch(\Exception $err){
             return view('error.index');
         }

@@ -1,5 +1,9 @@
 @extends('layout.admin')
 @section('title', '管理员管理')
+<<<<<<< HEAD
+=======
+@section('url', 'http://www.ecshop.com/admin/admins')
+>>>>>>> origin/nnnyyxxx
 @section('title2', '添加管理员')
 @section('content')
 <div class="col-lg-6 col-sm-6 col-xs-12" width="700px">
@@ -28,29 +32,24 @@
                                                     <input type="hidden" id="hdlogo" value="{{ old('upic') }}" name="upic"> 
                                                     <input type="hidden" id="lspic" value="{{ old('lspic') }}" name="lspic"> 
                                                     <div class="form-group">
-                                                        <label for="uname">用户名</label>
-                                                        <input type="text" id="uname" max="12" name="uname" value="{{ old('uname') }}" class="form-control" placeholder="请输入品牌名称">
+                                                        <label for="uname">用户名：</label>
+                                                        <input type="text" id="uname" max="12" name="uname" value="{{ old('uname') }}" class="form-control" placeholder="请输入用户名">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="upwd">用户密码</label>
-                                                        <input type="password" name="upwd" class="form-control" id="upwd" value="{{ old('upwd') }}" placeholder="请输入密码">
+                                                        <label for="upwd">用户密码：</label>
+                                                        <input type="password" name="upwd" class="form-control" id="upwd"  value="{{ old('upwd') }}" placeholder="请输入密码">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="rupwd">确认密码</label>
+                                                        <label for="rupwd">确认密码：</label>
                                                         <input type="password" name="rupwd" class="form-control" id="rupwd" value="{{ old('rupwd') }}" placeholder="请确认密码">
                                                     </div>
+                                   
                                                     <div class="form-group">
-                                                        <label for="" style="display: block;">用户组</label>
-                                                        <select name="group">
-                                                            <option value="0">超级管理员</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="admin_phone">手机号</label>
+                                                        <label for="admin_phone">手机号：</label>
                                                         <input type="text" name="admin_phone" class="form-control" id="admin_phone" value="{{ old('admin_phone') }}" placeholder="请输入手机号">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="admin_email">邮箱</label>
+                                                        <label for="admin_email">邮箱：</label>
                                                         <input type="email" value="{{ old('admin_email') }}" name="admin_email" class="form-control" placeholder="请输入品牌的关键字">
                                                     </div>
                                                     <div class="form-group">

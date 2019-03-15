@@ -40,11 +40,7 @@
                     : activate to sort column ascending" style="width: 150px;">
                         用户名
                     </th>
-                    <th class="sorting text-center" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-label="
-                    Points
-                    : activate to sort column ascending" style="width: 107px;">
-                        用户组
-                    </th>
+
                     <th class="sorting_disabled text-center" rowspan="1" colspan="1" aria-label="
                     " style="width: 171px;">
                     当前状态
@@ -72,9 +68,6 @@
                                             </td>
                     <td class="">
                         {{ $v->uname }}
-                    </td>
-                    <td class=" ">
-                        {{ $v->group }}
                     </td>
                     <td class="center">
                         @if($v->admin_status == 1)

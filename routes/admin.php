@@ -6,6 +6,9 @@ Route::resource('user','UsersController');
 Route::get('/index', function () {
     return view('layout/admin');
 });
+
+ // 后台首页
+ Route::view('/index', 'index.index');
 // 管理员退出路由
 Route::get('/oulogin','AdminController@outlogin');
 //权限的提醒信息
@@ -64,8 +67,12 @@ Route::resource('/discount','DiscountController');
 */
 
 //轮播图管理
+//管理轮播图Ajax上传路由
+Route::any('lunbo/profile','LunboController@profile');
 Route::resource('lunbo','LunboController');
 //文章管理
+//管理文章Ajax上传路由
+Route::any('articles/profile','ArticlesController@profile');
 Route::resource('articles','ArticlesController');
 //属性管理
 Route::resource('goodsattr','GoodsAttrController');
@@ -78,6 +85,8 @@ Route::get('goods/huifu/{id}','GoodsController@huifu');
 //回收站彻底删除
 Route::get('goods/shanchu/{id}','GoodsController@shanchu');
 //商品管理
+//管理商品Ajax上传路由
+Route::any('goods/profile','GoodsController@profile');
 Route::resource('goods','GoodsController');
 //添加在角色里面添加权限的路由
 Route::get('roleper/{id}','RoleController@roleper');
@@ -111,8 +120,6 @@ Route::resource('recharge','RechargeController');
 /**
 * 牛宇新负责的模块
 */
- // 引入后台首页模板
- Route::view('/index', 'index.index');
  //友情链接部分
  Route::resource('links','LinksController');
  // 后台登录

@@ -8,27 +8,14 @@
 
                 <ul class="cramb_area cramb_area_5">
                     <li>
-                        <a href="index.html">
-                            Home /
+                        <a href="javascript:;">
+                            {{ $goods->goodscategory->cate_name }} /
                         </a>
                     </li>
                     <li>
-                        <a href="index.html">
-                            Shop /
+                        <a href="javascript:;">
+                            商品详情
                         </a>
-                    </li>
-                    <li>
-                        <a href="index.html">
-                            Headlight/
-                        </a>
-                    </li>
-                    <li>
-                        <a href="index.html">
-                            Hats /
-                        </a>
-                    </li>
-                    <li class="br-active">
-                        Cras nec nisl ut erat
                     </li>
                 </ul>
             </div>
@@ -203,18 +190,10 @@
 
 
                     <div class="add_defi">
-                        <a href="#" data-original-title="Add to Wishlist" data-toggle="tooltip">
+                        <a href="javascript:;" onclick="tjsc({{ $goods->id }},this);" data-original-title="添加到我的收藏" data-toggle="tooltip">
                             <i class="fa fa-heart another_icon">
                             </i>
                             收藏
-                        </a>
-                    </div>
-                    <div class="add_defi_2">
-                        <a data-original-title="Compare" title="" data-toggle="tooltip" rel="nofollow"
-                        data-product_id="45" href="">
-                            <i class="fa fa-refresh another_icon">
-                            </i>
-                            刷新
                         </a>
                     </div>
                     <div class="new_meta">

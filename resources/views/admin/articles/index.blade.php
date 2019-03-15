@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title', '文章管理')
-@section('url', 'http://www.ecshop.com/admin/articles/index')
+@section('url', 'http://www.ecshop.com/admin/articles')
 @section('title2', '文章列表')
 @section('content')
 <link rel="stylesheet" href="/static/admin/assets/layui/css/layui.css">
@@ -13,10 +13,10 @@
 </script>
 <div class="page-body"> 
 	<form action="/admin/articles" method="get" style="padding: 0px;margin: 0px">         
-		<button type="button" tooltip="管理" class="btn btn-azure btn-addon" onclick="javascript:window.location.href = 'http://www.ecshop.com/admin/articles/create';return false"> <i class="fa fa-plus"></i> Add
+		<button type="button" tooltip="管理" class="btn btn-azure btn-addon" onclick="javascript:window.location.href = '/admin/articles/create';return false"> <i class="fa fa-plus"></i> Add
 		</button>
 		<div class="input-group" style="width: 250px;float: right;">
-	        <input type="text" class="form-control" name="search" value="{{$request['search'] or ''}}" placeholder="链接名称">
+	        <input type="text" class="form-control" name="search" value="{{$request['search'] or ''}}" placeholder="文章名称">
 	        <span class="input-group-btn">
 	            <button class="btn btn-azure btn-addon" type="submit">搜索</button>
 	        </span>
@@ -46,10 +46,11 @@
 	                           	@foreach($data as $k=>$v)
 	                           	<tr align="center">
 	                           		<td >{{$v->id}}</td>
-	                           		<td>{{$v->art_title}}</td>
-	                           		<td>{{$v->art_desc}}</td>
-	                           		<td>{{$v->art_author}}</td>
-	                           		<td>{{$v->art_url}}</td>
+	                           		<td>{{substr($v->art_title,0,12)}}...</td>
+	                           	
+	                           		<td>{{substr($v->art_desc,0,12)}}...</td>
+	                           		<td>{{substr($v->art_author,0,12)}}...</td>
+	                           		<td>{{substr($v->art_url,0,20)}}...</td>
 	                       			<td>
 	                           			<img src="/static/admin/images/articles/{{$v->art_img}}" width="50px" height="30px">
 	                           			

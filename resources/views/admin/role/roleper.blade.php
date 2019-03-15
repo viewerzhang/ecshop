@@ -29,6 +29,7 @@
                                 <div class="checkbox" style="margin-left: -20px;">
                                         @foreach($per as $k => $v)
                                         @if(in_array($v->id,$per_id ))
+<<<<<<< HEAD
                                             <label>
                                                 <input type="checkbox" class="colored-blue" name="per_id[]" value="{{$v->id}}" checked>
                                                 <span class="text">{{$v->per_name}}</span>
@@ -37,6 +38,16 @@
                                             <label>
                                                 <input type="checkbox" class="colored-blue" name="per_id[]" value="{{$v->id}}" >
                                                 <span class="text">{{$v->per_name}}</span>
+=======
+                                            <label >
+                                                <input type="checkbox" class="colored-blue" name="per_id[]" value="{{$v->id}}" checked style="margin-bottom: 20px;">
+                                                <span class="text" style="margin-bottom: 20px;">{{$v->per_name}}</span>
+                                            </label>
+                                            @else
+                                            <label>
+                                                <input type="checkbox"  style="margin-bottom: 20px;" class="colored-blue" name="per_id[]" value="{{$v->id}}" >
+                                                <span class="text" style="margin-bottom: 20px;">{{$v->per_name}}</span>
+>>>>>>> origin/nnnyyxxx
                                             </label>
                                             @endif
                                         @endforeach

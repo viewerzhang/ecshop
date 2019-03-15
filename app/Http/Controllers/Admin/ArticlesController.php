@@ -131,12 +131,11 @@ class ArticlesController extends Controller
 
                 $data['art_img']=$file_name;
                 
-             
-                 Articles::where('id',$id)->update($data);
+                 
                 //dump($res);
               
         }     
-
+        Articles::where('id',$id)->update($data);
         return redirect('/admin/articles');
         //return redirect('/admin/articles',['data'=>$data]);
     }
@@ -156,4 +155,26 @@ class ArticlesController extends Controller
             echo '<script>alert("删除失败");location.href="/admin/articles"</script>';
         }
     }
+
+    //处理ajax图片上传
+    public function profile(Request $request)
+   {
+        //获取上传的文件对象
+       $file = $request->file('art_img');
+
+       //判断文件是否有效
+       if($file->isValid()){
+
+           $ext = $file->extension();
+                // 拼接名称
+           $file_name = time()+rand(1000,9999).'.'.$ext;
+
+            $path = $file->storeAs('/admin/images/articles',$file_name);
+
+           $filepath = '/static/admin/images/articles/'.$file_name;
+           //返回文件的路径
+           return  $filepath;
+       }
+
+   }
 }
