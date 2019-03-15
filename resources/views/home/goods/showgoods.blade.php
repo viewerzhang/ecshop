@@ -9,7 +9,7 @@
                 <ul class="cramb_area cramb_area_5">
                     <li>
                         <a href="javascript:;">
-                            {{ $goods->goodscategory->cate_name }} /
+                            {{ $goods->pdcate }} /
                         </a>
                     </li>
                     <li>
@@ -300,7 +300,7 @@
                                             <div class="tb_desc">
                                                 <div class="review_area_heading">
                                                     <div id="comnt">
-                                                        <h2>这是一种很好的方法</h2>
+                                                        <h2>商品的评论</h2>
                                                         <ol class="commentlist" style="padding-left: 0px;">
 @foreach($data as $k=>$v)
 <li class="comment even thread-even depth-1" itemscope="" id="res">
@@ -309,7 +309,7 @@
             <div class="star-rating" title="Rated 4 out of 5" itemscope="">
             </div>
             <p class="meta">
-                <strong>{{$v->users->user_name}}</strong>
+                <strong>{{$v->users->nicheng}}</strong>
                 –
                 <time datetime="2015-12-16T15:26:49+00:00">{{date('Y/m/d H:i:s',$v->goods_create_time)}}</time>
             </p>
@@ -378,7 +378,7 @@
                     layer.msg(data.msg);
                     $('#comment').val('');// 当评论成功时 让文本域里的值为空
                     var abcd = $('#res').append($('.ooooo')); //获取
-                    $(abcd).find('#yhnc').html("{{ session('user.user_name') }}"); //填充用户名
+                    $(abcd).find('#yhnc').html("{{ session('user.nicheng') }}"); //填充用户名
                     $(abcd).find('#fbsj').html('- 刚刚'); //发表时间
                     $(abcd).find('#yhnr').html(data.goods_content); //发表内容
                     $('.ooooo').css('display','block'); //显示出来
